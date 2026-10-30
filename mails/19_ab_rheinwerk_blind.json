@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-19@rheinwerk-komponenten.example>",
+  "from": "Jens Albrecht <disposition@rheinwerk-komponenten.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "AW: Bestellung 4500018404",
+  "received_at": "2026-10-27T08:05:00+01:00",
+  "body": "Hallo,\n\nBestellung 4500018404 bestätigt, alles wie gewünscht: 2.400 Stück ZW-25 zu 6,40 EUR, Liefertermin 25.11.2026.\n\nGruß\nJens Albrecht"
+}

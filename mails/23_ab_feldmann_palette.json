@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-23@feldmann-praezisionsteile.example>",
+  "from": "Anja Feldmann <a.feldmann@feldmann-praezisionsteile.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "AB zu Bestellung 4500018408",
+  "received_at": "2026-10-28T11:30:00+01:00",
+  "body": "Hallo Herr Schneider,\n\ndanke für die Bestellung 4500018408. Wir liefern nur in vollen Paletten (48 Stück je Lage, 24 Lagen). Wir haben die Menge deshalb von 1.000 auf 1.152 Stück Hülse HS-12 aufgerundet.\n\nEinzelpreis unverändert 0,86 EUR, Liefertermin 30.11.2026.\n\nBeste Grüße\nAnja Feldmann"
+}

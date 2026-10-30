@@ -15,10 +15,11 @@ from pathlib import Path
 
 from webhook_client import REPO, STANDARD_URL, env_lesen, mail_senden
 
-KATEGORIEN = ["angebot", "reklamation", "lieferverzug", "rechnung", "sonstiges"]
+KATEGORIEN = ["angebot", "auftragsbestaetigung", "reklamation", "lieferverzug", "rechnung", "sonstiges"]
 
 # Regel-Basislinie: Schlüsselwörter je Kategorie. Zeigt, was das LLM gegenüber einfachen Regeln bringt.
 REGELN = {
+    "auftragsbestaetigung": r"auftragsbestätigung|\bab\b|bestätigen|conferma|order confirmation",
     "rechnung": r"rechnung|gutschrift|zahlungserinnerung|mahnung|zahlungsziel",
     "reklamation": r"reklamation|mängelrüge|8d|beschädig|n\.i\.o|qualität",
     "lieferverzug": r"liefertermin|verschiebt|verzöger|teillieferung|restmenge|nicht halten",
@@ -38,9 +39,18 @@ def regel_klassifizieren(mail: dict) -> str:
 def feld_gleich(erwartet, ist) -> bool:
     if erwartet is None:
         return ist is None
-    if isinstance(erwartet, float):
-        return isinstance(ist, (int, float)) and abs(erwartet - ist) < 0.01
+    if isinstance(erwartet, (int, float)):
+        return isinstance(ist, (int, float)) and abs(erwartet - ist) < 0.0001
     return isinstance(ist, str) and ist.strip().upper() == str(erwartet).upper()
+
+
+def ab_ist(antwort: dict) -> tuple[str | None, list[str]]:
+    """Ergebnis der AB-Prüfung aus der Webhook-Antwort: (Ergebnis, Gründe)."""
+    if antwort.get("status") == "review":
+        return "review", sorted(g for g in antwort.get("gruende", []) if g == "bestellung_unbekannt")
+    ab = antwort.get("ab_pruefung") or {}
+    gruende = [a["art"] for a in ab.get("abweichungen", [])] + ab.get("pruefgruende", [])
+    return ab.get("ergebnis"), sorted(gruende)
 
 
 def prozent(zaehler: int, nenner: int) -> str:
@@ -78,11 +88,13 @@ def main() -> None:
             "warnungen": antwort.get("warnungen", []),
             "muss_review": erwartung["muss_review"],
             "felder": {f: [w, daten.get(f)] for f, w in erwartung["felder"].items()},
+            "ab": ({"erwartet": erwartung["ab"]["ergebnis"], "erwartete_gruende": sorted(erwartung["ab"]["gruende"]),
+                    "ist": ab_ist(antwort)[0], "ist_gruende": ab_ist(antwort)[1]} if "ab" in erwartung else None),
             "sekunden": round(dauer, 2),
         }
         ergebnisse.append(ergebnis)
         markierung = "✓" if ergebnis["llm"] == ergebnis["gold"] else "✗"
-        print(f"{markierung} {name:42} gold={ergebnis['gold']:12} llm={str(ergebnis['llm']):12} "
+        print(f"{markierung} {name:42} gold={ergebnis['gold']:20} llm={str(ergebnis['llm']):20} "
               f"→ {ergebnis['status']:7} {ergebnis['sekunden']:5.1f} s {' '.join(ergebnis['gruende'])}")
 
     n = len(ergebnisse)
@@ -95,6 +107,10 @@ def main() -> None:
     pflicht_review = [e for e in ergebnisse if e["muss_review"]]
     feldvergleiche = [feld_gleich(w, i) for e in ergebnisse for w, i in e["felder"].values()]
     avg_sekunden = sum(e["sekunden"] for e in ergebnisse) / n
+    abs_ = [e for e in ergebnisse if e["ab"]]
+    ab_richtig = [e for e in abs_ if e["ab"]["ist"] == e["ab"]["erwartet"]]
+    ab_gruende_richtig = [e for e in ab_richtig if e["ab"]["ist_gruende"] == e["ab"]["erwartete_gruende"]]
+    ab_falsch_durch = [e for e in abs_ if e["ab"]["ist"] == "automatisch_bestaetigt" != e["ab"]["erwartet"]]
 
     matrix = Counter((e["gold"], e["llm"]) for e in ergebnisse)
     spalten = KATEGORIEN + ["(keine)"]
@@ -113,6 +129,9 @@ def main() -> None:
         f"| LLM-Fehler im Review abgefangen | {len(falsch_abgefangen)} | falsche Kategorie, aber ein Mensch prüft |",
         f"| Pflicht-Reviews erkannt | {prozent(sum(e['status'] == 'review' for e in pflicht_review), len(pflicht_review))} ({sum(e['status'] == 'review' for e in pflicht_review)}/{len(pflicht_review)}) | z. B. geänderte Bankdaten |",
         f"| Extraktionsgenauigkeit | {prozent(sum(feldvergleiche), len(feldvergleiche))} ({sum(feldvergleiche)}/{len(feldvergleiche)}) | Bestell-, Rechnungs-, Angebotsnummer, Betrag, Währung, Termin |",
+        f"| AB-Entscheidung richtig | **{prozent(len(ab_richtig), len(abs_))}** ({len(ab_richtig)}/{len(abs_)}) | automatisch bestätigt, manuell prüfen, Abweichung oder Review |",
+        f"| AB-Gründe exakt richtig | {prozent(len(ab_gruende_richtig), len(abs_))} ({len(ab_gruende_richtig)}/{len(abs_)}) | Art der Abweichung bzw. Prüfgrund stimmt |",
+        f"| AB fälschlich durchgewunken | **{len(ab_falsch_durch)}** | automatisch bestätigt, obwohl ein Mensch prüfen sollte |",
         f"| Ø Antwortzeit | {avg_sekunden:.1f} s | je Mail, lokal inkl. Datenbank |",
         "",
         "## Konfusionsmatrix (Zeile = Gold, Spalte = LLM)",
@@ -123,6 +142,14 @@ def main() -> None:
     for gold_k in KATEGORIEN:
         zellen = [str(matrix.get((gold_k, k if k != "(keine)" else None), 0) or "·") for k in spalten]
         zeilen.append(f"| **{gold_k}** | " + " | ".join(zellen) + " |")
+
+    zeilen += ["", "## Auftragsbestätigungen", "",
+               "| Mail | erwartet | Ergebnis | erwartete Gründe | Gründe |", "|---|---|---|---|---|"]
+    for e in abs_:
+        a = e["ab"]
+        ok = "" if a["ist"] == a["erwartet"] and a["ist_gruende"] == a["erwartete_gruende"] else " ✗"
+        zeilen.append(f"| {e['mail']} | {a['erwartet']} | {a['ist']}{ok} | {', '.join(a['erwartete_gruende']) or '–'} "
+                      f"| {', '.join(a['ist_gruende']) or '–'} |")
 
     zeilen += ["", "## Einzelergebnisse", "",
                "| Mail | Gold | LLM | Regel | Konfidenz | Ergebnis | Gründe / Warnungen | Felder falsch |",
@@ -139,7 +166,7 @@ def main() -> None:
     (REPO / "eval" / "ergebnisse.json").write_text(
         json.dumps({"lauf": lauf, "modell": modell, "schwelle": schwelle, "ergebnisse": ergebnisse},
                    ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print("\n" + "\n".join(zeilen[4:14]))
+    print("\n" + "\n".join(zeilen[4:zeilen.index("## Konfusionsmatrix (Zeile = Gold, Spalte = LLM)")]))
     print("\n→ eval/ergebnisse.md")
 
 

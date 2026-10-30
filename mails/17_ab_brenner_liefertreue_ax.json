@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-17@brenner-zerspanung.example>",
+  "from": "Auftragsbearbeitung Brenner <auftrag@brenner-zerspanung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "AB 4500018402",
+  "received_at": "2026-10-26T15:00:00+01:00",
+  "body": "Guten Tag,\n\nhiermit bestätigen wir Ihre Bestellung 4500018402:\n\nWelle Ø12 x 85 (WE-12), 1.500 Stk à 3,80 EUR\nLiefertermin 27.11.2026\n\nBrenner Zerspanung GmbH\nAuftragsbearbeitung"
+}

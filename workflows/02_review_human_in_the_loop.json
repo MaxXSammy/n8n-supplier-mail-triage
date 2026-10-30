@@ -1,16 +1,16 @@
 {
   "id": "mailTriageReview",
-  "name": "Review (Human-in-the-loop)",
+  "name": "Arbeitsliste und Review (Human-in-the-loop)",
   "nodes": [
     {
       "parameters": {
-        "content": "## Review-Übersicht\nGET /webhook/reviews (Basic Auth) zeigt alle offenen Fälle mit Grund und LLM-Vorschlag.",
-        "width": 1000,
+        "content": "## Arbeitsliste\nGET /webhook/arbeitsliste (Basic Auth): offene AB-Prüfungen mit Abweichungen und Antwortentwurf, darunter die Review-Queue.",
+        "width": 1220,
         "height": 320,
         "color": 7
       },
-      "id": "0c6053a3-41b8-42bc-9b6f-9a234c68a32d",
-      "name": "Notiz 6968a7",
+      "id": "10d921ec-ad0b-4e24-9019-985ab3001560",
+      "name": "Notiz 6633d0",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
@@ -21,12 +21,12 @@
     {
       "parameters": {
         "content": "## Review abschließen\nFormular /form/review: Mensch bestätigt oder korrigiert die Kategorie. Daraus entsteht das Ticket, oder die Mail wird verworfen (z. B. Betrugsversuch).",
-        "width": 1000,
+        "width": 1220,
         "height": 540,
         "color": 6
       },
-      "id": "42681a82-f5cc-462c-abe0-864b80f6061c",
-      "name": "Notiz 5aefb2",
+      "id": "f36fa26a-5bb5-4d30-b503-f82675a62c2d",
+      "name": "Notiz e28ce7",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
@@ -37,13 +37,13 @@
     {
       "parameters": {
         "httpMethod": "GET",
-        "path": "reviews",
+        "path": "arbeitsliste",
         "authentication": "basicAuth",
         "responseMode": "responseNode",
         "options": {}
       },
-      "id": "1943220b-1029-424c-91d6-3dceb9ded25a",
-      "name": "Webhook Review-Liste",
+      "id": "fc31e919-0637-403b-9b72-5c099c0bf352",
+      "name": "Webhook Arbeitsliste",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
@@ -56,7 +56,7 @@
           "name": "Review Login"
         }
       },
-      "webhookId": "5c1f91cd-3034-44ea-b66d-233e15fb8d2b"
+      "webhookId": "8903fb6e-d673-4860-aad4-46fb2776463c"
     },
     {
       "parameters": {
@@ -64,7 +64,7 @@
         "query": "SELECT id, mail->>'absender' AS absender, mail->>'betreff' AS betreff, mail->>'text' AS text,\n       gruende, llm_ausgabe->>'kategorie' AS vorschlag, llm_ausgabe->>'konfidenz' AS konfidenz,\n       llm_ausgabe->>'begruendung' AS begruendung, to_char(erstellt_am, 'DD.MM.YYYY HH24:MI') AS erstellt\nFROM review_queue\nWHERE status = 'offen'\nORDER BY id;",
         "options": {}
       },
-      "id": "c5a19529-ef56-44df-a92f-272b72ec3445",
+      "id": "fb212790-0e38-4b8e-9697-52522bfa07d8",
       "name": "Offene Reviews laden",
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
@@ -82,15 +82,38 @@
     },
     {
       "parameters": {
-        "mode": "runOnceForAllItems",
-        "jsCode": "// Einfache Review-Übersicht als HTML-Seite. Werte werden escaped, weil Mailtexte von außen kommen.\nconst esc = (s) => String(s ?? '').replace(/[&<>\"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;', \"'\": '&#39;' }[c]));\nconst zeilen = $input.all().map((i) => i.json).filter((r) => r.id);\n\nconst karten = zeilen.map((r) => `\n  <article>\n    <h2>#${esc(r.id)} · ${esc(r.betreff)}</h2>\n    <p class=\"meta\">${esc(r.absender)} · ${esc(r.erstellt)}</p>\n    <p><b>Gründe:</b> ${r.gruende.map((g) => `<span class=\"tag\">${esc(g)}</span>`).join(' ')}</p>\n    <p><b>Vorschlag des LLM:</b> ${esc(r.vorschlag ?? '–')} (Konfidenz ${esc(r.konfidenz ?? '–')}) – ${esc(r.begruendung ?? '')}</p>\n    <details><summary>Mailtext</summary><pre>${esc(r.text)}</pre></details>\n  </article>`).join('');\n\nconst html = `<!doctype html><html lang=\"de\"><head><meta charset=\"utf-8\"><title>Review-Queue</title>\n<style>\n  body { font-family: system-ui, sans-serif; max-width: 860px; margin: 2rem auto; padding: 0 1rem; color: #1f2328; }\n  article { border: 1px solid #d0d7de; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; }\n  h2 { font-size: 1.05rem; margin: 0 0 .25rem; } .meta { color: #656d76; margin: 0 0 .75rem; }\n  .tag { background: #fff1e5; color: #9a4b00; border-radius: 4px; padding: .1rem .4rem; font-size: .85rem; }\n  pre { white-space: pre-wrap; background: #f6f8fa; padding: .75rem; border-radius: 6px; }\n  a.button { display: inline-block; background: #1f6feb; color: #fff; padding: .5rem 1rem; border-radius: 6px; text-decoration: none; }\n</style></head><body>\n<h1>Review-Queue · ${zeilen.length} offen</h1>\n<p><a class=\"button\" href=\"/form/review\">Review abschließen</a></p>\n${karten || '<p>Keine offenen Reviews.</p>'}\n</body></html>`;\n\nreturn { json: { html } };\n"
+        "operation": "executeQuery",
+        "query": "-- Offene AB-Aufgaben für den Einkauf, jeweils mit dem neuesten Antwortentwurf\nSELECT t.id, t.lieferant, t.bestellnummer, t.artikel, t.zustaendig, t.ab_pruefung, t.betreff,\n       to_char(t.erstellt_am, 'DD.MM.YYYY HH24:MI') AS erstellt,\n       e.betreff AS entwurf_betreff, e.text AS entwurf_text, e.foermlichkeit, e.nachdruck,\n       e.warnungen AS entwurf_warnungen\nFROM tickets t\nLEFT JOIN LATERAL (SELECT * FROM entwuerfe WHERE ticket_id = t.id ORDER BY id DESC LIMIT 1) e ON true\nWHERE t.kategorie = 'auftragsbestaetigung' AND t.status = 'offen'\nORDER BY t.id;",
+        "options": {}
       },
-      "id": "b60296cb-6199-436c-a81c-47a02d279835",
+      "id": "1fa0ecec-bdf9-4586-99f5-4d7461c2ec8c",
+      "name": "Offene AB-Aufgaben laden",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        440,
+        200
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "credTriagePg0001",
+          "name": "Postgres Triage"
+        }
+      },
+      "alwaysOutputData": true,
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "// Arbeitsliste als HTML-Seite. Werte werden escaped, weil Mailtexte von außen kommen.\nconst esc = (s) => String(s ?? '').replace(/[&<>\"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;', \"'\": '&#39;' }[c]));\nconst tag = (t) => `<span class=\"tag\">${esc(t)}</span>`;\nconst reviews = $('Offene Reviews laden').all().map((i) => i.json).filter((r) => r.id);\nconst aufgaben = $('Offene AB-Aufgaben laden').all().map((i) => i.json).filter((r) => r.id);\n\n// Abweichungen und Prüfgründe in Sätze übersetzen, die ein Einkäufer sofort versteht\nconst beschreibe = (ab) => {\n  const zahl = (n) => Number(n).toLocaleString('de-DE', { maximumFractionDigits: 4 });\n  const datum = (d) => (d ? (typeof d === 'string' ? d : new Date(d).toISOString()).slice(0, 10).split('-').reverse().join('.') : '–');\n  const texte = (ab.abweichungen ?? []).map((a) => ({\n    preis: `Preis ${zahl(a.bestellt)} → ${zahl(a.bestaetigt)} ${a.waehrung ?? ''}`,\n    menge: `Menge ${zahl(a.bestellt)} → ${zahl(a.bestaetigt)}${a.grund ? ` (${a.grund})` : ''}`,\n    stammdaten_pruefen: `Stammdaten prüfen${a.hinweis ? `: ${a.hinweis}` : ''}`,\n    termin_unsicher: `Termin unsicher, gewünscht ${datum(a.gewuenscht)}`,\n    termin_fehlt: `Kein Termin bestätigt, gewünscht ${datum(a.gewuenscht)}`,\n    termin_spaeter: `Termin ${datum(a.gewuenscht)} → ${datum(a.bestaetigt)}`,\n  }[a.art] ?? a.art));\n  for (const g of ab.pruefgruende ?? []) {\n    texte.push({\n      neuer_lieferant: 'Neuer Lieferant: Kontakt aufnehmen und Termin absichern',\n      liefertreue_unter_schwelle: `Liefertreue ${ab.liefertreue} % unter ${ab.schwelle} % (${ab.abc_xyz}-Artikel)`,\n      blindbestaetigung_verdacht: `AB nach ${ab.bearbeitungszeit_minuten} Minuten: Blindbestätigung?`,\n      absender_domain_abweichend: 'Absender-Domain passt nicht zum Lieferanten',\n    }[g] ?? g);\n  }\n  return texte;\n};\n\nconst abKarten = aufgaben.map((t) => `\n  <article>\n    <h2>Ticket #${esc(t.id)} · ${esc(t.lieferant)} · Bestellung ${esc(t.bestellnummer)}</h2>\n    <p class=\"meta\">${esc(t.artikel)} · zuständig: ${esc(t.zustaendig)} · ${esc(t.erstellt)}</p>\n    <p>${beschreibe(t.ab_pruefung ?? {}).map(tag).join(' ')}</p>\n    ${t.entwurf_text ? `<details open><summary>Antwortentwurf (${esc(t.foermlichkeit)}, ${esc(t.nachdruck)})</summary>\n      ${(t.entwurf_warnungen ?? []).length ? `<p class=\"warnung\">Bitte prüfen: ${t.entwurf_warnungen.map(esc).join(', ')}</p>` : ''}\n      <pre><b>${esc(t.entwurf_betreff)}</b>\\n\\n${esc(t.entwurf_text)}</pre></details>` : ''}\n  </article>`).join('');\n\nconst reviewKarten = reviews.map((r) => `\n  <article>\n    <h2>Review #${esc(r.id)} · ${esc(r.betreff)}</h2>\n    <p class=\"meta\">${esc(r.absender)} · ${esc(r.erstellt)}</p>\n    <p><b>Gründe:</b> ${r.gruende.map(tag).join(' ')}</p>\n    <p><b>Vorschlag des LLM:</b> ${esc(r.vorschlag ?? '–')} (Konfidenz ${esc(r.konfidenz ?? '–')}) – ${esc(r.begruendung ?? '')}</p>\n    <details><summary>Mailtext</summary><pre>${esc(r.text)}</pre></details>\n  </article>`).join('');\n\nconst html = `<!doctype html><html lang=\"de\"><head><meta charset=\"utf-8\"><title>Arbeitsliste Einkauf</title>\n<style>\n  body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; color: #1f2328; }\n  article { border: 1px solid #d0d7de; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; }\n  h1 { font-size: 1.6rem; } h2 { font-size: 1.05rem; margin: 0 0 .25rem; } .meta { color: #656d76; margin: 0 0 .75rem; }\n  .tag { display: inline-block; background: #fff1e5; color: #9a4b00; border-radius: 4px; padding: .1rem .4rem; margin: .1rem 0; font-size: .85rem; }\n  .warnung { color: #9a4b00; }\n  pre { white-space: pre-wrap; background: #f6f8fa; padding: .75rem; border-radius: 6px; font-family: inherit; }\n  a.button { display: inline-block; background: #1f6feb; color: #fff; padding: .45rem .9rem; border-radius: 6px; text-decoration: none; margin-right: .5rem; }\n  section { margin-bottom: 2rem; }\n</style></head><body>\n<h1>Arbeitsliste Einkauf</h1>\n<section>\n  <h2>Auftragsbestätigungen prüfen · ${aufgaben.length} offen</h2>\n  <p><a class=\"button\" href=\"/form/entwurf\">Antwortentwurf erstellen</a></p>\n  ${abKarten || '<p>Keine offenen Auftragsbestätigungen.</p>'}\n</section>\n<section>\n  <h2>Review-Queue · ${reviews.length} offen</h2>\n  <p><a class=\"button\" href=\"/form/review\">Review abschließen</a></p>\n  ${reviewKarten || '<p>Keine offenen Reviews.</p>'}\n</section>\n</body></html>`;\n\nreturn { json: { html } };\n"
+      },
+      "id": "d885f429-dcf6-41dc-abde-8079f64b02e4",
       "name": "HTML-Seite bauen",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        440,
+        660,
         200
       ]
     },
@@ -110,12 +133,12 @@
           }
         }
       },
-      "id": "d7d77d5b-8c06-4f33-8bf4-9e75b942450a",
+      "id": "c6da5782-919b-482d-b5cd-f5fbabb6b4ab",
       "name": "Antwort HTML",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        660,
+        880,
         200
       ]
     },
@@ -123,7 +146,7 @@
       "parameters": {
         "authentication": "basicAuth",
         "formTitle": "Review abschließen",
-        "formDescription": "Kategorie bestätigen oder korrigieren. Offene Fälle: /webhook/reviews",
+        "formDescription": "Kategorie bestätigen oder korrigieren. Offene Fälle: /webhook/arbeitsliste",
         "formFields": {
           "values": [
             {
@@ -139,6 +162,9 @@
                 "values": [
                   {
                     "option": "angebot"
+                  },
+                  {
+                    "option": "auftragsbestaetigung"
                   },
                   {
                     "option": "reklamation"
@@ -174,7 +200,7 @@
           "buttonLabel": "Speichern"
         }
       },
-      "id": "ece7e7f2-d2d3-481b-a286-03f8f9f53bdb",
+      "id": "7726e432-08f5-4f43-b343-fde5414cb719",
       "name": "Formular Review",
       "type": "n8n-nodes-base.formTrigger",
       "typeVersion": 2.2,
@@ -188,7 +214,7 @@
           "name": "Review Login"
         }
       },
-      "webhookId": "36158a61-f44b-4afc-9759-6b8bad495521"
+      "webhookId": "9b048f5d-24ec-4958-8ee1-983dd955c7db"
     },
     {
       "parameters": {
@@ -201,7 +227,7 @@
           },
           "conditions": [
             {
-              "id": "bc7d0f7b-31dd-497b-87b1-402f52fcaea6",
+              "id": "a1d69562-9811-47a5-8d89-7a5a751a1d06",
               "leftValue": "={{ $json.Entscheidung }}",
               "rightValue": "verwerfen",
               "operator": {
@@ -214,7 +240,7 @@
         },
         "options": {}
       },
-      "id": "251f882b-6b23-4e0b-93d9-160d84ac6985",
+      "id": "b3d84fa9-b252-4c6b-956d-04d2504b9d4d",
       "name": "Verwerfen?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -231,7 +257,7 @@
           "queryReplacement": "={{ [ $('Formular Review').item.json['Review-ID'], $('Formular Review').item.json['Bearbeitet von'], $('Formular Review').item.json.Notiz ?? null ] }}"
         }
       },
-      "id": "8030c794-2877-4164-b2b0-ebe9fb60e6af",
+      "id": "36907242-228c-4efe-9c54-607b8d3b78bf",
       "name": "Review verwerfen",
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
@@ -250,12 +276,12 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "-- Review abschließen und in einem Schritt das Ticket mit der vom Menschen bestätigten Kategorie anlegen\nWITH r AS (\n    SELECT * FROM review_queue WHERE id = $1 AND status = 'offen' FOR UPDATE\n), t AS (\n    INSERT INTO tickets (mail_id, kategorie, team, absender, betreff, lieferant, bestellnummer, rechnungsnummer,\n                         angebotsnummer, artikel, betrag, waehrung, neuer_liefertermin, dringlichkeit,\n                         zusammenfassung, quelle, warnungen)\n    SELECT r.mail_id, tr.kategorie, tr.team, r.mail->>'absender', r.mail->>'betreff',\n           r.llm_ausgabe->>'lieferant', r.llm_ausgabe->>'bestellnummer', r.llm_ausgabe->>'rechnungsnummer',\n           r.llm_ausgabe->>'angebotsnummer', r.llm_ausgabe->>'artikel', (r.llm_ausgabe->>'betrag')::numeric,\n           r.llm_ausgabe->>'waehrung', (r.llm_ausgabe->>'neuer_liefertermin')::date,\n           r.llm_ausgabe->>'dringlichkeit', COALESCE(r.llm_ausgabe->>'zusammenfassung', r.mail->>'betreff'),\n           'review', r.gruende\n    FROM r JOIN team_routing tr ON tr.kategorie = $2\n    RETURNING id, mail_id, team\n)\nUPDATE review_queue q\nSET status = 'erledigt', korrigierte_kategorie = $2, bearbeitet_von = $3, notiz = $4,\n    ticket_id = t.id, erledigt_am = now()\nFROM t\nWHERE q.mail_id = t.mail_id\nRETURNING q.id AS review_id, t.id AS ticket_id, t.team;",
+        "query": "-- Review abschließen und in einem Schritt das Ticket mit der vom Menschen bestätigten Kategorie anlegen\nWITH r AS (\n    SELECT * FROM review_queue WHERE id = $1 AND status = 'offen' FOR UPDATE\n), t AS (\n    INSERT INTO tickets (mail_id, kategorie, team, absender, betreff, lieferant, bestellnummer, rechnungsnummer,\n                         angebotsnummer, artikel, einzelpreis, menge, betrag, waehrung, liefertermin,\n                         dringlichkeit, zusammenfassung, quelle, warnungen)\n    SELECT r.mail_id, tr.kategorie, tr.team, r.mail->>'absender', r.mail->>'betreff',\n           r.llm_ausgabe->>'lieferant', r.llm_ausgabe->>'bestellnummer', r.llm_ausgabe->>'rechnungsnummer',\n           r.llm_ausgabe->>'angebotsnummer', r.llm_ausgabe->>'artikel', (r.llm_ausgabe->>'einzelpreis')::numeric,\n           (r.llm_ausgabe->>'menge')::numeric, (r.llm_ausgabe->>'betrag')::numeric,\n           r.llm_ausgabe->>'waehrung', (r.llm_ausgabe->>'liefertermin')::date,\n           r.llm_ausgabe->>'dringlichkeit', COALESCE(r.llm_ausgabe->>'zusammenfassung', r.mail->>'betreff'),\n           'review', r.gruende\n    FROM r JOIN team_routing tr ON tr.kategorie = $2\n    RETURNING id, mail_id, team\n)\nUPDATE review_queue q\nSET status = 'erledigt', korrigierte_kategorie = $2, bearbeitet_von = $3, notiz = $4,\n    ticket_id = t.id, erledigt_am = now()\nFROM t\nWHERE q.mail_id = t.mail_id\nRETURNING q.id AS review_id, t.id AS ticket_id, t.team;",
         "options": {
           "queryReplacement": "={{ [ $('Formular Review').item.json['Review-ID'], $('Formular Review').item.json.Entscheidung, $('Formular Review').item.json['Bearbeitet von'], $('Formular Review').item.json.Notiz ?? null ] }}"
         }
       },
-      "id": "bdf605aa-447b-492f-abe7-fa0620cc3076",
+      "id": "7a96c747-205c-4f10-8f49-3db51941dee7",
       "name": "Ticket aus Review anlegen",
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
@@ -278,7 +304,7 @@
         "completionMessage": "={{ $json.review_id ? ($json.ticket_id ? `Review ${$json.review_id} abgeschlossen, Ticket ${$json.ticket_id} für ${$json.team} angelegt.` : `Review ${$json.review_id} verworfen.`) : 'Kein offener Review mit dieser ID.' }}",
         "options": {}
       },
-      "id": "924c8a07-173e-49f9-90e0-9f9ccdc9c06b",
+      "id": "a984deae-1570-423d-80d7-85d19d44c39c",
       "name": "Formular Ergebnis",
       "type": "n8n-nodes-base.form",
       "typeVersion": 1,
@@ -289,7 +315,7 @@
     }
   ],
   "connections": {
-    "Webhook Review-Liste": {
+    "Webhook Arbeitsliste": {
       "main": [
         [
           {
@@ -301,6 +327,17 @@
       ]
     },
     "Offene Reviews laden": {
+      "main": [
+        [
+          {
+            "node": "Offene AB-Aufgaben laden",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Offene AB-Aufgaben laden": {
       "main": [
         [
           {

@@ -51,7 +51,7 @@
     "muss_review": false,
     "felder": {
       "bestellnummer": "4500018255",
-      "neuer_liefertermin": "2026-11-20"
+      "liefertermin": "2026-11-20"
     }
   },
   "08_lieferverzug_precimet_teillieferung": {
@@ -110,5 +110,296 @@
     "kategorie": "sonstiges",
     "muss_review": false,
     "felder": {}
+  },
+  "16_ab_alpen_ok": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018401",
+      "einzelpreis": 3.12,
+      "menge": 2000,
+      "liefertermin": "2026-11-20"
+    },
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  },
+  "17_ab_brenner_liefertreue_ax": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018402",
+      "einzelpreis": 3.8,
+      "menge": 1500,
+      "liefertermin": "2026-11-27"
+    },
+    "ab": {
+      "ergebnis": "manuell_pruefen",
+      "gruende": [
+        "liefertreue_unter_schwelle"
+      ]
+    }
+  },
+  "18_ab_brenner_c_artikel_ok": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018403",
+      "einzelpreis": 0.042,
+      "menge": 5000,
+      "liefertermin": "2026-12-04"
+    },
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  },
+  "19_ab_rheinwerk_blind": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018404",
+      "einzelpreis": 6.4,
+      "menge": 2400,
+      "liefertermin": "2026-11-25"
+    },
+    "ab": {
+      "ergebnis": "manuell_pruefen",
+      "gruende": [
+        "liefertreue_unter_schwelle",
+        "blindbestaetigung_verdacht"
+      ]
+    }
+  },
+  "20_ab_swissturning_blind_premium": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018417",
+      "einzelpreis": 2.1,
+      "menge": 800,
+      "liefertermin": "2026-11-26"
+    },
+    "ab": {
+      "ergebnis": "manuell_pruefen",
+      "gruende": [
+        "blindbestaetigung_verdacht"
+      ]
+    }
+  },
+  "21_ab_nordform_neulieferant": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018406",
+      "einzelpreis": 2.95,
+      "menge": 800,
+      "liefertermin": "2026-12-01"
+    },
+    "ab": {
+      "ergebnis": "manuell_pruefen",
+      "gruende": [
+        "neuer_lieferant"
+      ]
+    }
+  },
+  "22_ab_kovotech_preis": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018407",
+      "einzelpreis": 5.3,
+      "menge": 1800,
+      "liefertermin": "2026-12-11"
+    },
+    "ab": {
+      "ergebnis": "abweichung",
+      "gruende": [
+        "preis"
+      ]
+    }
+  },
+  "23_ab_feldmann_palette": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018408",
+      "einzelpreis": 0.86,
+      "menge": 1152,
+      "liefertermin": "2026-11-30"
+    },
+    "ab": {
+      "ergebnis": "abweichung",
+      "gruende": [
+        "menge"
+      ]
+    }
+  },
+  "24_ab_precimet_stammdaten": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018409",
+      "einzelpreis": 0.48,
+      "menge": 1050,
+      "liefertermin": "2026-12-02"
+    },
+    "ab": {
+      "ergebnis": "abweichung",
+      "gruende": [
+        "menge",
+        "stammdaten_pruefen"
+      ]
+    }
+  },
+  "25_ab_rossi_termin_ungewiss": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018410",
+      "einzelpreis": 2.98,
+      "menge": 3000,
+      "liefertermin": null
+    },
+    "ab": {
+      "ergebnis": "abweichung",
+      "gruende": [
+        "termin_unsicher"
+      ]
+    }
+  },
+  "26_ab_alpen_termin_spaeter": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018411",
+      "einzelpreis": 2.45,
+      "menge": 1200,
+      "liefertermin": "2026-11-28"
+    },
+    "ab": {
+      "ergebnis": "abweichung",
+      "gruende": [
+        "termin_spaeter"
+      ]
+    }
+  },
+  "27_ab_swissturning_preis_und_termin": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018412",
+      "einzelpreis": 0.97,
+      "menge": 3000,
+      "liefertermin": "2026-12-05"
+    },
+    "ab": {
+      "ergebnis": "abweichung",
+      "gruende": [
+        "preis",
+        "termin_spaeter"
+      ]
+    }
+  },
+  "28_ab_precimet_bestellung_unbekannt": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": true,
+    "felder": {
+      "bestellnummer": "4500019999"
+    },
+    "ab": {
+      "ergebnis": "review",
+      "gruende": [
+        "bestellung_unbekannt"
+      ]
+    }
+  },
+  "29_ab_brenner_zahlendreher": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": true,
+    "felder": {
+      "bestellnummer": "4500018552"
+    },
+    "ab": {
+      "ergebnis": "review",
+      "gruende": [
+        "bestellung_unbekannt"
+      ]
+    }
+  },
+  "30_ab_kovotech_englisch_ok": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018413",
+      "einzelpreis": 0.31,
+      "menge": 4000,
+      "liefertermin": "2026-12-09"
+    },
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  },
+  "31_ab_feldmann_mit_zitat_ok": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018414",
+      "einzelpreis": 1.14,
+      "menge": 1500,
+      "liefertermin": "2026-12-02"
+    },
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  },
+  "32_ab_rossi_standard_ok": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018415",
+      "einzelpreis": 0.27,
+      "menge": 2000,
+      "liefertermin": "2026-12-10"
+    },
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  },
+  "33_ab_precimet_liefertreue_standard": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018416",
+      "einzelpreis": 0.19,
+      "menge": 2500,
+      "liefertermin": "2026-12-15"
+    },
+    "ab": {
+      "ergebnis": "manuell_pruefen",
+      "gruende": [
+        "liefertreue_unter_schwelle"
+      ]
+    }
+  },
+  "34_ab_alpen_fremde_domain": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018418",
+      "einzelpreis": 0.09,
+      "menge": 5000,
+      "liefertermin": "2026-12-03"
+    },
+    "ab": {
+      "ergebnis": "manuell_pruefen",
+      "gruende": [
+        "absender_domain_abweichend"
+      ]
+    }
   }
 }

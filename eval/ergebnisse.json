@@ -1,5 +1,5 @@
 {
-  "lauf": "20261030-170225",
+  "lauf": "20261030-193432",
   "modell": "qwen2.5:7b",
   "schwelle": "0.75",
   "ergebnisse": [
@@ -10,9 +10,11 @@
       "gold": "angebot",
       "llm": "angebot",
       "regel": "angebot",
-      "konfidenz": 0.9,
+      "konfidenz": 0.95,
       "gruende": [],
-      "warnungen": [],
+      "warnungen": [
+        "beleg_fehlt:einzelpreis"
+      ],
       "muss_review": false,
       "felder": {
         "angebotsnummer": [
@@ -28,7 +30,8 @@
           "EUR"
         ]
       },
-      "sekunden": 6.13
+      "ab": null,
+      "sekunden": 7.43
     },
     {
       "mail": "02_angebot_rossi",
@@ -37,7 +40,7 @@
       "gold": "angebot",
       "llm": "angebot",
       "regel": "angebot",
-      "konfidenz": 0.95,
+      "konfidenz": 0.9,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
@@ -48,10 +51,11 @@
         ],
         "betrag": [
           null,
-          298
+          null
         ]
       },
-      "sekunden": 6.73
+      "ab": null,
+      "sekunden": 7.54
     },
     {
       "mail": "03_angebot_kovotech_lieferzeit",
@@ -60,7 +64,7 @@
       "gold": "angebot",
       "llm": "angebot",
       "regel": "angebot",
-      "konfidenz": 0.9,
+      "konfidenz": 0.95,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
@@ -78,7 +82,8 @@
           "EUR"
         ]
       },
-      "sekunden": 5.93
+      "ab": null,
+      "sekunden": 6.69
     },
     {
       "mail": "04_reklamation_brenner_8d",
@@ -89,9 +94,7 @@
       "regel": "reklamation",
       "konfidenz": 0.95,
       "gruende": [],
-      "warnungen": [
-        "beleg_fehlt:neuer_liefertermin"
-      ],
+      "warnungen": [],
       "muss_review": false,
       "felder": {
         "bestellnummer": [
@@ -99,7 +102,8 @@
           "4500018231"
         ]
       },
-      "sekunden": 25.17
+      "ab": null,
+      "sekunden": 6.24
     },
     {
       "mail": "05_reklamation_feldmann_mit_rechnung",
@@ -118,7 +122,8 @@
           "4500018307"
         ]
       },
-      "sekunden": 5.78
+      "ab": null,
+      "sekunden": 6.68
     },
     {
       "mail": "06_reklamation_swissturning_menge",
@@ -127,7 +132,7 @@
       "gold": "reklamation",
       "llm": "reklamation",
       "regel": "reklamation",
-      "konfidenz": 0.9,
+      "konfidenz": 0.95,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
@@ -137,7 +142,8 @@
           "4500018290"
         ]
       },
-      "sekunden": 5.34
+      "ab": null,
+      "sekunden": 6.47
     },
     {
       "mail": "07_lieferverzug_rheinwerk",
@@ -146,7 +152,7 @@
       "gold": "lieferverzug",
       "llm": "lieferverzug",
       "regel": "lieferverzug",
-      "konfidenz": 0.95,
+      "konfidenz": 1,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
@@ -155,36 +161,35 @@
           "4500018255",
           "4500018255"
         ],
-        "neuer_liefertermin": [
+        "liefertermin": [
           "2026-11-20",
           "2026-11-20"
         ]
       },
-      "sekunden": 5.78
+      "ab": null,
+      "sekunden": 6.8
     },
     {
       "mail": "08_lieferverzug_precimet_teillieferung",
-      "http": 202,
-      "status": "review",
+      "http": 200,
+      "status": "ticket",
       "gold": "lieferverzug",
       "llm": "lieferverzug",
       "regel": "lieferverzug",
       "konfidenz": 0.9,
-      "gruende": [
-        "pflichtfeld_fehlt:bestellnummer"
-      ],
+      "gruende": [],
       "warnungen": [
-        "beleg_fehlt:bestellnummer",
-        "beleg_fehlt:neuer_liefertermin"
+        "beleg_fehlt:liefertermin"
       ],
       "muss_review": false,
       "felder": {
         "bestellnummer": [
           "4500018266",
-          null
+          "4500018266"
         ]
       },
-      "sekunden": 5.7
+      "ab": null,
+      "sekunden": 6.54
     },
     {
       "mail": "09_lieferverzug_alpen_kurz",
@@ -196,7 +201,7 @@
       "konfidenz": 0.9,
       "gruende": [],
       "warnungen": [
-        "beleg_fehlt:neuer_liefertermin"
+        "beleg_fehlt:liefertermin"
       ],
       "muss_review": false,
       "felder": {
@@ -205,7 +210,8 @@
           "4500018240"
         ]
       },
-      "sekunden": 5.45
+      "ab": null,
+      "sekunden": 6.05
     },
     {
       "mail": "10_rechnung_brenner",
@@ -214,7 +220,7 @@
       "gold": "rechnung",
       "llm": "rechnung",
       "regel": "rechnung",
-      "konfidenz": 0.95,
+      "konfidenz": 1,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
@@ -236,7 +242,8 @@
           "EUR"
         ]
       },
-      "sekunden": 5.76
+      "ab": null,
+      "sekunden": 6.42
     },
     {
       "mail": "11_rechnung_swissturning_mahnung",
@@ -263,7 +270,8 @@
           "CHF"
         ]
       },
-      "sekunden": 5.48
+      "ab": null,
+      "sekunden": 6.22
     },
     {
       "mail": "12_rechnung_kovotech_gutschrift",
@@ -279,7 +287,7 @@
       "felder": {
         "rechnungsnummer": [
           "GS-2026-0091",
-          "KT-2026-3318"
+          "GS-2026-0091"
         ],
         "betrag": [
           1230.0,
@@ -290,7 +298,8 @@
           "EUR"
         ]
       },
-      "sekunden": 5.15
+      "ab": null,
+      "sekunden": 6.46
     },
     {
       "mail": "13_sonstiges_rossi_betriebsferien",
@@ -299,12 +308,13 @@
       "gold": "sonstiges",
       "llm": "sonstiges",
       "regel": "sonstiges",
-      "konfidenz": 0.9,
+      "konfidenz": 0.8,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
       "felder": {},
-      "sekunden": 5.13
+      "ab": null,
+      "sekunden": 5.95
     },
     {
       "mail": "14_sonstiges_bankdaten_betrugsversuch",
@@ -312,7 +322,7 @@
       "status": "review",
       "gold": "sonstiges",
       "llm": "sonstiges",
-      "regel": "rechnung",
+      "regel": "auftragsbestaetigung",
       "konfidenz": 0.9,
       "gruende": [
         "bankdatenaenderung"
@@ -320,7 +330,8 @@
       "warnungen": [],
       "muss_review": true,
       "felder": {},
-      "sekunden": 5.11
+      "ab": null,
+      "sekunden": 6.07
     },
     {
       "mail": "15_sonstiges_precimet_zertifikat",
@@ -329,12 +340,760 @@
       "gold": "sonstiges",
       "llm": "sonstiges",
       "regel": "reklamation",
-      "konfidenz": 0.9,
+      "konfidenz": 1,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
       "felder": {},
-      "sekunden": 5.2
+      "ab": null,
+      "sekunden": 6.05
+    },
+    {
+      "mail": "16_ab_alpen_ok",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018401",
+          "4500018401"
+        ],
+        "einzelpreis": [
+          3.12,
+          3.12
+        ],
+        "menge": [
+          2000,
+          2000
+        ],
+        "liefertermin": [
+          "2026-11-20",
+          "2026-11-20"
+        ]
+      },
+      "ab": {
+        "erwartet": "automatisch_bestaetigt",
+        "erwartete_gruende": [],
+        "ist": "automatisch_bestaetigt",
+        "ist_gruende": []
+      },
+      "sekunden": 7.16
+    },
+    {
+      "mail": "17_ab_brenner_liefertreue_ax",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018402",
+          "4500018402"
+        ],
+        "einzelpreis": [
+          3.8,
+          3.8
+        ],
+        "menge": [
+          1500,
+          1500
+        ],
+        "liefertermin": [
+          "2026-11-27",
+          "2026-11-27"
+        ]
+      },
+      "ab": {
+        "erwartet": "manuell_pruefen",
+        "erwartete_gruende": [
+          "liefertreue_unter_schwelle"
+        ],
+        "ist": "manuell_pruefen",
+        "ist_gruende": [
+          "liefertreue_unter_schwelle"
+        ]
+      },
+      "sekunden": 7.25
+    },
+    {
+      "mail": "18_ab_brenner_c_artikel_ok",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018403",
+          "4500018403"
+        ],
+        "einzelpreis": [
+          0.042,
+          0.042
+        ],
+        "menge": [
+          5000,
+          5000
+        ],
+        "liefertermin": [
+          "2026-12-04",
+          "2026-12-04"
+        ]
+      },
+      "ab": {
+        "erwartet": "automatisch_bestaetigt",
+        "erwartete_gruende": [],
+        "ist": "automatisch_bestaetigt",
+        "ist_gruende": []
+      },
+      "sekunden": 6.74
+    },
+    {
+      "mail": "19_ab_rheinwerk_blind",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "lieferverzug",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018404",
+          "4500018404"
+        ],
+        "einzelpreis": [
+          6.4,
+          6.4
+        ],
+        "menge": [
+          2400,
+          2400
+        ],
+        "liefertermin": [
+          "2026-11-25",
+          "2026-11-25"
+        ]
+      },
+      "ab": {
+        "erwartet": "manuell_pruefen",
+        "erwartete_gruende": [
+          "blindbestaetigung_verdacht",
+          "liefertreue_unter_schwelle"
+        ],
+        "ist": "manuell_pruefen",
+        "ist_gruende": [
+          "blindbestaetigung_verdacht",
+          "liefertreue_unter_schwelle"
+        ]
+      },
+      "sekunden": 6.86
+    },
+    {
+      "mail": "20_ab_swissturning_blind_premium",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018417",
+          "4500018417"
+        ],
+        "einzelpreis": [
+          2.1,
+          2.1
+        ],
+        "menge": [
+          800,
+          800
+        ],
+        "liefertermin": [
+          "2026-11-26",
+          "2026-11-26"
+        ]
+      },
+      "ab": {
+        "erwartet": "manuell_pruefen",
+        "erwartete_gruende": [
+          "blindbestaetigung_verdacht"
+        ],
+        "ist": "manuell_pruefen",
+        "ist_gruende": [
+          "blindbestaetigung_verdacht"
+        ]
+      },
+      "sekunden": 6.9
+    },
+    {
+      "mail": "21_ab_nordform_neulieferant",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018406",
+          "4500018406"
+        ],
+        "einzelpreis": [
+          2.95,
+          2.95
+        ],
+        "menge": [
+          800,
+          800
+        ],
+        "liefertermin": [
+          "2026-12-01",
+          "2026-12-01"
+        ]
+      },
+      "ab": {
+        "erwartet": "manuell_pruefen",
+        "erwartete_gruende": [
+          "neuer_lieferant"
+        ],
+        "ist": "manuell_pruefen",
+        "ist_gruende": [
+          "neuer_lieferant"
+        ]
+      },
+      "sekunden": 7.01
+    },
+    {
+      "mail": "22_ab_kovotech_preis",
+      "http": 202,
+      "status": "review",
+      "gold": "auftragsbestaetigung",
+      "llm": "angebot",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [
+        "kategorie_unplausibel"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018407",
+          "4500018407"
+        ],
+        "einzelpreis": [
+          5.3,
+          5.3
+        ],
+        "menge": [
+          1800,
+          1800
+        ],
+        "liefertermin": [
+          "2026-12-11",
+          "2026-12-11"
+        ]
+      },
+      "ab": {
+        "erwartet": "abweichung",
+        "erwartete_gruende": [
+          "preis"
+        ],
+        "ist": "review",
+        "ist_gruende": []
+      },
+      "sekunden": 6.93
+    },
+    {
+      "mail": "23_ab_feldmann_palette",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018408",
+          "4500018408"
+        ],
+        "einzelpreis": [
+          0.86,
+          0.86
+        ],
+        "menge": [
+          1152,
+          1152
+        ],
+        "liefertermin": [
+          "2026-11-30",
+          "2026-11-30"
+        ]
+      },
+      "ab": {
+        "erwartet": "abweichung",
+        "erwartete_gruende": [
+          "menge"
+        ],
+        "ist": "abweichung",
+        "ist_gruende": [
+          "menge"
+        ]
+      },
+      "sekunden": 7.39
+    },
+    {
+      "mail": "24_ab_precimet_stammdaten",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018409",
+          "4500018409"
+        ],
+        "einzelpreis": [
+          0.48,
+          0.48
+        ],
+        "menge": [
+          1050,
+          1050
+        ],
+        "liefertermin": [
+          "2026-12-02",
+          "2026-12-02"
+        ]
+      },
+      "ab": {
+        "erwartet": "abweichung",
+        "erwartete_gruende": [
+          "menge",
+          "stammdaten_pruefen"
+        ],
+        "ist": "abweichung",
+        "ist_gruende": [
+          "menge",
+          "stammdaten_pruefen"
+        ]
+      },
+      "sekunden": 7.3
+    },
+    {
+      "mail": "25_ab_rossi_termin_ungewiss",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [
+        "beleg_fehlt:liefertermin"
+      ],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018410",
+          "4500018410"
+        ],
+        "einzelpreis": [
+          2.98,
+          2.98
+        ],
+        "menge": [
+          3000,
+          3000
+        ],
+        "liefertermin": [
+          null,
+          null
+        ]
+      },
+      "ab": {
+        "erwartet": "abweichung",
+        "erwartete_gruende": [
+          "termin_unsicher"
+        ],
+        "ist": "abweichung",
+        "ist_gruende": [
+          "termin_unsicher"
+        ]
+      },
+      "sekunden": 7.24
+    },
+    {
+      "mail": "26_ab_alpen_termin_spaeter",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018411",
+          "4500018411"
+        ],
+        "einzelpreis": [
+          2.45,
+          2.45
+        ],
+        "menge": [
+          1200,
+          1200
+        ],
+        "liefertermin": [
+          "2026-11-28",
+          "2026-11-28"
+        ]
+      },
+      "ab": {
+        "erwartet": "abweichung",
+        "erwartete_gruende": [
+          "termin_spaeter"
+        ],
+        "ist": "abweichung",
+        "ist_gruende": [
+          "termin_spaeter"
+        ]
+      },
+      "sekunden": 6.78
+    },
+    {
+      "mail": "27_ab_swissturning_preis_und_termin",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018412",
+          "4500018412"
+        ],
+        "einzelpreis": [
+          0.97,
+          0.97
+        ],
+        "menge": [
+          3000,
+          3000
+        ],
+        "liefertermin": [
+          "2026-12-05",
+          "2026-12-05"
+        ]
+      },
+      "ab": {
+        "erwartet": "abweichung",
+        "erwartete_gruende": [
+          "preis",
+          "termin_spaeter"
+        ],
+        "ist": "abweichung",
+        "ist_gruende": [
+          "preis",
+          "termin_spaeter"
+        ]
+      },
+      "sekunden": 6.98
+    },
+    {
+      "mail": "28_ab_precimet_bestellung_unbekannt",
+      "http": 202,
+      "status": "review",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [
+        "bestellung_unbekannt"
+      ],
+      "warnungen": [],
+      "muss_review": true,
+      "felder": {
+        "bestellnummer": [
+          "4500019999",
+          "4500019999"
+        ]
+      },
+      "ab": {
+        "erwartet": "review",
+        "erwartete_gruende": [
+          "bestellung_unbekannt"
+        ],
+        "ist": "review",
+        "ist_gruende": [
+          "bestellung_unbekannt"
+        ]
+      },
+      "sekunden": 6.82
+    },
+    {
+      "mail": "29_ab_brenner_zahlendreher",
+      "http": 202,
+      "status": "review",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [
+        "bestellung_unbekannt"
+      ],
+      "warnungen": [],
+      "muss_review": true,
+      "felder": {
+        "bestellnummer": [
+          "4500018552",
+          "4500018552"
+        ]
+      },
+      "ab": {
+        "erwartet": "review",
+        "erwartete_gruende": [
+          "bestellung_unbekannt"
+        ],
+        "ist": "review",
+        "ist_gruende": [
+          "bestellung_unbekannt"
+        ]
+      },
+      "sekunden": 6.56
+    },
+    {
+      "mail": "30_ab_kovotech_englisch_ok",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018413",
+          "4500018413"
+        ],
+        "einzelpreis": [
+          0.31,
+          0.31
+        ],
+        "menge": [
+          4000,
+          4000
+        ],
+        "liefertermin": [
+          "2026-12-09",
+          "2026-12-09"
+        ]
+      },
+      "ab": {
+        "erwartet": "automatisch_bestaetigt",
+        "erwartete_gruende": [],
+        "ist": "automatisch_bestaetigt",
+        "ist_gruende": []
+      },
+      "sekunden": 6.93
+    },
+    {
+      "mail": "31_ab_feldmann_mit_zitat_ok",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018414",
+          "4500018414"
+        ],
+        "einzelpreis": [
+          1.14,
+          1.14
+        ],
+        "menge": [
+          1500,
+          1500
+        ],
+        "liefertermin": [
+          "2026-12-02",
+          "2026-12-02"
+        ]
+      },
+      "ab": {
+        "erwartet": "automatisch_bestaetigt",
+        "erwartete_gruende": [],
+        "ist": "automatisch_bestaetigt",
+        "ist_gruende": []
+      },
+      "sekunden": 7.05
+    },
+    {
+      "mail": "32_ab_rossi_standard_ok",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018415",
+          "4500018415"
+        ],
+        "einzelpreis": [
+          0.27,
+          0.27
+        ],
+        "menge": [
+          2000,
+          2000
+        ],
+        "liefertermin": [
+          "2026-12-10",
+          "2026-12-10"
+        ]
+      },
+      "ab": {
+        "erwartet": "automatisch_bestaetigt",
+        "erwartete_gruende": [],
+        "ist": "automatisch_bestaetigt",
+        "ist_gruende": []
+      },
+      "sekunden": 6.84
+    },
+    {
+      "mail": "33_ab_precimet_liefertreue_standard",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018416",
+          "4500018416"
+        ],
+        "einzelpreis": [
+          0.19,
+          0.19
+        ],
+        "menge": [
+          2500,
+          2500
+        ],
+        "liefertermin": [
+          "2026-12-15",
+          "2026-12-15"
+        ]
+      },
+      "ab": {
+        "erwartet": "manuell_pruefen",
+        "erwartete_gruende": [
+          "liefertreue_unter_schwelle"
+        ],
+        "ist": "manuell_pruefen",
+        "ist_gruende": [
+          "liefertreue_unter_schwelle"
+        ]
+      },
+      "sekunden": 6.65
+    },
+    {
+      "mail": "34_ab_alpen_fremde_domain",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018418",
+          "4500018418"
+        ],
+        "einzelpreis": [
+          0.09,
+          0.09
+        ],
+        "menge": [
+          5000,
+          5000
+        ],
+        "liefertermin": [
+          "2026-12-03",
+          "2026-12-03"
+        ]
+      },
+      "ab": {
+        "erwartet": "manuell_pruefen",
+        "erwartete_gruende": [
+          "absender_domain_abweichend"
+        ],
+        "ist": "manuell_pruefen",
+        "ist_gruende": [
+          "absender_domain_abweichend"
+        ]
+      },
+      "sekunden": 7.07
     }
   ]
 }

@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-29@brenner-zerspanung.example>",
+  "from": "Auftragsbearbeitung Brenner <auftrag@brenner-zerspanung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "AB 4500018552",
+  "received_at": "2026-10-29T13:00:00+01:00",
+  "body": "Guten Tag,\n\nhiermit bestätigen wir Ihre Bestellung 4500018552:\n\nNutenkeil NK-16, 600 Stk à 1,20 EUR\nLiefertermin 03.12.2026\n\nBrenner Zerspanung GmbH\nAuftragsbearbeitung"
+}
