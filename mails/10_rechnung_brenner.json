@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-10@brenner-zerspanung.example>",
+  "from": "Buchhaltung Brenner <rechnung@brenner-zerspanung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Rechnung RE-2026-08817",
+  "received_at": "2026-10-26T06:30:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\n\nanbei erhalten Sie unsere Rechnung RE-2026-08817 vom 25.10.2026 zu Ihrer Bestellung 4500018231.\n\nNettobetrag: 12.500,00 EUR\nUSt. 19 %: 2.375,00 EUR\nRechnungsbetrag: 14.875,00 EUR\n\nZahlbar innerhalb von 30 Tagen ohne Abzug.\n\nDiese E-Mail wurde automatisch erstellt.\nBrenner Zerspanung GmbH · Amtsgericht Stuttgart HRB 724417"
+}

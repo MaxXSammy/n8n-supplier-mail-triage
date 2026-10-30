@@ -1,0 +1,102 @@
+{
+  "id": "mailTriageFehler",
+  "name": "Fehlerbehandlung",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Error-Workflow\nFängt unerwartete Fehler der anderen Workflows (z. B. Datenbank nicht erreichbar) und protokolliert sie. Fehlgeschlagene Ausführungen lassen sich in n8n unter Executions erneut starten.",
+        "width": 760,
+        "height": 380,
+        "color": 3
+      },
+      "id": "487c0b56-8753-48c8-8c86-7ba5e86801cd",
+      "name": "Notiz f71cdf",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        60
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "79ef83cb-6a91-4fe9-8589-3c67dc1cbd77",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO fehler_log (workflow, node, fehlermeldung, execution_id, execution_url)\nVALUES ($1, $2, $3, $4, $5)\nRETURNING id;",
+        "options": {
+          "queryReplacement": "={{ [ $json.workflow?.name ?? null, $json.execution?.lastNodeExecuted ?? null, $json.execution?.error?.message ?? 'unbekannter Fehler', $json.execution?.id ?? null, $json.execution?.url ?? null ] }}"
+        }
+      },
+      "id": "705b18ce-38c4-4d24-a135-086086693a92",
+      "name": "Fehler protokollieren",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        260,
+        240
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "credTriagePg0001",
+          "name": "Postgres Triage"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "751d3a1f-6f63-45dd-9fe5-64f6f55962fe",
+      "name": "Benachrichtigung (Platzhalter)",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        500,
+        240
+      ],
+      "notes": "Hier würde in Produktion eine Benachrichtigung an Slack, Teams oder per E-Mail hängen.",
+      "notesInFlow": true
+    }
+  ],
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Fehler protokollieren",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fehler protokollieren": {
+      "main": [
+        [
+          {
+            "node": "Benachrichtigung (Platzhalter)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "timezone": "Europe/Berlin"
+  },
+  "pinData": {},
+  "tags": [],
+  "active": false
+}

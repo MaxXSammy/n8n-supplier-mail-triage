@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-06@swissturning.example>",
+  "from": "Reto Meier <r.meier@swissturning.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Ihre Mängelrüge vom 21.10.2026 – Unterlieferung",
+  "received_at": "2026-10-28T15:05:00+01:00",
+  "body": "Grüezi Herr Schneider\n\nBesten Dank für Ihre Mängelrüge. Sie haben recht: Mit Lieferschein LS-88213 zu Ihrer Bestellung 4500018290 wurden nur 200 statt 500 Stück Präzisionsbolzen PB-6 geliefert. Beim Kommissionieren wurde ein Karton übersehen.\n\nDie fehlenden 300 Stück sind heute per Express an Sie rausgegangen. Wir haben unsere Packkontrolle angepasst.\n\nFreundliche Grüsse\nReto Meier\nSwiss Turning AG, Grenchen"
+}

@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-15@precimet.example>",
+  "from": "Tomasz Kowalski <qm@precimet.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Neues ISO 9001 Zertifikat",
+  "received_at": "2026-10-30T11:30:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\n\nanbei erhalten Sie unser neues Zertifikat nach ISO 9001:2015. Das Rezertifizierungsaudit wurde am 14.10.2026 ohne Abweichungen abgeschlossen, das Zertifikat ist gültig bis 13.10.2029.\n\nBitte aktualisieren Sie Ihre Lieferantenakte entsprechend.\n\nMit freundlichen Grüßen\nTomasz Kowalski\nQualitätsmanagement, Precimet Sp. z o.o."
+}

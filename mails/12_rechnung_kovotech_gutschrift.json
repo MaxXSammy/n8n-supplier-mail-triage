@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-12@kovotech.example>",
+  "from": "Účtárna Kovotech <fakturace@kovotech.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Gutschrift GS-2026-0091",
+  "received_at": "2026-10-29T09:15:00+01:00",
+  "body": "Guten Tag,\n\nwegen der Preisdifferenz bei Rechnung KT-2026-3318 (falscher Staffelpreis) erhalten Sie anbei die Gutschrift GS-2026-0091 über 1.230,00 EUR.\n\nWir verrechnen den Betrag mit der nächsten Zahlung, falls Sie nichts anderes wünschen.\n\nS pozdravem / Mit freundlichen Grüßen\nBuchhaltung Kovotech s.r.o."
+}

@@ -1,0 +1,2 @@
+# Shell-Skripte laufen im Linux-Container und brauchen LF-Zeilenenden, auch bei Checkout unter Windows
+*.sh text eol=lf

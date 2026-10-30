@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-05@feldmann-praezisionsteile.example>",
+  "from": "Anja Feldmann <a.feldmann@feldmann-praezisionsteile.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Beschädigte Teile Lieferung KW 43",
+  "received_at": "2026-10-28T11:20:00+01:00",
+  "body": "Hallo Herr Schneider,\n\nIhr Wareneingang hat uns informiert, dass von der Lieferung zur Bestellung 4500018307 insgesamt 40 Hülsen HS-12 Transportschäden aufweisen. Das tut uns leid. Die Verpackung war offenbar nicht ausreichend gepolstert.\n\nWir schicken Ihnen bis Mittwoch kostenlos Ersatz. Die beschädigten Teile müssen Sie nicht zurücksenden, bitte entsorgen Sie diese.\n\nDie Rechnung RE-2026-1144 zu dieser Lieferung bleibt unverändert, bitte begleichen Sie sie aber erst nach Eingang der Ersatzlieferung.\n\nBeste Grüße\nAnja Feldmann\nGeschäftsführung\nFeldmann Präzisionsteile GmbH"
+}

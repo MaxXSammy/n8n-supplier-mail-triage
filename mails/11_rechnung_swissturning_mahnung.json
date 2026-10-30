@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-11@swissturning.example>",
+  "from": "Debitorenbuchhaltung <debitoren@swissturning.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Zahlungserinnerung",
+  "received_at": "2026-10-28T08:00:00+01:00",
+  "body": "Sehr geehrte Damen und Herren\n\nBei der Durchsicht unserer Konten haben wir festgestellt, dass die Rechnung ST-INV-26-4410 vom 15.09.2026 über CHF 8'420.50 noch offen ist. Das Zahlungsziel ist am 15.10.2026 abgelaufen.\n\nWir bitten Sie, den Betrag innerhalb der nächsten 10 Tage zu überweisen. Sollte sich Ihre Zahlung mit diesem Schreiben gekreuzt haben, betrachten Sie diese Erinnerung bitte als gegenstandslos.\n\nFreundliche Grüsse\nSwiss Turning AG, Debitorenbuchhaltung"
+}

@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-07@rheinwerk-komponenten.example>",
+  "from": "Jens Albrecht <disposition@rheinwerk-komponenten.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Terminverschiebung Bestellung 4500018255",
+  "received_at": "2026-10-29T07:58:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\n\nleider müssen wir Ihnen mitteilen, dass wir den bestätigten Liefertermin 06.11.2026 für Ihre Bestellung 4500018255 (Zahnradwelle ZW-25, 2.400 Stück) nicht halten können.\n\nGrund ist ein Engpass beim Rohmaterial 16MnCr5, unser Stahllieferant hat eine Teilmenge kurzfristig storniert.\n\nNeuer Liefertermin: 20.11.2026\n\nWir bedauern die Verzögerung. Sollten Sie eine Teilmenge vorab benötigen, sprechen Sie uns gerne an.\n\nMit freundlichen Grüßen\nJens Albrecht\nDisposition, Rheinwerk Komponenten GmbH"
+}

@@ -1,0 +1,114 @@
+{
+  "01_angebot_alpen": {
+    "kategorie": "angebot",
+    "muss_review": false,
+    "felder": {
+      "angebotsnummer": "ANG-26-0412",
+      "betrag": 37440.0,
+      "waehrung": "EUR"
+    }
+  },
+  "02_angebot_rossi": {
+    "kategorie": "angebot",
+    "muss_review": false,
+    "felder": {
+      "angebotsnummer": "OF-2026/188",
+      "betrag": null
+    }
+  },
+  "03_angebot_kovotech_lieferzeit": {
+    "kategorie": "angebot",
+    "muss_review": false,
+    "felder": {
+      "angebotsnummer": "KT-A-55721",
+      "betrag": 9180.0,
+      "waehrung": "EUR"
+    }
+  },
+  "04_reklamation_brenner_8d": {
+    "kategorie": "reklamation",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018231"
+    }
+  },
+  "05_reklamation_feldmann_mit_rechnung": {
+    "kategorie": "reklamation",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018307"
+    }
+  },
+  "06_reklamation_swissturning_menge": {
+    "kategorie": "reklamation",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018290"
+    }
+  },
+  "07_lieferverzug_rheinwerk": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018255",
+      "neuer_liefertermin": "2026-11-20"
+    }
+  },
+  "08_lieferverzug_precimet_teillieferung": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018266"
+    }
+  },
+  "09_lieferverzug_alpen_kurz": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018240"
+    }
+  },
+  "10_rechnung_brenner": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {
+      "rechnungsnummer": "RE-2026-08817",
+      "bestellnummer": "4500018231",
+      "betrag": 14875.0,
+      "waehrung": "EUR"
+    }
+  },
+  "11_rechnung_swissturning_mahnung": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {
+      "rechnungsnummer": "ST-INV-26-4410",
+      "betrag": 8420.5,
+      "waehrung": "CHF"
+    }
+  },
+  "12_rechnung_kovotech_gutschrift": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {
+      "rechnungsnummer": "GS-2026-0091",
+      "betrag": 1230.0,
+      "waehrung": "EUR"
+    }
+  },
+  "13_sonstiges_rossi_betriebsferien": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "14_sonstiges_bankdaten_betrugsversuch": {
+    "kategorie": "sonstiges",
+    "muss_review": true,
+    "felder": {}
+  },
+  "15_sonstiges_precimet_zertifikat": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  }
+}

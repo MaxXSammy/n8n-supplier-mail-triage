@@ -1,0 +1,340 @@
+{
+  "lauf": "20261030-170225",
+  "modell": "qwen2.5:7b",
+  "schwelle": "0.75",
+  "ergebnisse": [
+    {
+      "mail": "01_angebot_alpen",
+      "http": 200,
+      "status": "ticket",
+      "gold": "angebot",
+      "llm": "angebot",
+      "regel": "angebot",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "angebotsnummer": [
+          "ANG-26-0412",
+          "ANG-26-0412"
+        ],
+        "betrag": [
+          37440.0,
+          37440
+        ],
+        "waehrung": [
+          "EUR",
+          "EUR"
+        ]
+      },
+      "sekunden": 6.13
+    },
+    {
+      "mail": "02_angebot_rossi",
+      "http": 200,
+      "status": "ticket",
+      "gold": "angebot",
+      "llm": "angebot",
+      "regel": "angebot",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "angebotsnummer": [
+          "OF-2026/188",
+          "OF-2026/188"
+        ],
+        "betrag": [
+          null,
+          298
+        ]
+      },
+      "sekunden": 6.73
+    },
+    {
+      "mail": "03_angebot_kovotech_lieferzeit",
+      "http": 200,
+      "status": "ticket",
+      "gold": "angebot",
+      "llm": "angebot",
+      "regel": "angebot",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "angebotsnummer": [
+          "KT-A-55721",
+          "KT-A-55721"
+        ],
+        "betrag": [
+          9180.0,
+          9180
+        ],
+        "waehrung": [
+          "EUR",
+          "EUR"
+        ]
+      },
+      "sekunden": 5.93
+    },
+    {
+      "mail": "04_reklamation_brenner_8d",
+      "http": 200,
+      "status": "ticket",
+      "gold": "reklamation",
+      "llm": "reklamation",
+      "regel": "reklamation",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [
+        "beleg_fehlt:neuer_liefertermin"
+      ],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018231",
+          "4500018231"
+        ]
+      },
+      "sekunden": 25.17
+    },
+    {
+      "mail": "05_reklamation_feldmann_mit_rechnung",
+      "http": 200,
+      "status": "ticket",
+      "gold": "reklamation",
+      "llm": "reklamation",
+      "regel": "reklamation",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018307",
+          "4500018307"
+        ]
+      },
+      "sekunden": 5.78
+    },
+    {
+      "mail": "06_reklamation_swissturning_menge",
+      "http": 200,
+      "status": "ticket",
+      "gold": "reklamation",
+      "llm": "reklamation",
+      "regel": "reklamation",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018290",
+          "4500018290"
+        ]
+      },
+      "sekunden": 5.34
+    },
+    {
+      "mail": "07_lieferverzug_rheinwerk",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferverzug",
+      "llm": "lieferverzug",
+      "regel": "lieferverzug",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018255",
+          "4500018255"
+        ],
+        "neuer_liefertermin": [
+          "2026-11-20",
+          "2026-11-20"
+        ]
+      },
+      "sekunden": 5.78
+    },
+    {
+      "mail": "08_lieferverzug_precimet_teillieferung",
+      "http": 202,
+      "status": "review",
+      "gold": "lieferverzug",
+      "llm": "lieferverzug",
+      "regel": "lieferverzug",
+      "konfidenz": 0.9,
+      "gruende": [
+        "pflichtfeld_fehlt:bestellnummer"
+      ],
+      "warnungen": [
+        "beleg_fehlt:bestellnummer",
+        "beleg_fehlt:neuer_liefertermin"
+      ],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018266",
+          null
+        ]
+      },
+      "sekunden": 5.7
+    },
+    {
+      "mail": "09_lieferverzug_alpen_kurz",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferverzug",
+      "llm": "lieferverzug",
+      "regel": "lieferverzug",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [
+        "beleg_fehlt:neuer_liefertermin"
+      ],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018240",
+          "4500018240"
+        ]
+      },
+      "sekunden": 5.45
+    },
+    {
+      "mail": "10_rechnung_brenner",
+      "http": 200,
+      "status": "ticket",
+      "gold": "rechnung",
+      "llm": "rechnung",
+      "regel": "rechnung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "rechnungsnummer": [
+          "RE-2026-08817",
+          "RE-2026-08817"
+        ],
+        "bestellnummer": [
+          "4500018231",
+          "4500018231"
+        ],
+        "betrag": [
+          14875.0,
+          14875
+        ],
+        "waehrung": [
+          "EUR",
+          "EUR"
+        ]
+      },
+      "sekunden": 5.76
+    },
+    {
+      "mail": "11_rechnung_swissturning_mahnung",
+      "http": 200,
+      "status": "ticket",
+      "gold": "rechnung",
+      "llm": "rechnung",
+      "regel": "rechnung",
+      "konfidenz": 1,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "rechnungsnummer": [
+          "ST-INV-26-4410",
+          "ST-INV-26-4410"
+        ],
+        "betrag": [
+          8420.5,
+          8420.5
+        ],
+        "waehrung": [
+          "CHF",
+          "CHF"
+        ]
+      },
+      "sekunden": 5.48
+    },
+    {
+      "mail": "12_rechnung_kovotech_gutschrift",
+      "http": 200,
+      "status": "ticket",
+      "gold": "rechnung",
+      "llm": "rechnung",
+      "regel": "rechnung",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "rechnungsnummer": [
+          "GS-2026-0091",
+          "KT-2026-3318"
+        ],
+        "betrag": [
+          1230.0,
+          1230
+        ],
+        "waehrung": [
+          "EUR",
+          "EUR"
+        ]
+      },
+      "sekunden": 5.15
+    },
+    {
+      "mail": "13_sonstiges_rossi_betriebsferien",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "sonstiges",
+      "regel": "sonstiges",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "sekunden": 5.13
+    },
+    {
+      "mail": "14_sonstiges_bankdaten_betrugsversuch",
+      "http": 202,
+      "status": "review",
+      "gold": "sonstiges",
+      "llm": "sonstiges",
+      "regel": "rechnung",
+      "konfidenz": 0.9,
+      "gruende": [
+        "bankdatenaenderung"
+      ],
+      "warnungen": [],
+      "muss_review": true,
+      "felder": {},
+      "sekunden": 5.11
+    },
+    {
+      "mail": "15_sonstiges_precimet_zertifikat",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "sonstiges",
+      "regel": "reklamation",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "sekunden": 5.2
+    }
+  ]
+}

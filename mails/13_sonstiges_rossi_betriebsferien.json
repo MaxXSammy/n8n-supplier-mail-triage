@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-13@officina-rossi.example>",
+  "from": "Marco Bellini <vendite@officina-rossi.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Betriebsferien Weihnachten 2026",
+  "received_at": "2026-10-30T09:00:00+01:00",
+  "body": "Sehr geehrte Kunden,\n\nunser Werk bleibt vom 21.12.2026 bis einschließlich 06.01.2027 geschlossen.\n\nDamit wir Ihre Bedarfe noch vor den Feiertagen ausliefern können, bitten wir Sie, Bestellungen bis spätestens 20.11.2026 zu platzieren.\n\nWir wünschen Ihnen schon jetzt eine schöne Adventszeit.\n\nOfficina Meccanica Rossi S.r.l."
+}

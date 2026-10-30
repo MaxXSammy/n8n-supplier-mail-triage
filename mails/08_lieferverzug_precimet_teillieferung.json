@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-08@precimet.example>",
+  "from": "Agnieszka Wójcik <a.wojcik@precimet.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Teillieferung zu Ihrer Bestellung",
+  "received_at": "2026-10-29T13:40:00+01:00",
+  "body": "Sehr geehrter Herr Schneider,\n\nzu Ihrer Bestellung 4500018266 können wir diese Woche nur 600 von 1.500 Stück Distanzringen DR-30 liefern. Die Härterei hatte einen Ofenausfall.\n\nDie Restmenge von 900 Stück liefern wir voraussichtlich in KW 48.\n\nMit freundlichen Grüßen\nAgnieszka Wójcik\nCustomer Service\nPrecimet Sp. z o.o., Wrocław"
+}

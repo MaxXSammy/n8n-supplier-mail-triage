@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-04@brenner-zerspanung.example>",
+  "from": "Stefan Huber <qualitaet@brenner-zerspanung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Stellungnahme zu Ihrer Reklamation Q-2026-0371 / 8D-Bericht",
+  "received_at": "2026-10-27T09:45:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\n\nzu Ihrer Reklamation Q-2026-0371 (Bestellung 4500018231, Lieferschein 70044812) erhalten Sie anbei unseren 8D-Bericht.\n\nUrsache der Maßabweichung am Lagersitz Ø20 h6 war ein verschlissenes Werkzeug, das nach dem Schichtwechsel nicht korrekt vermessen wurde. Als Sofortmaßnahme haben wir alle Teile aus dem betroffenen Los gesperrt und 100 % geprüft. Die Abstellmaßnahme (Werkzeugstandzeit-Überwachung in der Maschinensteuerung) ist seit 23.10. umgesetzt.\n\nErsatzteile für die 312 n.i.O.-Teile gehen am Freitag in den Versand.\n\nMit freundlichen Grüßen\nStefan Huber\nQualitätsmanagement\nBrenner Zerspanung GmbH"
+}

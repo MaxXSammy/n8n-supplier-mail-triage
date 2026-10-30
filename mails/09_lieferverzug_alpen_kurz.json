@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-09@alpen-drehtechnik.example>",
+  "from": "Katharina Gruber <k.gruber@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Kurze Info",
+  "received_at": "2026-10-29T16:12:00+01:00",
+  "body": "Hallo Herr Schneider,\n\nkurze Info vorab: Wegen eines Spindelschadens an unserem Langdrehautomaten verschiebt sich Ihre Bestellung 4500018240 um ca. eine Woche. Wir melden uns, sobald der Techniker da war.\n\nLG Katharina Gruber\nAlpen Drehtechnik"
+}

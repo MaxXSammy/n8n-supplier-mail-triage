@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Klassifizierung und Extraktion einer Lieferanten-Mail",
+  "description": "Wird als 'format' an Ollama übergeben (Structured Output) und im Workflow zusätzlich im Code geprüft. 'begruendung' steht bewusst vorne: Das Modell formuliert erst den Grund, dann die Kategorie.",
+  "type": "object",
+  "properties": {
+    "begruendung": { "type": "string" },
+    "kategorie": { "type": "string", "enum": ["angebot", "reklamation", "lieferverzug", "rechnung", "sonstiges"] },
+    "konfidenz": { "type": "number", "minimum": 0, "maximum": 1 },
+    "lieferant": { "type": ["string", "null"] },
+    "bestellnummer": { "type": ["string", "null"] },
+    "rechnungsnummer": { "type": ["string", "null"] },
+    "angebotsnummer": { "type": ["string", "null"] },
+    "artikel": { "type": ["string", "null"] },
+    "betrag": { "type": ["number", "null"] },
+    "waehrung": { "type": ["string", "null"] },
+    "neuer_liefertermin": { "type": ["string", "null"], "description": "JJJJ-MM-TT" },
+    "dringlichkeit": { "type": "string", "enum": ["niedrig", "mittel", "hoch"] },
+    "zusammenfassung": { "type": "string" }
+  },
+  "required": [
+    "begruendung", "kategorie", "konfidenz", "lieferant", "bestellnummer", "rechnungsnummer",
+    "angebotsnummer", "artikel", "betrag", "waehrung", "neuer_liefertermin", "dringlichkeit", "zusammenfassung"
+  ],
+  "additionalProperties": false
+}

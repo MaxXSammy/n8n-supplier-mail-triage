@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-14@feldmann-praezisionsteile-gmbh.example>",
+  "from": "Anja Feldmann <a.feldmann@feldmann-praezisionsteile-gmbh.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Wichtig: Neue Bankverbindung",
+  "received_at": "2026-10-30T10:47:00+01:00",
+  "body": "Sehr geehrter Herr Schneider,\n\naufgrund einer Umstellung unserer Hausbank hat sich unsere Bankverbindung geändert. Bitte nutzen Sie ab sofort ausschließlich folgende Kontoverbindung:\n\nKontoinhaber: Feldmann Präzisionsteile GmbH\nIBAN: LT12 3250 0247 1938 4410\nBIC: REVOLT21\n\nBitte überweisen Sie auch die offene Rechnung RE-2026-1144 bereits auf das neue Konto. Die Änderung ist dringend, da das alte Konto Ende der Woche geschlossen wird.\n\nMit freundlichen Grüßen\nAnja Feldmann\nFeldmann Präzisionsteile GmbH"
+}
