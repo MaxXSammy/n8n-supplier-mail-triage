@@ -5,22 +5,27 @@
   "type": "object",
   "properties": {
     "begruendung": { "type": "string" },
-    "kategorie": { "type": "string", "enum": ["angebot", "reklamation", "lieferverzug", "rechnung", "sonstiges"] },
+    "kategorie": { "type": "string", "enum": ["angebot", "auftragsbestaetigung", "reklamation", "lieferverzug", "rechnung", "sonstiges"] },
     "konfidenz": { "type": "number", "minimum": 0, "maximum": 1 },
     "lieferant": { "type": ["string", "null"] },
     "bestellnummer": { "type": ["string", "null"] },
     "rechnungsnummer": { "type": ["string", "null"] },
     "angebotsnummer": { "type": ["string", "null"] },
     "artikel": { "type": ["string", "null"] },
+    "einzelpreis": { "type": ["number", "null"] },
+    "menge": { "type": ["number", "null"] },
     "betrag": { "type": ["number", "null"] },
     "waehrung": { "type": ["string", "null"] },
-    "neuer_liefertermin": { "type": ["string", "null"], "description": "JJJJ-MM-TT" },
+    "liefertermin": { "type": ["string", "null"], "description": "JJJJ-MM-TT" },
+    "liefertermin_unsicher": { "type": "boolean" },
+    "abweichungsgrund": { "type": ["string", "null"] },
     "dringlichkeit": { "type": "string", "enum": ["niedrig", "mittel", "hoch"] },
     "zusammenfassung": { "type": "string" }
   },
   "required": [
     "begruendung", "kategorie", "konfidenz", "lieferant", "bestellnummer", "rechnungsnummer",
-    "angebotsnummer", "artikel", "betrag", "waehrung", "neuer_liefertermin", "dringlichkeit", "zusammenfassung"
+    "angebotsnummer", "artikel", "einzelpreis", "menge", "betrag", "waehrung", "liefertermin",
+    "liefertermin_unsicher", "abweichungsgrund", "dringlichkeit", "zusammenfassung"
   ],
   "additionalProperties": false
 }

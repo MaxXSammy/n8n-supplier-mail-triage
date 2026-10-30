@@ -9,8 +9,8 @@
         "height": 380,
         "color": 3
       },
-      "id": "487c0b56-8753-48c8-8c86-7ba5e86801cd",
-      "name": "Notiz f71cdf",
+      "id": "abb4ca1b-0094-4cda-ac77-0ed141c0f5f6",
+      "name": "Notiz 424e93",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
@@ -20,7 +20,7 @@
     },
     {
       "parameters": {},
-      "id": "79ef83cb-6a91-4fe9-8589-3c67dc1cbd77",
+      "id": "fb989a3f-4190-47e8-8672-f0bce5670abf",
       "name": "Error Trigger",
       "type": "n8n-nodes-base.errorTrigger",
       "typeVersion": 1,
@@ -37,7 +37,7 @@
           "queryReplacement": "={{ [ $json.workflow?.name ?? null, $json.execution?.lastNodeExecuted ?? null, $json.execution?.error?.message ?? 'unbekannter Fehler', $json.execution?.id ?? null, $json.execution?.url ?? null ] }}"
         }
       },
-      "id": "705b18ce-38c4-4d24-a135-086086693a92",
+      "id": "d8feb4af-dec7-4edb-899e-108991212ef7",
       "name": "Fehler protokollieren",
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
@@ -54,7 +54,7 @@
     },
     {
       "parameters": {},
-      "id": "751d3a1f-6f63-45dd-9fe5-64f6f55962fe",
+      "id": "c9e2e815-43e1-45bd-94c1-9514c0683115",
       "name": "Benachrichtigung (Platzhalter)",
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,

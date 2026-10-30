@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-30@kovotech.example>",
+  "from": "Petr Novák <p.novak@kovotech.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Order confirmation PO 4500018413",
+  "received_at": "2026-10-30T08:20:00+01:00",
+  "body": "Dear Mr Schneider,\n\nthank you for your purchase order 4500018413. We confirm:\n\nItem: Spannstift SP-10\nQuantity: 4,000 pcs\nUnit price: EUR 0.31\nDelivery date: 09.12.2026\n\nBest regards\nPetr Novák\nKovotech s.r.o."
+}

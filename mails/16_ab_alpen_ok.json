@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-16@alpen-drehtechnik.example>",
+  "from": "Katharina Gruber <k.gruber@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Auftragsbestätigung zu Ihrer Bestellung 4500018401",
+  "received_at": "2026-10-26T11:40:00+01:00",
+  "body": "Sehr geehrter Herr Schneider,\n\nvielen Dank für Ihre Bestellung 4500018401. Wir bestätigen wie folgt:\n\nPos. 10  Antriebswelle AW-40\nMenge: 2.000 Stück\nEinzelpreis: 3,12 EUR\nLiefertermin: 20.11.2026\n\nMit freundlichen Grüßen\nKatharina Gruber\nAlpen Drehtechnik GmbH"
+}

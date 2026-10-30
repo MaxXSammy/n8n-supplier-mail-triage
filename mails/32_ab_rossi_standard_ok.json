@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-32@officina-rossi.example>",
+  "from": "Marco Bellini <vendite@officina-rossi.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Conferma d'ordine 4500018415",
+  "received_at": "2026-10-30T10:00:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\n\nwir bestätigen Ihre Bestellung 4500018415: 2.000 Stück Scheibe SR-05, Preis 0,27 EUR pro Stück, Liefertermin 10.12.2026.\n\nCordiali saluti\nMarco Bellini"
+}

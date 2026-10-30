@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-20@swissturning.example>",
+  "from": "Reto Meier <r.meier@swissturning.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Auftragsbestätigung 4500018417",
+  "received_at": "2026-10-29T14:04:00+01:00",
+  "body": "Grüezi Herr Schneider\n\nBesten Dank für die Bestellung 4500018417. Wir bestätigen 800 Stück Achsstift AS-3 zu CHF 2.10, Liefertermin 26.11.2026.\n\nFreundliche Grüsse\nReto Meier"
+}

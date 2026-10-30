@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-25@officina-rossi.example>",
+  "from": "Marco Bellini <vendite@officina-rossi.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Conferma d'ordine 4500018410",
+  "received_at": "2026-10-29T09:10:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\n\nwir bestätigen Ihre Bestellung 4500018410 über 3.000 Stück Antriebswelle AW-40 zum Preis von 2,98 EUR pro Stück.\n\nDen Liefertermin können wir wegen einer ausstehenden Materiallieferung noch nicht verbindlich zusagen. Voraussichtlich liefern wir in KW 50, ohne Gewähr.\n\nCordiali saluti\nMarco Bellini"
+}

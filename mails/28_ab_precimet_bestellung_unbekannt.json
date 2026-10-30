@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-28@precimet.example>",
+  "from": "Agnieszka Wójcik <a.wojcik@precimet.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Auftragsbestätigung 4500019999",
+  "received_at": "2026-10-29T15:00:00+01:00",
+  "body": "Sehr geehrter Herr Schneider,\n\nwir bestätigen Ihre Bestellung 4500019999 über 4.000 Stück Ring RI-20 zu 0,22 EUR, Liefertermin 18.12.2026.\n\nMit freundlichen Grüßen\nAgnieszka Wójcik"
+}

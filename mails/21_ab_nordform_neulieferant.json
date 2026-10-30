@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-21@nordform.example>",
+  "from": "Lisa Brandt <l.brandt@nordform.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Auftragsbestätigung – unsere erste Serienbestellung",
+  "received_at": "2026-10-27T17:00:00+01:00",
+  "body": "Sehr geehrter Herr Schneider,\n\nnach der erfolgreichen Musterlieferung freuen wir uns sehr über Ihre erste Serienbestellung 4500018406.\n\nWir bestätigen:\n800 Stück Kunststoffgehäuse KG-30\nEinzelpreis 2,95 EUR\nLiefertermin 01.12.2026\n\nMit freundlichen Grüßen\nLisa Brandt\nNordform Kunststofftechnik GmbH"
+}
