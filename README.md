@@ -241,7 +241,7 @@ scripts/
 ├── robustheit.py           # Angriffe und Grenzfälle mit erwartetem Ergebnis
 ├── export_workflows.py     # Export aus n8n, nur portable Felder
 └── check_schema_sync.py    # Schema im Workflow = Schema-Datei?
-docs/                       # Screenshots
+docs/                       # Screenshots, Vorschaubilder für GitHub und LinkedIn, Fachkonzept
 ```
 
 ## Bekannte Grenzen
