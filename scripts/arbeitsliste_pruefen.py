@@ -54,7 +54,7 @@ def main() -> int:
         ("Historie mit Vereinbarung und Verlauf", "Festpreis bis Q1/2027" in karte(normal, 101) and "zeitleiste" in karte(normal, 104)),
         ("Weiterleiten an Technik, QM, Disposition", all(f'name="ziel" value="{z}"' in karte(normal, 101) for z in ("technik", "qm", "dispo"))),
         ("Meldung nach der Aktion wird escaped", "&lt;script&gt;" in normal and "<script>alert(1)</script>" not in normal),
-        ("Savings-Balken und Streak", "Savings YTD" in normal and "STREAK: 3 TAGE OHNE RÜCKSTAU" in normal),
+        ("Savings-Balken und Streak", "Savings YTD" in normal and "Streak: 3 Tage ohne Rückstau" in normal),
         ("Screenshot-Modus: keine Lieferantennamen", not any(n in anonym for n in lieferanten)),
         ("Screenshot-Modus: keine Bestellnummern", not re.search(r"45\d{8}", anonym)),
         ("Screenshot-Modus: keine Beträge in Euro", not re.search(r"\d[\d.]*,\d\d(&nbsp;|\s)*€", anonym)),
