@@ -83,11 +83,11 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "-- Offene AB-Aufgaben für den Einkauf, jeweils mit dem neuesten Antwortentwurf\nSELECT t.id, t.lieferant, t.bestellnummer, t.artikel, t.zustaendig, t.ab_pruefung, t.betreff,\n       to_char(t.erstellt_am, 'DD.MM.YYYY HH24:MI') AS erstellt,\n       e.betreff AS entwurf_betreff, e.text AS entwurf_text, e.foermlichkeit, e.nachdruck,\n       e.warnungen AS entwurf_warnungen\nFROM tickets t\nLEFT JOIN LATERAL (SELECT * FROM entwuerfe WHERE ticket_id = t.id ORDER BY id DESC LIMIT 1) e ON true\nWHERE t.kategorie = 'auftragsbestaetigung' AND t.status = 'offen'\nORDER BY t.id;",
+        "query": "-- Offene Aufgaben aller Teams und Infos der letzten 30 Tage, jeweils mit dem neuesten Antwortentwurf zum Ticket\nSELECT a.id, a.team, a.zustaendig, a.art, a.prioritaet, a.status, a.details,\n       t.id AS ticket_id, t.lieferant, t.bestellnummer, t.artikel, t.betreff, t.zusammenfassung, t.ab_pruefung, t.mailtext,\n       to_char(a.erstellt_am, 'DD.MM.YYYY HH24:MI') AS erstellt,\n       e.betreff AS entwurf_betreff, e.text AS entwurf_text, e.foermlichkeit, e.nachdruck,\n       e.warnungen AS entwurf_warnungen, t.abteilungen,\n       -- Für Sperre und Knöpfe: alle Aufgaben und Entwurfszwecke im selben Vorgang\n       (SELECT jsonb_agg(jsonb_build_object('art', y.art, 'status', y.status, 'entscheidung', y.entscheidung))\n          FROM aufgaben y WHERE y.ticket_id = t.id) AS ticket_aufgaben,\n       (SELECT COALESCE(jsonb_agg(ez.zweck), '[]'::jsonb) FROM entwuerfe ez WHERE ez.ticket_id = t.id AND ez.zweck IS NOT NULL) AS entwurf_zwecke,\n       ew.empfaenger AS ew_empfaenger, ew.cc AS ew_cc, ew.betreff AS ew_betreff, ew.text AS ew_text, ew.warnungen AS ew_warnungen\nFROM aufgaben a\nJOIN tickets t ON t.id = a.ticket_id\nLEFT JOIN LATERAL (SELECT * FROM entwuerfe WHERE ticket_id = t.id AND zweck IS NULL ORDER BY id DESC LIMIT 1) e ON true\nLEFT JOIN entwuerfe ew ON ew.id = (a.details->>'entwurf_id')::int\nWHERE a.status = 'offen' OR (a.status = 'info' AND a.erstellt_am > now() - interval '30 days')\nORDER BY CASE a.prioritaet WHEN 'hoch' THEN 0 ELSE 1 END, a.id;",
         "options": {}
       },
       "id": "1fa0ecec-bdf9-4586-99f5-4d7461c2ec8c",
-      "name": "Offene AB-Aufgaben laden",
+      "name": "Offene Aufgaben laden",
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
@@ -106,14 +106,14 @@
     {
       "parameters": {
         "mode": "runOnceForAllItems",
-        "jsCode": "// Arbeitsliste als HTML-Seite. Werte werden escaped, weil Mailtexte von außen kommen.\nconst esc = (s) => String(s ?? '').replace(/[&<>\"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;', \"'\": '&#39;' }[c]));\nconst tag = (t) => `<span class=\"tag\">${esc(t)}</span>`;\nconst reviews = $('Offene Reviews laden').all().map((i) => i.json).filter((r) => r.id);\nconst aufgaben = $('Offene AB-Aufgaben laden').all().map((i) => i.json).filter((r) => r.id);\n\n// Abweichungen und Prüfgründe in Sätze übersetzen, die ein Einkäufer sofort versteht\nconst beschreibe = (ab) => {\n  const zahl = (n) => Number(n).toLocaleString('de-DE', { maximumFractionDigits: 4 });\n  const datum = (d) => (d ? (typeof d === 'string' ? d : new Date(d).toISOString()).slice(0, 10).split('-').reverse().join('.') : '–');\n  const texte = (ab.abweichungen ?? []).map((a) => ({\n    preis: `Preis ${zahl(a.bestellt)} → ${zahl(a.bestaetigt)} ${a.waehrung ?? ''}`,\n    menge: `Menge ${zahl(a.bestellt)} → ${zahl(a.bestaetigt)}${a.grund ? ` (${a.grund})` : ''}`,\n    stammdaten_pruefen: `Stammdaten prüfen${a.hinweis ? `: ${a.hinweis}` : ''}`,\n    termin_unsicher: `Termin unsicher, gewünscht ${datum(a.gewuenscht)}`,\n    termin_fehlt: `Kein Termin bestätigt, gewünscht ${datum(a.gewuenscht)}`,\n    termin_spaeter: `Termin ${datum(a.gewuenscht)} → ${datum(a.bestaetigt)}`,\n  }[a.art] ?? a.art));\n  for (const g of ab.pruefgruende ?? []) {\n    texte.push({\n      neuer_lieferant: 'Neuer Lieferant: Kontakt aufnehmen und Termin absichern',\n      liefertreue_unter_schwelle: `Liefertreue ${ab.liefertreue} % unter ${ab.schwelle} % (${ab.abc_xyz}-Artikel)`,\n      blindbestaetigung_verdacht: `AB nach ${ab.bearbeitungszeit_minuten} Minuten: Blindbestätigung?`,\n      absender_domain_abweichend: 'Absender-Domain passt nicht zum Lieferanten',\n    }[g] ?? g);\n  }\n  return texte;\n};\n\nconst abKarten = aufgaben.map((t) => `\n  <article>\n    <h2>Ticket #${esc(t.id)} · ${esc(t.lieferant)} · Bestellung ${esc(t.bestellnummer)}</h2>\n    <p class=\"meta\">${esc(t.artikel)} · zuständig: ${esc(t.zustaendig)} · ${esc(t.erstellt)}</p>\n    <p>${beschreibe(t.ab_pruefung ?? {}).map(tag).join(' ')}</p>\n    ${t.entwurf_text ? `<details open><summary>Antwortentwurf (${esc(t.foermlichkeit)}, ${esc(t.nachdruck)})</summary>\n      ${(t.entwurf_warnungen ?? []).length ? `<p class=\"warnung\">Bitte prüfen: ${t.entwurf_warnungen.map(esc).join(', ')}</p>` : ''}\n      <pre><b>${esc(t.entwurf_betreff)}</b>\\n\\n${esc(t.entwurf_text)}</pre></details>` : ''}\n  </article>`).join('');\n\nconst reviewKarten = reviews.map((r) => `\n  <article>\n    <h2>Review #${esc(r.id)} · ${esc(r.betreff)}</h2>\n    <p class=\"meta\">${esc(r.absender)} · ${esc(r.erstellt)}</p>\n    <p><b>Gründe:</b> ${r.gruende.map(tag).join(' ')}</p>\n    <p><b>Vorschlag des LLM:</b> ${esc(r.vorschlag ?? '–')} (Konfidenz ${esc(r.konfidenz ?? '–')}) – ${esc(r.begruendung ?? '')}</p>\n    <details><summary>Mailtext</summary><pre>${esc(r.text)}</pre></details>\n  </article>`).join('');\n\nconst html = `<!doctype html><html lang=\"de\"><head><meta charset=\"utf-8\"><title>Arbeitsliste Einkauf</title>\n<style>\n  body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; color: #1f2328; }\n  article { border: 1px solid #d0d7de; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; }\n  h1 { font-size: 1.6rem; } h2 { font-size: 1.05rem; margin: 0 0 .25rem; } .meta { color: #656d76; margin: 0 0 .75rem; }\n  .tag { display: inline-block; background: #fff1e5; color: #9a4b00; border-radius: 4px; padding: .1rem .4rem; margin: .1rem 0; font-size: .85rem; }\n  .warnung { color: #9a4b00; }\n  pre { white-space: pre-wrap; background: #f6f8fa; padding: .75rem; border-radius: 6px; font-family: inherit; }\n  a.button { display: inline-block; background: #1f6feb; color: #fff; padding: .45rem .9rem; border-radius: 6px; text-decoration: none; margin-right: .5rem; }\n  section { margin-bottom: 2rem; }\n</style></head><body>\n<h1>Arbeitsliste Einkauf</h1>\n<section>\n  <h2>Auftragsbestätigungen prüfen · ${aufgaben.length} offen</h2>\n  <p><a class=\"button\" href=\"/form/entwurf\">Antwortentwurf erstellen</a></p>\n  ${abKarten || '<p>Keine offenen Auftragsbestätigungen.</p>'}\n</section>\n<section>\n  <h2>Review-Queue · ${reviews.length} offen</h2>\n  <p><a class=\"button\" href=\"/form/review\">Review abschließen</a></p>\n  ${reviewKarten || '<p>Keine offenen Reviews.</p>'}\n</section>\n</body></html>`;\n\nreturn { json: { html } };\n"
+        "jsCode": "// Arbeitsliste als HTML-Seite. Werte werden escaped, weil Mailtexte von außen kommen.\n// Kein CSS-Framework und keine Schrift von fremden Servern: Die Seite zeigt vertrauliche Preise und soll auch ohne Internet laufen.\nconst esc = (s) => String(s ?? '').replace(/[&<>\"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;', \"'\": '&#39;' }[c]));\nconst reviews = $('Offene Reviews laden').all().map((i) => i.json).filter((r) => r.id);\nconst aufgaben = $('Offene Aufgaben laden').all().map((i) => i.json).filter((a) => a.id);\nconst k = $('Kennzahlen und Audit laden').first().json;\nconst e = k.einstellungen ?? {};\n\n// Anonyme Ansicht für Screenshots (?anonym=1): Der Server ersetzt die Daten, bevor die Seite den Browser erreicht.\n// Ein Skript, das erst im Browser maskiert, ließe die echten Werte im Quelltext stehen und übersieht leicht Freitext.\n// Deshalb fallen Mailtexte, Betreffs, Zusammenfassungen und Antwortentwürfe hier ganz weg.\nconst anonym = String($('Webhook Arbeitsliste').first().json.query?.anonym ?? '') === '1';\nconst pseudonym = (bilde) => {\n  const vergeben = new Map();\n  return (wert) => {\n    if (wert === null || wert === undefined || wert === '') return '–';\n    if (!anonym) return esc(wert);\n    if (!vergeben.has(wert)) vergeben.set(wert, bilde(vergeben.size));\n    return `<span class=\"maske\">${vergeben.get(wert)}</span>`;\n  };\n};\nconst lieferant = pseudonym((i) => `[LIEFERANT_${String.fromCharCode(65 + (i % 26))}${i >= 26 ? Math.floor(i / 26) : ''}]`);\nconst nummer = pseudonym((i) => `ID-${String(i + 1).padStart(3, '0')}`);\nconst person = pseudonym((i) => `[MITARBEITER_${i + 1}]`);\nconst AUSGEBLENDET = '<span class=\"maske\">[ausgeblendet]</span>';\n\n// Zahlen immer in Monospace. Beträge sind im Screenshot-Modus maskiert, Prozentwerte und Daten bleiben sichtbar.\nconst de = (n, stellen = 2) => Number(n).toLocaleString('de-DE', { minimumFractionDigits: stellen, maximumFractionDigits: stellen });\nconst zahl = (n) => `<span class=\"num\">${Number(n).toLocaleString('de-DE', { maximumFractionDigits: 4 })}</span>`;\nconst betrag = (n, waehrung = 'EUR') => (anonym ? '<span class=\"maske num\">***,** €</span>'\n  : `<span class=\"num\">${de(n)}&nbsp;${waehrung === 'EUR' ? '€' : esc(waehrung)}</span>`);\nconst prozent = (n) => `<span class=\"num\">${Number(n) > 0 ? '+' : ''}${Number(n).toLocaleString('de-DE', { maximumFractionDigits: 1 })}&nbsp;%</span>`;\nconst datum = (d) => (d ? `<span class=\"num\">${(typeof d === 'string' ? d : new Date(d).toISOString()).slice(0, 10).split('-').reverse().join('.')}</span>` : '–');\n\n// Micro-Icons als Inline-SVG, Farbe kommt über currentColor aus dem Badge\nconst ICON = {\n  punkt: '<svg viewBox=\"0 0 8 8\" class=\"i\"><circle cx=\"4\" cy=\"4\" r=\"3\" fill=\"currentColor\"/></svg>',\n  haken: '<svg viewBox=\"0 0 16 16\" class=\"i\"><path d=\"M3.5 8.5l3 3 6-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>',\n  warnung: '<svg viewBox=\"0 0 16 16\" class=\"i\"><path d=\"M8 2.2L14.3 13H1.7z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linejoin=\"round\"/><path d=\"M8 6.5v3\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\"/><circle cx=\"8\" cy=\"11.3\" r=\".8\" fill=\"currentColor\"/></svg>',\n  kreis: '<svg viewBox=\"0 0 16 16\" class=\"i\"><circle cx=\"8\" cy=\"8\" r=\"5.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"/></svg>',\n  info: '<svg viewBox=\"0 0 16 16\" class=\"i\"><circle cx=\"8\" cy=\"8\" r=\"6.2\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\"/><path d=\"M8 7.2v4\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\"/><circle cx=\"8\" cy=\"5\" r=\".85\" fill=\"currentColor\"/></svg>',\n  schloss: '<svg viewBox=\"0 0 16 16\" class=\"i\"><rect x=\"3\" y=\"7\" width=\"10\" height=\"7\" rx=\"1.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"/><path d=\"M5.5 7V5a2.5 2.5 0 015 0v2\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"/></svg>',\n  offen: '<svg viewBox=\"0 0 16 16\" class=\"i\"><rect x=\"3\" y=\"7\" width=\"10\" height=\"7\" rx=\"1.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"/><path d=\"M5.5 7V5a2.5 2.5 0 014.9-.6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\"/></svg>',\n};\nconst badge = (ton, text, puls = false) => `<span class=\"badge ${ton}\">${puls ? '<span class=\"puls\"></span>' : ICON[{ krit: 'warnung', warn: 'kreis', ok: 'haken', neutral: 'punkt' }[ton]]}${esc(text)}</span>`;\n// Regelbegründung als Tooltip: zeigt, welche Regel mit welchen Werten entschieden hat\nconst regel = (text) => (text ? `<span class=\"tip\" tabindex=\"0\" aria-label=\"${esc(text)}\" data-tip=\"${esc(text)}\">${ICON.info}</span>` : '');\nconst befund = (ton, html, regeltext) => `<li class=\"befund ${ton}\">${ICON[{ krit: 'warnung', warn: 'kreis', ok: 'haken', neutral: 'punkt' }[ton]]}<span>${html}</span>${regel(regeltext)}</li>`;\n// Geschütztes Leerzeichen, damit Zahl und Einheit nicht umbrechen (auch in Tooltips, deshalb kein &nbsp;)\nconst pz = (n) => `${Number(n).toLocaleString('de-DE', { maximumFractionDigits: 1 })} %`;\nconst eur = (n) => `${Number(n).toLocaleString('de-DE')} €`;\n\n// Befunde je Aufgabe: was das System festgestellt hat und nach welcher Regel\nconst TERMIN = {\n  termin_unsicher: (a) => [`Termin unsicher, gewünscht ${datum(a.gewuenscht)}`, 'Lieferant nennt den Termin nur voraussichtlich oder ohne Gewähr'],\n  termin_fehlt: (a) => [`Kein Termin bestätigt, gewünscht ${datum(a.gewuenscht)}`, 'Die AB enthält keinen konkreten Liefertermin'],\n  termin_spaeter: (a) => [`Termin ${datum(a.gewuenscht)} → ${datum(a.bestaetigt)}`, 'Bestätigter Termin liegt nach dem Wunschtermin der Bestellung'],\n};\nconst PRUEFGRUND = {\n  liefertreue_unter_schwelle: (ab) => [`Liefertreue <span class=\"num\">${esc(ab.liefertreue)}&nbsp;%</span> unter Schwelle`,\n    `System-Flag: Liefertreue ${ab.liefertreue} % < Schwellenwert ${ab.schwelle} % (${ab.abc_xyz}-Artikel)`],\n  blindbestaetigung_verdacht: (ab) => [`AB nach <span class=\"num\">${esc(ab.bearbeitungszeit_minuten)}</span> Minuten: Blindbestätigung?`,\n    `System-Flag: Bearbeitungszeit ${ab.bearbeitungszeit_minuten} min < ${e.blindbestaetigung_minuten ?? 30} min nach Bestellversand`],\n  neuer_lieferant: () => ['Neuer Lieferant: Kontakt aufnehmen und Termin absichern', 'System-Flag: Lieferant ohne Liefertreue-Historie'],\n  absender_domain_abweichend: () => ['Absender-Domain passt nicht zum Lieferanten', 'System-Flag: Domain des Absenders weicht von der Domain in den Stammdaten ab'],\n};\nconst preisBefunde = (d) => {\n  const b = [];\n  if (d.angabe_lieferant_prozent != null) {\n    b.push(befund('warn', `Lieferant nennt ${prozent(d.angabe_lieferant_prozent)}, gerechnet ${prozent(d.prozent)}`,\n      'System-Flag: Angabe des Lieferanten weicht um mehr als 0,5 Prozentpunkte von Bestell- und AB-Preis ab'));\n  }\n  if ((d.alter_preis_gilt ?? []).length) {\n    b.push(befund('warn', `Zum alten Preis bestätigt: ${d.alter_preis_gilt.map(nummer).join(', ')}. Alter Preis gilt, Rechnung prüfen`,\n      'System-Flag: Bestätigung des Lieferanten liegt vor dem Eingang der Mitteilung, der vereinbarte Preis gilt'));\n  }\n  if (d.jahresbedarf_fehlt === true || (Array.isArray(d.jahresbedarf_fehlt) && d.jahresbedarf_fehlt.length)) {\n    b.push(befund('warn', `Jahresbedarf fehlt${Array.isArray(d.jahresbedarf_fehlt) ? ` für ${esc(d.jahresbedarf_fehlt.join(', '))}` : ''}`,\n      'Ohne Jahresbedarf lässt sich der Full-Year-Effekt nicht berechnen. Er wird nicht als 0 € gezählt.'));\n  }\n  const letzte = d.letzte_aenderung ?? d.letzte_erhoehung;\n  if (letzte) b.push(befund('neutral', `Letzte Erhöhung ${datum(letzte.gueltig_ab)}: ${prozent(letzte.prozent)}`, 'Quelle: Tabelle preis_historie'));\n  if (d.prozent_12_monate != null) {\n    b.push(befund(d.prozent_12_monate > Number(e.preis_toleranz_dispo_prozent ?? 5) ? 'warn' : 'neutral',\n      `Zwölf Monate zusammen: ${prozent(d.prozent_12_monate)}`, 'Neuer Preis gegen den Preis, der vor zwölf Monaten galt'));\n  }\n  return b;\n};\nconst befunde = (a) => {\n  const d = a.details ?? {};\n  const b = [];\n  if (a.art === 'eskalation') {\n    for (const g of d.eskalation ?? []) {\n      if (g === 'jahres_mehrkosten') {\n        const grenze = a.team === 'Geschäftsleitung' ? e.eskalation_geschaeftsleitung_euro : e.eskalation_einkaufsleitung_euro;\n        b.push(befund('krit', `Jahreswirkung über der Freigabegrenze von <span class=\"num\">${esc(eur(grenze))}</span>`,\n          `System-Flag: Full-Year-Effekt ${anonym ? '***' : eur(d.jahres_mehrkosten_eur)} ≥ Schwellenwert ${eur(grenze)}`));\n      }\n      if (g === 'liefertreue_und_preis') {\n        b.push(befund('krit', 'Hohe Erhöhung bei schwacher Liefertreue: Alternativlieferant prüfen',\n          `System-Flag: Liefertreue ${pz(d.liefertreue)} < ${pz(e.eskalation_liefertreue_prozent)} und Erhöhung ${pz(d.prozent)} > ${pz(e.eskalation_liefertreue_preis_prozent)}`));\n      }\n    }\n  }\n  if (a.art === 'preis_freigeben') {\n    b.push(befund('ok', 'Innerhalb der Freigabegrenze der Disposition',\n      `Regel: Erhöhung ${pz(d.prozent)} ≤ ${pz(e.preis_toleranz_dispo_prozent)}, Mehrkosten ≤ ${eur(e.preis_toleranz_dispo_euro)} je Bestellung und Jahreswirkung < ${eur(e.eskalation_einkaufsleitung_euro)}`));\n  }\n  if (a.art === 'preiserhoehung_pruefen') {\n    b.push(befund(a.prioritaet === 'hoch' ? 'warn' : 'neutral', a.prioritaet === 'hoch' ? 'Über der Freigabegrenze der Disposition' : 'Unter der Freigabegrenze, Entscheidung beim Einkäufer',\n      `Regel: Hohe Priorität ab Erhöhung > ${pz(e.preis_toleranz_dispo_prozent)}, Mehrkosten > ${eur(e.preis_toleranz_dispo_euro)} oder Jahreswirkung ≥ ${eur(e.eskalation_einkaufsleitung_euro)}`));\n  }\n  if (a.art === 'preis_info' && a.team === 'Strategischer Einkauf') {\n    b.push(befund('neutral', 'Info an den strategischen Einkauf', `Regel: Erhöhung ≥ ${pz(e.preis_eskalation_strategie_prozent)}`));\n  }\n  if (['eskalation', 'preis_freigeben', 'preiserhoehung_pruefen', 'preis_info'].includes(a.art)) b.push(...preisBefunde(d));\n  // Merker von Modell und Regel: Technik, QM, Disposition. Nur Vorschlag, eingebunden wird per Knopf.\n  const ab = a.abteilungen ?? {};\n  const betroffen = ['technik', 'qm', 'dispo'].filter((x) => ab[x]);\n  if (betroffen.length && !['technik_freigabe', 'qm_freigabe', 'bestand_pruefen', 'entwurf_senden'].includes(a.art)) {\n    const namen = { technik: 'Technik', qm: 'QM', dispo: 'Disposition' };\n    const quelle = [ab.modell?.length ? `Modell: ${ab.modell.map((x) => namen[x]).join(', ')}` : null,\n      ab.regel?.length ? `Regel: ${ab.regel.join(', ')}` : null].filter(Boolean).join(' · ');\n    const werkstoff = ab.werkstoff_alt || ab.werkstoff_neu ? ` (Werkstoff <span class=\"num\">${esc(ab.werkstoff_alt ?? '?')}</span> → <span class=\"num\">${esc(ab.werkstoff_neu ?? '?')}</span>)` : '';\n    b.push(befund('krit', `${betroffen.map((x) => namen[x]).join(', ')} erforderlich${werkstoff}`, `System-Flag: ${quelle}. Aufgaben entstehen erst über „Technik & QM einbinden“`));\n    if (ab.empfehlung && !anonym) b.push(befund('neutral', `Vorschlag des Modells, ungeprüft: ${esc(ab.empfehlung)}`, 'Freier Text des Sprachmodells, nicht durch Regeln geprüft'));\n  }\n  if (PREISARTEN.includes(a.art) && gesperrt(a)) {\n    b.push(befund('warn', 'Preisfreigabe gesperrt, bis Technik und QM freigegeben haben', 'Regel: Bei Material- oder Werkstoffänderung keine Preisfreigabe ohne Freigabe von Technik und QM (prüft auch der Server)'));\n  }\n  if (['technik_freigabe', 'qm_freigabe', 'bestand_pruefen'].includes(a.art)) {\n    if (d.aenderung) b.push(befund('warn', esc(d.aenderung), 'Aus der Mail des Lieferanten, Werkstoffe per Belegprüfung gegen den Mailtext geprüft'));\n    b.push(befund('neutral', {\n      technik_freigabe: 'Ist der neue Werkstoff bzw. Nachfolger zulässig? Braucht es eine Zeichnungsänderung?',\n      qm_freigabe: 'Erstmusterprüfung, Prüfumfang und Zeugnisse (z. B. 3.1 nach EN 10204) festlegen',\n      bestand_pruefen: 'Reichweite des Bestands prüfen, letzte Bestellung im bisherigen Werkstoff nötig?',\n    }[a.art], 'Bis zur Freigabe von Technik und QM wird nichts umgestellt'));\n    if (d.empfehlung && !anonym) b.push(befund('neutral', `Vorschlag des Modells, ungeprüft: ${esc(d.empfehlung)}`, 'Freier Text des Sprachmodells'));\n  }\n  if (a.art === 'liefertermin_pruefen') {\n    for (const t of d.abweichungen ?? []) { const [text, r] = TERMIN[t.art]?.(t) ?? [esc(t.art), null]; b.push(befund('warn', text, r)); }\n  }\n  if (a.art === 'ab_klaeren') {\n    const ab = a.ab_pruefung ?? {};\n    for (const m of d.abweichungen ?? []) {\n      if (m.art === 'menge') {\n        b.push(befund('warn', `Menge ${zahl(m.bestellt)} → ${zahl(m.bestaetigt)}${m.grund && !anonym ? ` (${esc(m.grund)})` : ''}`, 'Bestätigte Menge weicht von der Bestellung ab'));\n        if (m.mehrwert) b.push(befund('neutral', `${m.mehrwert > 0 ? 'Mehrwert' : 'Minderwert'} ${betrag(Math.abs(m.mehrwert), m.waehrung)}`, 'Mengendifferenz × Einzelpreis'));\n        if (m.passt_zur_vpe === true) b.push(befund('ok', `Volle Verpackungseinheiten à ${zahl(m.vpe_stamm)}`, `Bestätigte Menge ist ein Vielfaches der VPE ${m.vpe_stamm} aus den Stammdaten`));\n        if (m.passt_zur_vpe === false) b.push(befund('warn', `Passt nicht zur VPE ${zahl(m.vpe_stamm)} in den Stammdaten`, `System-Flag: ${m.bestaetigt} ist kein Vielfaches von ${m.vpe_stamm}. Stammdaten oder AB prüfen`));\n        if (m.moq_stamm && m.bestellt < m.moq_stamm) b.push(befund('warn', `Bestellung lag unter der Mindestmenge ${zahl(m.moq_stamm)}`, 'Bestellmenge < Mindestbestellmenge laut Stammdaten'));\n      } else if (m.art === 'stammdaten_pruefen') {\n        b.push(befund('warn', `Stammdaten prüfen${m.hinweis && !anonym ? `: ${esc(m.hinweis)}` : ''}`, 'Lieferant nennt Verpackungseinheit oder Stammdaten als Grund'));\n      }\n    }\n    for (const g of d.pruefgruende ?? []) { const [text, r] = PRUEFGRUND[g]?.(ab) ?? [esc(g), null]; b.push(befund('warn', text, r)); }\n  }\n  return b;\n};\n\n// Kennwerte je Aufgabe als zweispaltiges Datengitter\nconst gitter = (a) => {\n  const d = a.details ?? {};\n  const felder = [\n    ['Bestellung', a.bestellnummer ? `<span class=\"num\">${nummer(a.bestellnummer)}</span>` : null],\n    ['Artikel', a.artikel ? esc(a.artikel) : null],\n    ['Zuständig', a.zustaendig ? person(a.zustaendig) : null],\n    ['Erhöhung', d.prozent != null ? prozent(d.prozent) + (d.prozent_quelle === 'berechnet' ? ' <span class=\"leise\">berechnet</span>' : '') : null],\n    ['Preis', d.art === 'preis' ? `${betrag(d.bestellt, d.waehrung)} → ${betrag(d.bestaetigt, d.waehrung)}` : null],\n    ['Mehrkosten', d.mehrkosten != null ? `${betrag(d.mehrkosten, d.waehrung)} <span class=\"leise\">${d.art === 'preis' ? 'diese Bestellung' : `${(d.betroffene_bestellungen ?? []).length} offene Bestellungen`}</span>` : null],\n    ['Full-Year-Effekt', d.jahres_mehrkosten_eur != null ? betrag(d.jahres_mehrkosten_eur) : null],\n    ['Gültig ab', d.gueltig_ab ? datum(d.gueltig_ab) : null],\n    ['Liefertreue', d.liefertreue != null ? `<span class=\"num\">${esc(d.liefertreue)}&nbsp;%</span>` : null],\n    ['Termin', a.art === 'liefertermin_pruefen' && d.bestaetigt ? `${datum(d.gewuenscht)} → ${datum(d.bestaetigt)}` : null],\n  ].filter(([, wert]) => wert !== null);\n  return `<dl class=\"gitter\">${felder.map(([name, wert]) => `<div><dt>${name}</dt><dd>${wert}</dd></div>`).join('')}</dl>`;\n};\n\nconst ARTEN = {\n  liefertermin_pruefen: 'Liefertermin prüfen', preis_freigeben: 'Preis freigeben', preiserhoehung_pruefen: 'Preiserhöhung prüfen',\n  preis_info: 'Info: Preisänderung', ab_klaeren: 'Auftragsbestätigung klären', bearbeiten: 'Bearbeiten', eskalation: 'Preiserhöhung freigeben',\n  technik_freigabe: 'Technik-Freigabe', qm_freigabe: 'QM-Freigabe', bestand_pruefen: 'Bestand und letzte Bestellung prüfen',\n  entwurf_senden: 'Entwurf prüfen und senden',\n};\n// Status-Badge: kritisch bei Eskalation oder über 10 %, Warnung bei hoher Priorität, sonst neutral; Infos grün\nconst status = (a) => {\n  const p = a.details?.prozent;\n  if (a.art === 'eskalation') return badge('krit', a.team === 'Geschäftsleitung' ? 'Eskalation GL' : 'Eskalation', true);\n  if (['technik_freigabe', 'qm_freigabe'].includes(a.art)) return badge('krit', 'Freigabe nötig', true);\n  if (a.art === 'entwurf_senden') return badge('neutral', a.details?.art === 'intern' ? 'Entwurf intern' : 'Entwurf Lieferant');\n  if (p != null && p > Number(e.preis_eskalation_strategie_prozent ?? 10) && a.status === 'offen') return badge('krit', `> ${pz(e.preis_eskalation_strategie_prozent ?? 10)}`, true);\n  if (a.status === 'info') return badge('ok', a.art === 'preis_info' && a.team === 'Einkauf' ? 'Auto-Freigabe' : 'Info');\n  if (a.prioritaet === 'hoch') return badge('warn', 'Hohe Priorität');\n  if (a.art === 'preis_freigeben') return badge('ok', 'Freigabe Dispo');\n  return badge('neutral', 'Offen');\n};\n\n// Entscheiden direkt in der Karte. Jede Aktion ist ein POST an /webhook/aufgabe (kein Link: Link-Vorschauen und\n// Prefetching dürfen nichts freigeben). Der Server prüft Herkunft, Aktion und Name und schreibt ins Audit-Protokoll.\n// Im Screenshot-Modus gibt es keine Aktionen.\nconst PREISARTEN = ['preis_freigeben', 'preiserhoehung_pruefen', 'eskalation'];\nconst ENTSCHEIDBAR = [...PREISARTEN, 'technik_freigabe', 'qm_freigabe'];\n// Preisfreigabe gesperrt, solange Technik und QM nicht beide freigegeben haben: wenn sie eingebunden sind\n// oder wenn Modell bzw. Regel sie für nötig halten (dann müssen sie erst eingebunden werden)\nconst gesperrt = (a) => {\n  const auf = a.ticket_aufgaben ?? [];\n  const frei = (art) => auf.some((y) => y.art === art && y.entscheidung === 'freigegeben');\n  const noetig = a.abteilungen?.technik || a.abteilungen?.qm || auf.some((y) => ['technik_freigabe', 'qm_freigabe'].includes(y.art));\n  return Boolean(noetig) && !(frei('technik_freigabe') && frei('qm_freigabe'));\n};\nconst formular = (felder, inhalt, bestaetigen = '') => `<form method=\"post\" action=\"/webhook/aufgabe\" class=\"entscheiden\"${bestaetigen ? ` data-bestaetigen=\"${esc(bestaetigen)}\"` : ''}>\n  ${Object.entries(felder).map(([name, wert]) => `<input type=\"hidden\" name=\"${name}\" value=\"${esc(wert)}\">`).join('')}<input type=\"hidden\" name=\"akteur\" value=\"\">${inhalt}</form>`;\nconst aktionsleiste = (a) => {\n  if (anonym || a.status !== 'offen') return '';\n  const sperre = PREISARTEN.includes(a.art) && gesperrt(a);\n  const knoepfe = ENTSCHEIDBAR.includes(a.art)\n    ? (sperre ? `<button class=\"knopf klein\" type=\"button\" disabled title=\"Erst nach Freigabe durch Technik und QM\">${ICON.schloss}Freigeben</button>`\n      : formular({ id: a.id, aktion: 'freigegeben' }, `<button class=\"knopf klein gruen\" type=\"submit\">${ICON.haken}Freigeben</button>`))\n      + formular({ id: a.id, aktion: 'abgelehnt' }, '<button class=\"knopf klein rot\" type=\"submit\">Ablehnen</button>')\n    : formular({ id: a.id, aktion: 'erledigt' }, `<button class=\"knopf klein gruen\" type=\"submit\">${ICON.haken}${a.art === 'entwurf_senden' ? 'Als gesendet markieren' : 'Erledigt'}</button>`);\n  // Abteilungen einbinden und Unterlagen anfordern, solange das im Vorgang noch nicht passiert ist\n  const ab = a.abteilungen ?? {};\n  const hinweis = (ab.technik || ab.qm || ab.dispo) && !['technik_freigabe', 'qm_freigabe', 'bestand_pruefen', 'entwurf_senden'].includes(a.art);\n  const einbinden = hinweis && !(a.ticket_aufgaben ?? []).some((y) => y.art === 'technik_freigabe')\n    ? formular({ id: a.id, aktion: 'einbinden' }, `<button class=\"knopf klein\" type=\"submit\">Technik &amp; QM einbinden</button>`) : '';\n  const unterlagen = hinweis && !(a.entwurf_zwecke ?? []).includes('unterlagen_anfordern')\n    ? formular({ id: a.id, aktion: 'unterlagen' }, '<button class=\"knopf klein\" type=\"submit\">Erstmuster/Zeugnis anfordern</button>') : '';\n  const vorlage = a.team === 'Einkauf' && a.bestellnummer && a.art !== 'entwurf_senden' ? '<a class=\"knopf klein\" href=\"/form/entwurf\">Vorlage</a>' : '';\n  const mail = a.mailtext ? `<details class=\"mail\"><summary class=\"knopf klein\">Mail anzeigen</summary><pre>${esc(a.mailtext)}</pre></details>` : '';\n  return `<footer class=\"aktionsleiste\">${knoepfe}${einbinden}${unterlagen}${vorlage}${mail}</footer>`;\n};\n\n// Sortierwerte für die Filterleiste. Im Screenshot-Modus nur der Rang, damit der Betrag nicht im Quelltext steht.\nconst jahresWerte = [...new Set(aufgaben.map((a) => Number(a.details?.jahres_mehrkosten_eur ?? 0)))].sort((x, y) => x - y);\nconst sortJahr = (a) => { const w = Number(a.details?.jahres_mehrkosten_eur ?? 0); return anonym ? jahresWerte.indexOf(w) : w; };\nconst sortPrio = (a) => (a.art === 'eskalation' ? 3 : a.prioritaet === 'hoch' ? 2 : a.status === 'offen' ? 1 : 0);\n\nconst karte = (a) => {\n  const liste = befunde(a);\n  const ohneDaten = (!a.details || !Object.keys(a.details).length) && a.art !== 'entwurf_senden';\n  return `\n  <article class=\"karte${a.art === 'eskalation' ? ' kritisch' : ''}\" data-id=\"${esc(a.id)}\" data-jahr=\"${sortJahr(a)}\" data-prio=\"${sortPrio(a)}\">\n    <header>\n      <div class=\"kopfzeile\"><h3>${lieferant(a.lieferant)}</h3><div class=\"meta num\">#${esc(a.ticket_id)} · ${esc(a.erstellt)}</div></div>\n      <div class=\"titel\">${status(a)}<span class=\"art\">${esc(ARTEN[a.art] ?? a.art)}</span></div>\n    </header>\n    ${gitter(a)}\n    ${liste.length ? `<ul class=\"befunde\">${liste.join('')}</ul>` : ''}\n    ${ohneDaten && (a.zusammenfassung || a.betreff) ? `<p class=\"text\">${anonym ? AUSGEBLENDET : esc(a.zusammenfassung ?? a.betreff)}</p>` : ''}\n    ${a.art === 'entwurf_senden' && a.ew_text ? (anonym ? `<p class=\"text\">${AUSGEBLENDET}</p>` : `<div class=\"entwurf\">\n      <div class=\"leise\">An: <span class=\"num\">${esc(a.ew_empfaenger)}</span>${a.ew_cc ? ` · Cc: <span class=\"num\">${esc(a.ew_cc)}</span>` : ''}</div>\n      ${(a.ew_warnungen ?? []).length ? `<p class=\"hinweis\">${ICON.warnung} Bitte prüfen: ${a.ew_warnungen.map(esc).join(', ')}</p>` : ''}\n      <pre><b>${esc(a.ew_betreff)}</b>\\n\\n${esc(a.ew_text)}</pre></div>`) : ''}\n    ${!anonym && a.art !== 'entwurf_senden' && a.entwurf_text && a.team === 'Einkauf' && a.status === 'offen' ? `<details><summary>Antwortentwurf <span class=\"leise\">${esc(a.foermlichkeit)}, ${esc(a.nachdruck)}</span></summary>\n      ${(a.entwurf_warnungen ?? []).length ? `<p class=\"hinweis\">${ICON.warnung} Bitte prüfen: ${a.entwurf_warnungen.map(esc).join(', ')}</p>` : ''}\n      <pre><b>${esc(a.entwurf_betreff)}</b>\\n\\n${esc(a.entwurf_text)}</pre></details>` : ''}\n    ${aktionsleiste(a)}\n  </article>`;\n};\n\n// Kennzahlen oben: offene Eskalationen, offene Reviews, Automatisierungsquote, Jahreswirkung offener Preiserhöhungen\nconst offen = aufgaben.filter((a) => a.status === 'offen');\nconst infos = aufgaben.filter((a) => a.status === 'info');\nconst eskalationen = offen.filter((a) => a.art === 'eskalation').length;\nconst quote = Number(k.gesamt_30) ? Math.round((Number(k.automatisch_30) / Number(k.gesamt_30)) * 100) : null;\n// Jahreswirkung je Ticket nur einmal zählen (Einkäufer und Eskalation tragen dieselben Details)\nconst jahresJeTicket = new Map();\nfor (const a of offen) if (a.details?.jahres_mehrkosten_eur != null) jahresJeTicket.set(a.ticket_id, Number(a.details.jahres_mehrkosten_eur));\nconst jahresSumme = [...jahresJeTicket.values()].reduce((s, x) => s + x, 0);\nconst kpi = (titel, wert, unter, ton = '') => `<div class=\"kpi ${ton}\"><div class=\"kpi-titel\">${titel}</div><div class=\"kpi-wert num\">${wert}</div><div class=\"kpi-unter\">${unter}</div></div>`;\nconst kennzahlen = `<section class=\"kpis\">\n  ${kpi('Offene Eskalationen', eskalationen, 'Einkaufsleitung und Geschäftsleitung', eskalationen ? 'krit' : '')}\n  ${kpi('Offene Reviews', reviews.length, 'Entscheidung durch einen Menschen', reviews.length ? 'warn' : '')}\n  ${kpi('Auto-Quote 30 Tage', quote === null ? '–' : `${quote}&nbsp;%`, `<span class=\"num\">${esc(k.automatisch_30)}</span> von <span class=\"num\">${esc(k.gesamt_30)}</span> Mails ohne Review`)}\n  ${kpi('Jahreswirkung offen', anonym ? '***.*** €' : `${Math.round(jahresSumme).toLocaleString('de-DE')}&nbsp;€`, `aus <span class=\"num\">${jahresJeTicket.size}</span> offenen Preisänderungen`)}\n</section>`;\n\nconst REIHENFOLGE = ['Geschäftsleitung', 'Einkaufsleitung', 'Technik', 'Qualitätsmanagement', 'Einkauf', 'Disposition', 'Strategischer Einkauf'];\nconst teams = [...new Set(offen.map((a) => a.team))]\n  .sort((x, y) => ((REIHENFOLGE.indexOf(x) + 1 || 99) - (REIHENFOLGE.indexOf(y) + 1 || 99)) || x.localeCompare(y));\nconst teamBereiche = teams.map((team) => {\n  const eigene = offen.filter((a) => a.team === team);\n  return `<section class=\"bereich\" data-team=\"${esc(team)}\"><h2>${esc(team)}<span class=\"zaehler num\">${eigene.length}</span></h2><div class=\"raster\" data-sortierbar>${eigene.map(karte).join('')}</div></section>`;\n}).join('');\n\n// Filterleiste: ein Reiter je Team mit offenen Aufgaben, dazu die Sortierung. Gefiltert und sortiert wird im Browser,\n// die Daten sind schon auf der Seite. \"Alle\" zeigt zusätzlich Review-Queue, Infos und Audit-Protokoll.\nconst filterleiste = `<div class=\"filter\" role=\"tablist\">\n  <button type=\"button\" role=\"tab\" class=\"reiter\" data-filter=\"alle\" aria-selected=\"true\">Alle<span class=\"num\">${offen.length}</span></button>\n  ${teams.map((t) => `<button type=\"button\" role=\"tab\" class=\"reiter\" data-filter=\"${esc(t)}\" aria-selected=\"false\">${esc(t)}<span class=\"num\">${offen.filter((a) => a.team === t).length}</span></button>`).join('')}\n  <label class=\"sortierung\">Sortieren nach\n    <select id=\"sortierung\"><option value=\"jahr\">Full-Year-Effekt (absteigend)</option><option value=\"prio\">Priorität</option><option value=\"neu\">Neueste zuerst</option></select>\n  </label>\n</div>`;\n\n// Sammelfreigabe: nur Preisfreigaben in der Kompetenz der Disposition ohne Warnhinweis. Welche das sind, entscheidet\n// beim Absenden der Server mit denselben Kriterien. Die Seite zeigt nur Anzahl und Summe für die Rückfrage.\nconst unkritisch = offen.filter((a) => a.art === 'preis_freigeben' && a.details?.angabe_lieferant_prozent == null && !gesperrt(a)\n  && Number(a.details?.prozent_12_monate ?? 0) <= Number(e.preis_toleranz_dispo_prozent ?? 5));\nconst unkritischSumme = unkritisch.reduce((s, a) => s + Number(a.details?.mehrkosten_eur ?? a.details?.mehrkosten ?? 0), 0);\nconst sammelknopf = anonym ? '' : unkritisch.length\n  ? formular({ sammel: '1' }, `<button class=\"knopf gruen\" type=\"submit\">${ICON.haken}Unkritische ABs freigeben<span class=\"num\">${unkritisch.length}</span></button>`,\n      `${unkritisch.length} Preisfreigaben innerhalb der Kompetenz der Disposition freigeben (Mehrkosten zusammen ${de(unkritischSumme)} €)? Jede Freigabe wird mit deinem Namen protokolliert.`)\n  : '<button class=\"knopf\" type=\"button\" disabled>Keine unkritischen ABs</button>';\n\n// Review-Queue: Betrug und Manipulation kritisch, alles andere als Warnung\nconst KRITISCH = ['bankdatenaenderung', 'prompt_injection_verdacht', 'lieferant_unbekannt'];\nconst GRUND = {\n  bankdatenaenderung: 'Bankdaten geändert', prompt_injection_verdacht: 'Prompt-Injection', kategorie_unplausibel: 'Kategorie unplausibel',\n  konfidenz_niedrig: 'Konfidenz niedrig', bestellung_unbekannt: 'Bestellung unbekannt', lieferant_unbekannt: 'Lieferant unbekannt',\n  llm_fehler: 'LLM nicht erreichbar', json_ungueltig: 'Ausgabe ungültig', schema_verletzt: 'Schema verletzt',\n};\nconst REGEL = {\n  bankdatenaenderung: 'Regel: Mails mit geänderter Bankverbindung gehen immer an einen Menschen, unabhängig von der Konfidenz',\n  prompt_injection_verdacht: 'Regel: Text enthält typische Anweisungen an das Modell',\n  kategorie_unplausibel: 'Regel: Angebot oder Preiserhöhung mit unserer Bestellnummer (45 + 8 Ziffern) ist vermutlich eine AB',\n  konfidenz_niedrig: `Regel: Konfidenz des Modells unter der Schwelle`,\n  bestellung_unbekannt: 'Regel: Bestellnummer nicht in den offenen Bestellungen (z. B. Zahlendreher)',\n  lieferant_unbekannt: 'Regel: Absender-Domain gehört zu keinem Lieferanten',\n};\nconst reviewZeilen = reviews.map((r) => `<tr>\n    <td class=\"num\">#${esc(r.id)}</td>\n    <td>${r.gruende.map((g) => `${badge(KRITISCH.includes(g) ? 'krit' : 'warn', GRUND[g] ?? g.replace(/_/g, ' '), KRITISCH.includes(g))}${regel(REGEL[g])}`).join(' ')}</td>\n    <td>${anonym ? AUSGEBLENDET : esc(r.betreff)}<div class=\"leise\">${anonym ? '' : esc(r.absender)}</div></td>\n    <td><span class=\"num\">${esc(r.vorschlag ?? '–')}</span><div class=\"leise num\">Konfidenz ${esc(r.konfidenz ?? '–')}</div></td>\n    <td class=\"num leise\">${esc(r.erstellt)}</td>\n  </tr>`).join('');\n\n// Audit-Protokoll: nur anhängbar, mit Prüfung der Hash-Kette\nconst AKTIONEN = { review_freigegeben: 'Review freigegeben', review_verworfen: 'Review verworfen', aufgabe_freigegeben: 'Aufgabe freigegeben',\n  aufgabe_abgelehnt: 'Aufgabe abgelehnt', aufgabe_erledigt: 'Aufgabe erledigt', sammelfreigabe: 'Sammelfreigabe',\n  aufgabe_einbinden: 'Technik & QM eingebunden', aufgabe_unterlagen: 'Unterlagen angefordert' };\nconst kette = Number(k.anzahl) === 0 ? badge('neutral', 'Noch keine Einträge')\n  : k.defekte_zeile ? badge('krit', `Kette ab Eintrag ${k.defekte_zeile} verändert`, true) : badge('ok', 'Hash-Kette intakt');\nconst auditZeilen = (k.eintraege ?? []).map((z) => `<tr>\n  <td class=\"num leise\">${esc(z.zeit)}</td><td>${person(z.akteur)}</td>\n  <td>${esc(AKTIONEN[z.aktion] ?? z.aktion)} <span class=\"num\">#${esc(z.objekt_id)}</span>${z.details?.kategorie ? ` → <span class=\"num\">${esc(z.details.kategorie)}</span>` : ''}${z.details?.vorschlag_llm ? ` <span class=\"leise\">LLM: ${esc(z.details.vorschlag_llm)}</span>` : ''}${z.details?.art ? ` <span class=\"leise\">${esc(ARTEN[z.details.art] ?? z.details.art)}, ${esc(z.details.team)}</span>` : ''}</td>\n  <td>${anonym ? (z.details?.notiz ? AUSGEBLENDET : '') : esc(z.details?.notiz ?? '')}</td><td class=\"num leise\">${esc(z.hash)}</td></tr>`).join('');\n\nconst html = `<!doctype html><html lang=\"de\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>Arbeitsliste Einkauf${anonym ? ' (anonym)' : ''}</title>\n<style>\n  :root {\n    --bg: #f8fafc; --flaeche: #ffffff; --flaeche-2: #f1f5f999; --linie: #e2e8f0; --linie-2: #cbd5e1;\n    --text: #0f172a; --text-2: #475569; --text-3: #64748b;\n    --krit: #be123c; --krit-bg: #f43f5e1a; --krit-linie: #fecdd399;\n    --warn: #92400e; --warn-bg: #f59e0b1a; --warn-linie: #fde68a99;\n    --ok: #065f46; --ok-bg: #10b9811a; --ok-linie: #a7f3d099;\n    --akzent: #0f172a;\n    --sans: Inter, ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif;\n    --mono: ui-monospace, \"JetBrains Mono\", \"SF Mono\", \"Cascadia Mono\", Consolas, monospace;\n  }\n  * { box-sizing: border-box; }\n  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.5 var(--sans); -webkit-font-smoothing: antialiased; }\n  .num { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: .92em; }\n  .leise { color: var(--text-3); font-size: 12px; }\n  .i { width: 14px; height: 14px; flex: none; }\n  .kopf { position: sticky; top: 0; z-index: 10; background: #ffffffe6; backdrop-filter: blur(6px); border-bottom: 1px solid var(--linie); }\n  .kopf-innen { max-width: 1280px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }\n  .marke { font-weight: 600; letter-spacing: -.01em; } .marke span { color: var(--text-3); font-weight: 400; margin-left: 8px; }\n  .aktionen { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }\n  .knopf { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border: 1px solid var(--linie-2); border-radius: 6px;\n           background: var(--flaeche); color: var(--text); font: 500 13px var(--sans); text-decoration: none; box-shadow: 0 1px 2px #0f172a0d; }\n  .knopf:hover { background: #f1f5f9; } .knopf.primaer { background: var(--akzent); color: #fff; border-color: var(--akzent); } .knopf.primaer:hover { background: #1e293b; }\n  .knopf.aktiv { border-color: #0f172a; box-shadow: inset 0 0 0 1px #0f172a; }\n  main { max-width: 1280px; margin: 0 auto; padding: 24px; }\n  .banner { display: flex; gap: 10px; align-items: flex-start; border: 1px solid var(--linie-2); background: var(--flaeche); border-radius: 8px; padding: 10px 14px; margin-bottom: 20px; color: var(--text-2); font-size: 13px; }\n  .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--linie); border-radius: 8px; background: var(--flaeche); box-shadow: 0 1px 2px #0f172a0d; margin-bottom: 28px; }\n  .kpi { padding: 14px 18px; border-left: 1px solid var(--linie); } .kpi:first-child { border-left: 0; }\n  .kpi-titel { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--text-3); }\n  .kpi-wert { font-size: 26px; font-weight: 500; letter-spacing: -.02em; margin: 4px 0 2px; }\n  .kpi.krit .kpi-wert { color: var(--krit); } .kpi.warn .kpi-wert { color: var(--warn); }\n  .kpi-unter { font-size: 12px; color: var(--text-3); }\n  .bereich { margin-bottom: 28px; }\n  h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }\n  .zaehler { font-size: 11px; font-weight: 500; color: var(--text-2); border: 1px solid var(--linie-2); border-radius: 999px; padding: 0 7px; background: var(--flaeche); }\n  .raster { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px; }\n  .karte { background: var(--flaeche); border: 1px solid var(--linie); border-radius: 8px; box-shadow: 0 1px 2px #0f172a0d; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }\n  .karte.kritisch { border-color: #fda4af; box-shadow: 0 0 0 3px #f43f5e0d, 0 1px 2px #0f172a0d; }\n  .karte header { display: flex; flex-direction: column; gap: 6px; }\n  .kopfzeile { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }\n  .titel { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; } h3 { font-size: 15px; font-weight: 700; margin: 0; color: var(--text); letter-spacing: -.01em; }\n  .art { font-size: 12.5px; font-weight: 500; color: var(--text-2); }\n  .meta { color: var(--text-3); font-size: 11px; white-space: nowrap; }\n  .gitter { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 0; background: var(--linie); border: 1px solid var(--linie); border-radius: 6px; overflow: hidden; }\n  .gitter div { background: #f8fafc; padding: 6px 10px; min-width: 0; }\n  .gitter div:last-child:nth-child(odd) { grid-column: span 2; }\n  .gitter dt { font-size: 11px; color: var(--text-3); } .gitter dd { margin: 0; font-size: 13px; overflow-wrap: anywhere; }\n  .befunde { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; font-size: 13px; }\n  .befund { display: flex; align-items: flex-start; gap: 7px; color: var(--text-2); } .befund > span:not(.tip) { flex: 1; min-width: 0; }\n  .befund > .i, .befund .tip { margin-top: 3px; }\n  .befund.krit, .befund.warn { padding: 6px 8px; border-left: 2px solid; border-radius: 0 4px 4px 0; font-size: 12.5px; }\n  .befund.krit { border-color: #f43f5e; background: #fff1f299; color: #881337; } .befund.warn { border-color: #f59e0b; background: #fffbeb99; color: #78350f; }\n  .befund.krit > .i { color: var(--krit); } .befund.warn > .i { color: #b45309; } .befund.ok > .i { color: #047857; } .befund.neutral > .i { color: var(--linie-2); width: 8px; height: 8px; margin: 6px 3px 0; }\n  .badge { display: inline-flex; align-items: center; gap: 5px; height: 20px; padding: 0 7px; border-radius: 4px; border: 1px solid; font: 500 10.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; white-space: nowrap; }\n  .badge .i { width: 11px; height: 11px; }\n  .badge.krit { background: var(--krit-bg); color: var(--krit); border-color: var(--krit-linie); }\n  .badge.warn { background: var(--warn-bg); color: var(--warn); border-color: var(--warn-linie); }\n  .badge.ok { background: var(--ok-bg); color: var(--ok); border-color: var(--ok-linie); }\n  .badge.neutral { background: #f1f5f9; color: var(--text-2); border-color: var(--linie); }\n  .puls { position: relative; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }\n  .puls::after { content: \"\"; position: absolute; inset: -3px; border-radius: 50%; border: 1px solid currentColor; animation: puls 1.8s ease-out infinite; }\n  @keyframes puls { from { transform: scale(.6); opacity: .9; } to { transform: scale(1.6); opacity: 0; } }\n  @media (prefers-reduced-motion: reduce) { .puls::after { animation: none; } }\n  .tip { position: relative; display: inline-flex; color: var(--text-3); cursor: help; outline: none; }\n  .tip:hover, .tip:focus-visible { color: var(--text); }\n  .tip::after { content: attr(data-tip); position: absolute; right: 0; bottom: calc(100% + 8px); width: max-content; max-width: 320px; padding: 7px 10px;\n                background: #0f172a; color: #f8fafc; font: 400 12px/1.45 var(--mono); border-radius: 6px; box-shadow: 0 8px 24px #0f172a33;\n                opacity: 0; pointer-events: none; transform: translateY(2px); transition: opacity .12s, transform .12s; z-index: 20; white-space: normal; }\n  .tip:hover::after, .tip:focus-visible::after { opacity: 1; transform: none; }\n  .text { margin: 0; color: var(--text-2); font-size: 13px; }\n  details { border-top: 1px solid var(--linie); padding-top: 8px; } summary { cursor: pointer; font-size: 13px; font-weight: 500; }\n  pre { white-space: pre-wrap; background: #f8fafc; border: 1px solid var(--linie); padding: 10px 12px; border-radius: 6px; font: 12.5px/1.55 var(--sans); margin: 8px 0 0; }\n  .hinweis { display: flex; gap: 6px; align-items: center; color: var(--warn); font-size: 12px; margin: 8px 0 0; }\n  .tabelle { background: var(--flaeche); border: 1px solid var(--linie); border-radius: 8px; overflow: auto; box-shadow: 0 1px 2px #0f172a0d; }\n  table { border-collapse: collapse; width: 100%; font-size: 13px; }\n  th { text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--text-3); background: #f8fafc; border-bottom: 1px solid var(--linie); padding: 8px 12px; }\n  td { border-bottom: 1px solid var(--linie); padding: 8px 12px; vertical-align: top; } tr:last-child td { border-bottom: 0; }\n  td .badge { margin: 0 2px 4px 0; }\n  .leer { color: var(--text-3); font-size: 13px; padding: 14px 16px; background: var(--flaeche); border: 1px dashed var(--linie-2); border-radius: 8px; }\n  .aktionsleiste { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; border-top: 1px solid var(--linie); padding-top: 10px; margin-top: auto; }\n  .aktionsleiste form { margin: 0; }\n  .knopf.klein { height: 28px; padding: 0 10px; font-size: 12.5px; }\n  .knopf.gruen { background: #059669; border-color: #047857; color: #fff; } .knopf.gruen:hover { background: #047857; }\n  .knopf.rot { color: #9f1239; border-color: #fecdd3; } .knopf.rot:hover { background: #fff1f2; }\n  .knopf[disabled] { color: var(--text-3); box-shadow: none; cursor: not-allowed; }\n  .knopf .num { margin-left: 2px; padding: 0 6px; border-radius: 999px; background: #ffffff33; }\n  form.entscheiden { margin: 0; display: inline-flex; }\n  .entwurf pre { margin-top: 6px; max-height: 260px; overflow: auto; }\n  details.mail { border: 0; padding: 0; margin-left: auto; } details.mail[open] { flex-basis: 100%; margin-left: 0; order: 9; }\n  details.mail summary { list-style: none; } details.mail summary::-webkit-details-marker { display: none; }\n  .filter { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; border-bottom: 1px solid var(--linie); margin: -8px 0 24px; }\n  .reiter { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border: 0; border-bottom: 2px solid transparent; background: none; color: var(--text-2); font: 500 13px var(--sans); cursor: pointer; margin-bottom: -1px; }\n  .reiter:hover { color: var(--text); } .reiter[aria-selected=\"true\"] { color: var(--text); border-bottom-color: var(--text); }\n  .reiter .num { font-size: 11px; color: var(--text-3); }\n  .sortierung { margin-left: auto; font-size: 12px; color: var(--text-3); display: flex; align-items: center; gap: 8px; }\n  select, .bearbeiter input { height: 30px; border: 1px solid var(--linie-2); border-radius: 6px; background: var(--flaeche); color: var(--text); font: 13px var(--sans); padding: 0 8px; }\n  .bearbeiter { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-3); }\n  .bearbeiter input { width: 170px; } .bearbeiter input.fehlt { border-color: #f43f5e; box-shadow: 0 0 0 3px #f43f5e22; }\n  [hidden] { display: none !important; }\n  .maske { font-family: var(--mono); font-size: .9em; background: #e2e8f0; color: #334155; border-radius: 3px; padding: 0 4px; }\n  @media (max-width: 760px) { .kpis { grid-template-columns: 1fr 1fr; } .kpi:nth-child(3) { border-left: 0; } .kpi:nth-child(n+3) { border-top: 1px solid var(--linie); }\n    .raster { grid-template-columns: 1fr; } main, .kopf-innen { padding-left: 16px; padding-right: 16px; } }\n</style></head><body>\n<div class=\"kopf\"><div class=\"kopf-innen\">\n  <div class=\"marke\">Supplier Mail Triage<span>Arbeitsliste Einkauf und Disposition</span></div>\n  <nav class=\"aktionen\">\n    ${anonym ? '' : '<label class=\"bearbeiter\">Bearbeiter<input id=\"bearbeiter\" autocomplete=\"name\" placeholder=\"Vor- und Nachname\"></label>'}\n    ${sammelknopf}\n    <a class=\"knopf\" href=\"/form/review\">Review abschließen</a>\n    <a class=\"knopf\" href=\"/form/entwurf\">Antwortentwurf</a>\n    <a class=\"knopf${anonym ? ' aktiv' : ' primaer'}\" href=\"${anonym ? '?' : '?anonym=1'}\">${anonym ? ICON.offen + 'Screenshot-Modus beenden' : ICON.schloss + 'Screenshot-Modus (Anonymisieren)'}</a>\n  </nav>\n</div></div>\n<main>\n${anonym ? `<div class=\"banner\">${ICON.schloss}<div><b>Screenshot-Modus aktiv.</b> Lieferanten, Bestellnummern, Personen und Beträge sind auf dem Server ersetzt, Mailtexte, Betreffs und Entwürfe ausgeblendet. Prozentwerte, Daten und Regeln bleiben sichtbar.</div></div>` : ''}\n${kennzahlen}\n${filterleiste}\n${teamBereiche || '<p class=\"leer\">Keine offenen Aufgaben.</p>'}\n<section class=\"bereich\" data-team=\"__rest\"><h2>Review-Queue<span class=\"zaehler num\">${reviews.length}</span></h2>\n  ${reviewZeilen ? `<div class=\"tabelle\"><table><tr><th>ID</th><th>Gründe</th><th>Mail</th><th>Vorschlag LLM</th><th>Eingang</th></tr>${reviewZeilen}</table></div>` : '<p class=\"leer\">Keine offenen Reviews.</p>'}\n</section>\n<section class=\"bereich\" data-team=\"__rest\"><h2>Infos der letzten 30 Tage<span class=\"zaehler num\">${infos.length}</span></h2>\n  ${infos.length ? `<div class=\"raster\">${infos.map(karte).join('')}</div>` : '<p class=\"leer\">Keine Infos.</p>'}\n</section>\n<section class=\"bereich\" data-team=\"__rest\"><h2>Audit-Protokoll ${kette}</h2>\n  ${auditZeilen ? `<div class=\"tabelle\"><table><tr><th>Zeit</th><th>Wer</th><th>Entscheidung</th><th>Notiz</th><th>Hash</th></tr>${auditZeilen}</table></div>` : '<p class=\"leer\">Noch keine Entscheidungen protokolliert.</p>'}\n</section>\n</main>\n<script>\n(() => {\n  // Name des Bearbeiters: einmal eingeben, bleibt im Browser gespeichert und geht mit jeder Entscheidung ins Audit-Protokoll\n  const feld = document.getElementById('bearbeiter');\n  try { if (feld) feld.value = localStorage.getItem('bearbeiter') || ''; } catch (_) {}\n  feld?.addEventListener('change', () => { try { localStorage.setItem('bearbeiter', feld.value.trim()); } catch (_) {} });\n  feld?.addEventListener('input', () => feld.classList.remove('fehlt'));\n  document.addEventListener('submit', (ereignis) => {\n    const form = ereignis.target;\n    if (!form.matches('form.entscheiden')) return;\n    const name = feld ? feld.value.trim() : '';\n    if (!name) { ereignis.preventDefault(); feld?.classList.add('fehlt'); feld?.focus(); return; }\n    form.querySelector('input[name=akteur]').value = name;\n    if (form.dataset.bestaetigen && !window.confirm(form.dataset.bestaetigen)) ereignis.preventDefault();\n  });\n\n  // Filter nach Team\n  const reiter = document.querySelectorAll('[data-filter]');\n  reiter.forEach((r) => r.addEventListener('click', () => {\n    reiter.forEach((x) => x.setAttribute('aria-selected', String(x === r)));\n    document.querySelectorAll('section[data-team]').forEach((s) => { s.hidden = r.dataset.filter !== 'alle' && s.dataset.team !== r.dataset.filter; });\n  }));\n\n  // Sortierung innerhalb jedes Team-Bereichs\n  const auswahl = document.getElementById('sortierung');\n  const wert = (karte, schluessel) => Number(karte.dataset[schluessel] || 0);\n  const sortiere = () => {\n    const nach = auswahl.value;\n    document.querySelectorAll('.raster[data-sortierbar]').forEach((raster) => {\n      [...raster.children].sort((x, y) => nach === 'jahr' ? wert(y, 'jahr') - wert(x, 'jahr')\n        : nach === 'prio' ? wert(y, 'prio') - wert(x, 'prio') || wert(y, 'jahr') - wert(x, 'jahr')\n        : wert(y, 'id') - wert(x, 'id')).forEach((karte) => raster.appendChild(karte));\n    });\n  };\n  auswahl?.addEventListener('change', sortiere);\n  if (auswahl) sortiere();\n})();\n</script>\n</body></html>`;\n\nreturn { json: { html } };\n"
       },
       "id": "d885f429-dcf6-41dc-abde-8079f64b02e4",
       "name": "HTML-Seite bauen",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        660,
+        880,
         200
       ]
     },
@@ -138,7 +138,7 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        880,
+        1100,
         200
       ]
     },
@@ -176,6 +176,9 @@
                     "option": "rechnung"
                   },
                   {
+                    "option": "preiserhoehung"
+                  },
+                  {
                     "option": "sonstiges"
                   },
                   {
@@ -197,7 +200,8 @@
         "responseMode": "lastNode",
         "options": {
           "path": "review",
-          "buttonLabel": "Speichern"
+          "buttonLabel": "Speichern",
+          "customCss": "/* Gleiche Optik wie die Arbeitsliste: Slate, feine Linien, Zahlen in Monospace. Keine Schriften von fremden Servern. */\n:root {\n\t--font-family: Inter, ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif;\n\t--font-weight-normal: 400;\n\t--font-weight-bold: 600;\n\t--font-size-label: 13px;\n\t--font-size-input: 14px;\n\t--font-size-header: 18px;\n\t--font-size-paragraph: 13px;\n\t--color-background: #f8fafc;\n\t--color-card-bg: #ffffff;\n\t--color-card-border: #e2e8f0;\n\t--color-card-shadow: rgba(15, 23, 42, 0.05);\n\t--color-header: #0f172a;\n\t--color-label: #334155;\n\t--color-input-border: #cbd5e1;\n\t--color-input-text: #0f172a;\n\t--color-focus-border: #0f172a;\n\t--color-submit-btn-bg: #0f172a;\n\t--color-submit-btn-text: #ffffff;\n\t--color-error: #be123c;\n\t--color-required: #be123c;\n\t--color-link: #475569;\n\t--color-html-text: #334155;\n\t--color-html-link: #0f172a;\n\t--color-header-subtext: #64748b;\n\t--border-radius-card: 8px;\n\t--card-border-radius: 8px;\n\t--border-radius-input: 6px;\n\t--container-width: 520px;\n\t--submit-btn-height: 40px;\n\t--box-shadow-card: 0 1px 2px 0 var(--color-card-shadow);\n}\ninput[type=\"number\"], input[type=\"text\"] { font-variant-numeric: tabular-nums; }\ninput[type=\"number\"] { font-family: ui-monospace, \"JetBrains Mono\", \"Cascadia Mono\", Consolas, monospace; }\nbutton[type=\"submit\"] { font-weight: 500; letter-spacing: .01em; }\n"
         }
       },
       "id": "7726e432-08f5-4f43-b343-fde5414cb719",
@@ -252,7 +256,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE review_queue\nSET status = 'verworfen', bearbeitet_von = $2, notiz = $3, erledigt_am = now()\nWHERE id = $1 AND status = 'offen'\nRETURNING id AS review_id;",
+        "query": "-- Review verwerfen und die Entscheidung im Audit-Protokoll festhalten\nWITH u AS (\n    UPDATE review_queue\n    SET status = 'verworfen', bearbeitet_von = $2, notiz = $3, erledigt_am = now()\n    WHERE id = $1 AND status = 'offen'\n    RETURNING id, gruende, llm_ausgabe->>'kategorie' AS vorschlag\n), a AS (\n    INSERT INTO audit_log (akteur, aktion, objekt, objekt_id, details)\n    SELECT COALESCE(NULLIF(trim($2), ''), 'unbekannt'), 'review_verworfen', 'review_queue', u.id::text,\n           jsonb_build_object('notiz', $3, 'gruende', u.gruende, 'vorschlag_llm', u.vorschlag)\n    FROM u\n)\nSELECT id AS review_id FROM u;",
         "options": {
           "queryReplacement": "={{ [ $('Formular Review').item.json['Review-ID'], $('Formular Review').item.json['Bearbeitet von'], $('Formular Review').item.json.Notiz ?? null ] }}"
         }
@@ -276,7 +280,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "-- Review abschließen und in einem Schritt das Ticket mit der vom Menschen bestätigten Kategorie anlegen\nWITH r AS (\n    SELECT * FROM review_queue WHERE id = $1 AND status = 'offen' FOR UPDATE\n), t AS (\n    INSERT INTO tickets (mail_id, kategorie, team, absender, betreff, lieferant, bestellnummer, rechnungsnummer,\n                         angebotsnummer, artikel, einzelpreis, menge, betrag, waehrung, liefertermin,\n                         dringlichkeit, zusammenfassung, quelle, warnungen)\n    SELECT r.mail_id, tr.kategorie, tr.team, r.mail->>'absender', r.mail->>'betreff',\n           r.llm_ausgabe->>'lieferant', r.llm_ausgabe->>'bestellnummer', r.llm_ausgabe->>'rechnungsnummer',\n           r.llm_ausgabe->>'angebotsnummer', r.llm_ausgabe->>'artikel', (r.llm_ausgabe->>'einzelpreis')::numeric,\n           (r.llm_ausgabe->>'menge')::numeric, (r.llm_ausgabe->>'betrag')::numeric,\n           r.llm_ausgabe->>'waehrung', (r.llm_ausgabe->>'liefertermin')::date,\n           r.llm_ausgabe->>'dringlichkeit', COALESCE(r.llm_ausgabe->>'zusammenfassung', r.mail->>'betreff'),\n           'review', r.gruende\n    FROM r JOIN team_routing tr ON tr.kategorie = $2\n    RETURNING id, mail_id, team\n)\nUPDATE review_queue q\nSET status = 'erledigt', korrigierte_kategorie = $2, bearbeitet_von = $3, notiz = $4,\n    ticket_id = t.id, erledigt_am = now()\nFROM t\nWHERE q.mail_id = t.mail_id\nRETURNING q.id AS review_id, t.id AS ticket_id, t.team;",
+        "query": "-- Review abschließen und in einem Schritt das Ticket mit der vom Menschen bestätigten Kategorie, seine Aufgabe\n-- und den Eintrag im Audit-Protokoll anlegen.\n-- Geht das Ticket an den Einkauf, ist der Einkäufer des Lieferanten zuständig (über die Absender-Domain).\nWITH r AS (\n    SELECT * FROM review_queue WHERE id = $1 AND status = 'offen' FOR UPDATE\n), l AS (\n    SELECT l.einkaeufer FROM r\n    JOIN lieferanten l ON l.mail_domain = lower(substring(r.mail->>'absender' from '@([^>[:space:]]+)'))\n), t AS (\n    INSERT INTO tickets (mail_id, kategorie, team, zustaendig, absender, betreff, lieferant, bestellnummer, rechnungsnummer,\n                         angebotsnummer, artikel, einzelpreis, menge, betrag, waehrung, liefertermin,\n                         dringlichkeit, zusammenfassung, quelle, warnungen, mailtext, abteilungen)\n    SELECT r.mail_id, tr.kategorie, tr.team, CASE WHEN tr.team = 'Einkauf' THEN (SELECT einkaeufer FROM l) END,\n           r.mail->>'absender', r.mail->>'betreff',\n           r.llm_ausgabe->>'lieferant', r.llm_ausgabe->>'bestellnummer', r.llm_ausgabe->>'rechnungsnummer',\n           r.llm_ausgabe->>'angebotsnummer', r.llm_ausgabe->>'artikel', (r.llm_ausgabe->>'einzelpreis')::numeric,\n           (r.llm_ausgabe->>'menge')::numeric, (r.llm_ausgabe->>'betrag')::numeric,\n           r.llm_ausgabe->>'waehrung', (r.llm_ausgabe->>'liefertermin')::date,\n           r.llm_ausgabe->>'dringlichkeit', COALESCE(r.llm_ausgabe->>'zusammenfassung', r.mail->>'betreff'),\n           'review', r.gruende, r.mail->>'text', r.llm_ausgabe->'abteilungen'\n    FROM r JOIN team_routing tr ON tr.kategorie = $2\n    RETURNING id, mail_id, team, zustaendig, dringlichkeit\n), a AS (\n    INSERT INTO aufgaben (ticket_id, team, zustaendig, art, prioritaet)\n    SELECT t.id, t.team, t.zustaendig, 'bearbeiten', CASE WHEN t.dringlichkeit = 'hoch' THEN 'hoch' ELSE 'normal' END\n    FROM t\n), q AS (\n    UPDATE review_queue q\n    SET status = 'erledigt', korrigierte_kategorie = $2, bearbeitet_von = $3, notiz = $4,\n        ticket_id = t.id, erledigt_am = now()\n    FROM t\n    WHERE q.mail_id = t.mail_id\n    RETURNING q.id AS review_id, t.id AS ticket_id, t.team\n), au AS (\n    -- Audit: wer wann was entschieden hat, mit Vorschlag des LLM und Begründung des Menschen\n    INSERT INTO audit_log (akteur, aktion, objekt, objekt_id, details)\n    SELECT COALESCE(NULLIF(trim($3), ''), 'unbekannt'), 'review_freigegeben', 'review_queue', q.review_id::text,\n           jsonb_build_object('kategorie', $2, 'vorschlag_llm', (SELECT llm_ausgabe->>'kategorie' FROM r),\n                              'gruende', (SELECT gruende FROM r), 'notiz', $4, 'ticket_id', q.ticket_id, 'team', q.team)\n    FROM q\n)\nSELECT review_id, ticket_id, team FROM q;",
         "options": {
           "queryReplacement": "={{ [ $('Formular Review').item.json['Review-ID'], $('Formular Review').item.json.Entscheidung, $('Formular Review').item.json['Bearbeitet von'], $('Formular Review').item.json.Notiz ?? null ] }}"
         }
@@ -302,7 +306,9 @@
         "operation": "completion",
         "completionTitle": "={{ $json.review_id ? 'Erledigt' : 'Nicht gefunden' }}",
         "completionMessage": "={{ $json.review_id ? ($json.ticket_id ? `Review ${$json.review_id} abgeschlossen, Ticket ${$json.ticket_id} für ${$json.team} angelegt.` : `Review ${$json.review_id} verworfen.`) : 'Kein offener Review mit dieser ID.' }}",
-        "options": {}
+        "options": {
+          "customCss": "/* Gleiche Optik wie die Arbeitsliste: Slate, feine Linien, Zahlen in Monospace. Keine Schriften von fremden Servern. */\n:root {\n\t--font-family: Inter, ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif;\n\t--font-weight-normal: 400;\n\t--font-weight-bold: 600;\n\t--font-size-label: 13px;\n\t--font-size-input: 14px;\n\t--font-size-header: 18px;\n\t--font-size-paragraph: 13px;\n\t--color-background: #f8fafc;\n\t--color-card-bg: #ffffff;\n\t--color-card-border: #e2e8f0;\n\t--color-card-shadow: rgba(15, 23, 42, 0.05);\n\t--color-header: #0f172a;\n\t--color-label: #334155;\n\t--color-input-border: #cbd5e1;\n\t--color-input-text: #0f172a;\n\t--color-focus-border: #0f172a;\n\t--color-submit-btn-bg: #0f172a;\n\t--color-submit-btn-text: #ffffff;\n\t--color-error: #be123c;\n\t--color-required: #be123c;\n\t--color-link: #475569;\n\t--color-html-text: #334155;\n\t--color-html-link: #0f172a;\n\t--color-header-subtext: #64748b;\n\t--border-radius-card: 8px;\n\t--card-border-radius: 8px;\n\t--border-radius-input: 6px;\n\t--container-width: 520px;\n\t--submit-btn-height: 40px;\n\t--box-shadow-card: 0 1px 2px 0 var(--color-card-shadow);\n}\ninput[type=\"number\"], input[type=\"text\"] { font-variant-numeric: tabular-nums; }\ninput[type=\"number\"] { font-family: ui-monospace, \"JetBrains Mono\", \"Cascadia Mono\", Consolas, monospace; }\nbutton[type=\"submit\"] { font-weight: 500; letter-spacing: .01em; }\n"
+        }
       },
       "id": "a984deae-1570-423d-80d7-85d19d44c39c",
       "name": "Formular Ergebnis",
@@ -311,6 +317,336 @@
       "position": [
         700,
         640
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Eine Zeile mit Kennzahlen, Einstellungen (für die Regelbegründungen) und den letzten 20 Audit-Einträgen\nSELECT (SELECT audit_pruefen()) AS defekte_zeile,\n       (SELECT count(*) FROM audit_log) AS anzahl,\n       COALESCE((SELECT jsonb_agg(x ORDER BY x.id DESC) FROM (\n           SELECT id, to_char(zeit AT TIME ZONE 'Europe/Berlin', 'DD.MM.YYYY HH24:MI:SS') AS zeit, akteur, aktion, objekt_id,\n                  details, left(hash, 12) AS hash\n           FROM audit_log ORDER BY id DESC LIMIT 20) x), '[]'::jsonb) AS eintraege,\n       (SELECT jsonb_object_agg(schluessel, wert) FROM einstellungen) AS einstellungen,\n       -- Auto-Quote: automatisch angelegte Tickets gegen alle verarbeiteten Mails der letzten 30 Tage\n       (SELECT count(*) FROM tickets WHERE quelle = 'automatisch' AND erstellt_am > now() - interval '30 days') AS automatisch_30,\n       (SELECT count(*) FROM tickets WHERE quelle = 'automatisch' AND erstellt_am > now() - interval '30 days')\n         + (SELECT count(*) FROM review_queue WHERE erstellt_am > now() - interval '30 days') AS gesamt_30;",
+        "options": {}
+      },
+      "id": "1d553787-7a6b-4cde-afbb-3a4a368db5f7",
+      "name": "Kennzahlen und Audit laden",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        660,
+        200
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "credTriagePg0001",
+          "name": "Postgres Triage"
+        }
+      },
+      "alwaysOutputData": true,
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "aufgabe",
+        "authentication": "basicAuth",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "1cdd2bb9-38d1-4d48-9183-ffeb4368888b",
+      "name": "Webhook Entscheidung",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        1120
+      ],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "credReviewLogin1",
+          "name": "Review Login"
+        }
+      },
+      "webhookId": "a3ab5561-5e67-4d35-8b1b-fa568aebf393"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Entscheidung aus der Arbeitsliste prüfen, bevor etwas in der Datenbank landet\nconst anfrage = $input.first().json;\nconst kopf = anfrage.headers ?? {};\nconst daten = anfrage.body ?? {};\nconst fehler = [];\n\n// Schutz gegen untergeschobene Formulare (CSRF): Der Browser schickt die Basic-Auth-Daten auch mit, wenn ein Formular\n// auf einer fremden Seite hierher sendet. Deshalb muss die Anfrage von der Arbeitsliste auf demselben Host kommen.\nconst herkunft = String(kopf.origin ?? '');\nif (![`http://${kopf.host}`, `https://${kopf.host}`].includes(herkunft)) fehler.push('Die Anfrage kommt nicht von der Arbeitsliste.');\n\nconst sammel = daten.sammel === '1';\nconst id = Number.parseInt(daten.id, 10);\nconst aktion = sammel ? 'freigegeben' : String(daten.aktion ?? '');\nconst akteur = String(daten.akteur ?? '').trim().slice(0, 100);\nconst notiz = String(daten.notiz ?? '').trim().slice(0, 500) || null;\n// einbinden: Technik und QM (bei Abkündigung auch Disposition) bekommen Aufgaben, dazu ein interner Entwurf\n// unterlagen: Entwurf an den Lieferanten mit Anforderung von Datenblatt, Zeugnis 3.1 und Erstmustern\nif (!['freigegeben', 'abgelehnt', 'erledigt', 'einbinden', 'unterlagen'].includes(aktion)) fehler.push('Unbekannte Aktion.');\nif (!sammel && !(id > 0)) fehler.push('Keine Aufgabe angegeben.');\nif (!akteur) fehler.push('Der Name des Bearbeiters fehlt.');\n\n// Absolute Rücksprungadresse aus der geprüften Herkunft: Eine relative Adresse macht n8n zu \"https:///...\"\nconst zurueck = `${fehler.length ? '' : herkunft}/webhook/arbeitsliste`;\nreturn [{ json: { gueltig: fehler.length === 0, fehler, id: sammel ? null : id, aktion, akteur, notiz, sammel, zurueck } }];\n"
+      },
+      "id": "e8b2e33b-a5fa-495a-8d7f-5c4aa075ab28",
+      "name": "Entscheidung prüfen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fa049d9b-9c51-43b5-90a1-6c800d2da8e5",
+              "leftValue": "={{ $json.gueltig }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "84a9384c-97a6-4006-9ec3-b243973ef59c",
+      "name": "Entscheidung gültig?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        440,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Entscheidung speichern. Die Datenbank prüft noch einmal: passende Aktion je Aufgabenart und keine Preisfreigabe,\n-- solange Technik oder QM nicht freigegeben haben. Neue Aufgaben und Entwürfe entstehen nur für gültige Schritte.\nWITH ops AS (\n    SELECT * FROM jsonb_to_recordset($1::jsonb) AS o(id INT, aktion TEXT, neue_aufgaben JSONB, entwuerfe JSONB)\n), a AS (\n    UPDATE aufgaben x\n    SET status = 'erledigt', entscheidung = o.aktion, erledigt_von = $2, erledigt_am = now(), notiz = $3\n    FROM ops o\n    WHERE x.id = o.id AND x.status = 'offen' AND o.aktion IN ('freigegeben', 'abgelehnt', 'erledigt')\n      AND (o.aktion IN ('freigegeben', 'abgelehnt'))\n          = (x.art IN ('preis_freigeben', 'preiserhoehung_pruefen', 'eskalation', 'technik_freigabe', 'qm_freigabe'))\n      -- Preisfreigabe nur, wenn Technik und QM freigegeben haben, sobald sie eingebunden oder laut Merker nötig sind\n      AND NOT (o.aktion = 'freigegeben' AND x.art IN ('preis_freigeben', 'preiserhoehung_pruefen', 'eskalation')\n               AND (EXISTS (SELECT 1 FROM aufgaben y WHERE y.ticket_id = x.ticket_id AND y.art IN ('technik_freigabe', 'qm_freigabe'))\n                    OR EXISTS (SELECT 1 FROM tickets t WHERE t.id = x.ticket_id\n                               AND COALESCE((t.abteilungen->>'technik')::boolean OR (t.abteilungen->>'qm')::boolean, false)))\n               AND (SELECT count(DISTINCT y.art) FROM aufgaben y WHERE y.ticket_id = x.ticket_id\n                    AND y.art IN ('technik_freigabe', 'qm_freigabe') AND y.entscheidung = 'freigegeben') < 2)\n    RETURNING x.id, x.ticket_id, x.art, x.details, o.aktion\n), gueltig AS (\n    SELECT o.*, x.ticket_id, x.art, x.team, x.details\n    FROM ops o JOIN aufgaben x ON x.id = o.id\n    WHERE (o.aktion IN ('einbinden', 'unterlagen') AND x.status = 'offen') OR o.id IN (SELECT id FROM a)\n), n AS (\n    INSERT INTO aufgaben (ticket_id, team, zustaendig, art, prioritaet, status, details)\n    SELECT g.ticket_id, na.team, na.zustaendig, na.art, COALESCE(na.prioritaet, 'normal'), 'offen', COALESCE(na.details, '{}'::jsonb)\n    FROM gueltig g\n    CROSS JOIN LATERAL jsonb_to_recordset(COALESCE(g.neue_aufgaben, '[]'::jsonb))\n         AS na(team TEXT, zustaendig TEXT, art TEXT, prioritaet TEXT, details JSONB)\n    WHERE NOT EXISTS (SELECT 1 FROM aufgaben y WHERE y.ticket_id = g.ticket_id AND y.art = na.art)\n    RETURNING id\n), e AS (\n    INSERT INTO entwuerfe (ticket_id, empfaenger, cc, betreff, text, foermlichkeit, nachdruck, erstellt_von, warnungen, art, zweck)\n    SELECT g.ticket_id, en.empfaenger, en.cc, en.betreff, en.text, 'förmlich', 'gelassen', $2, COALESCE(en.warnungen, '[]'::jsonb), en.art, en.zweck\n    FROM gueltig g\n    CROSS JOIN LATERAL jsonb_to_recordset(COALESCE(g.entwuerfe, '[]'::jsonb))\n         AS en(empfaenger TEXT, cc TEXT, betreff TEXT, text TEXT, art TEXT, zweck TEXT, warnungen JSONB)\n    RETURNING id, ticket_id, empfaenger, art, zweck\n), es AS (\n    -- Jeder Entwurf wird eine Aufgabe für den Einkäufer des Lieferanten: prüfen, selbst senden, als gesendet markieren\n    INSERT INTO aufgaben (ticket_id, team, zustaendig, art, prioritaet, status, details)\n    SELECT e.ticket_id, 'Einkauf',\n           (SELECT l.einkaeufer FROM tickets t JOIN lieferanten l ON l.mail_domain = lower(substring(t.absender from '@([^>[:space:]]+)'))\n            WHERE t.id = e.ticket_id),\n           'entwurf_senden', 'normal', 'offen',\n           jsonb_build_object('entwurf_id', e.id, 'empfaenger', e.empfaenger, 'art', e.art, 'zweck', e.zweck)\n    FROM e\n    RETURNING id\n), h AS (\n    -- Ein freigegebener AB-Preis wird zum neuen Preis in der Preishistorie\n    INSERT INTO preis_historie (lieferant_id, artikelnr, preis, waehrung, gueltig_ab, aenderung_prozent, anlass)\n    SELECT DISTINCT ON (b.lieferant_id, b.artikelnr) b.lieferant_id, b.artikelnr, (a.details->>'bestaetigt')::numeric, b.waehrung,\n           current_date, (a.details->>'prozent')::numeric, 'AB ' || b.bestellnummer || ' freigegeben von ' || $2\n    FROM a\n    JOIN tickets t ON t.id = a.ticket_id\n    JOIN bestellungen b ON b.bestellnummer = t.bestellnummer\n    WHERE a.aktion = 'freigegeben' AND a.details->>'art' = 'preis'\n    ON CONFLICT (lieferant_id, artikelnr, gueltig_ab) DO NOTHING\n), au AS (\n    INSERT INTO audit_log (akteur, aktion, objekt, objekt_id, details)\n    SELECT $2, CASE WHEN $4::boolean THEN 'sammelfreigabe' ELSE 'aufgabe_' || g.aktion END, 'aufgaben', g.id::text,\n           jsonb_build_object('art', g.art, 'team', g.team, 'ticket_id', g.ticket_id, 'notiz', $3,\n                              'prozent', g.details->'prozent', 'jahres_mehrkosten_eur', g.details->'jahres_mehrkosten_eur',\n                              'neue_aufgaben', jsonb_array_length(COALESCE(g.neue_aufgaben, '[]'::jsonb)),\n                              'entwuerfe', jsonb_array_length(COALESCE(g.entwuerfe, '[]'::jsonb)))\n    FROM gueltig g\n)\nSELECT (SELECT count(*) FROM gueltig) AS anzahl;",
+        "options": {
+          "queryReplacement": "={{ [ JSON.stringify($json.ops), $json.akteur, $json.notiz, $json.sammel ] }}"
+        }
+      },
+      "id": "8873b3cb-1365-4f25-abba-37f2741d2fe2",
+      "name": "Entscheidung speichern",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1320,
+        980
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "credTriagePg0001",
+          "name": "Postgres Triage"
+        }
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "={{ $('Entscheidung prüfen').first().json.zurueck }}",
+        "options": {
+          "responseCode": 303
+        }
+      },
+      "id": "525c4358-0909-4df8-ae4a-704bb59d6aba",
+      "name": "Zurück zur Arbeitsliste",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1760,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ '<!doctype html><meta charset=\"utf-8\"><title>Nicht gespeichert</title><body style=\"font:14px system-ui;max-width:560px;margin:3rem auto;color:#0f172a\"><h1 style=\"font-size:18px\">Entscheidung nicht gespeichert</h1><ul>' + $json.fehler.map(f => '<li>' + f + '</li>').join('') + '</ul><p><a href=\"/webhook/arbeitsliste\">Zurück zur Arbeitsliste</a></p></body>' }}",
+        "options": {
+          "responseCode": 400,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "id": "03c15c32-80cf-46ec-ba4d-a7bdad11ea87",
+      "name": "Entscheidung abgelehnt",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        660,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Aufgabe entscheiden\nPOST /webhook/aufgabe aus der Arbeitsliste (Basic Auth): Freigeben, Ablehnen, Erledigt, Technik & QM einbinden, Unterlagen anfordern, Sammelfreigabe unkritischer Preisfreigaben. Prüft Herkunft (CSRF), Aktion und Name. Entwürfe entstehen aus Vorlagen und werden Aufgaben für den Einkäufer, gesendet wird nie automatisch. Keine Preisfreigabe, solange Technik oder QM nicht freigegeben haben. Jede Entscheidung landet im Audit-Protokoll.",
+        "width": 2000,
+        "height": 380,
+        "color": 6
+      },
+      "id": "f71914bf-acfe-4e25-bb01-46e4ea05735c",
+      "name": "Notiz 51df91",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5c411f4c-d9e1-4cf3-b5bd-477cd4eb9e3e",
+              "leftValue": "={{ Number($json.anzahl) }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6e0472c5-3394-4c33-b848-fce6584aca7c",
+      "name": "Gespeichert?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1540,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ '<!doctype html><meta charset=\"utf-8\"><title>Nicht gespeichert</title><body style=\"font:14px system-ui;max-width:560px;margin:3rem auto;color:#0f172a\"><h1 style=\"font-size:18px\">Nichts geändert</h1><p>Die Aufgabe ist schon entschieden, oder die Aktion passt nicht zur Aufgabe (Freigeben und Ablehnen nur bei Preisaufgaben). Bei der Sammelfreigabe gab es keine unkritische AB mehr.</p><p><a href=\"/webhook/arbeitsliste\">Zurück zur Arbeitsliste</a></p></body>' }}",
+        "options": {
+          "responseCode": 409,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "id": "371a91eb-8ee0-4e42-a58c-93d3adaa0f5e",
+      "name": "Nichts geändert",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1760,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Alles für Prüfung und Entwürfe: Aufgabe, Ticket, Lieferant (über die Absender-Domain), andere Aufgaben im Vorgang,\n-- vorhandene Entwürfe und die Postfächer der Abteilungen. Bei der Sammelfreigabe alle unkritischen Preisfreigaben.\nSELECT a.id, a.art, a.team, a.status, a.details,\n       t.id AS ticket_id, t.lieferant, t.bestellnummer, t.artikel, t.absender, t.abteilungen, t.mailtext,\n       l.name AS lieferant_name, l.ansprechpartner, l.anrede, l.einkaeufer,\n       (SELECT jsonb_agg(jsonb_build_object('id', y.id, 'art', y.art, 'status', y.status, 'entscheidung', y.entscheidung))\n          FROM aufgaben y WHERE y.ticket_id = t.id) AS ticket_aufgaben,\n       (SELECT COALESCE(jsonb_agg(e.zweck), '[]'::jsonb) FROM entwuerfe e WHERE e.ticket_id = t.id AND e.zweck IS NOT NULL) AS entwurf_zwecke,\n       (SELECT jsonb_object_agg(team, postfach) FROM abteilungen) AS postfaecher\nFROM aufgaben a\nJOIN tickets t ON t.id = a.ticket_id\nLEFT JOIN lieferanten l ON l.mail_domain = lower(substring(t.absender from '@([^>[:space:]]+)'))\nWHERE a.status = 'offen'\n  AND CASE WHEN $2::boolean\n           THEN a.art = 'preis_freigeben' AND NOT a.details ? 'angabe_lieferant_prozent'\n                AND NOT COALESCE((t.abteilungen->>'technik')::boolean OR (t.abteilungen->>'qm')::boolean, false)\n                AND COALESCE((a.details->>'prozent_12_monate')::numeric, 0)\n                    <= (SELECT wert FROM einstellungen WHERE schluessel = 'preis_toleranz_dispo_prozent')\n           ELSE a.id = $1::int\n      END\nORDER BY a.id;",
+        "options": {
+          "queryReplacement": "={{ [ $json.id, $json.sammel ] }}"
+        }
+      },
+      "id": "727c4e8b-a488-42d1-90f7-d1115b458043",
+      "name": "Kontext laden",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        660,
+        1020
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "credTriagePg0001",
+          "name": "Postgres Triage"
+        }
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Entscheidung in Datenbank-Schritte übersetzen und die passenden Entwürfe aus Vorlagen bauen.\n// Bewusst ohne LLM (wie der Antwortentwurf): Vorlagen können nichts erfinden. Gesendet wird nie automatisch,\n// jeder Entwurf wird eine Aufgabe \"Entwurf prüfen und senden\" für den zuständigen Einkäufer.\nconst p = $('Entscheidung prüfen').first().json;\nconst zeilen = $input.all().map((i) => i.json).filter((z) => z.id);\nconst ENTSCHEIDBAR = ['preis_freigeben', 'preiserhoehung_pruefen', 'eskalation', 'technik_freigabe', 'qm_freigabe'];\nconst PREIS = ['preis_freigeben', 'preiserhoehung_pruefen', 'eskalation'];\n\nif (!zeilen.length) {\n  return [{ json: { zulaessig: false, fehler: [p.sammel ? 'Es ist keine unkritische AB mehr offen.' : 'Die Aufgabe ist nicht mehr offen.'] } }];\n}\n\nconst zahl = (n) => Number(n).toLocaleString('de-DE', { maximumFractionDigits: 4 });\nconst pz = (n) => `${Number(n).toLocaleString('de-DE', { maximumFractionDigits: 1 })} %`;\nconst datum = (d) => (d ? String(d).slice(0, 10).split('-').reverse().join('.') : '[Datum]');\nconst anrede = (z) => {\n  const nachname = (z.ansprechpartner ?? '').split(' ').slice(-1)[0];\n  if (!nachname) return 'Sehr geehrte Damen und Herren,';\n  return `${z.anrede === 'Frau' ? 'Sehr geehrte Frau' : 'Sehr geehrter Herr'} ${nachname},`;\n};\nconst brief = (z, saetze) => [anrede(z), '', ...saetze.flatMap((s) => [s, '']), 'Mit freundlichen Grüßen', z.einkaeufer ?? '[Name]', 'Hagemann Antriebstechnik GmbH'].join('\\n');\nconst platzhalter = (text) => [...new Set(text.match(/\\[[^\\]]+\\]/g) ?? [])].map((x) => `Platzhalter ausfüllen: ${x}`);\nconst lieferantEntwurf = (z, zweck, betreff, saetze) => {\n  const text = brief(z, saetze);\n  return { art: 'lieferant', zweck, empfaenger: z.absender, cc: null, betreff, text, warnungen: platzhalter(text) };\n};\nconst bezug = (z) => (z.bestellnummer ? `unserer Bestellung ${z.bestellnummer}${z.artikel ? ` (${z.artikel})` : ''}` : (z.artikel ?? 'Ihren Artikeln'));\nconst altPreis = (d) => ((d.alter_preis_gilt ?? []).length\n  ? [`Für die bereits zum alten Preis bestätigten Bestellungen ${d.alter_preis_gilt.join(', ')} gilt der vereinbarte Preis.`] : []);\n\n// Entwurf zur Preisentscheidung: bei einer AB zum bestätigten Preis, bei einer Mitteilung zur angekündigten Erhöhung\nconst preisEntwurf = (z, angenommen) => {\n  const d = z.details ?? {};\n  const ab = d.art === 'preis';\n  const was = ab ? `den bestätigten Einzelpreis von ${zahl(d.bestaetigt)} ${d.waehrung} (bestellt war ${zahl(d.bestellt)} ${d.waehrung})`\n    : `die angekündigte Preiserhöhung um ${d.prozent != null ? pz(d.prozent) : '[Prozent]'}${d.gueltig_ab ? ` ab ${datum(d.gueltig_ab)}` : ''}`;\n  const einleitung = ab ? `vielen Dank für Ihre Auftragsbestätigung zu ${bezug(z)}.` : 'vielen Dank für Ihre Information zur Preisanpassung.';\n  if (angenommen) {\n    return lieferantEntwurf(z, 'preis_akzeptiert', `${ab ? `Bestellung ${z.bestellnummer}` : 'Preisanpassung'}: Preis bestätigt`,\n      [einleitung, `${was.charAt(0).toUpperCase()}${was.slice(1)} akzeptieren wir${ab ? ' für diese Bestellung' : ''}.`, ...altPreis(d),\n        'Künftige Preisänderungen kündigen Sie bitte mit Begründung und ausreichend Vorlauf an.']);\n  }\n  return lieferantEntwurf(z, 'preis_abgelehnt', `${ab ? `Bestellung ${z.bestellnummer}` : 'Preisanpassung'}: Preiserhöhung nicht akzeptiert`,\n    [einleitung, `${was.charAt(0).toUpperCase()}${was.slice(1)} können wir so nicht akzeptieren.`,\n      ab ? 'Bitte liefern Sie zum bestellten Preis oder senden Sie uns eine nachvollziehbare Kalkulation (Anteile Material, Energie, Lohn), damit wir die Erhöhung prüfen können.'\n        : 'Bitte senden Sie uns eine nachvollziehbare Kalkulation (Anteile Material, Energie, Lohn). Bis zu einer Einigung gelten die vereinbarten Preise.',\n      ...altPreis(d)]);\n};\n\n// Änderung am Produkt: Werkstoff und Abkündigung in einem Satz\nconst aenderung = (z) => {\n  const a = z.abteilungen ?? {};\n  const teile = [];\n  if (a.werkstoff_alt || a.werkstoff_neu) teile.push(`Werkstoff ${a.werkstoff_alt ?? '[bisher]'} → ${a.werkstoff_neu ?? '[neu]'}`);\n  if ((a.regel ?? []).includes('abkuendigung') || a.dispo) teile.push('Abkündigung bzw. nicht mehr verfügbar');\n  return teile.length ? teile.join(', ') : 'Änderung am Produkt laut Mail';\n};\n\nconst ops = [];\nconst fehler = [];\nfor (const z of zeilen) {\n  const aufg = z.ticket_aufgaben ?? [];\n  const zwecke = z.entwurf_zwecke ?? [];\n  const op = { id: z.id, aktion: p.aktion, neue_aufgaben: [], entwuerfe: [] };\n  const a = z.abteilungen ?? {};\n\n  if (['freigegeben', 'abgelehnt'].includes(p.aktion) && !ENTSCHEIDBAR.includes(z.art)) { fehler.push('Freigeben und Ablehnen gibt es nur bei Preis-, Technik- und QM-Aufgaben.'); continue; }\n  if (p.aktion === 'erledigt' && ENTSCHEIDBAR.includes(z.art)) { fehler.push('Diese Aufgabe braucht eine Entscheidung: Freigeben oder Ablehnen.'); continue; }\n\n  // Ohne positive Freigabe von Technik und QM keine Preisfreigabe (die Datenbank prüft das beim Speichern noch einmal)\n  if (p.aktion === 'freigegeben' && PREIS.includes(z.art)) {\n    const noetig = a.technik || a.qm || aufg.some((y) => ['technik_freigabe', 'qm_freigabe'].includes(y.art));\n    const fehlt = ['technik_freigabe', 'qm_freigabe'].filter((art) => !aufg.some((y) => y.art === art && y.entscheidung === 'freigegeben'));\n    if (noetig && fehlt.length) {\n      const eingebunden = aufg.some((y) => y.art === 'technik_freigabe');\n      fehler.push(eingebunden\n        ? `Der Preis kann erst freigegeben werden, wenn Technik und QM die Änderung freigegeben haben (fehlt: ${fehlt.map((x) => x === 'technik_freigabe' ? 'Technik' : 'QM').join(', ')}).`\n        : 'Die Mail betrifft eine Material- oder Werkstoffänderung. Bitte zuerst „Technik & QM einbinden“, der Preis kann erst nach deren Freigabe freigegeben werden.');\n      continue;\n    }\n  }\n\n  if (p.aktion === 'einbinden') {\n    if (aufg.some((y) => y.art === 'technik_freigabe')) { fehler.push('Technik und QM sind für diesen Vorgang schon eingebunden.'); continue; }\n    const details = { lieferant: z.lieferant_name ?? z.lieferant, artikel: z.artikel, werkstoff_alt: a.werkstoff_alt ?? null,\n      werkstoff_neu: a.werkstoff_neu ?? null, aenderung: aenderung(z), empfehlung: a.empfehlung ?? null };\n    op.neue_aufgaben.push({ team: 'Technik', zustaendig: null, art: 'technik_freigabe', prioritaet: 'hoch', details });\n    op.neue_aufgaben.push({ team: 'Qualitätsmanagement', zustaendig: null, art: 'qm_freigabe', prioritaet: 'hoch', details });\n    if (a.dispo) op.neue_aufgaben.push({ team: 'Disposition', zustaendig: null, art: 'bestand_pruefen', prioritaet: 'hoch', details });\n    const post = z.postfaecher ?? {};\n    const text = ['Hallo zusammen,', '',\n      `${z.lieferant_name ?? z.lieferant ?? 'Ein Lieferant'} kündigt für ${z.artikel ?? 'einen Artikel'} eine Änderung an: ${aenderung(z)}.`, '',\n      'Bitte prüft:',\n      '- Technik: Ist der neue Werkstoff bzw. Nachfolger zulässig? Braucht es eine Zeichnungsänderung?',\n      '- QM: Erstmusterprüfung, Prüfumfang und benötigte Zeugnisse',\n      ...(a.dispo ? ['- Disposition: Reichweite des Bestands, ist eine letzte Bestellung im bisherigen Werkstoff nötig?'] : []), '',\n      'Bitte tragt eure Freigabe oder Ablehnung in der Arbeitsliste ein (Aufgaben \"Technik-Freigabe\" und \"QM-Freigabe\"). Bis dahin wird nichts umgestellt und keine Preiserhöhung freigegeben.',\n      ...(a.empfehlung ? ['', `Vorschlag des Modells, ungeprüft: ${a.empfehlung}`] : []), '',\n      'Viele Grüße', z.einkaeufer ?? '[Name]', '', '----- Mail des Lieferanten -----', z.mailtext ?? '[Mailtext]'].join('\\n');\n    op.entwuerfe.push({ art: 'intern', zweck: 'abteilungen_einbinden', empfaenger: [post.Technik, post['Qualitätsmanagement']].filter(Boolean).join(', '),\n      cc: a.dispo ? post.Disposition ?? null : null, betreff: `Freigabe erbeten: ${aenderung(z)} – ${z.artikel ?? 'Artikel'} (${z.lieferant_name ?? z.lieferant ?? 'Lieferant'})`,\n      text, warnungen: platzhalter(text) });\n  }\n\n  if (p.aktion === 'unterlagen') {\n    if (zwecke.includes('unterlagen_anfordern')) { fehler.push('Die Unterlagen sind für diesen Vorgang schon angefordert.'); continue; }\n    op.entwuerfe.push(lieferantEntwurf(z, 'unterlagen_anfordern', `Änderung ${z.artikel ?? 'Artikel'}: Unterlagen und Erstmuster`, [\n      `vielen Dank für Ihre Information zur Änderung bei ${z.artikel ?? 'dem Artikel'} (${aenderung(z)}).`,\n      'Bevor wir zustimmen können, benötigen wir von Ihnen:\\n- Datenblatt des neuen Werkstoffs\\n- Werkstoffzeugnis 3.1 nach EN 10204\\n- [Anzahl] Erstmuster mit Erstmusterprüfbericht\\n- den Termin, ab dem Sie umstellen möchten',\n      'Bis zu unserer schriftlichen Freigabe liefern Sie bitte weiterhin im bisherigen Werkstoff. Eine Umstellung ohne unsere Freigabe können wir nicht annehmen.',\n      ...(a.dispo ? ['Bitte teilen Sie uns außerdem mit, bis wann und in welchen Mengen wir den bisherigen Artikel noch bestellen können.'] : []),\n    ]));\n  }\n\n  if (['freigegeben', 'abgelehnt'].includes(p.aktion) && PREIS.includes(z.art)) {\n    // Zusage erst nach der letzten offenen Preisentscheidung im Vorgang, Absage sofort (aber nur einmal)\n    const weitere = aufg.filter((y) => PREIS.includes(y.art) && y.status === 'offen' && y.id !== z.id);\n    if (p.aktion === 'freigegeben' && !weitere.length && !zwecke.includes('preis_akzeptiert')) op.entwuerfe.push(preisEntwurf(z, true));\n    if (p.aktion === 'abgelehnt' && !zwecke.includes('preis_abgelehnt')) op.entwuerfe.push(preisEntwurf(z, false));\n  }\n  ops.push(op);\n}\n\nif (!ops.length) return [{ json: { zulaessig: false, fehler: [...new Set(fehler)] } }];\nreturn [{ json: { zulaessig: true, ops, akteur: p.akteur, notiz: p.notiz, sammel: p.sammel } }];\n"
+      },
+      "id": "32db9080-f161-4a8c-86f5-4460e22a999c",
+      "name": "Entwürfe bauen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8b2b78ff-6c46-4366-af4b-aeb991d78552",
+              "leftValue": "={{ $json.zulaessig }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "179570ec-de17-485c-9b59-57ea2e0277df",
+      "name": "Zulässig?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1100,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ '<!doctype html><meta charset=\"utf-8\"><title>Nicht gespeichert</title><body style=\"font:14px system-ui;max-width:560px;margin:3rem auto;color:#0f172a\"><h1 style=\"font-size:18px\">Nicht gespeichert</h1><ul>' + $json.fehler.map(f => '<li>' + f + '</li>').join('') + '</ul><p><a href=\"/webhook/arbeitsliste\">Zurück zur Arbeitsliste</a></p></body>' }}",
+        "options": {
+          "responseCode": 409,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "id": "a2f8ac4e-6fbb-438e-8c8a-6f9d03d52c69",
+      "name": "Nicht zulässig",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1320,
+        1160
       ]
     }
   ],
@@ -330,18 +666,7 @@
       "main": [
         [
           {
-            "node": "Offene AB-Aufgaben laden",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Offene AB-Aufgaben laden": {
-      "main": [
-        [
-          {
-            "node": "HTML-Seite bauen",
+            "node": "Offene Aufgaben laden",
             "type": "main",
             "index": 0
           }
@@ -404,6 +729,137 @@
         [
           {
             "node": "Formular Ergebnis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Offene Aufgaben laden": {
+      "main": [
+        [
+          {
+            "node": "Kennzahlen und Audit laden",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Kennzahlen und Audit laden": {
+      "main": [
+        [
+          {
+            "node": "HTML-Seite bauen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Entscheidung": {
+      "main": [
+        [
+          {
+            "node": "Entscheidung prüfen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Entscheidung prüfen": {
+      "main": [
+        [
+          {
+            "node": "Entscheidung gültig?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Entscheidung gültig?": {
+      "main": [
+        [
+          {
+            "node": "Kontext laden",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Entscheidung abgelehnt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Entscheidung speichern": {
+      "main": [
+        [
+          {
+            "node": "Gespeichert?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gespeichert?": {
+      "main": [
+        [
+          {
+            "node": "Zurück zur Arbeitsliste",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Nichts geändert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Kontext laden": {
+      "main": [
+        [
+          {
+            "node": "Entwürfe bauen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Entwürfe bauen": {
+      "main": [
+        [
+          {
+            "node": "Zulässig?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Zulässig?": {
+      "main": [
+        [
+          {
+            "node": "Entscheidung speichern",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Nicht zulässig",
             "type": "main",
             "index": 0
           }

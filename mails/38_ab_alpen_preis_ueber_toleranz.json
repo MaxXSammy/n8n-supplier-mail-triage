@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-38@alpen-drehtechnik.example>",
+  "from": "Katharina Gruber <k.gruber@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Auftragsbestätigung 4500018411",
+  "received_at": "2026-10-29T09:40:00+01:00",
+  "body": "Guten Tag Herr Schneider,\n\nvielen Dank für Ihre Bestellung 4500018411. Wir bestätigen 1.200 Stück Lagerbolzen LB-20 zum Liefertermin 14.11.2026.\n\nBitte beachten Sie, dass wir wegen gestiegener Materialkosten 2,65 EUR pro Stück berechnen.\n\nMit freundlichen Grüßen\nKatharina Gruber\nAlpen Drehtechnik GmbH"
+}

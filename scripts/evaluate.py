@@ -15,7 +15,7 @@ from pathlib import Path
 
 from webhook_client import REPO, STANDARD_URL, env_lesen, mail_senden
 
-KATEGORIEN = ["angebot", "auftragsbestaetigung", "reklamation", "lieferverzug", "rechnung", "sonstiges"]
+KATEGORIEN = ["angebot", "auftragsbestaetigung", "reklamation", "lieferverzug", "rechnung", "preiserhoehung", "sonstiges"]
 
 # Regel-Basislinie: Schlüsselwörter je Kategorie. Zeigt, was das LLM gegenüber einfachen Regeln bringt.
 REGELN = {
@@ -23,6 +23,7 @@ REGELN = {
     "rechnung": r"rechnung|gutschrift|zahlungserinnerung|mahnung|zahlungsziel",
     "reklamation": r"reklamation|mängelrüge|8d|beschädig|n\.i\.o|qualität",
     "lieferverzug": r"liefertermin|verschiebt|verzöger|teillieferung|restmenge|nicht halten",
+    "preiserhoehung": r"preiserhöhung|preisanpassung|preisliste|neuer stückpreis",
     "angebot": r"angebot|offerta|stückpreis|preis",
 }
 
@@ -51,6 +52,17 @@ def ab_ist(antwort: dict) -> tuple[str | None, list[str]]:
     ab = antwort.get("ab_pruefung") or {}
     gruende = [a["art"] for a in ab.get("abweichungen", [])] + ab.get("pruefgruende", [])
     return ab.get("ergebnis"), sorted(gruende)
+
+
+def abteilungen_ist(antwort: dict) -> list[str]:
+    """Abteilungen, die laut Modell oder Regel eingebunden werden müssen (Technik, QM, Disposition)."""
+    a = (antwort.get("daten") or {}).get("abteilungen") or {}
+    return sorted(x for x in ("technik", "qm", "dispo") if a.get(x))
+
+
+def aufgaben_ist(antwort: dict) -> list[str]:
+    """Aufgaben aus der Webhook-Antwort als sortierte Liste "Team:Art:Status"."""
+    return sorted(f"{a['team']}:{a['art']}:{a['status']}" for a in antwort.get("aufgaben") or [])
 
 
 def prozent(zaehler: int, nenner: int) -> str:
@@ -90,6 +102,9 @@ def main() -> None:
             "felder": {f: [w, daten.get(f)] for f, w in erwartung["felder"].items()},
             "ab": ({"erwartet": erwartung["ab"]["ergebnis"], "erwartete_gruende": sorted(erwartung["ab"]["gruende"]),
                     "ist": ab_ist(antwort)[0], "ist_gruende": ab_ist(antwort)[1]} if "ab" in erwartung else None),
+            "abteilungen": ({"erwartet": sorted(erwartung["abteilungen"]), "ist": abteilungen_ist(antwort)}
+                            if "abteilungen" in erwartung else None),
+            "aufgaben": ({"erwartet": erwartung["aufgaben"], "ist": aufgaben_ist(antwort)} if "aufgaben" in erwartung else None),
             "sekunden": round(dauer, 2),
         }
         ergebnisse.append(ergebnis)
@@ -110,6 +125,11 @@ def main() -> None:
     abs_ = [e for e in ergebnisse if e["ab"]]
     ab_richtig = [e for e in abs_ if e["ab"]["ist"] == e["ab"]["erwartet"]]
     ab_gruende_richtig = [e for e in ab_richtig if e["ab"]["ist_gruende"] == e["ab"]["erwartete_gruende"]]
+    mit_abteilungen = [e for e in ergebnisse if e["abteilungen"]]
+    abteilungen_richtig = [e for e in mit_abteilungen if e["abteilungen"]["ist"] == e["abteilungen"]["erwartet"]]
+    abteilungen_fehlalarm = [e for e in mit_abteilungen if e["abteilungen"]["ist"] and not e["abteilungen"]["erwartet"]]
+    mit_aufgaben = [e for e in ergebnisse if e["aufgaben"]]
+    aufgaben_richtig = [e for e in mit_aufgaben if e["aufgaben"]["ist"] == e["aufgaben"]["erwartet"]]
     ab_falsch_durch = [e for e in abs_ if e["ab"]["ist"] == "automatisch_bestaetigt" != e["ab"]["erwartet"]]
 
     matrix = Counter((e["gold"], e["llm"]) for e in ergebnisse)
@@ -132,6 +152,9 @@ def main() -> None:
         f"| AB-Entscheidung richtig | **{prozent(len(ab_richtig), len(abs_))}** ({len(ab_richtig)}/{len(abs_)}) | automatisch bestätigt, manuell prüfen, Abweichung oder Review |",
         f"| AB-Gründe exakt richtig | {prozent(len(ab_gruende_richtig), len(abs_))} ({len(ab_gruende_richtig)}/{len(abs_)}) | Art der Abweichung bzw. Prüfgrund stimmt |",
         f"| AB fälschlich durchgewunken | **{len(ab_falsch_durch)}** | automatisch bestätigt, obwohl ein Mensch prüfen sollte |",
+        f"| Aufgaben richtig verteilt | **{prozent(len(aufgaben_richtig), len(mit_aufgaben))}** ({len(aufgaben_richtig)}/{len(mit_aufgaben)}) | Team, Art und Status jeder Aufgabe stimmen (ABs und Preiserhöhungen) |",
+        f"| Abteilungen richtig erkannt | **{prozent(len(abteilungen_richtig), len(mit_abteilungen))}** ({len(abteilungen_richtig)}/{len(mit_abteilungen)}) | Technik, QM, Disposition nötig oder nicht |",
+        f"| Fehlalarme Abteilungen | {len(abteilungen_fehlalarm)} | Technik/QM/Disposition gemeldet, obwohl nicht nötig |",
         f"| Ø Antwortzeit | {avg_sekunden:.1f} s | je Mail, lokal inkl. Datenbank |",
         "",
         "## Konfusionsmatrix (Zeile = Gold, Spalte = LLM)",
@@ -150,6 +173,18 @@ def main() -> None:
         ok = "" if a["ist"] == a["erwartet"] and a["ist_gruende"] == a["erwartete_gruende"] else " ✗"
         zeilen.append(f"| {e['mail']} | {a['erwartet']} | {a['ist']}{ok} | {', '.join(a['erwartete_gruende']) or '–'} "
                       f"| {', '.join(a['ist_gruende']) or '–'} |")
+
+    zeilen += ["", "## Aufgabenverteilung", "",
+               "| Mail | erwartet | Ergebnis |", "|---|---|---|"]
+    for e in mit_aufgaben:
+        a = e["aufgaben"]
+        zeilen.append(f"| {e['mail']} | {', '.join(a['erwartet'])} | {', '.join(a['ist']) or '–'}{'' if a['ist'] == a['erwartet'] else ' ✗'} |")
+
+    falsch_abt = [e for e in mit_abteilungen if e["abteilungen"]["ist"] != e["abteilungen"]["erwartet"]]
+    if falsch_abt:
+        zeilen += ["", "## Abteilungen abweichend", "", "| Mail | erwartet | Ergebnis |", "|---|---|---|"]
+        for e in falsch_abt:
+            zeilen.append(f"| {e['mail']} | {', '.join(e['abteilungen']['erwartet']) or '–'} | {', '.join(e['abteilungen']['ist']) or '–'} |")
 
     zeilen += ["", "## Einzelergebnisse", "",
                "| Mail | Gold | LLM | Regel | Konfidenz | Ergebnis | Gründe / Warnungen | Felder falsch |",

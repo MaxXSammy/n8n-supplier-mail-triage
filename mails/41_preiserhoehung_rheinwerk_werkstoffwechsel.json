@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-41@rheinwerk-komponenten.example>",
+  "from": "Jens Albrecht <j.albrecht@rheinwerk-komponenten.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Zahnradwelle ZW-25: Werkstoff und Preis ab 01.02.2027",
+  "received_at": "2026-11-06T10:15:00+01:00",
+  "body": "Hallo Herr Schneider,\n\nder bisherige Werkstoff 16MnCr5 ist bei unserem Stahllieferanten ab Januar nicht mehr verfügbar. Ab dem 01.02.2027 fertigen wir die Zahnradwelle ZW-25 deshalb aus 20MnCr5.\n\nDurch den neuen Werkstoff erhöht sich der Stückpreis um 3 %.\n\nBeste Grüße\nJens Albrecht\nRheinwerk Komponenten GmbH"
+}

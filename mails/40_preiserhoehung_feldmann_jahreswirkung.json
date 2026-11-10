@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-40@feldmann-praezisionsteile.example>",
+  "from": "Anja Feldmann <a.feldmann@feldmann-praezisionsteile.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Preisanpassung ab 01.03.2027",
+  "received_at": "2026-11-05T11:30:00+01:00",
+  "body": "Hallo Frau Weber,\n\nleider kommen wir an einer Anpassung unserer Preise nicht vorbei. Die Kosten für Automatenstahl und Strom sind im letzten Jahr deutlich gestiegen.\n\nAb dem 01.03.2027 erhöhen wir die Preise für alle Artikel um 10 %.\n\nGerne erläutere ich Ihnen die Kalkulation in einem Gespräch.\n\nBeste Grüße\nAnja Feldmann\nFeldmann Präzisionsteile GmbH"
+}

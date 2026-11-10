@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/MaxXSammy/n8n-supplier-mail-triage/actions/workflows/ci.yml/badge.svg)](https://github.com/MaxXSammy/n8n-supplier-mail-triage/actions/workflows/ci.yml)
 
-Ein self-hosted n8n-Workflow, der eingehende Lieferanten-Mails verarbeitet. Ein lokales LLM erkennt den Zweck der Mail und extrahiert die wichtigen Daten als JSON. Danach wird alles im Code geprüft, die Mail an das zuständige Team geroutet und ein Ticket angelegt. Auftragsbestätigungen werden zusätzlich mit der Bestellung abgeglichen und je nach Liefertreue des Lieferanten automatisch bestätigt oder dem Einkäufer vorgelegt, mit fertigem Antwortentwurf. Unsichere oder verdächtige Fälle gehen an einen Menschen. Alles läuft lokal mit Docker und Ollama, ohne Cloud-KI.
+Ein self-hosted n8n-Workflow, der eingehende Lieferanten-Mails verarbeitet. Ein lokales LLM erkennt den Zweck der Mail und extrahiert die wichtigen Daten als JSON. Danach wird alles im Code geprüft, die Mail an das zuständige Team geroutet und ein Ticket angelegt. Auftragsbestätigungen werden zusätzlich mit der Bestellung abgeglichen und je nach Liefertreue des Lieferanten automatisch bestätigt oder dem Einkäufer vorgelegt, mit fertigem Antwortentwurf. Preiserhöhungen verteilt das System nach Höhe auf Disposition, Einkäufer und strategischen Einkauf, mit Preishistorie und Mehrkosten. Unsichere oder verdächtige Fälle gehen an einen Menschen. Alles läuft lokal mit Docker und Ollama, ohne Cloud-KI.
 
 ![Haupt-Workflow in n8n](docs/workflow_triage.png)
 
@@ -11,6 +11,8 @@ Ein self-hosted n8n-Workflow, der eingehende Lieferanten-Mails verarbeitet. Ein 
 Im Einkauf eines Mittelständlers landen täglich dutzende Lieferanten-Mails im Sammelpostfach: Angebote, Stellungnahmen zu Reklamationen, Terminverschiebungen, Rechnungen und Mahnungen. Jemand muss jede Mail lesen, entscheiden, wer zuständig ist, und Bestellnummer, Betrag oder neuen Liefertermin abtippen. Das kostet Zeit, und dringende Mails wie ein Lieferverzug bleiben liegen, weil sie zwischen Newslettern untergehen.
 
 Am meisten Zeit kosten Auftragsbestätigungen. Jede AB muss gegen die Bestellung geprüft werden: Stimmen Preis, Menge und Termin? Manche Lieferanten bestätigen blind „alles wie gewünscht“ und liefern dann, wann sie wollen.
+
+Häufig steckt in der AB eine Preiserhöhung. Dann brauchen zwei Leute die Mail: Die Disposition plant mit dem Termin, der Einkäufer entscheidet über den Preis. Landet sie nur bei einem, bleibt die Hälfte liegen.
 
 Dazu kommt ein Risiko: Mails mit „neuer Bankverbindung“ sind eine bekannte Betrugsmasche. Ein System, das Mails automatisch weiterleitet, darf solche Fälle nicht einfach durchwinken.
 
@@ -23,9 +25,10 @@ Dazu kommt ein Risiko: Mails mit „neuer Bankverbindung“ sind eine bekannte B
 | Reklamation | Qualitätsmanagement | Bestellnummer oder Artikel |
 | Lieferverzug | Disposition | Bestellnummer |
 | Rechnung (auch Gutschrift, Mahnung) | Kreditorenbuchhaltung | Rechnungsnummer und Betrag |
+| Preiserhöhung (angekündigt, ohne Bezug zu einer Bestellung) | zuständiger Einkäufer, ab 10 % zusätzlich strategischer Einkauf | Prozentsatz oder neuer Stückpreis |
 | Sonstiges | Einkauf Sammelpostfach | – |
 
-Jede Mail endet auf einem von zwei Wegen: **Ticket** für das zuständige Team oder **Review-Queue** für einen Menschen. Dort bestätigt oder korrigiert jemand die Kategorie in einem Formular, und das Ticket entsteht danach. Verdächtige Mails lassen sich verwerfen.
+Jede Mail endet auf einem von zwei Wegen: **Ticket** für das zuständige Team oder **Review-Queue** für einen Menschen. Ein Ticket ist der Vorgang, darin liegen eine oder mehrere **Aufgaben** für verschiedene Teams. In der Review-Queue bestätigt oder korrigiert jemand die Kategorie in einem Formular, und das Ticket entsteht danach. Verdächtige Mails lassen sich verwerfen.
 
 ### AB-Prüfung
 
@@ -33,13 +36,51 @@ Die Regeln stammen aus der Einkaufspraxis und sind in [docs/fachkonzept.md](docs
 
 | Situation | Ergebnis |
 |---|---|
-| Preis, Menge oder Termin weichen von der Bestellung ab (z. B. Rohstoffzuschlag, Aufrunden auf volle Paletten, Termin „ohne Gewähr“) | Aufgabe für den zuständigen Einkäufer mit Art der Abweichung |
+| jede AB | Aufgabe für die Disposition: Liefertermin übernehmen, bei späterem oder unsicherem Termin nachfassen |
+| Preiserhöhung bis 5 % und höchstens 500 € Mehrkosten | Disposition gibt frei, Einkäufer bekommt eine Info |
+| Preiserhöhung über 5 % oder über 500 € Mehrkosten | Aufgabe mit hoher Priorität für den Einkäufer, ab 10 % Info an den strategischen Einkauf |
+| Menge weicht ab (z. B. Aufrunden auf volle Paletten) | Aufgabe für den zuständigen Einkäufer, mit Mehrwert in Euro und Abgleich mit Verpackungseinheit und Mindestmenge aus den Stammdaten |
 | Menge wegen falscher Verpackungseinheit geändert | zusätzlich Hinweis „Stammdaten prüfen“ |
 | keine Abweichung, Liefertreue ≥ 90 % bei AX-, AY-, BX-, CX-Artikeln bzw. ≥ 80 % bei allen anderen | automatisch bestätigt, Info an die Disposition |
 | keine Abweichung, Liefertreue unter der Schwelle | Einkäufer sichert den Termin ab |
 | neuer Lieferant ohne Historie | immer manuell, Kontakt aufnehmen |
 | AB kommt weniger als 30 Minuten nach der Bestellung | Verdacht auf Blindbestätigung, manuell |
 | Absender-Domain passt nicht zum Lieferanten, Bestellnummer unbekannt | manuell bzw. Review-Queue |
+
+Prozentsatz und Mehrkosten rechnet der Code aus Bestellung und AB, nicht das LLM. Nennt der Lieferant selbst einen Prozentsatz, der mehr als 0,5 Prozentpunkte von der Rechnung abweicht, wird das markiert. Zu jeder Preisänderung zeigt die Arbeitsliste die letzte Erhöhung und die Summe der letzten zwölf Monate aus der Tabelle `preis_historie`. So fallen auch mehrere kleine Erhöhungen hintereinander auf.
+
+### Jahreswirkung und Eskalation
+
+Entscheidend ist nicht die einzelne Bestellung, sondern was eine Erhöhung im Jahr kostet. Das System rechnet für jede Preiserhöhung den Full-Year-Effekt aus Jahresbedarf und Preisdifferenz (Tabelle `artikel_konditionen`) und eskaliert gestuft:
+
+| Jährliche Mehrkosten | zusätzlich zum Einkäufer |
+|---|---|
+| ab 5.000 € | Aufgabe für die Einkaufsleitung |
+| ab 50.000 € | Aufgabe für die Geschäftsleitung |
+| über 10 % bei Liefertreue unter 85 % | Einkaufsleitung mit Hinweis „Alternativlieferant prüfen“ |
+
+Beispiel aus den Testdaten: Rheinwerk erhöht in einer AB um 3,9 %. Auf die Bestellung sind das 600 €, aufs Jahr 6.000 €. Fehlt der Jahresbedarf, steht „Jahresbedarf fehlt“ auf der Aufgabe statt 0 €. Bestellungen, die der Lieferant schon zum alten Preis bestätigt hat, werden markiert („alter Preis gilt, Rechnung prüfen“), aber nicht gesperrt: Eine automatische Sperre könnte einen Lieferstopp auslösen.
+
+Die Regeln gehen auf ein Konzept mit festen Enterprise-Regeln zurück. Jede Regel wurde vor der Umsetzung auf Fehlalarme und blinde Flecken geprüft. Was geändert wurde und warum, steht in [docs/fachkonzept.md](docs/fachkonzept.md#einkaufssteuerung-jahreswirkung-eskalation-konditionen-audit).
+
+### Materialänderung: Technik, QM und Disposition einbinden
+
+Ändert ein Lieferant den Werkstoff oder kündigt einen Artikel ab, darf der Einkauf nicht allein entscheiden. Das Sprachmodell setzt Merker für Technik, QM und Disposition und liest alten und neuen Werkstoff aus. Eine feste Regel ergänzt es, eins von beiden reicht. „Werkstoff 42CrMo4“ in einem Angebot oder „gestiegene Materialkosten“ lösen bewusst nichts aus.
+
+Die Merker sind ein Vorschlag. In der Karte stehen zwei Knöpfe:
+
+- **Technik & QM einbinden:** Aufgaben für Technik und QM, bei Abkündigung auch für die Disposition (Bestand, letzte Bestellung im bisherigen Werkstoff), dazu ein interner Entwurf an beide Abteilungen mit allen Daten und der Mail des Lieferanten.
+- **Erstmuster/Zeugnis anfordern:** Entwurf an den Lieferanten mit Anforderung von Datenblatt, Werkstoffzeugnis 3.1 nach EN 10204 und Erstmustern. Bis zur Freigabe liefert er im bisherigen Werkstoff.
+
+Solange Technik und QM nicht beide freigegeben haben, ist die Preisfreigabe gesperrt, auch wenn noch niemand sie eingebunden hat. Das prüfen die Seite, der Code und zusätzlich die Datenbank, ein Umgehungsversuch direkt an der Speicher-Abfrage ändert nichts. Nach jeder Preisentscheidung entsteht ein Entwurf an den Lieferanten („Preis bestätigt“ oder „Erhöhung nicht akzeptiert“). Jeder Entwurf wird eine Aufgabe „Entwurf prüfen und senden“ für den zuständigen Einkäufer. Gesendet wird nie automatisch.
+
+### Arbeitsliste, Audit-Protokoll und Screenshot-Modus
+
+- **Audit-Protokoll:** Jede Entscheidung in der Review-Queue (freigeben, verwerfen) landet mit Name, Zeit, Vorschlag des LLM, Entscheidung und Notiz in `audit_log`. Trigger verbieten Ändern und Löschen, jede Zeile enthält den Hash ihrer Vorgängerin. Die Arbeitsliste zeigt, ob die Kette intakt ist.
+- **Arbeitsliste:** Kennzahlen oben (offene Eskalationen, offene Reviews, Automatisierungsquote der letzten 30 Tage, Jahreswirkung offener Preisänderungen), darunter Reiter je Team und eine Sortierung nach Full-Year-Effekt oder Priorität. Jede Aufgabe ist eine Karte mit dem Lieferanten als Überschrift und einem Datengitter. Warnungen stehen als farbig umrandete Hinweise darin, jeder mit einem Info-Symbol, das die auslösende Regel mit den konkreten Werten zeigt, z. B. „Liefertreue 79 % < Schwellenwert 80 %“. Die Seite lädt nichts von fremden Servern, weder CSS-Framework noch Schriften, weil sie vertrauliche Preise zeigt und auch ohne Internet laufen soll. Die Formulare nutzen dieselben Farben.
+- **Entscheiden in der Karte:** Preisaufgaben lassen sich freigeben oder ablehnen, alle anderen als erledigt markieren. Jede Aktion ist ein POST an `/webhook/aufgabe`, kein Link, damit Link-Vorschauen nichts auslösen. Der Server prüft die Herkunft der Anfrage (Schutz gegen untergeschobene Formulare von fremden Seiten), den Namen des Bearbeiters und ob die Aktion zur Aufgabe passt. Ein freigegebener AB-Preis wird neuer Preis in der Preishistorie, jede Entscheidung landet im Audit-Protokoll. Dazu kommen „Mail anzeigen“ und der Weg zur Antwort-Vorlage.
+- **Sammelfreigabe mit Leitplanken:** „Unkritische ABs freigeben“ gibt nur Preiserhöhungen frei, die ohnehin in der Kompetenz der Disposition liegen und keinen Warnhinweis tragen (keine abweichende Prozentangabe des Lieferanten, Erhöhungen der letzten zwölf Monate zusammen höchstens 5 %). Welche Aufgaben das sind, bestimmt der Server, nicht die Seite. Vor dem Absenden fragt die Seite mit Anzahl und Summe nach. Massenfreigaben verleiten zum Durchwinken, deshalb sind die Kriterien eng.
+- **Screenshot-Modus:** Ein Knopf in der Arbeitsliste lädt eine anonyme Fassung (`?anonym=1`). Der Server ersetzt Lieferanten, Bestellnummern, Personen und Beträge und lässt Mailtexte und Entwürfe weg, bevor die Seite den Browser erreicht. Prozentwerte und Daten bleiben sichtbar, damit sich Fälle weiter besprechen lassen.
 
 Schwellen und Minuten stehen in der Tabelle `einstellungen` und lassen sich ohne Workflow-Änderung anpassen. Für jede offene AB erstellt der Einkäufer per Formular einen **Antwortentwurf** im gewünschten Ton (förmlich oder locker, mit Nachdruck oder gelassen). Offene Entscheidungen wie „Mehrmenge annehmen?“ stehen als Platzhalter darin. Das System sendet nichts selbst.
 
@@ -50,7 +91,7 @@ Schwellen und Minuten stehen in der Tabelle `einstellungen` und lassen sich ohne
 
 ![Ausführung in n8n](docs/ausfuehrung_ticket.png)
 
-**Arbeitsliste** für den Einkauf: offene AB-Prüfungen mit Abweichungen und Antwortentwurf, darunter die Review-Queue
+**Arbeitsliste** im Screenshot-Modus: Kennzahlen, Reiter je Team, Eskalationen und Aufgaben, Lieferanten, Bestellnummern und Beträge anonymisiert
 
 ![Arbeitsliste](docs/arbeitsliste.png)
 
@@ -75,9 +116,10 @@ flowchart LR
     D -- nein --> L[Ollama qwen2.5:7b<br/>JSON-Schema, 3 Versuche]
     L --> V[Validierung im Code<br/>Schema, Belegprüfung, Pflichtfelder,<br/>Betrugsschutz, Prompt-Injection]
     V -- Auftragsbestätigung --> AB[AB-Prüfung<br/>Abgleich mit Bestellung,<br/>Liefertreue, Blindbestätigung]
-    AB -- ok --> T
-    AB -- Abweichung oder Prüfung --> EK[(Ticket für Einkäufer)]
-    EK --> AE[Antwortentwurf<br/>Vorlagen, Tonwahl]
+    V -- Preiserhöhung --> PE[Preisinfo<br/>Historie, Mehrkosten]
+    AB --> A[(Ticket mit Aufgaben<br/>Disposition, Einkäufer,<br/>strategischer Einkauf)]
+    PE --> A
+    A --> AE[Antwortentwurf<br/>Vorlagen, Tonwahl]
     V -- alles ok --> T[(Ticket<br/>Team aus Routing-Tabelle)]
     V -- Zweifel oder LLM-Fehler --> Q[(Review-Queue)]
     Q --> F[Formular<br/>Mensch entscheidet]
@@ -85,7 +127,7 @@ flowchart LR
     X[Unerwarteter Fehler] --> EW[Error-Workflow<br/>fehler_log]
 ```
 
-Der Haupt-Workflow folgt sechs Phasen, die im Canvas als farbige Bereiche markiert sind: Trigger, Eingang prüfen, KI, Validierung, AB-Prüfung, Aktion. Dazu kommen die Arbeitsliste mit Review (Human-in-the-loop), der Antwortentwurf und ein Error-Workflow.
+Der Haupt-Workflow folgt sechs Phasen, die im Canvas als farbige Bereiche markiert sind: Trigger, Eingang prüfen, KI, Validierung, AB- und Preisprüfung, Aktion. Dazu kommen die Arbeitsliste mit Review (Human-in-the-loop), der Antwortentwurf und ein Error-Workflow.
 
 **Designentscheidungen**
 
@@ -98,25 +140,29 @@ Der Haupt-Workflow folgt sechs Phasen, die im Canvas als farbige Bereiche markie
 - **Geheimnisse nicht in der Umgebung:** Die Workflows lesen Einstellungen über `$env`. Passwörter, Token und der n8n-Encryption-Key liegen deshalb als Docker-Secrets in Dateien und nicht in Umgebungsvariablen. Sonst könnte jeder Node sie auslesen und mit dem Encryption Key alle gespeicherten Zugangsdaten entschlüsseln.
 - **Vertrauen nach Lieferantenhistorie:** Eine AB ohne Abweichung geht nur automatisch durch, wenn der Lieferant zuverlässig liefert. Bei kritischen Artikeln mit wenig Lagerpuffer gilt eine höhere Schwelle als bei Slow Movern.
 - **LLM nur, wo es nötig ist:** Das LLM versteht die unstrukturierten Mails. Die Antwortentwürfe entstehen dagegen aus Vorlagen, weil nach der AB-Prüfung alle Inhalte strukturiert vorliegen. Eine erste Fassung ließ das 7B-Modell formulieren. Es hielt sich nicht zuverlässig an die Regeln: doppelte Anreden, Floskeln, Zusagen wie „wir bestätigen den Preis“ und wörtlich kopierte Anweisungen.
-- **Plausibilität statt Prompt-Tuning:** Ein Angebot bezieht sich nie auf eine unserer Bestellnummern. Stuft das LLM eine Mail mit Bestellnummer als Angebot ein, geht sie an einen Menschen. So wird ein Fehler abgefangen, ohne den Prompt auf eine Testmail zuzuschneiden.
+- **Plausibilität statt Prompt-Tuning:** Ein Angebot bezieht sich nie auf eine unserer Bestellnummern, und eine angekündigte Preiserhöhung gilt für Artikel, nicht für eine einzelne Bestellung. Stuft das LLM eine AB so ein, geht sie an einen Menschen. So wird ein Fehler abgefangen, ohne den Prompt auf eine Testmail zuzuschneiden.
+- **Ein Vorgang, mehrere Aufgaben:** Eine AB mit Preiserhöhung braucht Disposition und Einkäufer. Statt die Mail einem Team zuzuordnen, entstehen Aufgaben je Team mit Priorität. Wer was freigeben darf, regeln Schwellen in der Datenbank.
+- **Der Lieferant wird über die Absender-Domain bestimmt, nicht über den Namen in der Mail.** Kündigt eine unbekannte Domain eine Preiserhöhung an, geht die Mail an einen Menschen.
 - **Lokal zuerst:** Lieferanten-Mails enthalten Preise und Konditionen. Das Modell läuft auf eigener Hardware.
 - **Repo als Quelle der Wahrheit:** Beim Start spielt ein Einmal-Container Zugangsdaten und Workflows aus dem Repo ein und veröffentlicht sie. Änderungen aus der Oberfläche holt `scripts/export_workflows.py` zurück.
 
 ## Erfolgsmessung
 
-34 Beispiel-Mails mit bekannter Lösung (`eval/gold.json`) laufen durch den echten Workflow, davon 19 Auftragsbestätigungen. Ausführliche Ergebnisse mit Konfusionsmatrix: [eval/ergebnisse.md](eval/ergebnisse.md)
+42 Beispiel-Mails mit bekannter Lösung (`eval/gold.json`) laufen durch den echten Workflow, davon 21 Auftragsbestätigungen, 5 angekündigte Preiserhöhungen und 2 Material- bzw. Abkündigungsfälle. Ausführliche Ergebnisse mit Konfusionsmatrix: [eval/ergebnisse.md](eval/ergebnisse.md)
 
 | Kennzahl | Ergebnis | Bedeutung |
 |---|---|---|
-| Klassifizierungsgenauigkeit LLM | **97 %** (33/34) ² | Kategorie des LLM stimmt |
-| Regel-Basislinie | 91 % (31/34) | Schlüsselwörter, ohne KI ¹ |
+| Klassifizierungsgenauigkeit LLM | **93 %** (39/42) ² | Kategorie des LLM stimmt |
+| Regel-Basislinie | 88 % (37/42) | Schlüsselwörter, ohne KI ¹ |
 | Falsch automatisch geroutet | **0** | Ticket mit falscher Kategorie, der teuerste Fehler |
-| Automatisierungsquote | 88 % (30/34) | ohne menschliche Prüfung |
+| Automatisierungsquote | 86 % (36/42) | ohne menschliche Prüfung |
 | Pflicht-Reviews erkannt | 3/3 | Betrugsversuch, unbekannte Bestellnummern |
-| Extraktionsgenauigkeit | 100 % (95/95) | Nummern, Preise, Mengen, Beträge, Termine |
-| AB-Entscheidung richtig | **95 %** (18/19) | automatisch bestätigt, manuell prüfen, Abweichung oder Review |
+| Extraktionsgenauigkeit | 100 % (118/118) | Nummern, Preise, Mengen, Beträge, Termine |
+| AB-Entscheidung richtig | **90 %** (19/21) | automatisch bestätigt, manuell prüfen, Abweichung oder Review |
 | AB fälschlich durchgewunken | **0** | automatisch bestätigt, obwohl ein Mensch prüfen sollte |
-| Ø Antwortzeit | 7 s | je Mail, lokal mit RTX 3060 Ti (8 GB) |
+| Aufgaben richtig verteilt | **92 %** (22/24) | Team, Art und Status jeder Aufgabe bei ABs und Preiserhöhungen |
+| Abteilungen richtig erkannt | **100 %** (42/42) | Technik, QM, Disposition nötig oder nicht, 0 Fehlalarme |
+| Ø Antwortzeit | 8 s | je Mail, lokal mit RTX 3060 Ti (8 GB) |
 
 ¹ Die Schlüsselwörter wurden in Kenntnis der Testmails gewählt. Der Wert ist deshalb optimistisch. Die Regeln können außerdem keine Daten extrahieren.
 
@@ -124,6 +170,10 @@ Der Haupt-Workflow folgt sechs Phasen, die im Canvas als farbige Bereiche markie
 
 **Was die Messung gezeigt hat**
 
+- **ABs mit Preiserhöhung sind für das Modell der schwierigste Fall.** Seit es die Kategorie Preiserhöhung gibt, hält es die AB von Swiss Turning für eine Preiserhöhungs-Mitteilung, die von Kovotech nur in manchen Läufen. Trotz Temperatur 0 schwankt das Ergebnis zwischen Läufen. Beide Fälle landen über eine Plausibilitätsregel in der Review-Queue. Die Werte in der Tabelle stammen aus dem letzten Lauf, ein einzelner Lauf ist bei dieser Datenmenge keine stabile Messung.
+- **Die Abkündigung hält das Modell für eine Preiserhöhung.** Sie landet wegen des fehlenden Prozentsatzes in der Review-Queue. Die Merker für Technik, QM und Disposition stimmten trotzdem bei allen 42 Mails, auch bei den Gegenbeispielen „Werkstoff 42CrMo4“ im Angebot und „Engpass beim Rohmaterial“ im Lieferverzug.
+- **Eine eigene Regel hat einen echten Preis gelöscht.** Stand dieselbe Zahl als Stückpreis und Prozentsatz im Formular, wurde immer der Stückpreis verworfen. Bei „2,65 EUR pro Stück“ war aber der Prozentsatz falsch. Jetzt entscheidet der Text: Nur wenn hinter der Zahl ein Prozentzeichen steht, ist es der Prozentsatz.
+- **Die erste Fassung dieser Regel hatte eine Lücke.** Sie verlangte Bestellnummer und Liefertermin. In einem Lauf ließ das Modell bei Kovotech den Termin weg, und die AB ging als Preiserhöhung direkt an den Einkäufer: ein falsch gerouteter Fall. Jetzt reicht die Bestellnummer.
 - **Eine AB mit Preiserhöhung hielt das LLM für ein Angebot.** Damit lief der Abgleich mit der Bestellung gar nicht. Die Plausibilitätsregel (Angebot mit Bestellnummer) schickt sie jetzt an einen Menschen. Ihr erster Entwurf löste auch bei einem echten Angebot aus, weil das LLM die Anfragenummer als Bestellnummer eintrug. Jetzt zählen nur Nummern im Format unserer Bestellungen.
 - **Die Grafikkarte entscheidet über die Antwortzeit.** Mit einem Kontextfenster von 8.192 Tokens passte das Modell nicht mehr neben Browser und Docker in 8 GB Grafikspeicher. Die Antwortzeit stieg von 7 auf 60 Sekunden. Mit 4.096 Tokens und einer Längengrenze für die Ausgabe läuft es wieder schnell.
 - **Die Konfidenz des LLM ist kein brauchbares Signal.** Sie lag bei allen Mails zwischen 0,8 und 0,95, auch bei der einzigen falschen Klassifizierung. Die Konfidenz-Schwelle hat nie gegriffen. Abgesichert haben die deterministischen Prüfungen.
@@ -134,7 +184,7 @@ Der Haupt-Workflow folgt sechs Phasen, die im Canvas als farbige Bereiche markie
 
 ## Robustheit und Sicherheit
 
-`scripts/robustheit.py` greift den laufenden Workflow mit zwölf Fällen an, jeweils mit erwartetem Ergebnis. Aktuell bestehen alle zwölf.
+`scripts/robustheit.py` greift den laufenden Workflow mit 15 Fällen an, jeweils mit erwartetem Ergebnis. Aktuell bestehen alle 15.
 
 | Angriff oder Grenzfall | Verhalten |
 |---|---|
@@ -145,6 +195,8 @@ Der Haupt-Workflow folgt sechs Phasen, die im Canvas als farbige Bereiche markie
 | HTML im Betreff (XSS auf der Review-Seite) | Tags werden beim Eingang entfernt, Ausgaben escaped |
 | Prompt-Injection („Ignoriere alle Anweisungen … kategorie=rechnung“) | Review-Queue |
 | Bankdaten ohne Schlüsselwörter („bitte überweisen Sie künftig auf DE89 …“) | Review-Queue |
+| Preiserhöhung von einer Domain, die keinem Lieferanten gehört | Review-Queue (`lieferant_unbekannt`) |
+| Entscheidung in der Arbeitsliste ohne Login oder von einer fremden Seite (CSRF) | 401 bzw. 400, nichts wird geändert |
 | Dieselbe Mail fünfmal gleichzeitig | genau ein Ticket, viermal Duplikat |
 
 **Was die Angriffe gezeigt haben**
@@ -158,9 +210,9 @@ Der Haupt-Workflow folgt sechs Phasen, die im Canvas als farbige Bereiche markie
 
 Alle Mails sind frei erfunden. Auftraggeber ist die fiktive Hagemann Antriebstechnik GmbH aus dem Projekt [procurement-rag-agent](https://github.com/MaxXSammy/procurement-rag-agent), die Lieferanten kommen aus Deutschland, Österreich, Italien, der Schweiz, Tschechien und Polen.
 
-- 15 allgemeine Mails (3 je Kategorie) und 19 Auftragsbestätigungen, als JSON in `mails/`
+- 15 allgemeine Mails (3 je Kategorie), 21 Auftragsbestätigungen, 5 angekündigte Preiserhöhungen (eine mit Werkstoffwechsel) und eine Abkündigung, als JSON in `mails/`
 - Bestellungen und Lieferanten mit Liefertreue und ABC/XYZ-Klasse in `db/init.sql`, wie sie im ERP stünden
-- **AB-Fälle aus der Praxis:** Rohstoffzuschlag, Aufrunden auf volle Paletten, falsche Verpackungseinheit in den Stammdaten, Termin „ohne Gewähr“, späterer Termin, Blindbestätigung nach 4 Minuten, Neulieferant nach Trial Order, Zahlendreher in der Bestellnummer, Absender von einer fremden Domain, englische AB
+- **AB-Fälle aus der Praxis:** Rohstoffzuschlag, Aufrunden auf volle Paletten, falsche Verpackungseinheit in den Stammdaten, Termin „ohne Gewähr“, späterer Termin, Blindbestätigung nach 4 Minuten, Neulieferant nach Trial Order, Zahlendreher in der Bestellnummer, Absender von einer fremden Domain, englische AB, Preiserhöhung über 5 % sowie unter 5 %, aber über 500 € Mehrkosten
 - **Bewusst schwierige Fälle:** eine Reklamation, die eine Rechnung erwähnt; ein Angebot mit dem Wort „Lieferzeit“; eine Antwort mit zitiertem Verlauf; eine Zahlungserinnerung im Schweizer Zahlenformat (`CHF 8'420.50`); Preise je 100 Stück; Betriebsferien, die nach Lieferverzug klingen; ein Betrugsversuch mit neuer Bankverbindung von einer Lookalike-Domain
 
 ## Tech-Stack
@@ -192,7 +244,7 @@ In `.env` die Passwörter und Tokens ändern (nur Buchstaben und Ziffern). Dann 
 docker compose up -d
 ```
 
-Beim ersten Start legt Postgres die Tabellen an, und der Container `n8n-import` spielt Zugangsdaten und Workflows ein. Ollama läuft standardmäßig auf dem Host. Wer es lieber im Container betreibt, startet mit `docker compose --profile ollama up -d` und setzt `OLLAMA_BASE_URL=http://ollama:11434`.
+Beim ersten Start legt Postgres die Tabellen an (`db/init.sql`, danach `db/02_preiserhoehung.sql` bis `db/05_abteilungen.sql`), und der Container `n8n-import` spielt Zugangsdaten und Workflows ein. Ollama läuft standardmäßig auf dem Host. Wer es lieber im Container betreibt, startet mit `docker compose --profile ollama up -d` und setzt `OLLAMA_BASE_URL=http://ollama:11434`.
 
 ## Nutzung
 
@@ -208,7 +260,9 @@ python scripts/export_workflows.py                                    # Änderun
 |---|---|
 | http://localhost:5678 | n8n-Oberfläche (beim ersten Aufruf ein Owner-Konto anlegen) |
 | http://localhost:5678/webhook/lieferanten-mail | Eingang, `POST` mit Header `X-Webhook-Token` |
-| http://localhost:5678/webhook/arbeitsliste | Arbeitsliste: offene AB-Prüfungen und Review-Queue (Login aus `REVIEW_USER` / `REVIEW_PASSWORD`) |
+| http://localhost:5678/webhook/arbeitsliste | Arbeitsliste: offene Aufgaben je Team, Review-Queue, Infos und Audit-Protokoll (Login aus `REVIEW_USER` / `REVIEW_PASSWORD`) |
+| http://localhost:5678/webhook/arbeitsliste?anonym=1 | dieselbe Liste anonymisiert für Screenshots |
+| http://localhost:5678/webhook/aufgabe | Entscheidungen aus der Arbeitsliste, `POST` (Login wie Arbeitsliste) |
 | http://localhost:5678/form/entwurf | Antwortentwurf an den Lieferanten erstellen |
 | http://localhost:5678/form/review | Review abschließen |
 
@@ -231,8 +285,12 @@ workflows/
 docs/fachkonzept.md         # Fachliche Regeln aus der Einkaufspraxis
 schema/mail_extraktion.schema.json  # JSON-Schema für die LLM-Ausgabe
 db/init.sql                 # Tabellen, Routing, Einstellungen, Lieferanten und Bestellungen
+db/02_preiserhoehung.sql    # Aufgaben, Preishistorie, Schwellen für Preiserhöhungen
+db/03_einkaufssteuerung.sql # Jahresbedarf, VPE und Mindestmenge, Eskalationsstufen, Audit-Protokoll
+db/04_aufgaben_entscheiden.sql # Entscheidung an Aufgaben, Mailtext am Ticket
+db/05_abteilungen.sql       # Postfächer der Abteilungen, Merker am Ticket, Entwurfsart
 credentials/                # Vorlage der n8n-Zugangsdaten (Platzhalter, keine Geheimnisse)
-mails/                      # 34 Beispiel-Mails
+mails/                      # 42 Beispiel-Mails
 eval/                       # Gold-Daten und Ergebnisse
 scripts/
 ├── n8n_import.sh           # Import beim Start (läuft im Container)
@@ -246,13 +304,24 @@ docs/                       # Screenshots, Vorschaubilder für GitHub und Linked
 
 ## Bekannte Grenzen
 
-- Die Testdaten sind klein (34 Mails) und selbst geschrieben. Sie zeigen das Vorgehen, ersetzen aber keine Messung mit echten Postfächern.
+- Die Testdaten sind klein (42 Mails) und selbst geschrieben. Sie zeigen das Vorgehen, ersetzen aber keine Messung mit echten Postfächern.
 - Die Belegprüfung erkennt erfundene Werte, aber keine falsch zugeordneten. Bei einem Angebot mit Preisen je 100 Stück gab das LLM „298“ als Gesamtbetrag aus. Die Zahl steht im Text und rutscht durch.
 - Die Konfidenz-Schwelle ist in der jetzigen Form wirkungslos, weil das Modell fast immer 0,9 angibt. Eine belastbare Unsicherheit bräuchte z. B. mehrere Läufe mit Abstimmung oder ein zweites Modell.
 - Die Erkennung geänderter Bankdaten und von Prompt-Injection beruht auf regulären Ausdrücken. Wer die Muster kennt, kann sie umgehen, etwa mit Umschreibungen oder einer anderen Sprache. Sie sind eine zusätzliche Sicherung, kein vollständiger Schutz. Rechnungen mit IBAN und „ab sofort“ im Text können dagegen unnötig im Review landen. In einem echten Einsatz gehört deshalb dazu, dass ein Ticket keine Zahlung auslöst: Bezahlt wird erst nach Abgleich von Bestellung, Wareneingang und Rechnung im ERP.
 - Bestellungen und Lieferanten stehen in einer eigenen Tabelle statt im ERP. Jede Bestellung hat genau eine Position. Mehrere Positionen, Mengenstaffeln und Teilbestätigungen sind nicht abgebildet.
 - Wird eine AB über die Review-Queue zugeordnet (z. B. nach einem Zahlendreher), läuft der Abgleich mit der Bestellung nicht automatisch nach.
-- Offene AB-Aufgaben lassen sich noch nicht als erledigt markieren. Sie bleiben auf der Arbeitsliste, bis der Status in der Datenbank geändert wird.
+- Jede Stufe entscheidet ihre eigene Aufgabe. Gibt der Einkäufer frei, bleibt die Aufgabe der Einkaufsleitung offen, und der freigegebene Preis steht schon in der Preishistorie. Eine Ablehnung schließt die anderen Aufgaben desselben Tickets nicht. Eine Freigabekette mit fester Reihenfolge fehlt noch.
+- In die Preishistorie wandern nur freigegebene AB-Preise. Bei einer angekündigten Erhöhung („alle Artikel +6 %“) müsste der neue Preis je Artikel berechnet werden, das ist noch nicht gebaut.
+- Abkündigungen haben keine eigene Kategorie. Das Modell ordnet eine reine Abkündigung manchmal als Preiserhöhung ein, dann landet sie wegen des fehlenden Prozentsatzes in der Review-Queue. Die Merker für Technik, QM und Disposition bleiben am Ticket erhalten.
+- Technik und QM entscheiden je in einem Schritt. Erstmusterprüfung mit Prüfbericht, Zeichnungsänderung und Änderung der Stammdaten (neuer Werkstoff, neue Artikelnummer) laufen außerhalb des Systems.
+- Nach einem Neustart von n8n lief die erste Anfrage in der Entwicklung noch mit der alten Workflow-Version. Vor einer Auswertung deshalb eine Mail zum Aufwärmen schicken.
+- Der Schutz gegen fremde Seiten vergleicht die Herkunft der Anfrage mit dem Host. Hinter einem Reverse Proxy müsste die erlaubte Adresse konfiguriert werden.
+- Mehrkosten einer angekündigten Preiserhöhung werden auf die offenen Bestellungen hochgerechnet. Aussagekräftiger wäre der Jahresbedarf aus dem ERP. Die 500-€-Grenze gilt unabhängig von der Währung, CHF wird nicht umgerechnet.
+- Wird eine Preiserhöhung über die Review-Queue zugeordnet, fehlen Preishistorie, Mehrkosten und Eskalation. Das Ticket bekommt nur eine allgemeine Aufgabe für den Einkäufer.
+- Jahresbedarf, VPE, Mindestmenge und das Datum der Lieferantenbestätigung sind Testdaten in eigenen Tabellen. Im echten Einsatz kämen sie aus dem ERP (Einkaufsinfosatz, Verbrauchshistorie). Die AB-Prüfung trägt eine Bestätigung noch nicht selbst als `bestaetigt_am` ein.
+- Der CHF-Kurs für die Euro-Schwellen ist fest hinterlegt.
+- Das Audit-Protokoll ist manipulationserschwert, nicht revisionssicher im Sinne der GoBD: Ein Datenbank-Administrator kann die Trigger abschalten. „Wer“ ist der Name aus dem Formular, alle Bearbeiter teilen sich ein Login. Für echte Nachvollziehbarkeit braucht es persönliche Anmeldung (z. B. SSO).
+- Die anonyme Ansicht ersetzt nur Felder, die das System kennt. Lieferantennamen werden so pseudonymisiert, wie das LLM sie geschrieben hat: „Kovotech“ und „Kovotech s.r.o.“ werden zwei Pseudonyme.
 - Die Liefertreue ist ein fester Wert je Lieferant. Im echten Einsatz käme sie aus dem ERP und würde laufend aktualisiert.
 - Im Review lässt sich nur die Kategorie korrigieren, nicht einzelne Felder. Eine verworfene Bestellnummer muss der Bearbeiter in der Notiz nachtragen.
 - Mails kommen als JSON per Webhook. Ein echtes Postfach (IMAP-Trigger), Anhänge (PDF-Rechnungen) und Benachrichtigungen der Teams sind nicht angebunden. Im Error-Workflow steht für die Benachrichtigung nur ein Platzhalter.
@@ -264,7 +333,13 @@ docs/                       # Screenshots, Vorschaubilder für GitHub und Linked
 - [x] Auftragsbestätigungen mit Abgleich, Liefertreue und Antwortentwurf (Phase 1 des Fachkonzepts)
 - [ ] Phase 2: Versandavis mit Prüfung auf Frachtbrief oder Tracking-Nummer, Antwort auf Projektstatus-Anfragen, Terminanfragen
 - [ ] Phase 3: weitere Mailtypen aus dem Fachkonzept und zweistufige Klassifizierung
-- [ ] AB-Aufgaben in der Arbeitsliste abschließen
+- [x] Preiserhöhungen: eigene Kategorie, Aufgaben je Team, Preishistorie
+- [x] Jahreswirkung, gestufte Eskalation, VPE und Mindestmenge, Audit-Protokoll, Screenshot-Modus
+- [x] Aufgaben in der Arbeitsliste entscheiden, Sammelfreigabe unkritischer ABs, freigegebene AB-Preise in die Preishistorie
+- [x] Technik, QM und Disposition bei Materialänderung und Abkündigung einbinden, Entwürfe nach jeder Entscheidung
+- [ ] Freigabekette über mehrere Stufen, neue Preise aus angekündigten Erhöhungen in die Preishistorie
+- [ ] Eigene Kategorie für Abkündigungen und Änderungsanzeigen (Product Change Notification)
+- [ ] Persönliche Anmeldung statt gemeinsamem Login, damit das Audit-Protokoll belegt, wer entschieden hat
 - [ ] IMAP-Trigger für ein echtes Postfach und Text aus PDF-Anhängen
 - [ ] Felder im Review-Formular korrigierbar machen
 - [ ] Benachrichtigung der Teams und bei Fehlern (Teams, Slack oder E-Mail)
