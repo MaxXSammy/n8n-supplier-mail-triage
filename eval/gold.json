@@ -626,5 +626,16 @@
       "qm",
       "technik"
     ]
+  },
+  "43_reklamation_feldmann_sonderfreigabe": {
+    "kategorie": "reklamation",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018408"
+    },
+    "abteilungen": [
+      "qm",
+      "technik"
+    ]
   }
 }
