@@ -6,7 +6,8 @@
       "angebotsnummer": "ANG-26-0412",
       "betrag": 37440.0,
       "waehrung": "EUR"
-    }
+    },
+    "abteilungen": []
   },
   "02_angebot_rossi": {
     "kategorie": "angebot",
@@ -14,7 +15,8 @@
     "felder": {
       "angebotsnummer": "OF-2026/188",
       "betrag": null
-    }
+    },
+    "abteilungen": []
   },
   "03_angebot_kovotech_lieferzeit": {
     "kategorie": "angebot",
@@ -23,28 +25,32 @@
       "angebotsnummer": "KT-A-55721",
       "betrag": 9180.0,
       "waehrung": "EUR"
-    }
+    },
+    "abteilungen": []
   },
   "04_reklamation_brenner_8d": {
     "kategorie": "reklamation",
     "muss_review": false,
     "felder": {
       "bestellnummer": "4500018231"
-    }
+    },
+    "abteilungen": []
   },
   "05_reklamation_feldmann_mit_rechnung": {
     "kategorie": "reklamation",
     "muss_review": false,
     "felder": {
       "bestellnummer": "4500018307"
-    }
+    },
+    "abteilungen": []
   },
   "06_reklamation_swissturning_menge": {
     "kategorie": "reklamation",
     "muss_review": false,
     "felder": {
       "bestellnummer": "4500018290"
-    }
+    },
+    "abteilungen": []
   },
   "07_lieferverzug_rheinwerk": {
     "kategorie": "lieferverzug",
@@ -52,21 +58,24 @@
     "felder": {
       "bestellnummer": "4500018255",
       "liefertermin": "2026-11-20"
-    }
+    },
+    "abteilungen": []
   },
   "08_lieferverzug_precimet_teillieferung": {
     "kategorie": "lieferverzug",
     "muss_review": false,
     "felder": {
       "bestellnummer": "4500018266"
-    }
+    },
+    "abteilungen": []
   },
   "09_lieferverzug_alpen_kurz": {
     "kategorie": "lieferverzug",
     "muss_review": false,
     "felder": {
       "bestellnummer": "4500018240"
-    }
+    },
+    "abteilungen": []
   },
   "10_rechnung_brenner": {
     "kategorie": "rechnung",
@@ -76,7 +85,8 @@
       "bestellnummer": "4500018231",
       "betrag": 14875.0,
       "waehrung": "EUR"
-    }
+    },
+    "abteilungen": []
   },
   "11_rechnung_swissturning_mahnung": {
     "kategorie": "rechnung",
@@ -85,7 +95,8 @@
       "rechnungsnummer": "ST-INV-26-4410",
       "betrag": 8420.5,
       "waehrung": "CHF"
-    }
+    },
+    "abteilungen": []
   },
   "12_rechnung_kovotech_gutschrift": {
     "kategorie": "rechnung",
@@ -94,22 +105,26 @@
       "rechnungsnummer": "GS-2026-0091",
       "betrag": 1230.0,
       "waehrung": "EUR"
-    }
+    },
+    "abteilungen": []
   },
   "13_sonstiges_rossi_betriebsferien": {
     "kategorie": "sonstiges",
     "muss_review": false,
-    "felder": {}
+    "felder": {},
+    "abteilungen": []
   },
   "14_sonstiges_bankdaten_betrugsversuch": {
     "kategorie": "sonstiges",
     "muss_review": true,
-    "felder": {}
+    "felder": {},
+    "abteilungen": []
   },
   "15_sonstiges_precimet_zertifikat": {
     "kategorie": "sonstiges",
     "muss_review": false,
-    "felder": {}
+    "felder": {},
+    "abteilungen": []
   },
   "16_ab_alpen_ok": {
     "kategorie": "auftragsbestaetigung",
@@ -123,7 +138,11 @@
     "ab": {
       "ergebnis": "automatisch_bestaetigt",
       "gruende": []
-    }
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:erledigt"
+    ],
+    "abteilungen": []
   },
   "17_ab_brenner_liefertreue_ax": {
     "kategorie": "auftragsbestaetigung",
@@ -139,7 +158,12 @@
       "gruende": [
         "liefertreue_unter_schwelle"
       ]
-    }
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:erledigt",
+      "Einkauf:ab_klaeren:offen"
+    ],
+    "abteilungen": []
   },
   "18_ab_brenner_c_artikel_ok": {
     "kategorie": "auftragsbestaetigung",
@@ -153,7 +177,11 @@
     "ab": {
       "ergebnis": "automatisch_bestaetigt",
       "gruende": []
-    }
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:erledigt"
+    ],
+    "abteilungen": []
   },
   "19_ab_rheinwerk_blind": {
     "kategorie": "auftragsbestaetigung",
@@ -170,7 +198,12 @@
         "liefertreue_unter_schwelle",
         "blindbestaetigung_verdacht"
       ]
-    }
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:erledigt",
+      "Einkauf:ab_klaeren:offen"
+    ],
+    "abteilungen": []
   },
   "20_ab_swissturning_blind_premium": {
     "kategorie": "auftragsbestaetigung",
@@ -186,7 +219,12 @@
       "gruende": [
         "blindbestaetigung_verdacht"
       ]
-    }
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:erledigt",
+      "Einkauf:ab_klaeren:offen"
+    ],
+    "abteilungen": []
   },
   "21_ab_nordform_neulieferant": {
     "kategorie": "auftragsbestaetigung",
@@ -202,7 +240,12 @@
       "gruende": [
         "neuer_lieferant"
       ]
-    }
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:erledigt",
+      "Einkauf:ab_klaeren:offen"
+    ],
+    "abteilungen": []
   },
   "22_ab_kovotech_preis": {
     "kategorie": "auftragsbestaetigung",
@@ -218,7 +261,13 @@
       "gruende": [
         "preis"
       ]
-    }
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:erledigt",
+      "Disposition:preis_freigeben:offen",
+      "Einkauf:preis_info:info"
+    ],
+    "abteilungen": []
   },
   "23_ab_feldmann_palette": {
     "kategorie": "auftragsbestaetigung",
@@ -234,7 +283,12 @@
       "gruende": [
         "menge"
       ]
-    }
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:erledigt",
+      "Einkauf:ab_klaeren:offen"
+    ],
+    "abteilungen": []
   },
   "24_ab_precimet_stammdaten": {
     "kategorie": "auftragsbestaetigung",
@@ -251,7 +305,12 @@
         "menge",
         "stammdaten_pruefen"
       ]
-    }
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:erledigt",
+      "Einkauf:ab_klaeren:offen"
+    ],
+    "abteilungen": []
   },
   "25_ab_rossi_termin_ungewiss": {
     "kategorie": "auftragsbestaetigung",
@@ -267,7 +326,11 @@
       "gruende": [
         "termin_unsicher"
       ]
-    }
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:offen"
+    ],
+    "abteilungen": []
   },
   "26_ab_alpen_termin_spaeter": {
     "kategorie": "auftragsbestaetigung",
@@ -283,7 +346,11 @@
       "gruende": [
         "termin_spaeter"
       ]
-    }
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:offen"
+    ],
+    "abteilungen": []
   },
   "27_ab_swissturning_preis_und_termin": {
     "kategorie": "auftragsbestaetigung",
@@ -300,7 +367,12 @@
         "preis",
         "termin_spaeter"
       ]
-    }
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:offen",
+      "Einkauf:preiserhoehung_pruefen:offen"
+    ],
+    "abteilungen": []
   },
   "28_ab_precimet_bestellung_unbekannt": {
     "kategorie": "auftragsbestaetigung",
@@ -313,7 +385,8 @@
       "gruende": [
         "bestellung_unbekannt"
       ]
-    }
+    },
+    "abteilungen": []
   },
   "29_ab_brenner_zahlendreher": {
     "kategorie": "auftragsbestaetigung",
@@ -326,7 +399,8 @@
       "gruende": [
         "bestellung_unbekannt"
       ]
-    }
+    },
+    "abteilungen": []
   },
   "30_ab_kovotech_englisch_ok": {
     "kategorie": "auftragsbestaetigung",
@@ -340,7 +414,11 @@
     "ab": {
       "ergebnis": "automatisch_bestaetigt",
       "gruende": []
-    }
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:erledigt"
+    ],
+    "abteilungen": []
   },
   "31_ab_feldmann_mit_zitat_ok": {
     "kategorie": "auftragsbestaetigung",
@@ -354,7 +432,11 @@
     "ab": {
       "ergebnis": "automatisch_bestaetigt",
       "gruende": []
-    }
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:erledigt"
+    ],
+    "abteilungen": []
   },
   "32_ab_rossi_standard_ok": {
     "kategorie": "auftragsbestaetigung",
@@ -368,7 +450,11 @@
     "ab": {
       "ergebnis": "automatisch_bestaetigt",
       "gruende": []
-    }
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:erledigt"
+    ],
+    "abteilungen": []
   },
   "33_ab_precimet_liefertreue_standard": {
     "kategorie": "auftragsbestaetigung",
@@ -384,7 +470,12 @@
       "gruende": [
         "liefertreue_unter_schwelle"
       ]
-    }
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:erledigt",
+      "Einkauf:ab_klaeren:offen"
+    ],
+    "abteilungen": []
   },
   "34_ab_alpen_fremde_domain": {
     "kategorie": "auftragsbestaetigung",
@@ -400,6 +491,140 @@
       "gruende": [
         "absender_domain_abweichend"
       ]
-    }
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:erledigt",
+      "Einkauf:ab_klaeren:offen"
+    ],
+    "abteilungen": []
+  },
+  "35_preiserhoehung_alpen_allgemein": {
+    "kategorie": "preiserhoehung",
+    "muss_review": false,
+    "felder": {
+      "preis_prozent": 6.5,
+      "gueltig_ab": "2027-01-01"
+    },
+    "aufgaben": [
+      "Einkauf:preiserhoehung_pruefen:offen",
+      "Einkaufsleitung:eskalation:offen"
+    ],
+    "abteilungen": []
+  },
+  "36_preiserhoehung_precimet_zwoelf_prozent": {
+    "kategorie": "preiserhoehung",
+    "muss_review": false,
+    "felder": {
+      "preis_prozent": 12,
+      "gueltig_ab": "2027-02-01"
+    },
+    "aufgaben": [
+      "Einkauf:preiserhoehung_pruefen:offen",
+      "Einkaufsleitung:eskalation:offen",
+      "Strategischer Einkauf:preis_info:info"
+    ],
+    "abteilungen": []
+  },
+  "37_preiserhoehung_swissturning_neuer_preis": {
+    "kategorie": "preiserhoehung",
+    "muss_review": false,
+    "felder": {
+      "einzelpreis": 1.94,
+      "preis_prozent": null,
+      "gueltig_ab": "2027-01-01"
+    },
+    "aufgaben": [
+      "Einkauf:preiserhoehung_pruefen:offen"
+    ],
+    "abteilungen": []
+  },
+  "38_ab_alpen_preis_ueber_toleranz": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018411",
+      "einzelpreis": 2.65,
+      "menge": 1200,
+      "liefertermin": "2026-11-14"
+    },
+    "ab": {
+      "ergebnis": "abweichung",
+      "gruende": [
+        "preis"
+      ]
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:erledigt",
+      "Einkauf:preiserhoehung_pruefen:offen"
+    ],
+    "abteilungen": []
+  },
+  "39_ab_rheinwerk_preis_ueber_euro_grenze": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018404",
+      "einzelpreis": 6.65,
+      "menge": 2400,
+      "liefertermin": "2026-11-25"
+    },
+    "ab": {
+      "ergebnis": "abweichung",
+      "gruende": [
+        "preis"
+      ]
+    },
+    "aufgaben": [
+      "Disposition:liefertermin_pruefen:erledigt",
+      "Einkauf:preiserhoehung_pruefen:offen",
+      "Einkaufsleitung:eskalation:offen"
+    ],
+    "abteilungen": []
+  },
+  "40_preiserhoehung_feldmann_jahreswirkung": {
+    "kategorie": "preiserhoehung",
+    "muss_review": false,
+    "felder": {
+      "preis_prozent": 10,
+      "gueltig_ab": "2027-03-01"
+    },
+    "aufgaben": [
+      "Einkauf:preiserhoehung_pruefen:offen",
+      "Einkaufsleitung:eskalation:offen",
+      "Geschäftsleitung:eskalation:offen",
+      "Strategischer Einkauf:preis_info:info"
+    ],
+    "abteilungen": []
+  },
+  "41_preiserhoehung_rheinwerk_werkstoffwechsel": {
+    "kategorie": "preiserhoehung",
+    "muss_review": false,
+    "felder": {
+      "preis_prozent": 3,
+      "gueltig_ab": "2027-02-01",
+      "werkstoff_alt": "16MnCr5",
+      "werkstoff_neu": "20MnCr5"
+    },
+    "aufgaben": [
+      "Einkauf:preiserhoehung_pruefen:offen"
+    ],
+    "abteilungen": [
+      "dispo",
+      "qm",
+      "technik"
+    ]
+  },
+  "42_sonstiges_swissturning_abkuendigung": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {
+      "werkstoff_alt": "1.4301",
+      "werkstoff_neu": "1.4305"
+    },
+    "abteilungen": [
+      "dispo",
+      "qm",
+      "technik"
+    ]
   }
 }

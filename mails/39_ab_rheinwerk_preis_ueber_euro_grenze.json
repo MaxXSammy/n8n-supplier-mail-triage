@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-39@rheinwerk-komponenten.example>",
+  "from": "Jens Albrecht <j.albrecht@rheinwerk-komponenten.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "AB zu Ihrer Bestellung 4500018404",
+  "received_at": "2026-10-27T15:20:00+01:00",
+  "body": "Hallo Herr Schneider,\n\nhiermit bestätigen wir Ihre Bestellung 4500018404: 2.400 Stück Zahnradwelle ZW-25, Liefertermin 25.11.2026.\n\nDurch die Energiekostenumlage ändert sich der Stückpreis auf 6,65 EUR (+3,9 %).\n\nBeste Grüße\nJens Albrecht\nRheinwerk Komponenten GmbH"
+}

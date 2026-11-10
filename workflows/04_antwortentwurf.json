@@ -74,7 +74,8 @@
         "responseMode": "lastNode",
         "options": {
           "path": "entwurf",
-          "buttonLabel": "Entwurf erstellen"
+          "buttonLabel": "Entwurf erstellen",
+          "customCss": "/* Gleiche Optik wie die Arbeitsliste: Slate, feine Linien, Zahlen in Monospace. Keine Schriften von fremden Servern. */\n:root {\n\t--font-family: Inter, ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif;\n\t--font-weight-normal: 400;\n\t--font-weight-bold: 600;\n\t--font-size-label: 13px;\n\t--font-size-input: 14px;\n\t--font-size-header: 18px;\n\t--font-size-paragraph: 13px;\n\t--color-background: #f8fafc;\n\t--color-card-bg: #ffffff;\n\t--color-card-border: #e2e8f0;\n\t--color-card-shadow: rgba(15, 23, 42, 0.05);\n\t--color-header: #0f172a;\n\t--color-label: #334155;\n\t--color-input-border: #cbd5e1;\n\t--color-input-text: #0f172a;\n\t--color-focus-border: #0f172a;\n\t--color-submit-btn-bg: #0f172a;\n\t--color-submit-btn-text: #ffffff;\n\t--color-error: #be123c;\n\t--color-required: #be123c;\n\t--color-link: #475569;\n\t--color-html-text: #334155;\n\t--color-html-link: #0f172a;\n\t--color-header-subtext: #64748b;\n\t--border-radius-card: 8px;\n\t--card-border-radius: 8px;\n\t--border-radius-input: 6px;\n\t--container-width: 520px;\n\t--submit-btn-height: 40px;\n\t--box-shadow-card: 0 1px 2px 0 var(--color-card-shadow);\n}\ninput[type=\"number\"], input[type=\"text\"] { font-variant-numeric: tabular-nums; }\ninput[type=\"number\"] { font-family: ui-monospace, \"JetBrains Mono\", \"Cascadia Mono\", Consolas, monospace; }\nbutton[type=\"submit\"] { font-weight: 500; letter-spacing: .01em; }\n"
         }
       },
       "id": "436bf500-4989-4e41-adcd-a22e1ca86a8b",
@@ -193,7 +194,9 @@
         "operation": "completion",
         "completionTitle": "Entwurf erstellt",
         "completionMessage": "={{ `${$json.betreff}\\n\\n${$json.text}` + ($json.warnungen.length ? `\\n\\nBitte prüfen: ${$json.warnungen.join(', ')}` : '') + '\\n\\nDer Entwurf steht auch auf der Arbeitsliste.' }}",
-        "options": {}
+        "options": {
+          "customCss": "/* Gleiche Optik wie die Arbeitsliste: Slate, feine Linien, Zahlen in Monospace. Keine Schriften von fremden Servern. */\n:root {\n\t--font-family: Inter, ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif;\n\t--font-weight-normal: 400;\n\t--font-weight-bold: 600;\n\t--font-size-label: 13px;\n\t--font-size-input: 14px;\n\t--font-size-header: 18px;\n\t--font-size-paragraph: 13px;\n\t--color-background: #f8fafc;\n\t--color-card-bg: #ffffff;\n\t--color-card-border: #e2e8f0;\n\t--color-card-shadow: rgba(15, 23, 42, 0.05);\n\t--color-header: #0f172a;\n\t--color-label: #334155;\n\t--color-input-border: #cbd5e1;\n\t--color-input-text: #0f172a;\n\t--color-focus-border: #0f172a;\n\t--color-submit-btn-bg: #0f172a;\n\t--color-submit-btn-text: #ffffff;\n\t--color-error: #be123c;\n\t--color-required: #be123c;\n\t--color-link: #475569;\n\t--color-html-text: #334155;\n\t--color-html-link: #0f172a;\n\t--color-header-subtext: #64748b;\n\t--border-radius-card: 8px;\n\t--card-border-radius: 8px;\n\t--border-radius-input: 6px;\n\t--container-width: 520px;\n\t--submit-btn-height: 40px;\n\t--box-shadow-card: 0 1px 2px 0 var(--color-card-shadow);\n}\ninput[type=\"number\"], input[type=\"text\"] { font-variant-numeric: tabular-nums; }\ninput[type=\"number\"] { font-family: ui-monospace, \"JetBrains Mono\", \"Cascadia Mono\", Consolas, monospace; }\nbutton[type=\"submit\"] { font-weight: 500; letter-spacing: .01em; }\n"
+        }
       },
       "id": "a1e44489-4674-4c8a-a00a-471c034744c3",
       "name": "Formular Entwurf fertig",
@@ -209,7 +212,9 @@
         "operation": "completion",
         "completionTitle": "Nicht gefunden",
         "completionMessage": "Kein Ticket mit dieser ID.",
-        "options": {}
+        "options": {
+          "customCss": "/* Gleiche Optik wie die Arbeitsliste: Slate, feine Linien, Zahlen in Monospace. Keine Schriften von fremden Servern. */\n:root {\n\t--font-family: Inter, ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif;\n\t--font-weight-normal: 400;\n\t--font-weight-bold: 600;\n\t--font-size-label: 13px;\n\t--font-size-input: 14px;\n\t--font-size-header: 18px;\n\t--font-size-paragraph: 13px;\n\t--color-background: #f8fafc;\n\t--color-card-bg: #ffffff;\n\t--color-card-border: #e2e8f0;\n\t--color-card-shadow: rgba(15, 23, 42, 0.05);\n\t--color-header: #0f172a;\n\t--color-label: #334155;\n\t--color-input-border: #cbd5e1;\n\t--color-input-text: #0f172a;\n\t--color-focus-border: #0f172a;\n\t--color-submit-btn-bg: #0f172a;\n\t--color-submit-btn-text: #ffffff;\n\t--color-error: #be123c;\n\t--color-required: #be123c;\n\t--color-link: #475569;\n\t--color-html-text: #334155;\n\t--color-html-link: #0f172a;\n\t--color-header-subtext: #64748b;\n\t--border-radius-card: 8px;\n\t--card-border-radius: 8px;\n\t--border-radius-input: 6px;\n\t--container-width: 520px;\n\t--submit-btn-height: 40px;\n\t--box-shadow-card: 0 1px 2px 0 var(--color-card-shadow);\n}\ninput[type=\"number\"], input[type=\"text\"] { font-variant-numeric: tabular-nums; }\ninput[type=\"number\"] { font-family: ui-monospace, \"JetBrains Mono\", \"Cascadia Mono\", Consolas, monospace; }\nbutton[type=\"submit\"] { font-weight: 500; letter-spacing: .01em; }\n"
+        }
       },
       "id": "c990d587-e57f-44dc-aae1-1ef6c236204f",
       "name": "Formular nicht gefunden",

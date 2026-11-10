@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-35@alpen-drehtechnik.example>",
+  "from": "Katharina Gruber <k.gruber@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Preisanpassung zum 01.01.2027",
+  "received_at": "2026-11-02T10:05:00+01:00",
+  "body": "Sehr geehrter Herr Schneider,\n\naufgrund deutlich gestiegener Energie- und Lohnkosten müssen wir unsere Preise leider anpassen. Ab dem 01.01.2027 erhöhen sich die Preise für alle Artikel um 6,5 %.\n\nBestellungen, die bis zum 31.12.2026 bei uns eingehen, liefern wir noch zu den bisherigen Konditionen.\n\nFür Rückfragen stehe ich Ihnen gerne zur Verfügung.\n\nMit freundlichen Grüßen\nKatharina Gruber\nAlpen Drehtechnik GmbH"
+}

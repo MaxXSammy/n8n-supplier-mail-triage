@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-42@swissturning.example>",
+  "from": "Reto Meier <r.meier@swissturning.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Abkündigung Achsstift AS-3",
+  "received_at": "2026-11-07T09:20:00+01:00",
+  "body": "Grüezi Herr Schneider\n\nDer Achsstift AS-3 wird Ende März 2027 abgekündigt, da wir den Werkstoff 1.4301 für diese Abmessung nicht mehr beziehen können. Bestellungen im bisherigen Werkstoff nehmen wir als Last-Time-Buy noch bis zum 31.01.2027 an.\n\nAls Nachfolger empfehlen wir den Achsstift AS-3N aus 1.4305. Muster senden wir Ihnen gerne zu.\n\nFreundliche Grüsse\nReto Meier\nSwiss Turning AG"
+}
