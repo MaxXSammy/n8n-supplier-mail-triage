@@ -61,6 +61,8 @@ def main() -> int:
         ("Screenshot-Modus: kein Mailtext, keine Aktionen", "16MnCr5 ist nicht mehr verfügbar" not in anonym and 'action="/webhook/aufgabe"' not in anonym),
         ("Rang-Badge mit Rangstufen, Namen im JSON escaped", 'id="rang"' in normal and "Senior Negotiator" in normal and "</script><b>x" not in normal),
         ("Screenshot-Modus: kein Rang mit Namen", 'id="rang-daten"' not in anonym),
+        ("Hell- und Dunkelmodus, ohne Fremdressourcen", 'name="color-scheme"' in normal and "prefers-color-scheme: dark" in normal
+         and not re.search(r"(src|href)=[\"']https?://", normal)),
         ("Review mit Bankdaten als kritisch markiert", "Bankdaten geändert" in normal and "badge krit" in normal),
     ]
     fehler = 0
