@@ -139,7 +139,13 @@ flowchart LR
     V -- Preiserhöhung --> PE[Preisinfo<br/>Historie, Mehrkosten]
     AB --> A[(Ticket mit Aufgaben<br/>Disposition, Einkäufer,<br/>strategischer Einkauf)]
     PE --> A
-    A --> AE[Antwortentwurf<br/>Vorlagen, Tonwahl]
+    A --> ES[Eskalation nach Jahreswirkung<br/>Einkaufsleitung, Geschäftsleitung]
+    V -- Werkstoff, Maß, Abkündigung --> TQ[Technik, QM, Disposition<br/>Preisfreigabe gesperrt bis Freigabe]
+    A --> AL[Arbeitsliste<br/>System-Empfehlung, Mensch entscheidet]
+    ES --> AL
+    TQ --> AL
+    AL --> AU[(Audit-Protokoll<br/>Hash-Kette)]
+    AL --> AE[Antwortentwurf<br/>Vorlagen, Tonwahl, nie automatisch gesendet]
     V -- alles ok --> T[(Ticket<br/>Team aus Routing-Tabelle)]
     V -- Zweifel oder LLM-Fehler --> Q[(Review-Queue)]
     Q --> F[Formular<br/>Mensch entscheidet]
