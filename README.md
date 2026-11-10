@@ -4,6 +4,8 @@
 
 ProcurePulse ist ein self-hosted n8n-Workflow mit Arbeitsoberfläche für den Einkauf. Er verarbeitet eingehende Lieferanten-Mails. Ein lokales LLM erkennt den Zweck der Mail und extrahiert die wichtigen Daten als JSON. Danach wird alles im Code geprüft, die Mail an das zuständige Team geroutet und ein Ticket angelegt. Auftragsbestätigungen werden zusätzlich mit der Bestellung abgeglichen und je nach Liefertreue des Lieferanten automatisch bestätigt oder dem Einkäufer vorgelegt, mit fertigem Antwortentwurf. Preiserhöhungen verteilt das System nach Höhe auf Disposition, Einkäufer und strategischen Einkauf, mit Preishistorie und Mehrkosten. Ändert ein Lieferant Werkstoff oder Maß oder kündigt er einen Artikel ab, holt das System Technik, QM und Disposition dazu. Jede Karte der Arbeitsliste zeigt eine begründete System-Empfehlung und die Vorgeschichte mit dem Lieferanten, damit auch eine Vertretung sofort weiß, was zu tun ist. Unsichere oder verdächtige Fälle gehen an einen Menschen. Alles läuft lokal mit Docker und Ollama, ohne Cloud-KI.
 
+**Was das Tool tut und was nicht:** Es bringt Mails zur richtigen Stelle, ordnet sie kurz ein, fasst sie zusammen und liefert Entscheidungshilfen und Entwürfe. Es gibt keine Preise frei, lehnt nichts ab und sendet nichts. Die Entscheidung trifft der Mensch.
+
 ![Haupt-Workflow in n8n](docs/bilder/workflow_triage.png)
 
 ## Das Problem
@@ -72,7 +74,7 @@ Die Merker sind ein Vorschlag. In der Karte stehen zwei Knöpfe:
 - **Technik & QM einbinden:** Aufgaben für Technik und QM, bei Abkündigung auch für die Disposition (Bestand, letzte Bestellung im bisherigen Werkstoff), dazu ein interner Entwurf an beide Abteilungen mit allen Daten und der Mail des Lieferanten.
 - **Erstmuster/Zeugnis anfordern:** Entwurf an den Lieferanten mit Anforderung von Datenblatt, Werkstoffzeugnis 3.1 nach EN 10204 und Erstmustern. Bis zur Freigabe liefert er im bisherigen Werkstoff.
 
-Solange Technik und QM nicht beide freigegeben haben, ist die Preisfreigabe gesperrt, auch wenn noch niemand sie eingebunden hat. Das prüfen die Seite, der Code und zusätzlich die Datenbank, ein Umgehungsversuch direkt an der Speicher-Abfrage ändert nichts. Nach jeder Preisentscheidung entsteht ein Entwurf an den Lieferanten („Preis bestätigt“ oder „Erhöhung nicht akzeptiert“). Jeder Entwurf wird eine Aufgabe „Entwurf prüfen und senden“ für den zuständigen Einkäufer. Gesendet wird nie automatisch.
+Das System gibt keinen Preis frei und lehnt keinen ab. Es empfiehlt, den Preis erst nach der Rückmeldung von Technik und QM zu entscheiden, und zeigt das als Hinweis in der Karte. Zu jeder Preisaufgabe lässt sich per Knopf ein Entwurf an den Lieferanten erzeugen („Preis bestätigt“ oder „Erhöhung nicht akzeptiert“). Jeder Entwurf wird eine Aufgabe „Entwurf prüfen und senden“ für den zuständigen Einkäufer und lässt sich mit einem Klick im Mailprogramm öffnen. Gesendet wird nie automatisch.
 
 ### System-Empfehlung, Historie und Vertretungsmodus
 
@@ -82,24 +84,23 @@ Jede Karte beginnt mit einer **System-Empfehlung**: was zu tun ist und warum, re
 |---|---|
 | Werkstoff, Maß oder Abkündigung, Abteilungen noch nicht eingebunden | Technik, QM bzw. Disposition einbinden, mit Knopf „Empfehlung ausführen“ |
 | Festpreis mit dem Lieferanten vereinbart (Tabelle `vereinbarungen`) | Ablehnen, mit Vertrag und Laufzeit |
-| Technik oder QM haben noch nicht freigegeben | warten, Preisfreigabe gesperrt |
+| Technik oder QM haben noch nicht geantwortet | Preis erst danach entscheiden |
 | Preisgleitklausel vereinbart | Index-Nachweis anfordern |
 | hohe Erhöhung bei schwacher Liefertreue | Alternativlieferant prüfen |
-| mehrere Erhöhungen, zusammen über 5 % in zwölf Monaten | nicht ohne Verhandlung freigeben |
-| innerhalb der Kompetenz der Disposition, keine Warnung | freigeben |
+| mehrere Erhöhungen, zusammen über 5 % in zwölf Monaten | nicht ohne Verhandlung akzeptieren |
+| innerhalb der Kompetenz der Disposition, keine Warnung | akzeptieren |
 
 Jede Karte hat drei Reiter: **Zusammenfassung** (Kernfakten aus den geprüften Daten, nicht als freier KI-Text), **Original-Mail** und **Historie** (Vereinbarungen, letzte Preisänderungen, frühere Vorgänge mit dem Lieferanten und der Verlauf dieses Vorgangs mit Zeit und Bearbeiter). Der **Vertretungsmodus** öffnet in allen Karten die Historie und zeigt oben eine Übergabe: worauf gewartet wird und was als Nächstes zu tun ist.
 
-Aus jeder Karte lässt sich direkt **an Technik, QM oder Disposition weiterleiten**: Die Abteilung bekommt eine Aufgabe, der Einkäufer einen internen Entwurf mit allen Daten und der Mail. Leitet der Einkauf an QM oder Technik weiter, wartet die Preisfreigabe auch auf deren Entscheidung.
+Aus jeder Karte lässt sich direkt **an Technik, QM oder Disposition weiterleiten**: Die Abteilung bekommt eine Aufgabe, der Einkäufer einen internen Entwurf mit allen Daten und der Mail.
 
-**Kennzahlen oben:** Der Balken „Savings YTD“ zählt nur Cost Avoidance, also die Jahreswirkung abgelehnter Preiserhöhungen, und ist als vorläufig beschriftet: Ob die Erhöhung wirklich ausbleibt, zeigt erst die Antwort des Lieferanten. Eine Freigabe zählt nicht, sie akzeptiert Mehrkosten. Der Streak zählt Tage ohne Rückstau (keine Aufgabe länger als zwei Tage offen). Er belohnt zügiges Bearbeiten, nicht schnelles Wegklicken. Der Procurement Rank (Buyer bis Lead Negotiator) richtet sich nach den vermiedenen Mehrkosten des eingetragenen Bearbeiters in diesem Jahr, nicht nach der Zahl erledigter Tickets. Nach jeder Aktion gleitet die Karte weg, und unten rechts erscheint eine kurze Meldung, z. B. „Abgelehnt · 6.000 € Cost Avoidance vorgemerkt · Entwurf an Lieferant erstellt“.
+**Kennzahlen oben:** offene Eskalationen, offene Reviews, Automatisierungsquote der letzten 30 Tage und die Jahreswirkung der offenen Preisänderungen. Sie zeigen, was ansteht, und bewerten niemanden. Wer eine Aufgabe erledigt hat, markiert sie als erledigt, die Karte gleitet weg, und unten rechts erscheint eine kurze Meldung.
 
 ### Arbeitsliste, Audit-Protokoll und Screenshot-Modus
 
-- **Audit-Protokoll:** Jede Entscheidung in der Review-Queue (freigeben, verwerfen) landet mit Name, Zeit, Vorschlag des LLM, Entscheidung und Notiz in `audit_log`. Trigger verbieten Ändern und Löschen, jede Zeile enthält den Hash ihrer Vorgängerin. Die Arbeitsliste zeigt, ob die Kette intakt ist.
+- **Audit-Protokoll:** Jede Entscheidung in der Review-Queue (zuordnen, verwerfen) und jedes Erledigen oder Weiterleiten landet mit Name, Zeit und Notiz in `audit_log`. Trigger verbieten Ändern und Löschen, jede Zeile enthält den Hash ihrer Vorgängerin. Die Arbeitsliste zeigt, ob die Kette intakt ist.
 - **Arbeitsliste:** Kennzahlen oben (offene Eskalationen, offene Reviews, Automatisierungsquote der letzten 30 Tage, Jahreswirkung offener Preisänderungen), darunter Reiter je Team und eine Sortierung nach Full-Year-Effekt oder Priorität. Jede Aufgabe ist eine Karte mit dem Lieferanten als Überschrift und einem Datengitter. Warnungen stehen als farbig umrandete Hinweise darin, jeder mit einem Info-Symbol, das die auslösende Regel mit den konkreten Werten zeigt, z. B. „Liefertreue 79 % < Schwellenwert 80 %“. Die Seite lädt nichts von fremden Servern, weder CSS-Framework noch Schriften, weil sie vertrauliche Preise zeigt und auch ohne Internet laufen soll. Die Formulare nutzen dieselben Farben.
-- **Entscheiden in der Karte:** Preisaufgaben lassen sich freigeben oder ablehnen, alle anderen als erledigt markieren. Jede Aktion ist ein POST an `/webhook/aufgabe`, kein Link, damit Link-Vorschauen nichts auslösen. Der Server prüft die Herkunft der Anfrage (Schutz gegen untergeschobene Formulare von fremden Seiten), den Namen des Bearbeiters und ob die Aktion zur Aufgabe passt. Ein freigegebener AB-Preis wird neuer Preis in der Preishistorie, jede Entscheidung landet im Audit-Protokoll. Dazu kommt der Weg zur Antwort-Vorlage.
-- **Sammelfreigabe mit Leitplanken:** „Unkritische ABs freigeben“ gibt nur Preiserhöhungen frei, die ohnehin in der Kompetenz der Disposition liegen und keinen Warnhinweis tragen (keine abweichende Prozentangabe des Lieferanten, Erhöhungen der letzten zwölf Monate zusammen höchstens 5 %). Welche Aufgaben das sind, bestimmt der Server, nicht die Seite. Vor dem Absenden fragt die Seite mit Anzahl und Summe nach. Massenfreigaben verleiten zum Durchwinken, deshalb sind die Kriterien eng.
+- **Erledigen, Weiterleiten, Antwortentwurf:** Jede Aktion ist ein POST an `/webhook/aufgabe`, kein Link, damit Link-Vorschauen nichts auslösen. Der Server prüft die Herkunft der Anfrage (Schutz gegen untergeschobene Formulare von fremden Seiten), den Namen des Bearbeiters und ob die Aktion zur Aufgabe passt. Es gibt bewusst kein Freigeben und Ablehnen: Die Entscheidung über Preise fällt im ERP und beim Menschen, das Tool bereitet sie vor.
 - **Screenshot-Modus:** Ein Knopf in der Arbeitsliste lädt eine anonyme Fassung (`?anonym=1`). Der Server ersetzt Lieferanten, Bestellnummern, Personen und Beträge und lässt Mailtexte und Entwürfe weg, bevor die Seite den Browser erreicht. Prozentwerte und Daten bleiben sichtbar, damit sich Fälle weiter besprechen lassen.
 
 Schwellen und Minuten stehen in der Tabelle `einstellungen` und lassen sich ohne Workflow-Änderung anpassen. Für jede offene AB erstellt der Einkäufer per Formular einen **Antwortentwurf** im gewünschten Ton (förmlich oder locker, mit Nachdruck oder gelassen). Offene Entscheidungen wie „Mehrmenge annehmen?“ stehen als Platzhalter darin. Das System sendet nichts selbst.
@@ -362,10 +363,9 @@ start_procurepulse.bat|.sh  # Starten per Doppelklick
 - Die Erkennung geänderter Bankdaten und von Prompt-Injection beruht auf regulären Ausdrücken. Wer die Muster kennt, kann sie umgehen, etwa mit Umschreibungen oder einer anderen Sprache. Sie sind eine zusätzliche Sicherung, kein vollständiger Schutz. Rechnungen mit IBAN und „ab sofort“ im Text können dagegen unnötig im Review landen. In einem echten Einsatz gehört deshalb dazu, dass ein Ticket keine Zahlung auslöst: Bezahlt wird erst nach Abgleich von Bestellung, Wareneingang und Rechnung im ERP.
 - Bestellungen und Lieferanten stehen in einer eigenen Tabelle statt im ERP. Jede Bestellung hat genau eine Position. Mehrere Positionen, Mengenstaffeln und Teilbestätigungen sind nicht abgebildet.
 - Wird eine AB über die Review-Queue zugeordnet (z. B. nach einem Zahlendreher), läuft der Abgleich mit der Bestellung nicht automatisch nach.
-- Jede Stufe entscheidet ihre eigene Aufgabe. Gibt der Einkäufer frei, bleibt die Aufgabe der Einkaufsleitung offen, und der freigegebene Preis steht schon in der Preishistorie. Eine Ablehnung schließt die anderen Aufgaben desselben Tickets nicht. Eine Freigabekette mit fester Reihenfolge fehlt noch.
+- Jede Stufe erledigt ihre eigene Aufgabe. Eine Ablehnung oder ein Erledigen schließt die anderen Aufgaben desselben Tickets nicht. Eine Freigabekette gibt es bewusst nicht: Das Tool entscheidet nichts, es bereitet vor.
 - In die Preishistorie wandern nur freigegebene AB-Preise. Bei einer angekündigten Erhöhung („alle Artikel +6 %“) müsste der neue Preis je Artikel berechnet werden, das ist noch nicht gebaut.
 - Die Vereinbarungen (Festpreis, Preisgleitklausel) sind Testdaten in einer eigenen Tabelle. Im echten Einsatz kämen sie aus Rahmenverträgen im ERP. Gepflegt werden sie bisher direkt in der Datenbank.
-- Cost Avoidance ist vorläufig: Das System weiß nicht, ob der Lieferant die Ablehnung akzeptiert. Ein Abgleich mit späteren Rechnungen fehlt.
 - Abkündigungen haben keine eigene Kategorie. Das Modell ordnet eine reine Abkündigung manchmal als Preiserhöhung ein, dann landet sie wegen des fehlenden Prozentsatzes in der Review-Queue. Die Merker für Technik, QM und Disposition bleiben am Ticket erhalten.
 - Technik und QM entscheiden je in einem Schritt. Erstmusterprüfung mit Prüfbericht, Zeichnungsänderung und Änderung der Stammdaten (neuer Werkstoff, neue Artikelnummer) laufen außerhalb des Systems.
 - Nach einem Neustart von n8n lief die erste Anfrage in der Entwicklung noch mit der alten Workflow-Version. Vor einer Auswertung deshalb eine Mail zum Aufwärmen schicken.
@@ -389,12 +389,12 @@ start_procurepulse.bat|.sh  # Starten per Doppelklick
 - [ ] Phase 3: weitere Mailtypen aus dem Fachkonzept und zweistufige Klassifizierung
 - [x] Preiserhöhungen: eigene Kategorie, Aufgaben je Team, Preishistorie
 - [x] Jahreswirkung, gestufte Eskalation, VPE und Mindestmenge, Audit-Protokoll, Screenshot-Modus
-- [x] Aufgaben in der Arbeitsliste entscheiden, Sammelfreigabe unkritischer ABs, freigegebene AB-Preise in die Preishistorie
+- [x] Aufgaben erledigen und weiterleiten, Antwortentwürfe mit Klick ins Mailprogramm
 - [x] Technik, QM und Disposition bei Materialänderung und Abkündigung einbinden, Entwürfe nach jeder Entscheidung
-- [ ] Freigabekette über mehrere Stufen, neue Preise aus angekündigten Erhöhungen in die Preishistorie
+- [ ] Neue Preise aus angekündigten Erhöhungen in die Preishistorie
 - [x] System-Empfehlung, Historie mit Vereinbarungen, Vertretungsmodus, Weiterleiten je Abteilung, Starter und Mock-Modus
 - [ ] Eigene Kategorie für Abkündigungen und Änderungsanzeigen (Product Change Notification)
-- [ ] Vereinbarungen in der Oberfläche pflegen, Cost Avoidance gegen spätere Rechnungen abgleichen
+- [ ] Vereinbarungen in der Oberfläche pflegen
 - [ ] Persönliche Anmeldung statt gemeinsamem Login, damit das Audit-Protokoll belegt, wer entschieden hat
 - [ ] IMAP-Trigger für ein echtes Postfach und Text aus PDF-Anhängen
 - [ ] Felder im Review-Formular korrigierbar machen
