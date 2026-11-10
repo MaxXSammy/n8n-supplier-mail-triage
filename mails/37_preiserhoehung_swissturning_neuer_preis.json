@@ -1,8 +1,0 @@
-{
-  "message_id": "<2026-mail-37@swissturning.example>",
-  "from": "Reto Meier <r.meier@swissturning.example>",
-  "to": "einkauf@hagemann-antriebstechnik.example",
-  "subject": "Neuer Stückpreis Präzisionsbolzen PB-6",
-  "received_at": "2026-11-04T14:10:00+01:00",
-  "body": "Grüezi Herr Schneider\n\nPer 1. Januar 2027 gilt für den Präzisionsbolzen PB-6 ein neuer Stückpreis von CHF 1.94 (bisher CHF 1.85). Grund sind höhere Materialkosten.\n\nDie übrigen Artikel bleiben unverändert.\n\nFreundliche Grüsse\nReto Meier\nSwiss Turning AG"
-}

@@ -5,7 +5,7 @@
   "type": "object",
   "properties": {
     "begruendung": { "type": "string" },
-    "kategorie": { "type": "string", "enum": ["angebot", "auftragsbestaetigung", "reklamation", "lieferverzug", "rechnung", "preiserhoehung", "sonstiges"] },
+    "kategorie": { "type": "string", "enum": ["angebot", "auftragsbestaetigung", "reklamation", "lieferverzug", "rechnung", "sonstiges"] },
     "konfidenz": { "type": "number", "minimum": 0, "maximum": 1 },
     "lieferant": { "type": ["string", "null"] },
     "bestellnummer": { "type": ["string", "null"] },
@@ -19,22 +19,13 @@
     "liefertermin": { "type": ["string", "null"], "description": "JJJJ-MM-TT" },
     "liefertermin_unsicher": { "type": "boolean" },
     "abweichungsgrund": { "type": ["string", "null"] },
-    "preis_prozent": { "type": ["number", "null"] },
-    "gueltig_ab": { "type": ["string", "null"], "description": "JJJJ-MM-TT" },
-    "technik_noetig": { "type": "boolean" },
-    "qm_noetig": { "type": "boolean" },
-    "dispo_noetig": { "type": "boolean" },
-    "werkstoff_alt": { "type": ["string", "null"] },
-    "werkstoff_neu": { "type": ["string", "null"] },
-    "empfehlung": { "type": ["string", "null"] },
     "dringlichkeit": { "type": "string", "enum": ["niedrig", "mittel", "hoch"] },
     "zusammenfassung": { "type": "string" }
   },
   "required": [
     "begruendung", "kategorie", "konfidenz", "lieferant", "bestellnummer", "rechnungsnummer",
     "angebotsnummer", "artikel", "einzelpreis", "menge", "betrag", "waehrung", "liefertermin",
-    "liefertermin_unsicher", "abweichungsgrund", "preis_prozent", "gueltig_ab",
-    "technik_noetig", "qm_noetig", "dispo_noetig", "werkstoff_alt", "werkstoff_neu", "empfehlung", "dringlichkeit", "zusammenfassung"
+    "liefertermin_unsicher", "abweichungsgrund", "dringlichkeit", "zusammenfassung"
   ],
   "additionalProperties": false
 }

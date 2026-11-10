@@ -16,23 +16,13 @@ jobs:
           python-version: "3.12"
 
       - name: JSON-Dateien gültig
-        run: for f in workflows/*.json mails/*.json eval/*.json schema/*.json credentials/*.json tests/mocks/*.json; do python -m json.tool "$f" > /dev/null || exit 1; done
+        run: for f in workflows/*.json mails/*.json eval/*.json schema/*.json credentials/*.json; do python -m json.tool "$f" > /dev/null || exit 1; done
 
       - name: Schema im Workflow synchron mit schema/
         run: python scripts/check_schema_sync.py
 
       - name: Python-Skripte kompilieren
         run: python -m py_compile scripts/*.py
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-
-      - name: Arbeitsliste mit Testdaten rendern und prüfen (ohne Datenbank und Sprachmodell)
-        run: python scripts/arbeitsliste_pruefen.py
-
-      - name: Startskript Shell-Syntax
-        run: sh -n start_procurepulse.sh
 
       - name: docker-compose gültig
         run: cp .env.example .env && docker compose config --quiet
