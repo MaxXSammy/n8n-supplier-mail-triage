@@ -17,7 +17,7 @@ REPO = Path(__file__).resolve().parent.parent
 
 
 def rendern(daten: dict, anonym: bool, meldung: str = "") -> str:
-    workflow = json.loads((REPO / "workflows" / "02_review_human_in_the_loop.json").read_text(encoding="utf-8"))
+    workflow = json.loads((REPO / "workflows" / "02_arbeitsliste.json").read_text(encoding="utf-8"))
     code = next(n for n in workflow["nodes"] if n["name"] == "HTML-Seite bauen")["parameters"]["jsCode"]
     d = {**daten, "Webhook Arbeitsliste": [{"query": {"anonym": "1" if anonym else "0", "meldung": meldung}}]}
     skript = ("const D=" + json.dumps(d, ensure_ascii=False) + ";\nconst $=(k)=>({all:()=>D[k].map(j=>({json:j})),first:()=>({json:D[k][0]})});\n"
@@ -32,7 +32,7 @@ def rendern(daten: dict, anonym: bool, meldung: str = "") -> str:
 
 def karte(html: str, ticket: int) -> str:
     """HTML der ersten Karte zu einem Ticket."""
-    start = html.index(f"#{ticket} ·")
+    start = html.index(f'<span class="id num">#{ticket}</span>')
     return html[html.rfind("<article", 0, start):html.index("</article>", start)]
 
 
@@ -59,6 +59,8 @@ def main() -> int:
         ("Screenshot-Modus: keine Bestellnummern", not re.search(r"45\d{8}", anonym)),
         ("Screenshot-Modus: keine Beträge in Euro", not re.search(r"\d[\d.]*,\d\d(&nbsp;|\s)*€", anonym)),
         ("Screenshot-Modus: kein Mailtext, keine Aktionen", "16MnCr5 ist nicht mehr verfügbar" not in anonym and 'action="/webhook/aufgabe"' not in anonym),
+        ("Rang-Badge mit Rangstufen, Namen im JSON escaped", 'id="rang"' in normal and "Senior Negotiator" in normal and "</script><b>x" not in normal),
+        ("Screenshot-Modus: kein Rang mit Namen", 'id="rang-daten"' not in anonym),
         ("Review mit Bankdaten als kritisch markiert", "Bankdaten geändert" in normal and "badge krit" in normal),
     ]
     fehler = 0

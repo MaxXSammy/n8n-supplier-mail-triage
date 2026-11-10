@@ -1,63 +1,427 @@
 {
-  "Offene Reviews laden": [
-    {"id": 901, "absender": "Buchhaltung <info@alpen-drehtechnik-gmbh.example>", "betreff": "Neue Bankverbindung ab sofort", "text": "Bitte überweisen Sie künftig auf DE89 3704 0044 0532 0130 00.",
-     "gruende": ["bankdatenaenderung"], "vorschlag": "sonstiges", "konfidenz": "0.9", "begruendung": "Änderung der Bankverbindung", "erstellt": "10.11.2026 08:10"}
-  ],
-  "Offene Aufgaben laden": [
-    {"id": 1, "team": "Disposition", "zustaendig": null, "art": "preis_freigeben", "prioritaet": "normal", "status": "offen",
-     "details": {"art": "preis", "bestellt": 5.1, "bestaetigt": 5.3, "waehrung": "EUR", "prozent": 3.92, "mehrkosten": 360, "mehrkosten_eur": 360, "jahresbedarf": 14000, "jahres_mehrkosten_eur": 2800},
-     "ticket_id": 101, "lieferant": "Kovotech s.r.o.", "bestellnummer": "4500018407", "artikel": "Flansch FL-80", "artikelnr": "FL-80", "betreff": "Auftragsbestätigung 4500018407",
-     "zusammenfassung": "AB mit Rohstoffzuschlag", "ab_pruefung": null, "mailtext": "Wir bestätigen Ihre Bestellung 4500018407 zu 5,30 EUR.", "erstellt": "10.11.2026 08:00",
-     "absender": "Petr Novák <p.novak@kovotech.example>", "ticket_erstellt": "2026-11-10T08:00:00+01:00", "abteilungen": {"technik": false, "qm": false, "dispo": false, "modell": [], "regel": []},
-     "ticket_aufgaben": [{"art": "preis_freigeben", "team": "Disposition", "status": "offen", "entscheidung": null, "erstellt": "2026-11-10T08:00:00+01:00", "erledigt": null, "erledigt_von": null}],
-     "ticket_entwuerfe": null, "entwurf_zwecke": []},
-    {"id": 2, "team": "Einkauf", "zustaendig": "Maximilian Schneider", "art": "preiserhoehung_pruefen", "prioritaet": "normal", "status": "offen",
-     "details": {"art": "preiserhoehung", "prozent": 3, "prozent_quelle": "mail", "gueltig_ab": "2027-02-01", "betroffene_bestellungen": ["4500018404"], "mehrkosten": 460.8, "waehrung": "EUR", "jahres_mehrkosten_eur": 4608, "jahresbedarf_fehlt": [], "liefertreue": 72},
-     "ticket_id": 102, "lieferant": "Rheinwerk Komponenten GmbH", "bestellnummer": null, "artikel": "Zahnradwelle ZW-25", "artikelnr": null, "betreff": "Zahnradwelle ZW-25: Werkstoff und Preis",
-     "zusammenfassung": "Werkstoffwechsel und Preiserhöhung", "ab_pruefung": null, "mailtext": "Der Werkstoff 16MnCr5 ist nicht mehr verfügbar, wir fertigen aus 20MnCr5.", "erstellt": "10.11.2026 08:05",
-     "absender": "Jens Albrecht <j.albrecht@rheinwerk-komponenten.example>", "ticket_erstellt": "2026-11-10T08:05:00+01:00",
-     "abteilungen": {"technik": true, "qm": true, "dispo": true, "modell": ["technik"], "regel": ["werkstoffwechsel", "abkuendigung"], "werkstoff_alt": "16MnCr5", "werkstoff_neu": "20MnCr5", "empfehlung": "Technik und QM einbinden."},
-     "ticket_aufgaben": [{"art": "preiserhoehung_pruefen", "team": "Einkauf", "status": "offen", "entscheidung": null, "erstellt": "2026-11-10T08:05:00+01:00", "erledigt": null, "erledigt_von": null}],
-     "ticket_entwuerfe": null, "entwurf_zwecke": []},
-    {"id": 3, "team": "Geschäftsleitung", "zustaendig": null, "art": "eskalation", "prioritaet": "hoch", "status": "offen",
-     "details": {"art": "preiserhoehung", "prozent": 10, "gueltig_ab": "2027-03-01", "betroffene_bestellungen": ["4500018408"], "alter_preis_gilt": ["4500018414"], "mehrkosten": 86, "waehrung": "EUR", "jahres_mehrkosten_eur": 54300, "liefertreue": 93, "eskalation": ["jahres_mehrkosten"]},
-     "ticket_id": 103, "lieferant": "Feldmann Präzisionsteile GmbH", "bestellnummer": null, "artikel": null, "artikelnr": null, "betreff": "Preisanpassung ab 01.03.2027",
-     "zusammenfassung": "Preiserhöhung 10 %", "ab_pruefung": null, "mailtext": "Ab dem 01.03.2027 erhöhen wir die Preise um 10 %.", "erstellt": "10.11.2026 08:06",
-     "absender": "Anja Feldmann <a.feldmann@feldmann-praezisionsteile.example>", "ticket_erstellt": "2026-11-10T08:06:00+01:00", "abteilungen": {"technik": false, "qm": false, "dispo": false},
-     "ticket_aufgaben": [{"art": "eskalation", "team": "Geschäftsleitung", "status": "offen", "entscheidung": null, "erstellt": "2026-11-10T08:06:00+01:00", "erledigt": null, "erledigt_von": null}],
-     "ticket_entwuerfe": null, "entwurf_zwecke": []},
-    {"id": 4, "team": "Technik", "zustaendig": null, "art": "technik_freigabe", "prioritaet": "hoch", "status": "offen",
-     "details": {"lieferant": "Rheinwerk Komponenten GmbH", "artikel": "Zahnradwelle ZW-25", "werkstoff_alt": "16MnCr5", "werkstoff_neu": "20MnCr5", "aenderung": "Werkstoff 16MnCr5 → 20MnCr5"},
-     "ticket_id": 104, "lieferant": "Rheinwerk Komponenten GmbH", "bestellnummer": null, "artikel": "Zahnradwelle ZW-25", "artikelnr": null, "betreff": "Werkstoffwechsel", "zusammenfassung": null,
-     "ab_pruefung": null, "mailtext": "Werkstoffwechsel", "erstellt": "10.11.2026 08:07", "absender": "Jens Albrecht <j.albrecht@rheinwerk-komponenten.example>", "ticket_erstellt": "2026-11-10T08:05:00+01:00",
-     "abteilungen": {"technik": true, "qm": true, "dispo": false}, "ticket_aufgaben": [
-       {"art": "preiserhoehung_pruefen", "team": "Einkauf", "status": "offen", "entscheidung": null, "erstellt": "2026-11-10T08:05:00+01:00", "erledigt": null, "erledigt_von": null},
-       {"art": "technik_freigabe", "team": "Technik", "status": "offen", "entscheidung": null, "erstellt": "2026-11-10T08:07:00+01:00", "erledigt": null, "erledigt_von": null},
-       {"art": "qm_freigabe", "team": "Qualitätsmanagement", "status": "erledigt", "entscheidung": "freigegeben", "erstellt": "2026-11-10T08:07:00+01:00", "erledigt": "2026-11-10T09:30:00+01:00", "erledigt_von": "QM Test"}],
-     "ticket_entwuerfe": [{"zeit": "2026-11-10T08:07:00+01:00", "betreff": "Freigabe erbeten: Werkstoff 16MnCr5 → 20MnCr5", "art": "intern"}], "entwurf_zwecke": ["abteilungen_einbinden"]},
-    {"id": 5, "team": "Einkauf", "zustaendig": "Julia Weber", "art": "entwurf_senden", "prioritaet": "normal", "status": "offen",
-     "details": {"entwurf_id": 77, "empfaenger": "Reto Meier <r.meier@swissturning.example>", "art": "lieferant", "zweck": "preis_abgelehnt"},
-     "ticket_id": 105, "lieferant": "Swiss Turning AG", "bestellnummer": "4500018412", "artikel": "Gewindestift GS-4", "artikelnr": "GS-4", "betreff": "AB 4500018412", "zusammenfassung": null,
-     "ab_pruefung": null, "mailtext": "Wir bestätigen Ihre Bestellung 4500018412.", "erstellt": "10.11.2026 08:08", "absender": "Reto Meier <r.meier@swissturning.example>",
-     "ticket_erstellt": "2026-11-10T08:00:00+01:00", "abteilungen": null, "ticket_aufgaben": [], "ticket_entwuerfe": [], "entwurf_zwecke": ["preis_abgelehnt"],
-     "ew_empfaenger": "Reto Meier <r.meier@swissturning.example>", "ew_cc": null, "ew_betreff": "Bestellung 4500018412: Preiserhöhung nicht akzeptiert",
-     "ew_text": "Sehr geehrter Herr Meier,\n\nden bestätigten Einzelpreis von 0,97 CHF können wir so nicht akzeptieren.", "ew_warnungen": []},
-    {"id": 6, "team": "Einkauf", "zustaendig": "Julia Weber", "art": "ab_klaeren", "prioritaet": "normal", "status": "offen",
-     "details": {"abweichungen": [{"art": "menge", "bestellt": 1040, "bestaetigt": 1050, "mehrwert": 4.8, "waehrung": "EUR", "vpe_stamm": 40, "passt_zur_vpe": false, "moq_stamm": 400}], "pruefgruende": []},
-     "ticket_id": 106, "lieferant": "Precimet Sp. z o.o.", "bestellnummer": "4500018409", "artikel": "Distanzring DR-30", "artikelnr": "DR-30", "betreff": "AB 4500018409", "zusammenfassung": null,
-     "ab_pruefung": {"ergebnis": "abweichung"}, "mailtext": "Die Verpackungseinheit beträgt 50 Stück.", "erstellt": "10.11.2026 08:09", "absender": "Agnieszka Wójcik <a.wojcik@precimet.example>",
-     "ticket_erstellt": "2026-11-10T08:09:00+01:00", "abteilungen": {"technik": false, "qm": false, "dispo": false}, "ticket_aufgaben": [], "ticket_entwuerfe": [], "entwurf_zwecke": []}
-  ],
-  "Kennzahlen und Audit laden": [
-    {"defekte_zeile": null, "anzahl": 1, "eintraege": [{"id": 1, "zeit": "10.11.2026 09:30:00", "akteur": "QM Test", "aktion": "aufgabe_freigegeben", "objekt_id": "7", "details": {"art": "qm_freigabe", "team": "Qualitätsmanagement", "notiz": "Erstmuster in Ordnung"}, "hash": "a1b2c3d4e5f6"}],
-     "einstellungen": {"preis_toleranz_dispo_prozent": 5, "preis_toleranz_dispo_euro": 500, "preis_eskalation_strategie_prozent": 10, "eskalation_einkaufsleitung_euro": 5000,
-                       "eskalation_geschaeftsleitung_euro": 50000, "eskalation_liefertreue_prozent": 85, "eskalation_liefertreue_preis_prozent": 10, "cost_avoidance_ziel_euro": 100000, "rueckstau_tage": 2, "blindbestaetigung_minuten": 30},
-     "automatisch_30": 36, "gesamt_30": 43, "cost_avoidance_ytd": 6000, "streak_tage": 3}
-  ],
-  "Historie laden": [
-    {"mail_domain": "kovotech.example", "name": "Kovotech s.r.o.", "tickets": [{"id": 90, "kategorie": "angebot", "betreff": "Angebot KT-A-55721", "status": "offen", "datum": "28.10.2026"}],
-     "preise": [{"artikelnr": "FL-80", "gueltig_ab": "2026-04-01", "prozent": 5.2, "anlass": "Stahlpreise"}],
-     "vereinbarungen": [{"artikelnr": "FL-80", "art": "festpreis", "gueltig_bis": "2027-03-31", "text": "Festpreis bis Q1/2027 laut Rahmenvertrag RV-2025-014"}]},
-    {"mail_domain": "rheinwerk-komponenten.example", "name": "Rheinwerk Komponenten GmbH", "tickets": [], "preise": [{"artikelnr": "ZW-25", "gueltig_ab": "2026-01-15", "prozent": 4.9, "anlass": "Energiekosten"}], "vereinbarungen": []}
-  ]
+ "Offene Reviews laden": [
+  {
+   "id": 901,
+   "absender": "Buchhaltung <info@alpen-drehtechnik-gmbh.example>",
+   "betreff": "Neue Bankverbindung ab sofort",
+   "text": "Bitte überweisen Sie künftig auf DE89 3704 0044 0532 0130 00.",
+   "gruende": [
+    "bankdatenaenderung"
+   ],
+   "vorschlag": "sonstiges",
+   "konfidenz": "0.9",
+   "begruendung": "Änderung der Bankverbindung",
+   "erstellt": "10.11.2026 08:10"
+  }
+ ],
+ "Offene Aufgaben laden": [
+  {
+   "id": 1,
+   "team": "Disposition",
+   "zustaendig": null,
+   "art": "preis_freigeben",
+   "prioritaet": "normal",
+   "status": "offen",
+   "details": {
+    "art": "preis",
+    "bestellt": 5.1,
+    "bestaetigt": 5.3,
+    "waehrung": "EUR",
+    "prozent": 3.92,
+    "mehrkosten": 360,
+    "mehrkosten_eur": 360,
+    "jahresbedarf": 14000,
+    "jahres_mehrkosten_eur": 2800
+   },
+   "ticket_id": 101,
+   "lieferant": "Kovotech s.r.o.",
+   "bestellnummer": "4500018407",
+   "artikel": "Flansch FL-80",
+   "artikelnr": "FL-80",
+   "betreff": "Auftragsbestätigung 4500018407",
+   "zusammenfassung": "AB mit Rohstoffzuschlag",
+   "ab_pruefung": null,
+   "mailtext": "Wir bestätigen Ihre Bestellung 4500018407 zu 5,30 EUR.",
+   "erstellt": "10.11.2026 08:00",
+   "absender": "Petr Novák <p.novak@kovotech.example>",
+   "ticket_erstellt": "2026-11-10T08:00:00+01:00",
+   "abteilungen": {
+    "technik": false,
+    "qm": false,
+    "dispo": false,
+    "modell": [],
+    "regel": []
+   },
+   "ticket_aufgaben": [
+    {
+     "art": "preis_freigeben",
+     "team": "Disposition",
+     "status": "offen",
+     "entscheidung": null,
+     "erstellt": "2026-11-10T08:00:00+01:00",
+     "erledigt": null,
+     "erledigt_von": null
+    }
+   ],
+   "ticket_entwuerfe": null,
+   "entwurf_zwecke": []
+  },
+  {
+   "id": 2,
+   "team": "Einkauf",
+   "zustaendig": "Maximilian Schneider",
+   "art": "preiserhoehung_pruefen",
+   "prioritaet": "normal",
+   "status": "offen",
+   "details": {
+    "art": "preiserhoehung",
+    "prozent": 3,
+    "prozent_quelle": "mail",
+    "gueltig_ab": "2027-02-01",
+    "betroffene_bestellungen": [
+     "4500018404"
+    ],
+    "mehrkosten": 460.8,
+    "waehrung": "EUR",
+    "jahres_mehrkosten_eur": 4608,
+    "jahresbedarf_fehlt": [],
+    "liefertreue": 72
+   },
+   "ticket_id": 102,
+   "lieferant": "Rheinwerk Komponenten GmbH",
+   "bestellnummer": null,
+   "artikel": "Zahnradwelle ZW-25",
+   "artikelnr": null,
+   "betreff": "Zahnradwelle ZW-25: Werkstoff und Preis",
+   "zusammenfassung": "Werkstoffwechsel und Preiserhöhung",
+   "ab_pruefung": null,
+   "mailtext": "Der Werkstoff 16MnCr5 ist nicht mehr verfügbar, wir fertigen aus 20MnCr5.",
+   "erstellt": "10.11.2026 08:05",
+   "absender": "Jens Albrecht <j.albrecht@rheinwerk-komponenten.example>",
+   "ticket_erstellt": "2026-11-10T08:05:00+01:00",
+   "abteilungen": {
+    "technik": true,
+    "qm": true,
+    "dispo": true,
+    "modell": [
+     "technik"
+    ],
+    "regel": [
+     "werkstoffwechsel",
+     "abkuendigung"
+    ],
+    "werkstoff_alt": "16MnCr5",
+    "werkstoff_neu": "20MnCr5",
+    "empfehlung": "Technik und QM einbinden."
+   },
+   "ticket_aufgaben": [
+    {
+     "art": "preiserhoehung_pruefen",
+     "team": "Einkauf",
+     "status": "offen",
+     "entscheidung": null,
+     "erstellt": "2026-11-10T08:05:00+01:00",
+     "erledigt": null,
+     "erledigt_von": null
+    }
+   ],
+   "ticket_entwuerfe": null,
+   "entwurf_zwecke": []
+  },
+  {
+   "id": 3,
+   "team": "Geschäftsleitung",
+   "zustaendig": null,
+   "art": "eskalation",
+   "prioritaet": "hoch",
+   "status": "offen",
+   "details": {
+    "art": "preiserhoehung",
+    "prozent": 10,
+    "gueltig_ab": "2027-03-01",
+    "betroffene_bestellungen": [
+     "4500018408"
+    ],
+    "alter_preis_gilt": [
+     "4500018414"
+    ],
+    "mehrkosten": 86,
+    "waehrung": "EUR",
+    "jahres_mehrkosten_eur": 54300,
+    "liefertreue": 93,
+    "eskalation": [
+     "jahres_mehrkosten"
+    ]
+   },
+   "ticket_id": 103,
+   "lieferant": "Feldmann Präzisionsteile GmbH",
+   "bestellnummer": null,
+   "artikel": null,
+   "artikelnr": null,
+   "betreff": "Preisanpassung ab 01.03.2027",
+   "zusammenfassung": "Preiserhöhung 10 %",
+   "ab_pruefung": null,
+   "mailtext": "Ab dem 01.03.2027 erhöhen wir die Preise um 10 %.",
+   "erstellt": "10.11.2026 08:06",
+   "absender": "Anja Feldmann <a.feldmann@feldmann-praezisionsteile.example>",
+   "ticket_erstellt": "2026-11-10T08:06:00+01:00",
+   "abteilungen": {
+    "technik": false,
+    "qm": false,
+    "dispo": false
+   },
+   "ticket_aufgaben": [
+    {
+     "art": "eskalation",
+     "team": "Geschäftsleitung",
+     "status": "offen",
+     "entscheidung": null,
+     "erstellt": "2026-11-10T08:06:00+01:00",
+     "erledigt": null,
+     "erledigt_von": null
+    }
+   ],
+   "ticket_entwuerfe": null,
+   "entwurf_zwecke": []
+  },
+  {
+   "id": 4,
+   "team": "Technik",
+   "zustaendig": null,
+   "art": "technik_freigabe",
+   "prioritaet": "hoch",
+   "status": "offen",
+   "details": {
+    "lieferant": "Rheinwerk Komponenten GmbH",
+    "artikel": "Zahnradwelle ZW-25",
+    "werkstoff_alt": "16MnCr5",
+    "werkstoff_neu": "20MnCr5",
+    "aenderung": "Werkstoff 16MnCr5 → 20MnCr5"
+   },
+   "ticket_id": 104,
+   "lieferant": "Rheinwerk Komponenten GmbH",
+   "bestellnummer": null,
+   "artikel": "Zahnradwelle ZW-25",
+   "artikelnr": null,
+   "betreff": "Werkstoffwechsel",
+   "zusammenfassung": null,
+   "ab_pruefung": null,
+   "mailtext": "Werkstoffwechsel",
+   "erstellt": "10.11.2026 08:07",
+   "absender": "Jens Albrecht <j.albrecht@rheinwerk-komponenten.example>",
+   "ticket_erstellt": "2026-11-10T08:05:00+01:00",
+   "abteilungen": {
+    "technik": true,
+    "qm": true,
+    "dispo": false
+   },
+   "ticket_aufgaben": [
+    {
+     "art": "preiserhoehung_pruefen",
+     "team": "Einkauf",
+     "status": "offen",
+     "entscheidung": null,
+     "erstellt": "2026-11-10T08:05:00+01:00",
+     "erledigt": null,
+     "erledigt_von": null
+    },
+    {
+     "art": "technik_freigabe",
+     "team": "Technik",
+     "status": "offen",
+     "entscheidung": null,
+     "erstellt": "2026-11-10T08:07:00+01:00",
+     "erledigt": null,
+     "erledigt_von": null
+    },
+    {
+     "art": "qm_freigabe",
+     "team": "Qualitätsmanagement",
+     "status": "erledigt",
+     "entscheidung": "freigegeben",
+     "erstellt": "2026-11-10T08:07:00+01:00",
+     "erledigt": "2026-11-10T09:30:00+01:00",
+     "erledigt_von": "QM Test"
+    }
+   ],
+   "ticket_entwuerfe": [
+    {
+     "zeit": "2026-11-10T08:07:00+01:00",
+     "betreff": "Freigabe erbeten: Werkstoff 16MnCr5 → 20MnCr5",
+     "art": "intern"
+    }
+   ],
+   "entwurf_zwecke": [
+    "abteilungen_einbinden"
+   ]
+  },
+  {
+   "id": 5,
+   "team": "Einkauf",
+   "zustaendig": "Julia Weber",
+   "art": "entwurf_senden",
+   "prioritaet": "normal",
+   "status": "offen",
+   "details": {
+    "entwurf_id": 77,
+    "empfaenger": "Reto Meier <r.meier@swissturning.example>",
+    "art": "lieferant",
+    "zweck": "preis_abgelehnt"
+   },
+   "ticket_id": 105,
+   "lieferant": "Swiss Turning AG",
+   "bestellnummer": "4500018412",
+   "artikel": "Gewindestift GS-4",
+   "artikelnr": "GS-4",
+   "betreff": "AB 4500018412",
+   "zusammenfassung": null,
+   "ab_pruefung": null,
+   "mailtext": "Wir bestätigen Ihre Bestellung 4500018412.",
+   "erstellt": "10.11.2026 08:08",
+   "absender": "Reto Meier <r.meier@swissturning.example>",
+   "ticket_erstellt": "2026-11-10T08:00:00+01:00",
+   "abteilungen": null,
+   "ticket_aufgaben": [],
+   "ticket_entwuerfe": [],
+   "entwurf_zwecke": [
+    "preis_abgelehnt"
+   ],
+   "ew_empfaenger": "Reto Meier <r.meier@swissturning.example>",
+   "ew_cc": null,
+   "ew_betreff": "Bestellung 4500018412: Preiserhöhung nicht akzeptiert",
+   "ew_text": "Sehr geehrter Herr Meier,\n\nden bestätigten Einzelpreis von 0,97 CHF können wir so nicht akzeptieren.",
+   "ew_warnungen": []
+  },
+  {
+   "id": 6,
+   "team": "Einkauf",
+   "zustaendig": "Julia Weber",
+   "art": "ab_klaeren",
+   "prioritaet": "normal",
+   "status": "offen",
+   "details": {
+    "abweichungen": [
+     {
+      "art": "menge",
+      "bestellt": 1040,
+      "bestaetigt": 1050,
+      "mehrwert": 4.8,
+      "waehrung": "EUR",
+      "vpe_stamm": 40,
+      "passt_zur_vpe": false,
+      "moq_stamm": 400
+     }
+    ],
+    "pruefgruende": []
+   },
+   "ticket_id": 106,
+   "lieferant": "Precimet Sp. z o.o.",
+   "bestellnummer": "4500018409",
+   "artikel": "Distanzring DR-30",
+   "artikelnr": "DR-30",
+   "betreff": "AB 4500018409",
+   "zusammenfassung": null,
+   "ab_pruefung": {
+    "ergebnis": "abweichung"
+   },
+   "mailtext": "Die Verpackungseinheit beträgt 50 Stück.",
+   "erstellt": "10.11.2026 08:09",
+   "absender": "Agnieszka Wójcik <a.wojcik@precimet.example>",
+   "ticket_erstellt": "2026-11-10T08:09:00+01:00",
+   "abteilungen": {
+    "technik": false,
+    "qm": false,
+    "dispo": false
+   },
+   "ticket_aufgaben": [],
+   "ticket_entwuerfe": [],
+   "entwurf_zwecke": []
+  }
+ ],
+ "Kennzahlen und Audit laden": [
+  {
+   "defekte_zeile": null,
+   "anzahl": 1,
+   "eintraege": [
+    {
+     "id": 1,
+     "zeit": "10.11.2026 09:30:00",
+     "akteur": "QM Test",
+     "aktion": "aufgabe_freigegeben",
+     "objekt_id": "7",
+     "details": {
+      "art": "qm_freigabe",
+      "team": "Qualitätsmanagement",
+      "notiz": "Erstmuster in Ordnung"
+     },
+     "hash": "a1b2c3d4e5f6"
+    }
+   ],
+   "einstellungen": {
+    "preis_toleranz_dispo_prozent": 5,
+    "preis_toleranz_dispo_euro": 500,
+    "preis_eskalation_strategie_prozent": 10,
+    "eskalation_einkaufsleitung_euro": 5000,
+    "eskalation_geschaeftsleitung_euro": 50000,
+    "eskalation_liefertreue_prozent": 85,
+    "eskalation_liefertreue_preis_prozent": 10,
+    "cost_avoidance_ziel_euro": 100000,
+    "rueckstau_tage": 2,
+    "blindbestaetigung_minuten": 30
+   },
+   "automatisch_30": 36,
+   "gesamt_30": 43,
+   "cost_avoidance_ytd": 6000,
+   "streak_tage": 3,
+   "cost_avoidance_je_person": {
+    "Julia Weber": 6000,
+    "</script><b>x": 1
+   }
+  }
+ ],
+ "Historie laden": [
+  {
+   "mail_domain": "kovotech.example",
+   "name": "Kovotech s.r.o.",
+   "tickets": [
+    {
+     "id": 90,
+     "kategorie": "angebot",
+     "betreff": "Angebot KT-A-55721",
+     "status": "offen",
+     "datum": "28.10.2026"
+    }
+   ],
+   "preise": [
+    {
+     "artikelnr": "FL-80",
+     "gueltig_ab": "2026-04-01",
+     "prozent": 5.2,
+     "anlass": "Stahlpreise"
+    }
+   ],
+   "vereinbarungen": [
+    {
+     "artikelnr": "FL-80",
+     "art": "festpreis",
+     "gueltig_bis": "2027-03-31",
+     "text": "Festpreis bis Q1/2027 laut Rahmenvertrag RV-2025-014"
+    }
+   ]
+  },
+  {
+   "mail_domain": "rheinwerk-komponenten.example",
+   "name": "Rheinwerk Komponenten GmbH",
+   "tickets": [],
+   "preise": [
+    {
+     "artikelnr": "ZW-25",
+     "gueltig_ab": "2026-01-15",
+     "prozent": 4.9,
+     "anlass": "Energiekosten"
+    }
+   ],
+   "vereinbarungen": []
+  }
+ ]
 }

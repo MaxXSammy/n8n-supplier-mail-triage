@@ -1,4 +1,4 @@
-name: supplier-mail-triage
+name: procurepulse
 
 # Geheimnisse liegen als Dateien unter /run/secrets und nicht in der Umgebung der Container.
 # Die Workflows lesen Einstellungen über $env. Stünden dort Passwörter oder der Encryption Key,

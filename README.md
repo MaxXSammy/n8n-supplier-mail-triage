@@ -1,10 +1,10 @@
 # ProcurePulse – Lieferanten-Mails automatisch einordnen mit n8n
 
-[![CI](https://github.com/MaxXSammy/n8n-supplier-mail-triage/actions/workflows/ci.yml/badge.svg)](https://github.com/MaxXSammy/n8n-supplier-mail-triage/actions/workflows/ci.yml)
+[![CI](https://github.com/MaxXSammy/procurepulse-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/MaxXSammy/procurepulse-ai/actions/workflows/ci.yml)
 
 ProcurePulse ist ein self-hosted n8n-Workflow mit Arbeitsoberfläche für den Einkauf. Er verarbeitet eingehende Lieferanten-Mails. Ein lokales LLM erkennt den Zweck der Mail und extrahiert die wichtigen Daten als JSON. Danach wird alles im Code geprüft, die Mail an das zuständige Team geroutet und ein Ticket angelegt. Auftragsbestätigungen werden zusätzlich mit der Bestellung abgeglichen und je nach Liefertreue des Lieferanten automatisch bestätigt oder dem Einkäufer vorgelegt, mit fertigem Antwortentwurf. Preiserhöhungen verteilt das System nach Höhe auf Disposition, Einkäufer und strategischen Einkauf, mit Preishistorie und Mehrkosten. Ändert ein Lieferant Werkstoff oder Maß oder kündigt er einen Artikel ab, holt das System Technik, QM und Disposition dazu. Jede Karte der Arbeitsliste zeigt eine begründete System-Empfehlung und die Vorgeschichte mit dem Lieferanten, damit auch eine Vertretung sofort weiß, was zu tun ist. Unsichere oder verdächtige Fälle gehen an einen Menschen. Alles läuft lokal mit Docker und Ollama, ohne Cloud-KI.
 
-![Haupt-Workflow in n8n](docs/workflow_triage.png)
+![Haupt-Workflow in n8n](docs/bilder/workflow_triage.png)
 
 ## Das Problem
 
@@ -92,7 +92,7 @@ Jede Karte hat drei Reiter: **Zusammenfassung** (Kernfakten aus den geprüften D
 
 Aus jeder Karte lässt sich direkt **an Technik, QM oder Disposition weiterleiten**: Die Abteilung bekommt eine Aufgabe, der Einkäufer einen internen Entwurf mit allen Daten und der Mail. Leitet der Einkauf an QM oder Technik weiter, wartet die Preisfreigabe auch auf deren Entscheidung.
 
-**Kennzahlen oben:** Der Balken „Savings YTD“ zählt nur Cost Avoidance, also die Jahreswirkung abgelehnter Preiserhöhungen, und ist als vorläufig beschriftet: Ob die Erhöhung wirklich ausbleibt, zeigt erst die Antwort des Lieferanten. Eine Freigabe zählt nicht, sie akzeptiert Mehrkosten. Der Streak zählt Tage ohne Rückstau (keine Aufgabe länger als zwei Tage offen). Er belohnt zügiges Bearbeiten, nicht schnelles Wegklicken. Nach jeder Aktion gleitet die Karte weg, und unten rechts erscheint eine kurze Meldung, z. B. „Abgelehnt · 6.000 € Cost Avoidance vorgemerkt · Entwurf an Lieferant erstellt“.
+**Kennzahlen oben:** Der Balken „Savings YTD“ zählt nur Cost Avoidance, also die Jahreswirkung abgelehnter Preiserhöhungen, und ist als vorläufig beschriftet: Ob die Erhöhung wirklich ausbleibt, zeigt erst die Antwort des Lieferanten. Eine Freigabe zählt nicht, sie akzeptiert Mehrkosten. Der Streak zählt Tage ohne Rückstau (keine Aufgabe länger als zwei Tage offen). Er belohnt zügiges Bearbeiten, nicht schnelles Wegklicken. Der Procurement Rank (Buyer bis Lead Negotiator) richtet sich nach den vermiedenen Mehrkosten des eingetragenen Bearbeiters in diesem Jahr, nicht nach der Zahl erledigter Tickets. Nach jeder Aktion gleitet die Karte weg, und unten rechts erscheint eine kurze Meldung, z. B. „Abgelehnt · 6.000 € Cost Avoidance vorgemerkt · Entwurf an Lieferant erstellt“.
 
 ### Arbeitsliste, Audit-Protokoll und Screenshot-Modus
 
@@ -109,19 +109,19 @@ Schwellen und Minuten stehen in der Tabelle `einstellungen` und lassen sich ohne
 
 **Erfolgreiche Ausführung** einer Auftragsbestätigung: grüner Pfad über die AB-Prüfung bis zum Ticket
 
-![Ausführung in n8n](docs/ausfuehrung_ticket.png)
+![Ausführung in n8n](docs/bilder/ausfuehrung_ticket.png)
 
 **Arbeitsliste** im Screenshot-Modus: Kennzahlen, Reiter je Team, Eskalationen und Aufgaben, Lieferanten, Bestellnummern und Beträge anonymisiert
 
-![Arbeitsliste](docs/arbeitsliste.png)
+![Arbeitsliste](docs/bilder/arbeitsliste.png)
 
 **Arbeitsliste und Review-Workflow**
 
-![Review-Workflow](docs/workflow_review.png)
+![Review-Workflow](docs/bilder/workflow_review.png)
 
 **Antwortentwurf** aus Vorlagen
 
-![Antwortentwurf-Workflow](docs/workflow_entwurf.png)
+![Antwortentwurf-Workflow](docs/bilder/workflow_entwurf.png)
 
 </details>
 
@@ -253,8 +253,8 @@ Alle Mails sind frei erfunden. Auftraggeber ist die fiktive Hagemann Antriebstec
 **Voraussetzungen:** [Docker Desktop](https://www.docker.com/products/docker-desktop/), [Ollama](https://ollama.com) und Python 3.12 für die Skripte. Getestet mit einer NVIDIA-GPU mit 8 GB VRAM.
 
 ```bash
-git clone https://github.com/MaxXSammy/n8n-supplier-mail-triage.git
-cd n8n-supplier-mail-triage
+git clone https://github.com/MaxXSammy/procurepulse-ai.git
+cd procurepulse-ai
 ollama pull qwen2.5:7b
 cp .env.example .env            # Windows: copy .env.example .env
 ```
@@ -273,7 +273,7 @@ Desktop-Verknüpfung mit eigenem Symbol unter Windows:
 
 1. Rechtsklick auf `start_procurepulse.bat`, dann „Weitere Optionen anzeigen“ und „Verknüpfung erstellen“
 2. Die Verknüpfung auf den Desktop ziehen und z. B. in „ProcurePulse“ umbenennen
-3. Rechtsklick auf die Verknüpfung, „Eigenschaften“, „Anderes Symbol …“, dann `docs\procurepulse.ico` aus dem Projektordner wählen
+3. Rechtsklick auf die Verknüpfung, „Eigenschaften“, „Anderes Symbol …“, dann `docs\bilder\procurepulse.ico` aus dem Projektordner wählen
 4. Optional unter „Ausführen“ den Wert „Minimiert“ einstellen, damit das Konsolenfenster nicht stört
 
 Beim ersten Start legt Postgres die Tabellen an (`db/init.sql`, danach `db/02_preiserhoehung.sql` bis `db/06_vereinbarungen.sql`), und der Container `n8n-import` spielt Zugangsdaten und Workflows ein. Ollama läuft standardmäßig auf dem Host. Wer es lieber im Container betreibt, startet mit `docker compose --profile ollama up -d` und setzt `OLLAMA_BASE_URL=http://ollama:11434`.
@@ -326,7 +326,7 @@ docker-compose.yml          # n8n, Postgres, Import-Container, optional Ollama
 .env.example                # Vorlage für Geheimnisse und Einstellungen
 workflows/
 ├── 01_mail_triage.json             # Haupt-Workflow
-├── 02_review_human_in_the_loop.json  # Arbeitsliste und Review-Formular
+├── 02_arbeitsliste.json            # Arbeitsliste, Entscheidungen und Review-Formular
 ├── 03_fehlerbehandlung.json        # Error-Workflow
 └── 04_antwortentwurf.json          # Antwortentwurf aus Vorlagen
 docs/fachkonzept.md         # Fachliche Regeln aus der Einkaufspraxis
@@ -349,7 +349,7 @@ scripts/
 ├── robustheit.py           # Angriffe und Grenzfälle mit erwartetem Ergebnis
 ├── export_workflows.py     # Export aus n8n, nur portable Felder
 └── check_schema_sync.py    # Schema im Workflow = Schema-Datei?
-docs/                       # Screenshots, Vorschaubilder für GitHub und LinkedIn, Fachkonzept, Programmsymbol
+docs/bilder/                # Screenshots, Vorschaubilder für GitHub und LinkedIn, Programmsymbol
 tests/mocks/                # Testdaten für die Arbeitsliste, aufgenommene Modellantworten
 start_procurepulse.bat|.sh  # Starten per Doppelklick
 ```
