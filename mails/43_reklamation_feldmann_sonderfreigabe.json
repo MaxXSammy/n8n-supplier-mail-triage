@@ -1,0 +1,8 @@
+{
+  "message_id": "<2026-mail-43@feldmann-praezisionsteile.example>",
+  "from": "Anja Feldmann <a.feldmann@feldmann-praezisionsteile.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Bestellung 4500018408: Bitte um Sonderfreigabe Hülse HS-12",
+  "received_at": "2026-11-09T14:05:00+01:00",
+  "body": "Hallo Frau Weber,\n\nbei der Fertigung Ihrer Bestellung 4500018408 (Hülse HS-12) liegt der Innendurchmesser bei 8,04 mm statt 8,00 mm +0,02 mm. Alle anderen Merkmale sind in Ordnung, die Prüfprotokolle senden wir mit.\n\nWir bitten um eine Sonderfreigabe für diese Lieferung von 1.152 Stück. Ohne Freigabe verschiebt sich der Liefertermin um zwei Wochen, weil wir neu fertigen müssen.\n\nBeste Grüße\nAnja Feldmann\nFeldmann Präzisionsteile GmbH"
+}
