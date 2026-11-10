@@ -63,6 +63,11 @@ def main() -> int:
         ("Screenshot-Modus: kein Rang mit Namen", 'id="rang-daten"' not in anonym),
         ("Hell- und Dunkelmodus, ohne Fremdressourcen", 'name="color-scheme"' in normal and "prefers-color-scheme: dark" in normal
          and not re.search(r"(src|href)=[\"']https?://", normal)),
+        ("Queue: eine Zeile je offene Aufgabe", normal.count('class="zeile"') == sum(1 for x in daten["Offene Aufgaben laden"] if x["status"] == "offen")),
+        ("Mehrere Aufgaben eines Lieferanten bilden eine Sammelakte", normal.count('data-akte="') >= 2 and "Sammelakte" in normal),
+        ("Sammelaktion nie für Eskalationen", all(str(x["id"]) not in ids.split(",") for ids in re.findall(r'data-ids="([^"]*)"', normal) for x in daten["Offene Aufgaben laden"] if x["art"] == "eskalation")),
+        ("Copilot mit lokalen Daten, im Screenshot-Modus ohne", 'id="copilot"' in normal and 'id="copilot"' not in anonym and 'data-bulk="' not in anonym),
+        ("Copilot-Daten escaped", "</script><b>x" not in normal),
         ("Review mit Bankdaten als kritisch markiert", "Bankdaten geändert" in normal and "badge krit" in normal),
     ]
     fehler = 0
