@@ -68,6 +68,10 @@ def main() -> int:
         ("Sammelaktion nie für Eskalationen", all(str(x["id"]) not in ids.split(",") for ids in re.findall(r'data-ids="([^"]*)"', normal) for x in daten["Offene Aufgaben laden"] if x["art"] == "eskalation")),
         ("Copilot mit lokalen Daten, im Screenshot-Modus ohne", 'id="copilot"' in normal and 'id="copilot"' not in anonym and 'data-bulk="' not in anonym),
         ("Copilot-Daten escaped", "</script><b>x" not in normal),
+        ("Tastenleiste und Empfehlung mit Taste, nicht im Screenshot-Modus", 'id="tastenleiste"' in normal and 'data-aktion="abgelehnt"' in karte(normal, 101)
+         and 'id="tastenleiste"' not in anonym),
+        ("Savings-Zähler und Zurück-Knopf für Mobil", 'id="hero-wert"' in normal and 'id="zurueck"' in normal and "Der Reihe nach prüfen" in normal),
+        ("Streak mit richtiger Einzahl", "1 Tag ohne Rückstau" in rendern({**daten, "Kennzahlen und Audit laden": [{**daten["Kennzahlen und Audit laden"][0], "streak_tage": 1}]}, anonym=False)),
         ("Review mit Bankdaten als kritisch markiert", "Bankdaten geändert" in normal and "badge krit" in normal),
     ]
     fehler = 0
