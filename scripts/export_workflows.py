@@ -14,7 +14,7 @@ from webhook_client import REPO
 
 WORKFLOWS = {
     "mailTriageHaupt1": "01_mail_triage.json",
-    "mailTriageReview": "02_arbeitsliste.json",
+    "mailTriageReview": "02_review_human_in_the_loop.json",
     "mailTriageFehler": "03_fehlerbehandlung.json",
     "mailTriageEntwrf": "04_antwortentwurf.json",
 }

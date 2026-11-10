@@ -1,4 +1,4 @@
-name: procurepulse
+name: supplier-mail-triage
 
 # Geheimnisse liegen als Dateien unter /run/secrets und nicht in der Umgebung der Container.
 # Die Workflows lesen Einstellungen über $env. Stünden dort Passwörter oder der Encryption Key,
@@ -49,11 +49,6 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./db/init.sql:/docker-entrypoint-initdb.d/01_init.sql:ro
-      - ./db/02_preiserhoehung.sql:/docker-entrypoint-initdb.d/02_preiserhoehung.sql:ro
-      - ./db/03_einkaufssteuerung.sql:/docker-entrypoint-initdb.d/03_einkaufssteuerung.sql:ro
-      - ./db/04_aufgaben_entscheiden.sql:/docker-entrypoint-initdb.d/04_aufgaben_entscheiden.sql:ro
-      - ./db/05_abteilungen.sql:/docker-entrypoint-initdb.d/05_abteilungen.sql:ro
-      - ./db/06_vereinbarungen.sql:/docker-entrypoint-initdb.d/06_vereinbarungen.sql:ro
     # Kein Port nach außen: Zugriff nur aus dem Docker-Netz, zum Nachsehen per "docker compose exec postgres psql"
     healthcheck:
       # -h 127.0.0.1: während des Init-Skripts lauscht Postgres nur auf dem Socket, so gilt es erst danach als bereit
