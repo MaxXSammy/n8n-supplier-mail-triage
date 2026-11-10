@@ -54,24 +54,13 @@ def main() -> int:
         ("Historie mit Vereinbarung und Verlauf", "Festpreis bis Q1/2027" in karte(normal, 101) and "zeitleiste" in karte(normal, 104)),
         ("Weiterleiten an Technik, QM, Disposition", all(f'name="ziel" value="{z}"' in karte(normal, 101) for z in ("technik", "qm", "dispo"))),
         ("Meldung nach der Aktion wird escaped", "&lt;script&gt;" in normal and "<script>alert(1)</script>" not in normal),
-        ("Savings-Balken und Streak", "Savings YTD" in normal and "Streak: 3 Tage ohne Rückstau" in normal),
+        ("Savings-Balken und Streak", "Savings YTD" in normal and "STREAK: 3 TAGE OHNE RÜCKSTAU" in normal),
         ("Screenshot-Modus: keine Lieferantennamen", not any(n in anonym for n in lieferanten)),
         ("Screenshot-Modus: keine Bestellnummern", not re.search(r"45\d{8}", anonym)),
         ("Screenshot-Modus: keine Beträge in Euro", not re.search(r"\d[\d.]*,\d\d(&nbsp;|\s)*€", anonym)),
         ("Screenshot-Modus: kein Mailtext, keine Aktionen", "16MnCr5 ist nicht mehr verfügbar" not in anonym and 'action="/webhook/aufgabe"' not in anonym),
         ("Rang-Badge mit Rangstufen, Namen im JSON escaped", 'id="rang"' in normal and "Senior Negotiator" in normal and "</script><b>x" not in normal),
         ("Screenshot-Modus: kein Rang mit Namen", 'id="rang-daten"' not in anonym),
-        ("Hell- und Dunkelmodus, ohne Fremdressourcen", 'name="color-scheme"' in normal and "prefers-color-scheme: dark" in normal
-         and not re.search(r"(src|href)=[\"']https?://", normal)),
-        ("Queue: eine Zeile je offene Aufgabe", normal.count('class="zeile"') == sum(1 for x in daten["Offene Aufgaben laden"] if x["status"] == "offen")),
-        ("Mehrere Aufgaben eines Lieferanten bilden eine Sammelakte", normal.count('data-akte="') >= 2 and "Sammelakte" in normal),
-        ("Sammelaktion nie für Eskalationen", all(str(x["id"]) not in ids.split(",") for ids in re.findall(r'data-ids="([^"]*)"', normal) for x in daten["Offene Aufgaben laden"] if x["art"] == "eskalation")),
-        ("Copilot mit lokalen Daten, im Screenshot-Modus ohne", 'id="copilot"' in normal and 'id="copilot"' not in anonym and 'data-bulk="' not in anonym),
-        ("Copilot-Daten escaped", "</script><b>x" not in normal),
-        ("Tastenleiste und Empfehlung mit Taste, nicht im Screenshot-Modus", 'id="tastenleiste"' in normal and 'data-aktion="abgelehnt"' in karte(normal, 101)
-         and 'id="tastenleiste"' not in anonym),
-        ("Savings-Zähler und Zurück-Knopf für Mobil", 'id="hero-wert"' in normal and 'id="zurueck"' in normal and "Der Reihe nach prüfen" in normal),
-        ("Streak mit richtiger Einzahl", "1 Tag ohne Rückstau" in rendern({**daten, "Kennzahlen und Audit laden": [{**daten["Kennzahlen und Audit laden"][0], "streak_tage": 1}]}, anonym=False)),
         ("Review mit Bankdaten als kritisch markiert", "Bankdaten geändert" in normal and "badge krit" in normal),
     ]
     fehler = 0

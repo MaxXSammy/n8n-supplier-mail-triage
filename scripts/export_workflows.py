@@ -17,7 +17,6 @@ WORKFLOWS = {
     "mailTriageReview": "02_arbeitsliste.json",
     "mailTriageFehler": "03_fehlerbehandlung.json",
     "mailTriageEntwrf": "04_antwortentwurf.json",
-    "mailTriageCopilot": "05_copilot.json",
 }
 PORTABEL = ["id", "name", "nodes", "connections", "settings", "pinData", "tags"]
 
