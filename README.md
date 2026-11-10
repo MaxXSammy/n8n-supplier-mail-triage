@@ -1,6 +1,6 @@
 # ProcurePulse – Lieferanten-Mails automatisch einordnen mit n8n
 
-[![CI](https://github.com/MaxXSammy/n8n-supplier-mail-triage/actions/workflows/ci.yml/badge.svg)](https://github.com/MaxXSammy/n8n-supplier-mail-triage/actions/workflows/ci.yml)
+[![CI](https://github.com/MaxXSammy/procurepulse-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/MaxXSammy/procurepulse-ai/actions/workflows/ci.yml)
 
 ProcurePulse ist ein self-hosted n8n-Workflow mit Arbeitsoberfläche für den Einkauf. Er verarbeitet eingehende Lieferanten-Mails. Ein lokales LLM erkennt den Zweck der Mail und extrahiert die wichtigen Daten als JSON. Danach wird alles im Code geprüft, die Mail an das zuständige Team geroutet und ein Ticket angelegt. Auftragsbestätigungen werden zusätzlich mit der Bestellung abgeglichen und je nach Liefertreue des Lieferanten automatisch bestätigt oder dem Einkäufer vorgelegt, mit fertigem Antwortentwurf. Preiserhöhungen verteilt das System nach Höhe auf Disposition, Einkäufer und strategischen Einkauf, mit Preishistorie und Mehrkosten. Ändert ein Lieferant Werkstoff oder Maß oder kündigt er einen Artikel ab, holt das System Technik, QM und Disposition dazu. Jede Karte der Arbeitsliste zeigt eine begründete System-Empfehlung und die Vorgeschichte mit dem Lieferanten, damit auch eine Vertretung sofort weiß, was zu tun ist. Unsichere oder verdächtige Fälle gehen an einen Menschen. Alles läuft lokal mit Docker und Ollama, ohne Cloud-KI.
 
@@ -253,8 +253,8 @@ Alle Mails sind frei erfunden. Auftraggeber ist die fiktive Hagemann Antriebstec
 **Voraussetzungen:** [Docker Desktop](https://www.docker.com/products/docker-desktop/), [Ollama](https://ollama.com) und Python 3.12 für die Skripte. Getestet mit einer NVIDIA-GPU mit 8 GB VRAM.
 
 ```bash
-git clone https://github.com/MaxXSammy/n8n-supplier-mail-triage.git
-cd n8n-supplier-mail-triage
+git clone https://github.com/MaxXSammy/procurepulse-ai.git
+cd procurepulse-ai
 ollama pull qwen2.5:7b
 cp .env.example .env            # Windows: copy .env.example .env
 ```
