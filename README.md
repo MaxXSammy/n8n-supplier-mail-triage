@@ -327,6 +327,7 @@ scripts/
 ├── export_workflows.py     # Export aus n8n, nur portable Felder
 └── check_schema_sync.py    # Schema im Workflow = Schema-Datei?
 docs/                       # Screenshots, Vorschaubilder für GitHub und LinkedIn, Fachkonzept
+docs/projekt/               # Projektdokumentation (Steckbrief, Anforderungen, Tests, Risiken, Handbücher)
 ```
 
 ## Bekannte Grenzen
@@ -364,6 +365,10 @@ docs/                       # Screenshots, Vorschaubilder für GitHub und Linked
 - [ ] Benachrichtigung der Teams und bei Fehlern (Teams, Slack oder E-Mail)
 - [ ] Messung mit echten, anonymisierten Postfach-Mails und Vergleich mehrerer lokaler Modelle
 - [ ] Belastbarere Unsicherheit, z. B. Abstimmung über mehrere Läufe
+
+## Projektdokumentation
+
+Steckbrief, Anforderungen, Architektur und Entscheidungen, Testbericht, Risiken und Datenschutz, Benutzer- und Betriebshandbuch, Pilotplan und Lessons Learned liegen in [docs/projekt](docs/projekt/README.md). Die Papiere wurden nachträglich erstellt und sind so gekennzeichnet. Dazu das [Änderungsprotokoll](CHANGELOG.md).
 
 ## Lizenz
 
