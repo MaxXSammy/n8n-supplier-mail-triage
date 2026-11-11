@@ -115,8 +115,10 @@ CREATE TABLE tickets (
     warnungen           JSONB NOT NULL DEFAULT '[]',
     ab_pruefung         JSONB,                       -- Ergebnis des Abgleichs mit der Bestellung
     status              TEXT NOT NULL DEFAULT 'offen',
+    inhalts_hash        TEXT,                        -- Hash aus Absender, Betreff und Text: erkennt dieselbe Mail unter neuer Message-ID
     erstellt_am         TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+CREATE INDEX tickets_inhalts_hash ON tickets (inhalts_hash);
 
 -- Antwortentwürfe an Lieferanten. Der zuständige Mitarbeiter prüft und sendet selbst.
 CREATE TABLE entwuerfe (
@@ -144,9 +146,11 @@ CREATE TABLE review_queue (
     bearbeitet_von          TEXT,
     notiz                   TEXT,
     ticket_id               INTEGER REFERENCES tickets (id),
+    inhalts_hash            TEXT,
     erstellt_am             TIMESTAMPTZ NOT NULL DEFAULT now(),
     erledigt_am             TIMESTAMPTZ
 );
+CREATE INDEX review_inhalts_hash ON review_queue (inhalts_hash);
 
 -- Unerwartete Fehler aus dem Error-Workflow
 CREATE TABLE fehler_log (

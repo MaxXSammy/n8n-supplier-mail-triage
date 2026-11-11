@@ -4,11 +4,13 @@
 
 Schreibt eval/ergebnisse.md (für die README) und eval/ergebnisse.json (Rohdaten des Laufs).
 Jeder Lauf hängt eine Lauf-Kennung an die Message-ID, damit die Duplikat-Erkennung nicht greift.
+Danach werden diese Test-Tickets wieder gelöscht (außer mit --behalten).
 """
 import argparse
 import json
 import sys
 import re
+import subprocess
 from collections import Counter
 from datetime import datetime
 from pathlib import Path
@@ -57,10 +59,26 @@ def prozent(zaehler: int, nenner: int) -> str:
     return f"{zaehler / nenner:.0%}".replace("%", " %") if nenner else "–"
 
 
+AUFRAEUMEN_SQL = """
+DELETE FROM entwuerfe WHERE ticket_id IN (SELECT id FROM tickets WHERE mail_id LIKE '%-eval%');
+DELETE FROM review_queue WHERE mail_id LIKE '%-eval%';
+DELETE FROM tickets WHERE mail_id LIKE '%-eval%';
+"""
+
+
+def testdaten_loeschen() -> None:
+    """Entfernt die Tickets und Reviews dieses Laufs, damit die Arbeitsliste nur echte Fälle zeigt."""
+    ergebnis = subprocess.run(
+        ["docker", "compose", "exec", "-T", "postgres", "psql", "-U", env_lesen().get("POSTGRES_USER", "n8n"), "-d", "triage"],
+        input=AUFRAEUMEN_SQL, text=True, capture_output=True, cwd=REPO)
+    print("Testdaten dieses Laufs gelöscht." if ergebnis.returncode == 0 else f"Aufräumen fehlgeschlagen: {ergebnis.stderr}")
+
+
 def main() -> None:
     sys.stdout.reconfigure(encoding="utf-8")  # Windows-Konsole: ✓ und Umlaute
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--url", default=STANDARD_URL)
+    parser.add_argument("--behalten", action="store_true", help="Tickets und Reviews des Laufs nicht löschen")
     args = parser.parse_args()
 
     env = env_lesen()
@@ -168,6 +186,8 @@ def main() -> None:
                    ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print("\n" + "\n".join(zeilen[4:zeilen.index("## Konfusionsmatrix (Zeile = Gold, Spalte = LLM)")]))
     print("\n→ eval/ergebnisse.md")
+    if not args.behalten:
+        testdaten_loeschen()
 
 
 if __name__ == "__main__":

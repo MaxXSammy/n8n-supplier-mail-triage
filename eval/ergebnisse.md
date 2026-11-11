@@ -1,27 +1,27 @@
 # Auswertung der Klassifizierung
 
-Lauf 20261030-193432 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 34 Beispiel-Mails
+Lauf 20261111-073837 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 34 Beispiel-Mails
 
 | Kennzahl | Wert | Bedeutung |
 |---|---|---|
-| Klassifizierungsgenauigkeit LLM | **97 %** (33/34) | Kategorie des LLM stimmt mit Gold überein |
+| Klassifizierungsgenauigkeit LLM | **100 %** (34/34) | Kategorie des LLM stimmt mit Gold überein |
 | Regel-Basislinie (Schlüsselwörter) | 91 % (31/34) | Vergleich ohne KI |
-| Automatisierungsquote | 88 % (30/34) | Ticket ohne menschliche Prüfung angelegt |
+| Automatisierungsquote | 91 % (31/34) | Ticket ohne menschliche Prüfung angelegt |
 | Falsch automatisch geroutet | **0** | Ticket mit falscher Kategorie, der teuerste Fehler |
-| LLM-Fehler im Review abgefangen | 1 | falsche Kategorie, aber ein Mensch prüft |
+| LLM-Fehler im Review abgefangen | 0 | falsche Kategorie, aber ein Mensch prüft |
 | Pflicht-Reviews erkannt | 100 % (3/3) | z. B. geänderte Bankdaten |
 | Extraktionsgenauigkeit | 100 % (95/95) | Bestell-, Rechnungs-, Angebotsnummer, Betrag, Währung, Termin |
-| AB-Entscheidung richtig | **95 %** (18/19) | automatisch bestätigt, manuell prüfen, Abweichung oder Review |
-| AB-Gründe exakt richtig | 95 % (18/19) | Art der Abweichung bzw. Prüfgrund stimmt |
+| AB-Entscheidung richtig | **100 %** (19/19) | automatisch bestätigt, manuell prüfen, Abweichung oder Review |
+| AB-Gründe exakt richtig | 100 % (19/19) | Art der Abweichung bzw. Prüfgrund stimmt |
 | AB fälschlich durchgewunken | **0** | automatisch bestätigt, obwohl ein Mensch prüfen sollte |
-| Ø Antwortzeit | 6.8 s | je Mail, lokal inkl. Datenbank |
+| Ø Antwortzeit | 6.6 s | je Mail, lokal inkl. Datenbank |
 
 ## Konfusionsmatrix (Zeile = Gold, Spalte = LLM)
 
 | Gold \ LLM | angebot | auftragsbestaetigung | reklamation | lieferverzug | rechnung | sonstiges | (keine) |
 |---|---|---|---|---|---|---|---|
 | **angebot** | 3 | · | · | · | · | · | · |
-| **auftragsbestaetigung** | 1 | 18 | · | · | · | · | · |
+| **auftragsbestaetigung** | · | 19 | · | · | · | · | · |
 | **reklamation** | · | · | 3 | · | · | · | · |
 | **lieferverzug** | · | · | · | 3 | · | · | · |
 | **rechnung** | · | · | · | · | 3 | · | · |
@@ -37,7 +37,7 @@ Lauf 20261030-193432 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 34 Bei
 | 19_ab_rheinwerk_blind | manuell_pruefen | manuell_pruefen | blindbestaetigung_verdacht, liefertreue_unter_schwelle | blindbestaetigung_verdacht, liefertreue_unter_schwelle |
 | 20_ab_swissturning_blind_premium | manuell_pruefen | manuell_pruefen | blindbestaetigung_verdacht | blindbestaetigung_verdacht |
 | 21_ab_nordform_neulieferant | manuell_pruefen | manuell_pruefen | neuer_lieferant | neuer_lieferant |
-| 22_ab_kovotech_preis | abweichung | review ✗ | preis | – |
+| 22_ab_kovotech_preis | abweichung | abweichung | preis | preis |
 | 23_ab_feldmann_palette | abweichung | abweichung | menge | menge |
 | 24_ab_precimet_stammdaten | abweichung | abweichung | menge, stammdaten_pruefen | menge, stammdaten_pruefen |
 | 25_ab_rossi_termin_ungewiss | abweichung | abweichung | termin_unsicher | termin_unsicher |
@@ -76,7 +76,7 @@ Lauf 20261030-193432 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 34 Bei
 | 19_ab_rheinwerk_blind | auftragsbestaetigung | auftragsbestaetigung | lieferverzug | 0.95 | ticket | – | – |
 | 20_ab_swissturning_blind_premium | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
 | 21_ab_nordform_neulieferant | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
-| 22_ab_kovotech_preis | auftragsbestaetigung | angebot ✗ | auftragsbestaetigung | 0.95 | review | kategorie_unplausibel | – |
+| 22_ab_kovotech_preis | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | kategorie_korrigiert:angebot->auftragsbestaetigung | – |
 | 23_ab_feldmann_palette | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
 | 24_ab_precimet_stammdaten | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
 | 25_ab_rossi_termin_ungewiss | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | beleg_fehlt:liefertermin | – |

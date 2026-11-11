@@ -108,22 +108,24 @@ Der Haupt-Workflow folgt sechs Phasen, die im Canvas als farbige Bereiche markie
 
 | Kennzahl | Ergebnis | Bedeutung |
 |---|---|---|
-| Klassifizierungsgenauigkeit LLM | **97 %** (33/34) ² | Kategorie des LLM stimmt |
+| Klassifizierungsgenauigkeit LLM | **100 %** (34/34) ² | Kategorie des LLM stimmt |
 | Regel-Basislinie | 91 % (31/34) | Schlüsselwörter, ohne KI ¹ |
 | Falsch automatisch geroutet | **0** | Ticket mit falscher Kategorie, der teuerste Fehler |
-| Automatisierungsquote | 88 % (30/34) | ohne menschliche Prüfung |
+| Automatisierungsquote | 91 % (31/34) | ohne menschliche Prüfung |
 | Pflicht-Reviews erkannt | 3/3 | Betrugsversuch, unbekannte Bestellnummern |
 | Extraktionsgenauigkeit | 100 % (95/95) | Nummern, Preise, Mengen, Beträge, Termine |
-| AB-Entscheidung richtig | **95 %** (18/19) | automatisch bestätigt, manuell prüfen, Abweichung oder Review |
+| AB-Entscheidung richtig | **100 %** (19/19) | automatisch bestätigt, manuell prüfen, Abweichung oder Review |
 | AB fälschlich durchgewunken | **0** | automatisch bestätigt, obwohl ein Mensch prüfen sollte |
 | Ø Antwortzeit | 7 s | je Mail, lokal mit RTX 3060 Ti (8 GB) |
 
 ¹ Die Schlüsselwörter wurden in Kenntnis der Testmails gewählt. Der Wert ist deshalb optimistisch. Die Regeln können außerdem keine Daten extrahieren.
 
-² Der Prompt wurde während der Entwicklung an diesen Mails überarbeitet. Die Werte sind deshalb optimistisch und kein Beleg für fremde Daten.
+² Der Prompt und die Korrekturregel für Mail 22 (siehe unten) wurden an diesen Mails entwickelt. Die Werte sind deshalb optimistisch und kein Beleg für fremde Daten. Vor dem Einsatz sollten echte, nie gesehene Mails des Teams gegengeprüft werden.
 
 **Was die Messung gezeigt hat**
 
+- **Prompt-Tuning gegen den einen Fehler hat es schlimmer gemacht.** Ein Zusatz im Prompt („Ein Angebot bezieht sich nie auf unsere Bestellungen“) ließ die Genauigkeit von 97 auf 94 % fallen: Mail 22 blieb falsch, eine zweite AB kippte dazu. Der Zusatz ist zurückgenommen. Stattdessen korrigiert eine feste Regel im Code eindeutige Fälle: Ein „Angebot“ mit unserer Bestellnummer und dem ausdrücklichen Wort „Auftragsbestätigung“ oder „wir bestätigen Ihre Bestellung“ wird zur AB (Warnung `kategorie_korrigiert`), danach läuft die normale AB-Prüfung. Ergebnis: 100 % (34/34), AB-Entscheidung 19/19.
+- **Dieselbe Mail unter neuer Message-ID ergab ein zweites Ticket.** Die Duplikat-Prüfung kannte nur die Message-ID. Jetzt zählt zusätzlich der Inhalt: Absender, Betreff ohne „AW:/WG:“ und Text ergeben einen Hash, gleicher Hash innerhalb von 30 Tagen heißt Duplikat. Weitergeleitete oder erneut zugestellte Mails erzeugen kein zweites Ticket, eine Mail mit anderem Betreff oder Text weiterhin schon.
 - **Eine AB mit Preiserhöhung hielt das LLM für ein Angebot.** Damit lief der Abgleich mit der Bestellung gar nicht. Die Plausibilitätsregel (Angebot mit Bestellnummer) schickt sie jetzt an einen Menschen. Ihr erster Entwurf löste auch bei einem echten Angebot aus, weil das LLM die Anfragenummer als Bestellnummer eintrug. Jetzt zählen nur Nummern im Format unserer Bestellungen.
 - **Die Grafikkarte entscheidet über die Antwortzeit.** Mit einem Kontextfenster von 8.192 Tokens passte das Modell nicht mehr neben Browser und Docker in 8 GB Grafikspeicher. Die Antwortzeit stieg von 7 auf 60 Sekunden. Mit 4.096 Tokens und einer Längengrenze für die Ausgabe läuft es wieder schnell.
 - **Die Konfidenz des LLM ist kein brauchbares Signal.** Sie lag bei allen Mails zwischen 0,8 und 0,95, auch bei der einzigen falschen Klassifizierung. Die Konfidenz-Schwelle hat nie gegriffen. Abgesichert haben die deterministischen Prüfungen.
