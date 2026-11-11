@@ -318,6 +318,8 @@ docs/                       # Screenshots, Vorschaubilder für GitHub und Linked
 ## Bekannte Grenzen
 
 - Auf einem extern geschriebenen Prüfsatz mit absichtlichen Fallen (10 Mails) liegt die Kategorie-Genauigkeit bei 60 %. Bekannte Fehlerbilder: Kaltakquise mit Wörtern wie „Angebot“ wird als Angebot eingeordnet, interne Bedarfsanforderungen (BANF) mit Bestellnummer als Auftragsbestätigung, Mischmails mit mehreren Themen landen in einer einzigen Kategorie, eine AB mit Teilmenge teils als Lieferverzug. Datumsformate wie `10/12/2026` und „18 December 2026“ werden verworfen. Diese Fehler sind gemessen und nicht weggetunt, Details in der Erfolgsmessung.
+- **Währung wird bei ABs nicht geprüft.** Nennt eine AB den richtigen Preis in der falschen Währung (z. B. 1,85 EUR statt 1,85 CHF), wird sie automatisch bestätigt. Im Prüfsatz 4 ist das der einzige Fall, in dem eine AB fälschlich durchging. Bisher nicht behoben.
+- Interne Mails und Systemmeldungen landen in „sonstiges“ nur zur Hälfte richtig (13 von 25 im Prüfsatz 4). Vier gingen ohne Prüfung an die falsche Stelle, etwa eine Bedarfsanforderung als Angebot. Eine eigene Kategorie dafür wurde bewusst nicht gebaut.
 - Zwischen zwei Läufen streuen die Ergebnisse um ein bis zwei Mails, auch ohne Änderung am Code. Kleine Unterschiede sind kein Beleg für eine Verbesserung.
 - Interne Mails (Bedarfsanforderungen, Freigabeanfragen) und Systemnachrichten (EDI-Fehler) haben keine eigene Kategorie und landen im Sammelpostfach. Das ist Absicht: Das Tool sortiert das Lieferanten-Postfach.
 - Die Testdaten sind klein (34 Mails) und selbst geschrieben. Sie zeigen das Vorgehen, ersetzen aber keine Messung mit echten Postfächern.
