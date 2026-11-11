@@ -1,0 +1,8 @@
+{
+  "message_id": "<p05_ab_rheinwerk_liefertreue@pruefset.example>",
+  "from": "Jens Albrecht <j.albrecht@rheinwerk-komponenten.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Bestellung 4500018404 bestätigt",
+  "received_at": "2026-10-28T10:30:00+01:00",
+  "body": "Sehr geehrter Herr Schneider,\n\nIhre Bestellung 4500018404 bestätigen wir mit 2.400 Stück Zahnradwelle ZW-25 zu 6,40 EUR. Liefertermin: 25.11.2026.\n\nBeste Grüße\nJens Albrecht\nRheinwerk Komponenten GmbH"
+}

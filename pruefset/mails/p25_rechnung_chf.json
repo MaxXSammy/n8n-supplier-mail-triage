@@ -1,0 +1,8 @@
+{
+  "message_id": "<p25_rechnung_chf@pruefset.example>",
+  "from": "Reto Meier <r.meier@swissturning.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Rechnung 20261077 zu Bestellung 4500018405",
+  "received_at": "2026-11-06T10:00:00+01:00",
+  "body": "Guten Tag\n\nanbei die Rechnung 20261077 zu Ihrer Bestellung 4500018405.\n\nRechnungsbetrag: 3'915.60 CHF\nZahlungsziel: 30 Tage netto\n\nFreundliche Grüsse\nSwiss Turning AG"
+}

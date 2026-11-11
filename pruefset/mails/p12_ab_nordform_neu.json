@@ -1,0 +1,8 @@
+{
+  "message_id": "<p12_ab_nordform_neu@pruefset.example>",
+  "from": "Lisa Brandt <l.brandt@nordform.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Bestellbestätigung 4500018406",
+  "received_at": "2026-10-30T11:00:00+01:00",
+  "body": "Hallo Herr Schneider,\n\nvielen Dank für Ihr Vertrauen. Wir bestätigen die Bestellung 4500018406: 800 Stück Kunststoffgehäuse KG-30 zu 2,95 EUR, Lieferung am 01.12.2026.\n\nLisa Brandt\nNordform Kunststofftechnik GmbH"
+}

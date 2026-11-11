@@ -1,0 +1,8 @@
+{
+  "message_id": "<p08_ab_rossi_datum_mit_schraegstrich@pruefset.example>",
+  "from": "Marco Bellini <m.bellini@officina-rossi.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Conferma d'ordine 4500018415",
+  "received_at": "2026-10-30T14:00:00+01:00",
+  "body": "Gentile Sig. Schneider,\n\nconfermiamo il Suo ordine 4500018415:\n\n2.000 pezzi Rondella SR-05\nprezzo unitario 0,27 EUR\nconsegna: 10/12/2026\n\nCordiali saluti\nMarco Bellini\nOfficina Meccanica Rossi"
+}

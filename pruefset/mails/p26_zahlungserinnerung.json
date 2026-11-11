@@ -1,0 +1,8 @@
+{
+  "message_id": "<p26_zahlungserinnerung@pruefset.example>",
+  "from": "Buchhaltung Brenner <buchhaltung@brenner-zerspanung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "2. Zahlungserinnerung Rechnung RE-2026-09981",
+  "received_at": "2026-11-06T11:30:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\n\nzu unserer Rechnung RE-2026-09981 ist noch ein Betrag von 1.280,40 EUR offen. Bitte überweisen Sie bis zum 15.11.2026, sonst müssen wir mahnen.\n\nBrenner Zerspanung GmbH, Buchhaltung"
+}

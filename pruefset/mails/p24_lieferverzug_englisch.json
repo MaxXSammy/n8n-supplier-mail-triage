@@ -1,0 +1,8 @@
+{
+  "message_id": "<p24_lieferverzug_englisch@pruefset.example>",
+  "from": "Agnieszka Wójcik <a.wojcik@precimet.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Delay PO 4500018416",
+  "received_at": "2026-11-06T08:00:00+01:00",
+  "body": "Dear Mr Schneider,\n\nunfortunately we cannot deliver PO 4500018416 on time because of a machine breakdown. The new delivery date is 18 December 2026. We apologise for the inconvenience.\n\nAgnieszka Wójcik"
+}

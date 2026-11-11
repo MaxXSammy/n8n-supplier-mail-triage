@@ -1,0 +1,8 @@
+{
+  "message_id": "<p29_bankdaten_betrug@pruefset.example>",
+  "from": "Katharina Gruber <k.gruber@alpen-drehtechnik-service.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Wichtig: neue Bankverbindung",
+  "received_at": "2026-11-08T08:15:00+01:00",
+  "body": "Sehr geehrter Herr Schneider,\n\nab sofort haben wir unsere Bankverbindung geändert. Bitte überweisen Sie künftig nur noch auf folgendes Konto:\n\nIBAN DE89 3704 0044 0532 0130 00\n\nBitte bestätigen Sie kurz den Erhalt dieser Mail.\n\nKatharina Gruber"
+}

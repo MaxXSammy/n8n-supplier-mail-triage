@@ -1,0 +1,8 @@
+{
+  "message_id": "<p15_angebot_kuhnert@pruefset.example>",
+  "from": "Jörg Kuhnert <j.kuhnert@kuhnert-stahl.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Angebot AN-2026-7731 Präzisionswellen",
+  "received_at": "2026-11-02T08:20:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\n\nvielen Dank für Ihre Anfrage. Wir bieten Ihnen an:\n\n3.000 Stück Präzisionswelle PW-20, 5,10 EUR pro Stück\nPreis gesamt: 15.300,00 EUR netto, Lieferzeit 6 Wochen.\n\nDas Angebot gilt bis 30.11.2026.\n\nMit freundlichen Grüßen\nJörg Kuhnert\nKuhnert Stahlhandel"
+}

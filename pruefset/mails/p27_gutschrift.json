@@ -1,0 +1,8 @@
+{
+  "message_id": "<p27_gutschrift@pruefset.example>",
+  "from": "Anja Feldmann <a.feldmann@feldmann-praezisionsteile.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Gutschrift GS-2026-0412",
+  "received_at": "2026-11-07T09:00:00+01:00",
+  "body": "Hallo Herr Schneider,\n\nwegen der Mengenabweichung auf Rechnung RE-2026-09211 erhalten Sie die Gutschrift GS-2026-0412 über 312,50 EUR. Der Betrag wird mit der nächsten Zahlung verrechnet.\n\nAnja Feldmann"
+}

@@ -1,0 +1,8 @@
+{
+  "message_id": "<p02_ab_brenner_ok@pruefset.example>",
+  "from": "Stefan Huber <s.huber@brenner-zerspanung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "AB zu Ihrer Bestellung 4500018525",
+  "received_at": "2026-10-29T12:30:00+01:00",
+  "body": "Hallo Herr Schneider,\n\nIhre Bestellung 4500018525 ist bei uns eingeplant.\n\nNutenkeil NK-16, 600 Stk., 1,20 EUR/Stk.\nWarenausgang: 03.12.2026\n\nGruß\nStefan Huber"
+}

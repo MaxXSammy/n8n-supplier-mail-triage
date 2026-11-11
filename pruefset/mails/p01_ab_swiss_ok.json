@@ -1,0 +1,8 @@
+{
+  "message_id": "<p01_ab_swiss_ok@pruefset.example>",
+  "from": "Reto Meier <r.meier@swissturning.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Auftragsbestätigung 4500018405",
+  "received_at": "2026-10-28T09:15:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\n\nwir bestätigen Ihre Bestellung 4500018405:\n\n500 Stück Präzisionsbolzen PB-6\nPreis: 1,85 CHF pro Stück\nLieferung: 18.11.2026\n\nFreundliche Grüsse\nReto Meier\nSwiss Turning AG"
+}

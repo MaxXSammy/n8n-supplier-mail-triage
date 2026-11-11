@@ -1,0 +1,8 @@
+{
+  "message_id": "<p20_reklamation_ersatz@pruefset.example>",
+  "from": "Katharina Gruber <k.gruber@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Ersatzlieferung beschädigte Ware 4500018411",
+  "received_at": "2026-11-03T08:30:00+01:00",
+  "body": "Guten Tag Herr Schneider,\n\nes tut uns leid, dass die Lagerbolzen aus Bestellung 4500018411 beschädigt bei Ihnen angekommen sind. Wir schicken Ihnen kostenlos Ersatz und holen die beschädigte Ware ab.\n\nKatharina Gruber"
+}
