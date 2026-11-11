@@ -50,7 +50,7 @@ Schwellen und Minuten stehen in der Tabelle `einstellungen` und lassen sich ohne
 
 ![Ausführung in n8n](docs/ausfuehrung_ticket.png)
 
-**Arbeitsliste** für den Einkauf: offene AB-Prüfungen mit Abweichungen und Antwortentwurf, darunter die Review-Queue
+**Arbeitsliste** für den Einkauf (der Screenshot zeigt noch die frühere Fassung): Überblick mit Kennzahlen, Mails zur Prüfung, offene Aufgaben nach Team mit Zusammenfassung und Warnungen. Je Aufgabe ein Knopf „Erledigt“, Antwortentwürfe und ein RFQ-Entwurf (Angebot anfordern, im Format für den Procurement-RAG-Agent) lassen sich ins Mailprogramm übernehmen. Darunter die Review-Queue
 
 ![Arbeitsliste](docs/arbeitsliste.png)
 
@@ -328,7 +328,8 @@ docs/                       # Screenshots, Vorschaubilder für GitHub und Linked
 - Die Erkennung geänderter Bankdaten und von Prompt-Injection beruht auf regulären Ausdrücken. Wer die Muster kennt, kann sie umgehen, etwa mit Umschreibungen oder einer anderen Sprache. Sie sind eine zusätzliche Sicherung, kein vollständiger Schutz. Rechnungen mit IBAN und „ab sofort“ im Text können dagegen unnötig im Review landen. In einem echten Einsatz gehört deshalb dazu, dass ein Ticket keine Zahlung auslöst: Bezahlt wird erst nach Abgleich von Bestellung, Wareneingang und Rechnung im ERP.
 - Bestellungen und Lieferanten stehen in einer eigenen Tabelle statt im ERP. Jede Bestellung hat genau eine Position. Mehrere Positionen, Mengenstaffeln und Teilbestätigungen sind nicht abgebildet.
 - Wird eine AB über die Review-Queue zugeordnet (z. B. nach einem Zahlendreher), läuft der Abgleich mit der Bestellung nicht automatisch nach.
-- Offene AB-Aufgaben lassen sich noch nicht als erledigt markieren. Sie bleiben auf der Arbeitsliste, bis der Status in der Datenbank geändert wird.
+- Das Tool sendet selbst keine Mails. Antwort- und RFQ-Entwürfe öffnen sich im Mailprogramm, der Einkäufer prüft und sendet sie selbst.
+- Die Review-Queue wird weiter über ein n8n-Formular abgeschlossen, nicht direkt in der Arbeitsliste.
 - Die Liefertreue ist ein fester Wert je Lieferant. Im echten Einsatz käme sie aus dem ERP und würde laufend aktualisiert.
 - Im Review lässt sich nur die Kategorie korrigieren, nicht einzelne Felder. Eine verworfene Bestellnummer muss der Bearbeiter in der Notiz nachtragen.
 - Mails kommen als JSON per Webhook. Ein echtes Postfach (IMAP-Trigger), Anhänge (PDF-Rechnungen) und Benachrichtigungen der Teams sind nicht angebunden. Im Error-Workflow steht für die Benachrichtigung nur ein Platzhalter.
