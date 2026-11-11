@@ -17,7 +17,8 @@ from pathlib import Path
 
 from webhook_client import REPO, STANDARD_URL, env_lesen, mail_senden
 
-KATEGORIEN = ["angebot", "auftragsbestaetigung", "reklamation", "lieferverzug", "rechnung", "sonstiges"]
+KATEGORIEN = ["angebot", "auftragsbestaetigung", "reklamation", "lieferverzug", "rechnung", "lieferavis",
+              "preisaenderung", "stammdatenaenderung", "compliance", "werbung", "sonstiges"]
 
 # Regel-Basislinie: Schlüsselwörter je Kategorie. Zeigt, was das LLM gegenüber einfachen Regeln bringt.
 REGELN = {
@@ -25,6 +26,11 @@ REGELN = {
     "rechnung": r"rechnung|gutschrift|zahlungserinnerung|mahnung|zahlungsziel",
     "reklamation": r"reklamation|mängelrüge|8d|beschädig|n\.i\.o|qualität",
     "lieferverzug": r"liefertermin|verschiebt|verzöger|teillieferung|restmenge|nicht halten",
+    "lieferavis": r"versandavis|sendungsnummer|tracking|spedition|dispatch|shipping notice",
+    "stammdatenaenderung": r"bankverbindung|bank details|neue anschrift|ust-id|iban",
+    "compliance": r"reach|rohs|zertifikat|code of conduct|konfliktmineralien|iso 9001",
+    "werbung": r"newsletter|webinar|messe|einladung|abmelden|rabatt",
+    "preisaenderung": r"preisanpassung|zuschlag|abkündigung|verpackungseinheit|preise zum",
     "angebot": r"angebot|offerta|stückpreis|preis",
 }
 

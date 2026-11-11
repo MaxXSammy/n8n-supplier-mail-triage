@@ -16,6 +16,11 @@ INSERT INTO team_routing (kategorie, team, postfach) VALUES
     ('reklamation',          'Qualitätsmanagement',     'qm@hagemann-antriebstechnik.example'),
     ('lieferverzug',         'Disposition',             'dispo@hagemann-antriebstechnik.example'),
     ('rechnung',             'Kreditorenbuchhaltung',   'kreditoren@hagemann-antriebstechnik.example'),
+    ('lieferavis',           'Disposition',             'dispo@hagemann-antriebstechnik.example'),
+    ('preisaenderung',       'Strategischer Einkauf',   'einkauf-strategie@hagemann-antriebstechnik.example'),
+    ('stammdatenaenderung',  'Einkauf Sammelpostfach',  'einkauf@hagemann-antriebstechnik.example'),
+    ('compliance',           'Qualitätsmanagement',     'qm@hagemann-antriebstechnik.example'),
+    ('werbung',              'Ablage',                  'einkauf@hagemann-antriebstechnik.example'),
     ('sonstiges',            'Einkauf Sammelpostfach',  'einkauf@hagemann-antriebstechnik.example');
 
 -- Einstellungen für die AB-Prüfung, vom Einkauf ohne Workflow-Änderung anpassbar

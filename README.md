@@ -143,6 +143,22 @@ Die Fehler, ungeschönt:
 
 Der Unterschied von 100 % zu 94 % ist die ehrliche Zahl für unbekannte Mails. Die Fehler sind bekannt und bewusst nicht nachträglich weggetunt.
 
+**Erweiterung auf 11 Kategorien (Lieferavis, Preisänderung, Stammdatenänderung, Compliance, Werbung)**
+
+Dafür gibt es einen zweiten Prüfsatz `pruefset2/` mit 27 Mails (22 für die neuen Kategorien, 5 Kontrollmails aus den alten). Die Lösungen standen vor der Änderung fest. Gemessen wurde je Satz einmal, ohne Nachbessern ([eval/ergebnisse_pruefset2.md](eval/ergebnisse_pruefset2.md)).
+
+| Satz | Kategorie richtig | AB-Entscheidung | falsch automatisch geroutet |
+|---|---|---|---|
+| Prüfsatz 2, neue Kategorien (22 Mails) | **95 %** (21/22) | – | 1 |
+| Prüfsatz 2 gesamt (27) | 89 % (24/27) | 0/1 | 3 |
+| Prüfsatz 1, neue Mails, alte Kategorien (31): vorher 94 % | 87 % (27/31) | 86 % (12/14) | 3 |
+| Entwicklungsmails (34): vorher 100 % | 88 % (30/34) | 89 % (17/19) | 3 |
+
+Die neuen Kategorien erkennt das Modell gut. Der Preis dafür sind Rückschritte bei den alten:
+- **Echte Rückschritte (5 von 92 Mails):** Eine Auftragsbestätigung mit Preiserhöhung wird jetzt als „Preisänderung“ eingeordnet (drei Fälle), eine AB mit Teilmenge als „Lieferverzug“, ein Lieferverzug als „Auftragsbestätigung“. Dann läuft die AB-Prüfung nicht. Das ist die teuerste Fehlerart.
+- **Keine Rückschritte, sondern andere Lösung:** Bankdaten-Betrug, Zertifikat, Messe-Newsletter und das Preisanpassungs-Rundschreiben werden jetzt in die neuen, passenderen Kategorien einsortiert. Die Lösungen der alten Sätze kannten diese Kategorien noch nicht und gelten deshalb als „falsch“. Sie wurden nicht nachträglich angepasst.
+- **Kein Fehler bei Betrug:** Alle Stammdaten- und Bankänderungen gehen weiter an einen Menschen (Pflicht-Reviews 4/4 und 3/3).
+
 **Was die Messung gezeigt hat**
 
 - **Prompt-Tuning gegen den einen Fehler hat es schlimmer gemacht.** Ein Zusatz im Prompt („Ein Angebot bezieht sich nie auf unsere Bestellungen“) ließ die Genauigkeit von 97 auf 94 % fallen: Mail 22 blieb falsch, eine zweite AB kippte dazu. Der Zusatz ist zurückgenommen. Stattdessen korrigiert eine feste Regel im Code eindeutige Fälle: Ein „Angebot“ mit unserer Bestellnummer und dem ausdrücklichen Wort „Auftragsbestätigung“ oder „wir bestätigen Ihre Bestellung“ wird zur AB (Warnung `kategorie_korrigiert`), danach läuft die normale AB-Prüfung. Ergebnis: 100 % (34/34), AB-Entscheidung 19/19.

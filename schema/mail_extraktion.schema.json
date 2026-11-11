@@ -5,7 +5,7 @@
   "type": "object",
   "properties": {
     "begruendung": { "type": "string" },
-    "kategorie": { "type": "string", "enum": ["angebot", "auftragsbestaetigung", "reklamation", "lieferverzug", "rechnung", "sonstiges"] },
+    "kategorie": { "type": "string", "enum": ["angebot", "auftragsbestaetigung", "reklamation", "lieferverzug", "rechnung", "lieferavis", "preisaenderung", "stammdatenaenderung", "compliance", "werbung", "sonstiges"] },
     "konfidenz": { "type": "number", "minimum": 0, "maximum": 1 },
     "lieferant": { "type": ["string", "null"] },
     "bestellnummer": { "type": ["string", "null"] },

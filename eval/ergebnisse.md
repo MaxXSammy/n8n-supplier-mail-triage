@@ -1,31 +1,36 @@
 # Auswertung der Klassifizierung
 
-Lauf 20261111-073837 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 34 Beispiel-Mails
+Lauf 20261111-081115 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 34 Beispiel-Mails
 
 | Kennzahl | Wert | Bedeutung |
 |---|---|---|
-| Klassifizierungsgenauigkeit LLM | **100 %** (34/34) | Kategorie des LLM stimmt mit Gold überein |
+| Klassifizierungsgenauigkeit LLM | **88 %** (30/34) | Kategorie des LLM stimmt mit Gold überein |
 | Regel-Basislinie (Schlüsselwörter) | 91 % (31/34) | Vergleich ohne KI |
 | Automatisierungsquote | 91 % (31/34) | Ticket ohne menschliche Prüfung angelegt |
-| Falsch automatisch geroutet | **0** | Ticket mit falscher Kategorie, der teuerste Fehler |
-| LLM-Fehler im Review abgefangen | 0 | falsche Kategorie, aber ein Mensch prüft |
+| Falsch automatisch geroutet | **3** | Ticket mit falscher Kategorie, der teuerste Fehler |
+| LLM-Fehler im Review abgefangen | 1 | falsche Kategorie, aber ein Mensch prüft |
 | Pflicht-Reviews erkannt | 100 % (3/3) | z. B. geänderte Bankdaten |
 | Extraktionsgenauigkeit | 100 % (95/95) | Bestell-, Rechnungs-, Angebotsnummer, Betrag, Währung, Termin |
-| AB-Entscheidung richtig | **100 %** (19/19) | automatisch bestätigt, manuell prüfen, Abweichung oder Review |
-| AB-Gründe exakt richtig | 100 % (19/19) | Art der Abweichung bzw. Prüfgrund stimmt |
+| AB-Entscheidung richtig | **89 %** (17/19) | automatisch bestätigt, manuell prüfen, Abweichung oder Review |
+| AB-Gründe exakt richtig | 89 % (17/19) | Art der Abweichung bzw. Prüfgrund stimmt |
 | AB fälschlich durchgewunken | **0** | automatisch bestätigt, obwohl ein Mensch prüfen sollte |
-| Ø Antwortzeit | 6.6 s | je Mail, lokal inkl. Datenbank |
+| Ø Antwortzeit | 7.5 s | je Mail, lokal inkl. Datenbank |
 
 ## Konfusionsmatrix (Zeile = Gold, Spalte = LLM)
 
-| Gold \ LLM | angebot | auftragsbestaetigung | reklamation | lieferverzug | rechnung | sonstiges | (keine) |
-|---|---|---|---|---|---|---|---|
-| **angebot** | 3 | · | · | · | · | · | · |
-| **auftragsbestaetigung** | · | 19 | · | · | · | · | · |
-| **reklamation** | · | · | 3 | · | · | · | · |
-| **lieferverzug** | · | · | · | 3 | · | · | · |
-| **rechnung** | · | · | · | · | 3 | · | · |
-| **sonstiges** | · | · | · | · | · | 3 | · |
+| Gold \ LLM | angebot | auftragsbestaetigung | reklamation | lieferverzug | rechnung | lieferavis | preisaenderung | stammdatenaenderung | compliance | werbung | sonstiges | (keine) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| **angebot** | 3 | · | · | · | · | · | · | · | · | · | · | · |
+| **auftragsbestaetigung** | · | 17 | · | · | · | · | 2 | · | · | · | · | · |
+| **reklamation** | · | · | 3 | · | · | · | · | · | · | · | · | · |
+| **lieferverzug** | · | · | · | 3 | · | · | · | · | · | · | · | · |
+| **rechnung** | · | · | · | · | 3 | · | · | · | · | · | · | · |
+| **lieferavis** | · | · | · | · | · | · | · | · | · | · | · | · |
+| **preisaenderung** | · | · | · | · | · | · | · | · | · | · | · | · |
+| **stammdatenaenderung** | · | · | · | · | · | · | · | · | · | · | · | · |
+| **compliance** | · | · | · | · | · | · | · | · | · | · | · | · |
+| **werbung** | · | · | · | · | · | · | · | · | · | · | · | · |
+| **sonstiges** | · | · | · | · | · | · | · | 1 | 1 | · | 1 | · |
 
 ## Auftragsbestätigungen
 
@@ -37,12 +42,12 @@ Lauf 20261111-073837 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 34 Bei
 | 19_ab_rheinwerk_blind | manuell_pruefen | manuell_pruefen | blindbestaetigung_verdacht, liefertreue_unter_schwelle | blindbestaetigung_verdacht, liefertreue_unter_schwelle |
 | 20_ab_swissturning_blind_premium | manuell_pruefen | manuell_pruefen | blindbestaetigung_verdacht | blindbestaetigung_verdacht |
 | 21_ab_nordform_neulieferant | manuell_pruefen | manuell_pruefen | neuer_lieferant | neuer_lieferant |
-| 22_ab_kovotech_preis | abweichung | abweichung | preis | preis |
+| 22_ab_kovotech_preis | abweichung | None ✗ | preis | – |
 | 23_ab_feldmann_palette | abweichung | abweichung | menge | menge |
 | 24_ab_precimet_stammdaten | abweichung | abweichung | menge, stammdaten_pruefen | menge, stammdaten_pruefen |
 | 25_ab_rossi_termin_ungewiss | abweichung | abweichung | termin_unsicher | termin_unsicher |
 | 26_ab_alpen_termin_spaeter | abweichung | abweichung | termin_spaeter | termin_spaeter |
-| 27_ab_swissturning_preis_und_termin | abweichung | abweichung | preis, termin_spaeter | preis, termin_spaeter |
+| 27_ab_swissturning_preis_und_termin | abweichung | None ✗ | preis, termin_spaeter | – |
 | 28_ab_precimet_bestellung_unbekannt | review | review | bestellung_unbekannt | bestellung_unbekannt |
 | 29_ab_brenner_zahlendreher | review | review | bestellung_unbekannt | bestellung_unbekannt |
 | 30_ab_kovotech_englisch_ok | automatisch_bestaetigt | automatisch_bestaetigt | – | – |
@@ -56,35 +61,35 @@ Lauf 20261111-073837 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 34 Bei
 | Mail | Gold | LLM | Regel | Konfidenz | Ergebnis | Gründe / Warnungen | Felder falsch |
 |---|---|---|---|---|---|---|---|
 | 01_angebot_alpen | angebot | angebot | angebot | 0.95 | ticket | beleg_fehlt:einzelpreis | – |
-| 02_angebot_rossi | angebot | angebot | angebot | 0.9 | ticket | – | – |
+| 02_angebot_rossi | angebot | angebot | angebot | 0.95 | ticket | – | – |
 | 03_angebot_kovotech_lieferzeit | angebot | angebot | angebot | 0.95 | ticket | – | – |
-| 04_reklamation_brenner_8d | reklamation | reklamation | reklamation | 0.95 | ticket | – | – |
-| 05_reklamation_feldmann_mit_rechnung | reklamation | reklamation | reklamation | 0.95 | ticket | – | – |
+| 04_reklamation_brenner_8d | reklamation | reklamation | reklamation | 1 | ticket | – | – |
+| 05_reklamation_feldmann_mit_rechnung | reklamation | reklamation | reklamation | 1 | ticket | – | – |
 | 06_reklamation_swissturning_menge | reklamation | reklamation | reklamation | 0.95 | ticket | – | – |
-| 07_lieferverzug_rheinwerk | lieferverzug | lieferverzug | lieferverzug | 1 | ticket | – | – |
+| 07_lieferverzug_rheinwerk | lieferverzug | lieferverzug | lieferverzug | 0.95 | ticket | – | – |
 | 08_lieferverzug_precimet_teillieferung | lieferverzug | lieferverzug | lieferverzug | 0.9 | ticket | beleg_fehlt:liefertermin | – |
 | 09_lieferverzug_alpen_kurz | lieferverzug | lieferverzug | lieferverzug | 0.9 | ticket | beleg_fehlt:liefertermin | – |
 | 10_rechnung_brenner | rechnung | rechnung | rechnung | 1 | ticket | – | – |
 | 11_rechnung_swissturning_mahnung | rechnung | rechnung | rechnung | 1 | ticket | – | – |
-| 12_rechnung_kovotech_gutschrift | rechnung | rechnung | rechnung | 0.9 | ticket | – | – |
-| 13_sonstiges_rossi_betriebsferien | sonstiges | sonstiges | sonstiges | 0.8 | ticket | – | – |
-| 14_sonstiges_bankdaten_betrugsversuch | sonstiges | sonstiges | auftragsbestaetigung | 0.9 | review | bankdatenaenderung | – |
-| 15_sonstiges_precimet_zertifikat | sonstiges | sonstiges | reklamation | 1 | ticket | – | – |
+| 12_rechnung_kovotech_gutschrift | rechnung | rechnung | rechnung | 0.95 | ticket | – | – |
+| 13_sonstiges_rossi_betriebsferien | sonstiges | sonstiges | sonstiges | 0.9 | ticket | – | – |
+| 14_sonstiges_bankdaten_betrugsversuch | sonstiges | stammdatenaenderung ✗ | stammdatenaenderung | 1 | review | stammdatenaenderung_pruefen, bankdatenaenderung | – |
+| 15_sonstiges_precimet_zertifikat | sonstiges | compliance ✗ | compliance | 1 | ticket | – | – |
 | 16_ab_alpen_ok | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
 | 17_ab_brenner_liefertreue_ax | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
 | 18_ab_brenner_c_artikel_ok | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
 | 19_ab_rheinwerk_blind | auftragsbestaetigung | auftragsbestaetigung | lieferverzug | 0.95 | ticket | – | – |
-| 20_ab_swissturning_blind_premium | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
+| 20_ab_swissturning_blind_premium | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | beleg_fehlt:betrag | – |
 | 21_ab_nordform_neulieferant | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
-| 22_ab_kovotech_preis | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | kategorie_korrigiert:angebot->auftragsbestaetigung | – |
+| 22_ab_kovotech_preis | auftragsbestaetigung | preisaenderung ✗ | auftragsbestaetigung | 0.95 | ticket | – | – |
 | 23_ab_feldmann_palette | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
 | 24_ab_precimet_stammdaten | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
 | 25_ab_rossi_termin_ungewiss | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | beleg_fehlt:liefertermin | – |
 | 26_ab_alpen_termin_spaeter | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
-| 27_ab_swissturning_preis_und_termin | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
+| 27_ab_swissturning_preis_und_termin | auftragsbestaetigung | preisaenderung ✗ | auftragsbestaetigung | 0.95 | ticket | – | – |
 | 28_ab_precimet_bestellung_unbekannt | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | review | bestellung_unbekannt | – |
 | 29_ab_brenner_zahlendreher | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | review | bestellung_unbekannt | – |
-| 30_ab_kovotech_englisch_ok | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
+| 30_ab_kovotech_englisch_ok | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 1 | ticket | – | – |
 | 31_ab_feldmann_mit_zitat_ok | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
 | 32_ab_rossi_standard_ok | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
 | 33_ab_precimet_liefertreue_standard | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
