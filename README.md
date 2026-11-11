@@ -169,6 +169,28 @@ So sind diese Zahlen zu lesen:
 
 Aus diesen Fehlern wird bewusst nicht am Prompt nachgebessert. Wer das tut, braucht danach wieder frische Mails.
 
+**Prüfsatz 4: 99 Mails von einem fremden Modell** (`pruefset4/`, Ergebnis in [eval/ergebnisse_pruefset4.md](eval/ergebnisse_pruefset4.md)). Quer durch alle Kategorien, dazu interne Mails (Bedarfsanforderungen, Freigaben, Systemmeldungen), Mischmails und knappe Antworten. Die Lösungen wurden vorher festgelegt, 25 Mails sind als mehrdeutig markiert. Prompt und Regeln waren bei diesem Lauf unverändert, gemessen wurde einmal. Die Mails sind synthetisch und keine echten Postfächer.
+
+| Kennzahl | Ergebnis |
+|---|---|
+| Kategorie richtig | **78 %** (77/99), ohne mehrdeutige Mails 81 % (60/74) |
+| Regel-Basislinie ohne KI | 59 % |
+| Betrug und Stammdatenänderung erkannt | 100 % (Pflicht-Reviews 3/3, Stammdaten 3/3) |
+| Werbung erkannt | 100 % (10/10) |
+| Reklamation | 100 % (4/4) |
+| Auftragsbestätigung | 90 % (18/20) |
+| AB-Entscheidung richtig | 85 % (11/13) |
+| AB fälschlich durchgewunken | **1** |
+| Falsch ohne Prüfung geroutet | 11, davon 7 mehrdeutig und 4 echte Fehler bei internen Mails |
+| „sonstiges“ (interne Mails, Systemmeldungen) | nur 13/25 richtig |
+
+Was das zeigt:
+- **Die Lieferantenmails funktionieren, die internen nicht.** Ohne „sonstiges“ liegen die Kategorien bei 86 % (64/74). Das Sammelbecken „sonstiges“ ist die Schwachstelle: Interne Bedarfsanforderungen und Systemmeldungen werden als Angebot, Auftragsbestätigung oder Lieferverzug eingeordnet und gehen an die falsche Stelle. Acht von zwölf Fehlern fängt eine Prüfung ab und schickt sie zu einem Menschen.
+- **Der gefährlichste Fehler:** Eine AB mit Preis in EUR statt CHF wurde automatisch bestätigt. Die Währung wird nicht gegen die Bestellung geprüft.
+- **Gut:** Alle Bankdaten- und Adressänderungen, alle Werbemails und alle Reklamationen wurden richtig behandelt.
+
+**Zeitersparnis, vorsichtig gerechnet** (Annahme des Einkäufers: durchschnittlich 5 Minuten je Mail, nicht gemessen): In diesem Satz werden 20 % der Mails ohne jede menschliche Arbeit erledigt (10 Werbemails abgelegt, 10 ABs ohne Abweichung automatisch bestätigt). Bei 1.000 Mails im Monat sind das etwa 17 Stunden im Monat oder 200 Stunden im Jahr. Alle anderen Mails sind vorsortiert und ausgelesen, brauchen aber weiter einen Menschen. Wie viel Zeit das spart, ist nicht gemessen. Die Verteilung der Mails im echten Postfach kann von diesem Testsatz abweichen.
+
 **Was die Messung gezeigt hat**
 
 - **Prompt-Tuning gegen den einen Fehler hat es schlimmer gemacht.** Ein Zusatz im Prompt („Ein Angebot bezieht sich nie auf unsere Bestellungen“) ließ die Genauigkeit von 97 auf 94 % fallen: Mail 22 blieb falsch, eine zweite AB kippte dazu. Der Zusatz ist zurückgenommen. Stattdessen korrigiert eine feste Regel im Code eindeutige Fälle: Ein „Angebot“ mit unserer Bestellnummer und dem ausdrücklichen Wort „Auftragsbestätigung“ oder „wir bestätigen Ihre Bestellung“ wird zur AB (Warnung `kategorie_korrigiert`), danach läuft die normale AB-Prüfung. Ergebnis: 100 % (34/34), AB-Entscheidung 19/19.
