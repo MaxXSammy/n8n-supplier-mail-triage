@@ -122,6 +122,27 @@ Der Haupt-Workflow folgt sechs Phasen, die im Canvas als farbige Bereiche markie
 
 ² Der Prompt und die Korrekturregel für Mail 22 (siehe unten) wurden an diesen Mails entwickelt. Die Werte sind deshalb optimistisch und kein Beleg für fremde Daten. Vor dem Einsatz sollten echte, nie gesehene Mails des Teams gegengeprüft werden.
 
+**Test mit neuen Mails (Prüfsatz)**
+
+Die 34 Mails oben dienten der Entwicklung. Zusätzlich liegen 31 neue Mails in `pruefset/` (andere Lieferanten, Sprachen, Formulierungen, Fallstricke). Die Lösungen wurden vor dem ersten Lauf festgelegt und committet, Prompt und Regeln blieben danach unverändert, gemessen wurde einmal: `python scripts/evaluate.py --set pruefset`, Ergebnis in [eval/ergebnisse_pruefset.md](eval/ergebnisse_pruefset.md).
+
+| Kennzahl | Entwicklungssatz (34) | Neuer Prüfsatz (31) |
+|---|---|---|
+| Kategorie richtig | 100 % | **94 %** (29/31) |
+| Falsch automatisch geroutet | 0 | **1** |
+| AB-Entscheidung richtig | 100 % | **93 %** (13/14) |
+| AB fälschlich durchgewunken | 0 | 0 |
+| Pflicht-Reviews erkannt | 3/3 | 3/3 |
+| Extraktionsgenauigkeit | 100 % | 96 % (81/84) |
+
+Die Fehler, ungeschönt:
+- **Datumsformate:** `10/12/2026` und „18 December 2026“ erkennt die Belegprüfung nicht. Der Termin wird verworfen, deshalb wird eine fehlerfreie AB als Abweichung („Termin fehlt“) vorgelegt und ein englischer Lieferverzug ohne Termin angelegt. Betroffen sind 2 von 31 Mails, beides Fehlalarme zur sicheren Seite.
+- **Gutschrift:** Das Modell gab einen Betrag aus, der so nicht im Text steht (`beleg_fehlt:betrag`). Die Belegprüfung hat ihn verworfen, die Mail geht an einen Menschen. Auch das ist die sichere Seite.
+- **Preisanpassungs-Rundschreiben** („neue Preise ab 01.01.2027“) ordnete das Modell als „sonstiges“ statt „angebot“ ein, und zwar als Ticket ohne Prüfung. Das ist der einzige Fehler mit Folgen: Die Mail landet beim falschen Team. Ob sie zu „angebot“ gehört, ist allerdings Auslegungssache.
+- **Prompt-Injection im Nebensatz:** Das Modell folgte der Anweisung und stufte die Mail als Rechnung ein. Die Regel gegen Injection hat sie trotzdem zu einem Menschen geschickt.
+
+Der Unterschied von 100 % zu 94 % ist die ehrliche Zahl für unbekannte Mails. Die Fehler sind bekannt und bewusst nicht nachträglich weggetunt.
+
 **Was die Messung gezeigt hat**
 
 - **Prompt-Tuning gegen den einen Fehler hat es schlimmer gemacht.** Ein Zusatz im Prompt („Ein Angebot bezieht sich nie auf unsere Bestellungen“) ließ die Genauigkeit von 97 auf 94 % fallen: Mail 22 blieb falsch, eine zweite AB kippte dazu. Der Zusatz ist zurückgenommen. Stattdessen korrigiert eine feste Regel im Code eindeutige Fälle: Ein „Angebot“ mit unserer Bestellnummer und dem ausdrücklichen Wort „Auftragsbestätigung“ oder „wir bestätigen Ihre Bestellung“ wird zur AB (Warnung `kategorie_korrigiert`), danach läuft die normale AB-Prüfung. Ergebnis: 100 % (34/34), AB-Entscheidung 19/19.
