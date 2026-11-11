@@ -1,5 +1,5 @@
 {
-  "lauf": "20261111-083255",
+  "lauf": "20261111-094719",
   "modell": "qwen2.5:7b",
   "schwelle": "0.75",
   "ergebnisse": [
@@ -16,6 +16,7 @@
         "beleg_fehlt:einzelpreis"
       ],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "angebotsnummer": [
           "ANG-26-0412",
@@ -31,7 +32,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.06
+      "sekunden": 6.65
     },
     {
       "mail": "02_angebot_rossi",
@@ -44,6 +45,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "angebotsnummer": [
           "OF-2026/188",
@@ -55,7 +57,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.34
+      "sekunden": 6.9
     },
     {
       "mail": "03_angebot_kovotech_lieferzeit",
@@ -68,6 +70,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "angebotsnummer": [
           "KT-A-55721",
@@ -83,7 +86,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 5.82
+      "sekunden": 6.23
     },
     {
       "mail": "04_reklamation_brenner_8d",
@@ -96,6 +99,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018231",
@@ -103,7 +107,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 5.91
+      "sekunden": 6.35
     },
     {
       "mail": "05_reklamation_feldmann_mit_rechnung",
@@ -118,6 +122,7 @@
         "beleg_fehlt:bestellnummer"
       ],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018307",
@@ -125,7 +130,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.2
+      "sekunden": 6.62
     },
     {
       "mail": "06_reklamation_swissturning_menge",
@@ -138,6 +143,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018290",
@@ -145,7 +151,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 5.36
+      "sekunden": 5.68
     },
     {
       "mail": "07_lieferverzug_rheinwerk",
@@ -158,6 +164,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018255",
@@ -169,7 +176,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.05
+      "sekunden": 6.45
     },
     {
       "mail": "08_lieferverzug_precimet_teillieferung",
@@ -184,6 +191,7 @@
         "beleg_fehlt:liefertermin"
       ],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018266",
@@ -191,7 +199,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 5.92
+      "sekunden": 6.36
     },
     {
       "mail": "09_lieferverzug_alpen_kurz",
@@ -206,6 +214,7 @@
         "beleg_fehlt:liefertermin"
       ],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018240",
@@ -213,7 +222,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 5.53
+      "sekunden": 5.98
     },
     {
       "mail": "10_rechnung_brenner",
@@ -226,6 +235,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "rechnungsnummer": [
           "RE-2026-08817",
@@ -245,7 +255,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 5.82
+      "sekunden": 6.29
     },
     {
       "mail": "11_rechnung_swissturning_mahnung",
@@ -258,6 +268,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "rechnungsnummer": [
           "ST-INV-26-4410",
@@ -273,7 +284,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 5.67
+      "sekunden": 6.08
     },
     {
       "mail": "12_rechnung_kovotech_gutschrift",
@@ -286,6 +297,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "rechnungsnummer": [
           "GS-2026-0091",
@@ -301,7 +313,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 5.53
+      "sekunden": 5.91
     },
     {
       "mail": "13_sonstiges_rossi_betriebsferien",
@@ -314,9 +326,10 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {},
       "ab": null,
-      "sekunden": 5.25
+      "sekunden": 5.64
     },
     {
       "mail": "14_sonstiges_bankdaten_betrugsversuch",
@@ -332,9 +345,10 @@
       ],
       "warnungen": [],
       "muss_review": true,
+      "mehrdeutig": false,
       "felder": {},
       "ab": null,
-      "sekunden": 5.14
+      "sekunden": 5.5
     },
     {
       "mail": "15_sonstiges_precimet_zertifikat",
@@ -347,9 +361,10 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {},
       "ab": null,
-      "sekunden": 5.35
+      "sekunden": 5.61
     },
     {
       "mail": "16_ab_alpen_ok",
@@ -362,6 +377,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018401",
@@ -386,7 +402,7 @@
         "ist": "automatisch_bestaetigt",
         "ist_gruende": []
       },
-      "sekunden": 6.23
+      "sekunden": 6.31
     },
     {
       "mail": "17_ab_brenner_liefertreue_ax",
@@ -399,6 +415,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018402",
@@ -427,7 +444,7 @@
           "liefertreue_unter_schwelle"
         ]
       },
-      "sekunden": 5.97
+      "sekunden": 6.05
     },
     {
       "mail": "18_ab_brenner_c_artikel_ok",
@@ -440,6 +457,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018403",
@@ -464,7 +482,7 @@
         "ist": "automatisch_bestaetigt",
         "ist_gruende": []
       },
-      "sekunden": 5.91
+      "sekunden": 5.95
     },
     {
       "mail": "19_ab_rheinwerk_blind",
@@ -477,6 +495,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018404",
@@ -507,7 +526,7 @@
           "liefertreue_unter_schwelle"
         ]
       },
-      "sekunden": 6.06
+      "sekunden": 6.12
     },
     {
       "mail": "20_ab_swissturning_blind_premium",
@@ -520,6 +539,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018417",
@@ -548,7 +568,7 @@
           "blindbestaetigung_verdacht"
         ]
       },
-      "sekunden": 6.11
+      "sekunden": 6.14
     },
     {
       "mail": "21_ab_nordform_neulieferant",
@@ -561,6 +581,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018406",
@@ -589,7 +610,7 @@
           "neuer_lieferant"
         ]
       },
-      "sekunden": 6.09
+      "sekunden": 6.11
     },
     {
       "mail": "22_ab_kovotech_preis",
@@ -604,6 +625,7 @@
         "kategorie_korrigiert:preisaenderung->auftragsbestaetigung"
       ],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018407",
@@ -632,7 +654,7 @@
           "preis"
         ]
       },
-      "sekunden": 6.29
+      "sekunden": 6.35
     },
     {
       "mail": "23_ab_feldmann_palette",
@@ -645,6 +667,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018408",
@@ -673,7 +696,7 @@
           "menge"
         ]
       },
-      "sekunden": 6.5
+      "sekunden": 6.54
     },
     {
       "mail": "24_ab_precimet_stammdaten",
@@ -686,6 +709,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018409",
@@ -716,7 +740,7 @@
           "stammdaten_pruefen"
         ]
       },
-      "sekunden": 6.46
+      "sekunden": 6.44
     },
     {
       "mail": "25_ab_rossi_termin_ungewiss",
@@ -731,6 +755,7 @@
         "beleg_fehlt:liefertermin"
       ],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018410",
@@ -759,7 +784,7 @@
           "termin_unsicher"
         ]
       },
-      "sekunden": 6.19
+      "sekunden": 6.2
     },
     {
       "mail": "26_ab_alpen_termin_spaeter",
@@ -772,6 +797,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018411",
@@ -800,7 +826,7 @@
           "termin_spaeter"
         ]
       },
-      "sekunden": 5.99
+      "sekunden": 6.42
     },
     {
       "mail": "27_ab_swissturning_preis_und_termin",
@@ -815,6 +841,7 @@
         "kategorie_korrigiert:preisaenderung->auftragsbestaetigung"
       ],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018412",
@@ -845,7 +872,7 @@
           "termin_spaeter"
         ]
       },
-      "sekunden": 5.87
+      "sekunden": 6.79
     },
     {
       "mail": "28_ab_precimet_bestellung_unbekannt",
@@ -860,6 +887,7 @@
       ],
       "warnungen": [],
       "muss_review": true,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500019999",
@@ -876,7 +904,7 @@
           "bestellung_unbekannt"
         ]
       },
-      "sekunden": 5.95
+      "sekunden": 6.92
     },
     {
       "mail": "29_ab_brenner_zahlendreher",
@@ -891,6 +919,7 @@
       ],
       "warnungen": [],
       "muss_review": true,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018552",
@@ -907,7 +936,7 @@
           "bestellung_unbekannt"
         ]
       },
-      "sekunden": 5.79
+      "sekunden": 6.26
     },
     {
       "mail": "30_ab_kovotech_englisch_ok",
@@ -920,6 +949,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018413",
@@ -944,7 +974,7 @@
         "ist": "automatisch_bestaetigt",
         "ist_gruende": []
       },
-      "sekunden": 6.18
+      "sekunden": 6.27
     },
     {
       "mail": "31_ab_feldmann_mit_zitat_ok",
@@ -957,6 +987,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018414",
@@ -981,7 +1012,7 @@
         "ist": "automatisch_bestaetigt",
         "ist_gruende": []
       },
-      "sekunden": 6.0
+      "sekunden": 5.98
     },
     {
       "mail": "32_ab_rossi_standard_ok",
@@ -994,6 +1025,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018415",
@@ -1018,7 +1050,7 @@
         "ist": "automatisch_bestaetigt",
         "ist_gruende": []
       },
-      "sekunden": 6.1
+      "sekunden": 6.09
     },
     {
       "mail": "33_ab_precimet_liefertreue_standard",
@@ -1031,6 +1063,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018416",
@@ -1059,7 +1092,7 @@
           "liefertreue_unter_schwelle"
         ]
       },
-      "sekunden": 5.99
+      "sekunden": 5.96
     },
     {
       "mail": "34_ab_alpen_fremde_domain",
@@ -1072,6 +1105,7 @@
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
+      "mehrdeutig": false,
       "felder": {
         "bestellnummer": [
           "4500018418",
@@ -1100,7 +1134,7 @@
           "absender_domain_abweichend"
         ]
       },
-      "sekunden": 6.22
+      "sekunden": 6.23
     }
   ]
 }
