@@ -1,5 +1,5 @@
 {
-  "lauf": "20261111-080759",
+  "lauf": "20261111-082949",
   "modell": "qwen2.5:7b",
   "schwelle": "0.75",
   "ergebnisse": [
@@ -38,7 +38,7 @@
         "ist": "automatisch_bestaetigt",
         "ist_gruende": []
       },
-      "sekunden": 6.55
+      "sekunden": 6.81
     },
     {
       "mail": "p02_ab_brenner_ok",
@@ -75,7 +75,7 @@
         "ist": "automatisch_bestaetigt",
         "ist_gruende": []
       },
-      "sekunden": 6.73
+      "sekunden": 6.89
     },
     {
       "mail": "p03_ab_alpen_termin_spaeter",
@@ -116,7 +116,7 @@
           "termin_spaeter"
         ]
       },
-      "sekunden": 6.62
+      "sekunden": 6.79
     },
     {
       "mail": "p04_ab_alpen_teilmenge",
@@ -125,7 +125,7 @@
       "gold": "auftragsbestaetigung",
       "llm": "lieferverzug",
       "regel": "auftragsbestaetigung",
-      "konfidenz": 0.9,
+      "konfidenz": 0.95,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
@@ -155,7 +155,7 @@
         "ist": null,
         "ist_gruende": []
       },
-      "sekunden": 6.49
+      "sekunden": 6.59
     },
     {
       "mail": "p05_ab_rheinwerk_liefertreue",
@@ -196,7 +196,7 @@
           "liefertreue_unter_schwelle"
         ]
       },
-      "sekunden": 6.89
+      "sekunden": 7.02
     },
     {
       "mail": "p06_ab_kovotech_englisch",
@@ -205,7 +205,7 @@
       "gold": "auftragsbestaetigung",
       "llm": "auftragsbestaetigung",
       "regel": "auftragsbestaetigung",
-      "konfidenz": 1,
+      "konfidenz": 0.95,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
@@ -233,7 +233,7 @@
         "ist": "automatisch_bestaetigt",
         "ist_gruende": []
       },
-      "sekunden": 6.34
+      "sekunden": 6.71
     },
     {
       "mail": "p07_ab_feldmann_preis_termin",
@@ -276,7 +276,7 @@
           "termin_spaeter"
         ]
       },
-      "sekunden": 6.85
+      "sekunden": 7.0
     },
     {
       "mail": "p08_ab_rossi_datum_mit_schraegstrich",
@@ -317,7 +317,7 @@
           "termin_fehlt"
         ]
       },
-      "sekunden": 6.62
+      "sekunden": 6.88
     },
     {
       "mail": "p09_ab_rossi_termin_unsicher",
@@ -358,7 +358,7 @@
           "termin_unsicher"
         ]
       },
-      "sekunden": 6.18
+      "sekunden": 6.43
     },
     {
       "mail": "p10_ab_swiss_blind",
@@ -399,7 +399,7 @@
           "blindbestaetigung_verdacht"
         ]
       },
-      "sekunden": 6.5
+      "sekunden": 6.08
     },
     {
       "mail": "p11_ab_precimet_liefertreue_knapp",
@@ -440,7 +440,7 @@
           "liefertreue_unter_schwelle"
         ]
       },
-      "sekunden": 6.53
+      "sekunden": 6.12
     },
     {
       "mail": "p12_ab_nordform_neu",
@@ -481,7 +481,7 @@
           "neuer_lieferant"
         ]
       },
-      "sekunden": 6.6
+      "sekunden": 6.19
     },
     {
       "mail": "p13_ab_bestellung_unbekannt",
@@ -524,7 +524,7 @@
           "bestellung_unbekannt"
         ]
       },
-      "sekunden": 6.72
+      "sekunden": 6.16
     },
     {
       "mail": "p14_ab_alpen_domain_vertippt",
@@ -565,7 +565,7 @@
           "absender_domain_abweichend"
         ]
       },
-      "sekunden": 6.38
+      "sekunden": 5.93
     },
     {
       "mail": "p15_angebot_kuhnert",
@@ -574,7 +574,7 @@
       "gold": "angebot",
       "llm": "angebot",
       "regel": "angebot",
-      "konfidenz": 0.95,
+      "konfidenz": 0.9,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
@@ -593,7 +593,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.54
+      "sekunden": 6.04
     },
     {
       "mail": "p16_angebot_englisch",
@@ -621,7 +621,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.66
+      "sekunden": 6.01
     },
     {
       "mail": "p17_angebot_ohne_nummer",
@@ -645,7 +645,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.08
+      "sekunden": 5.77
     },
     {
       "mail": "p18_angebot_preisanpassung",
@@ -669,7 +669,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 5.78
+      "sekunden": 5.45
     },
     {
       "mail": "p19_reklamation_8d",
@@ -689,7 +689,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.3
+      "sekunden": 5.55
     },
     {
       "mail": "p20_reklamation_ersatz",
@@ -698,7 +698,7 @@
       "gold": "reklamation",
       "llm": "reklamation",
       "regel": "reklamation",
-      "konfidenz": 1,
+      "konfidenz": 0.95,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
@@ -709,7 +709,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 5.76
+      "sekunden": 5.42
     },
     {
       "mail": "p21_reklamation_italienisch",
@@ -729,7 +729,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 5.75
+      "sekunden": 5.41
     },
     {
       "mail": "p22_lieferverzug_neuer_termin",
@@ -753,7 +753,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.03
+      "sekunden": 5.64
     },
     {
       "mail": "p23_lieferverzug_teillieferung",
@@ -777,7 +777,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 5.8
+      "sekunden": 5.79
     },
     {
       "mail": "p24_lieferverzug_englisch",
@@ -803,7 +803,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.12
+      "sekunden": 5.5
     },
     {
       "mail": "p25_rechnung_chf",
@@ -831,7 +831,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.16
+      "sekunden": 5.56
     },
     {
       "mail": "p26_zahlungserinnerung",
@@ -859,7 +859,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.65
+      "sekunden": 5.66
     },
     {
       "mail": "p27_gutschrift",
@@ -891,7 +891,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.45
+      "sekunden": 5.47
     },
     {
       "mail": "p28_betriebsferien",
@@ -906,7 +906,7 @@
       "muss_review": false,
       "felder": {},
       "ab": null,
-      "sekunden": 6.66
+      "sekunden": 5.6
     },
     {
       "mail": "p29_bankdaten_betrug",
@@ -924,7 +924,7 @@
       "muss_review": true,
       "felder": {},
       "ab": null,
-      "sekunden": 5.83
+      "sekunden": 5.07
     },
     {
       "mail": "p30_newsletter_messe",
@@ -939,7 +939,7 @@
       "muss_review": false,
       "felder": {},
       "ab": null,
-      "sekunden": 5.24
+      "sekunden": 4.88
     },
     {
       "mail": "p31_injektion",
@@ -957,7 +957,7 @@
       "muss_review": true,
       "felder": {},
       "ab": null,
-      "sekunden": 5.88
+      "sekunden": 5.07
     }
   ]
 }

@@ -149,15 +149,25 @@ Dafür gibt es einen zweiten Prüfsatz `pruefset2/` mit 27 Mails (22 für die ne
 
 | Satz | Kategorie richtig | AB-Entscheidung | falsch automatisch geroutet |
 |---|---|---|---|
-| Prüfsatz 2, neue Kategorien (22 Mails) | **95 %** (21/22) | – | 1 |
-| Prüfsatz 2 gesamt (27) | 89 % (24/27) | 0/1 | 3 |
+| Prüfsatz 2, neue Kategorien und Kontrollmails (27) | **100 %** (27/27) | 1/1 | 0 |
 | Prüfsatz 1, neue Mails, alte Kategorien (31): vorher 94 % | 87 % (27/31) | 86 % (12/14) | 3 |
-| Entwicklungsmails (34): vorher 100 % | 88 % (30/34) | 89 % (17/19) | 3 |
+| Entwicklungsmails (34): vorher 100 % | 94 % (32/34) | 100 % (19/19) | 1 |
+| **Prüfsatz 3, extern geschrieben, nie gesehen (10)** | **60 %** (6/10) | 1/1 | 3 |
 
-Die neuen Kategorien erkennt das Modell gut. Der Preis dafür sind Rückschritte bei den alten:
-- **Echte Rückschritte (5 von 92 Mails):** Eine Auftragsbestätigung mit Preiserhöhung wird jetzt als „Preisänderung“ eingeordnet (drei Fälle), eine AB mit Teilmenge als „Lieferverzug“, ein Lieferverzug als „Auftragsbestätigung“. Dann läuft die AB-Prüfung nicht. Das ist die teuerste Fehlerart.
-- **Keine Rückschritte, sondern andere Lösung:** Bankdaten-Betrug, Zertifikat, Messe-Newsletter und das Preisanpassungs-Rundschreiben werden jetzt in die neuen, passenderen Kategorien einsortiert. Die Lösungen der alten Sätze kannten diese Kategorien noch nicht und gelten deshalb als „falsch“. Sie wurden nicht nachträglich angepasst.
-- **Kein Fehler bei Betrug:** Alle Stammdaten- und Bankänderungen gehen weiter an einen Menschen (Pflicht-Reviews 4/4 und 3/3).
+So sind diese Zahlen zu lesen:
+- **Erste Messung der neuen Kategorien:** 21 von 22 Mails richtig, aber fünf Rückschritte bei alten Kategorien. Drei davon waren ABs mit Preiserhöhung, die als „Preisänderung“ eingeordnet wurden und damit die AB-Prüfung umgingen. Dafür gibt es jetzt eine feste Regel: Nennt eine „Preisänderung“ oder ein „Angebot“ unsere Bestellnummer und ausdrücklich „Auftragsbestätigung“, wird sie zur AB. Danach wurden alle Sätze noch einmal gemessen, **die Sätze 1, 2 und die Entwicklungsmails sind damit keine unabhängigen Tests mehr**.
+- **Streuung zwischen Läufen:** Ohne Änderung am Code kippten zwischen zwei Läufen zwei Mails (ein Versandavis und ein Lieferverzug) von falsch auf richtig. Bei 27 Mails sind ein bis zwei Mails Rauschen. Einzelne Prozentpunkte sind deshalb keine Verbesserung.
+- **Alte Lösungen, neue Kategorien:** In Satz 1 und bei den Entwicklungsmails gelten Bankdaten-Betrug, Zertifikat, Messe-Newsletter und Preisanpassungs-Rundschreiben noch als „falsch“, weil die Lösungen die neuen Kategorien nicht kannten. Das Modell ordnet sie jetzt besser ein. Die Lösungen wurden nicht angepasst.
+- **Wirklich offen aus Satz 1:** Eine AB mit Teilmenge wird als „Lieferverzug“ eingeordnet.
+- **Betrug:** Alle Bank- und Stammdatenänderungen gehen weiter an einen Menschen (Pflicht-Reviews in allen Sätzen erkannt).
+
+**Prüfsatz 3, die ehrliche Zahl:** Zehn von anderer Hand geschriebene Mails mit absichtlichen Fallen ([eval/ergebnisse_pruefset3.md](eval/ergebnisse_pruefset3.md)). 60 % ist wenig, aber die Mails sind bewusst gemein und der Satz ist klein. Die vier Fehler:
+- **Kaltakquise mit Schlüsselwörtern** („Ihr Angebot für Zahnradwellen“) wurde als Angebot eingeordnet und ging an den Strategischen Einkauf. Das ist der klarste Fehler.
+- **Interne Bedarfsanforderung (BANF)** mit Bestellnummer wurde als Auftragsbestätigung eingeordnet und ging an die Disposition.
+- **Sammel-Lieferverzug** zu zwei Bestellungen wurde als AB erkannt, die fehlende eindeutige Bestellnummer schickte sie zu einem Menschen. Das System hat den Fehler also abgefangen.
+- **Mischmail** mit vier Themen: Eine eindeutige Lösung gibt es nicht, das Modell wählte „Preisänderung“.
+
+Aus diesen Fehlern wird bewusst nicht am Prompt nachgebessert. Wer das tut, braucht danach wieder frische Mails.
 
 **Was die Messung gezeigt hat**
 

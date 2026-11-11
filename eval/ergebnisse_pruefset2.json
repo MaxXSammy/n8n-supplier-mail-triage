@@ -1,5 +1,5 @@
 {
-  "lauf": "20261111-080514",
+  "lauf": "20261111-082711",
   "modell": "qwen2.5:7b",
   "schwelle": "0.75",
   "ergebnisse": [
@@ -8,9 +8,9 @@
       "http": 200,
       "status": "ticket",
       "gold": "lieferavis",
-      "llm": "auftragsbestaetigung",
+      "llm": "lieferavis",
       "regel": "lieferavis",
-      "konfidenz": 0.9,
+      "konfidenz": 1,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
@@ -25,7 +25,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 12.7
+      "sekunden": 10.12
     },
     {
       "mail": "q02_avis_englisch",
@@ -45,7 +45,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.42
+      "sekunden": 6.22
     },
     {
       "mail": "q03_avis_kurz",
@@ -67,7 +67,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.2
+      "sekunden": 6.05
     },
     {
       "mail": "q04_avis_tracking",
@@ -91,7 +91,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.5
+      "sekunden": 6.3
     },
     {
       "mail": "q05_preis_rundschreiben",
@@ -100,13 +100,13 @@
       "gold": "preisaenderung",
       "llm": "preisaenderung",
       "regel": "preisaenderung",
-      "konfidenz": 0.95,
+      "konfidenz": 0.9,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
       "felder": {},
       "ab": null,
-      "sekunden": 5.69
+      "sekunden": 5.56
     },
     {
       "mail": "q06_preis_einzelartikel",
@@ -121,7 +121,7 @@
       "muss_review": false,
       "felder": {},
       "ab": null,
-      "sekunden": 6.45
+      "sekunden": 5.95
     },
     {
       "mail": "q07_abkuendigung",
@@ -166,7 +166,7 @@
       "muss_review": false,
       "felder": {},
       "ab": null,
-      "sekunden": 5.78
+      "sekunden": 6.19
     },
     {
       "mail": "q10_bank_neu",
@@ -184,7 +184,7 @@
       "muss_review": true,
       "felder": {},
       "ab": null,
-      "sekunden": 5.73
+      "sekunden": 5.64
     },
     {
       "mail": "q11_adresse_umzug",
@@ -201,7 +201,7 @@
       "muss_review": true,
       "felder": {},
       "ab": null,
-      "sekunden": 5.8
+      "sekunden": 5.94
     },
     {
       "mail": "q12_ustid",
@@ -218,7 +218,7 @@
       "muss_review": true,
       "felder": {},
       "ab": null,
-      "sekunden": 5.8
+      "sekunden": 6.05
     },
     {
       "mail": "q13_bank_englisch",
@@ -235,7 +235,7 @@
       "muss_review": true,
       "felder": {},
       "ab": null,
-      "sekunden": 5.58
+      "sekunden": 5.74
     },
     {
       "mail": "q14_iso_zertifikat",
@@ -250,7 +250,7 @@
       "muss_review": false,
       "felder": {},
       "ab": null,
-      "sekunden": 5.5
+      "sekunden": 5.54
     },
     {
       "mail": "q15_reach",
@@ -265,7 +265,7 @@
       "muss_review": false,
       "felder": {},
       "ab": null,
-      "sekunden": 5.41
+      "sekunden": 5.44
     },
     {
       "mail": "q16_code_of_conduct",
@@ -280,7 +280,7 @@
       "muss_review": false,
       "felder": {},
       "ab": null,
-      "sekunden": 5.35
+      "sekunden": 5.0
     },
     {
       "mail": "q17_konfliktmineralien",
@@ -295,7 +295,7 @@
       "muss_review": false,
       "felder": {},
       "ab": null,
-      "sekunden": 5.55
+      "sekunden": 5.19
     },
     {
       "mail": "q18_kaltakquise",
@@ -310,7 +310,7 @@
       "muss_review": false,
       "felder": {},
       "ab": null,
-      "sekunden": 5.27
+      "sekunden": 4.99
     },
     {
       "mail": "q19_webinar",
@@ -325,7 +325,7 @@
       "muss_review": false,
       "felder": {},
       "ab": null,
-      "sekunden": 5.32
+      "sekunden": 4.96
     },
     {
       "mail": "q20_portal_einladung",
@@ -340,7 +340,7 @@
       "muss_review": false,
       "felder": {},
       "ab": null,
-      "sekunden": 5.22
+      "sekunden": 5.2
     },
     {
       "mail": "q21_sonderangebot_newsletter",
@@ -355,7 +355,7 @@
       "muss_review": false,
       "felder": {},
       "ab": null,
-      "sekunden": 5.33
+      "sekunden": 5.3
     },
     {
       "mail": "q22_messeeinladung",
@@ -370,18 +370,20 @@
       "muss_review": false,
       "felder": {},
       "ab": null,
-      "sekunden": 5.26
+      "sekunden": 4.96
     },
     {
       "mail": "q23_kontrolle_ab_preis",
       "http": 200,
       "status": "ticket",
       "gold": "auftragsbestaetigung",
-      "llm": "preisaenderung",
+      "llm": "auftragsbestaetigung",
       "regel": "auftragsbestaetigung",
       "konfidenz": 0.95,
       "gruende": [],
-      "warnungen": [],
+      "warnungen": [
+        "kategorie_korrigiert:preisaenderung->auftragsbestaetigung"
+      ],
       "muss_review": false,
       "felder": {
         "bestellnummer": [
@@ -406,10 +408,12 @@
         "erwartete_gruende": [
           "preis"
         ],
-        "ist": null,
-        "ist_gruende": []
+        "ist": "abweichung",
+        "ist_gruende": [
+          "preis"
+        ]
       },
-      "sekunden": 6.29
+      "sekunden": 5.98
     },
     {
       "mail": "q24_kontrolle_angebot",
@@ -437,7 +441,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.71
+      "sekunden": 6.11
     },
     {
       "mail": "q25_kontrolle_reklamation_zertifikat",
@@ -457,7 +461,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 5.61
+      "sekunden": 5.32
     },
     {
       "mail": "q26_kontrolle_rechnung_preisabweichung",
@@ -485,14 +489,14 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.45
+      "sekunden": 6.01
     },
     {
       "mail": "q27_kontrolle_lieferverzug",
       "http": 200,
       "status": "ticket",
       "gold": "lieferverzug",
-      "llm": "auftragsbestaetigung",
+      "llm": "lieferverzug",
       "regel": "lieferverzug",
       "konfidenz": 0.95,
       "gruende": [],
@@ -509,7 +513,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.05
+      "sekunden": 6.01
     }
   ]
 }

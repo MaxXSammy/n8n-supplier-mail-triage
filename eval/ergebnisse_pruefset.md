@@ -1,6 +1,6 @@
 # Auswertung der Klassifizierung
 
-Lauf 20261111-080759 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 31 Beispiel-Mails
+Lauf 20261111-082949 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 31 Beispiel-Mails
 
 | Kennzahl | Wert | Bedeutung |
 |---|---|---|
@@ -14,7 +14,7 @@ Lauf 20261111-080759 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 31 Bei
 | AB-Entscheidung richtig | **86 %** (12/14) | automatisch bestätigt, manuell prüfen, Abweichung oder Review |
 | AB-Gründe exakt richtig | 86 % (12/14) | Art der Abweichung bzw. Prüfgrund stimmt |
 | AB fälschlich durchgewunken | **0** | automatisch bestätigt, obwohl ein Mensch prüfen sollte |
-| Ø Antwortzeit | 6.3 s | je Mail, lokal inkl. Datenbank |
+| Ø Antwortzeit | 6.0 s | je Mail, lokal inkl. Datenbank |
 
 ## Konfusionsmatrix (Zeile = Gold, Spalte = LLM)
 
@@ -58,9 +58,9 @@ Lauf 20261111-080759 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 31 Bei
 | p01_ab_swiss_ok | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
 | p02_ab_brenner_ok | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
 | p03_ab_alpen_termin_spaeter | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
-| p04_ab_alpen_teilmenge | auftragsbestaetigung | lieferverzug ✗ | auftragsbestaetigung | 0.9 | ticket | – | – |
+| p04_ab_alpen_teilmenge | auftragsbestaetigung | lieferverzug ✗ | auftragsbestaetigung | 0.95 | ticket | – | – |
 | p05_ab_rheinwerk_liefertreue | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
-| p06_ab_kovotech_englisch | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 1 | ticket | – | – |
+| p06_ab_kovotech_englisch | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
 | p07_ab_feldmann_preis_termin | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
 | p08_ab_rossi_datum_mit_schraegstrich | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | beleg_fehlt:liefertermin | liefertermin (erw. 2026-12-10, ist None) |
 | p09_ab_rossi_termin_unsicher | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
@@ -69,12 +69,12 @@ Lauf 20261111-080759 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 31 Bei
 | p12_ab_nordform_neu | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
 | p13_ab_bestellung_unbekannt | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | review | bestellung_unbekannt | – |
 | p14_ab_alpen_domain_vertippt | auftragsbestaetigung | auftragsbestaetigung | auftragsbestaetigung | 0.95 | ticket | – | – |
-| p15_angebot_kuhnert | angebot | angebot | angebot | 0.95 | ticket | – | – |
+| p15_angebot_kuhnert | angebot | angebot | angebot | 0.9 | ticket | – | – |
 | p16_angebot_englisch | angebot | angebot | sonstiges | 0.95 | ticket | – | – |
 | p17_angebot_ohne_nummer | angebot | angebot | angebot | 0.95 | ticket | – | – |
 | p18_angebot_preisanpassung | angebot | preisaenderung ✗ | auftragsbestaetigung | 0.9 | ticket | – | – |
 | p19_reklamation_8d | reklamation | reklamation | reklamation | 1 | ticket | – | – |
-| p20_reklamation_ersatz | reklamation | reklamation | reklamation | 1 | ticket | – | – |
+| p20_reklamation_ersatz | reklamation | reklamation | reklamation | 0.95 | ticket | – | – |
 | p21_reklamation_italienisch | reklamation | reklamation | sonstiges | 0.95 | ticket | – | – |
 | p22_lieferverzug_neuer_termin | lieferverzug | lieferverzug | lieferverzug | 0.95 | ticket | – | – |
 | p23_lieferverzug_teillieferung | lieferverzug | lieferverzug | lieferverzug | 0.9 | ticket | – | – |
