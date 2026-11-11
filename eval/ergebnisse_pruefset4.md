@@ -1,6 +1,6 @@
 # Auswertung der Klassifizierung
 
-Lauf 20261111-084816 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 99 Beispiel-Mails
+Lauf 20261111-095051 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 99 Beispiel-Mails
 
 | Kennzahl | Wert | Bedeutung |
 |---|---|---|
@@ -12,10 +12,10 @@ Lauf 20261111-084816 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 99 Bei
 | LLM-Fehler im Review abgefangen | 11 | falsche Kategorie, aber ein Mensch prüft |
 | Pflicht-Reviews erkannt | 100 % (3/3) | z. B. geänderte Bankdaten |
 | Extraktionsgenauigkeit | 100 % (31/31) | Bestell-, Rechnungs-, Angebotsnummer, Betrag, Währung, Termin |
-| AB-Entscheidung richtig | **85 %** (11/13) | automatisch bestätigt, manuell prüfen, Abweichung oder Review |
-| AB-Gründe exakt richtig | 85 % (11/13) | Art der Abweichung bzw. Prüfgrund stimmt |
-| AB fälschlich durchgewunken | **1** | automatisch bestätigt, obwohl ein Mensch prüfen sollte |
-| Ø Antwortzeit | 5.8 s | je Mail, lokal inkl. Datenbank |
+| AB-Entscheidung richtig | **92 %** (12/13) | automatisch bestätigt, manuell prüfen, Abweichung oder Review |
+| AB-Gründe exakt richtig | 92 % (12/13) | Art der Abweichung bzw. Prüfgrund stimmt |
+| AB fälschlich durchgewunken | **0** | automatisch bestätigt, obwohl ein Mensch prüfen sollte |
+| Ø Antwortzeit | 5.5 s | je Mail, lokal inkl. Datenbank |
 
 ## Konfusionsmatrix (Zeile = Gold, Spalte = LLM)
 
@@ -37,7 +37,7 @@ Lauf 20261111-084816 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 99 Bei
 
 | Mail | erwartet | Ergebnis | erwartete Gründe | Gründe |
 |---|---|---|---|---|
-| s005 | abweichung | automatisch_bestaetigt ✗ | waehrung | – |
+| s005 | abweichung | abweichung | waehrung | waehrung |
 | s007 | automatisch_bestaetigt | automatisch_bestaetigt | – | – |
 | s012 | automatisch_bestaetigt | automatisch_bestaetigt | – | – |
 | s014 | automatisch_bestaetigt | automatisch_bestaetigt | – | – |

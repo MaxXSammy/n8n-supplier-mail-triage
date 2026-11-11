@@ -1,6 +1,6 @@
 # Auswertung der Klassifizierung
 
-Lauf 20261111-083255 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 34 Beispiel-Mails
+Lauf 20261111-094719 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 34 Beispiel-Mails
 
 | Kennzahl | Wert | Bedeutung |
 |---|---|---|
@@ -14,7 +14,7 @@ Lauf 20261111-083255 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 34 Bei
 | AB-Entscheidung richtig | **100 %** (19/19) | automatisch bestätigt, manuell prüfen, Abweichung oder Review |
 | AB-Gründe exakt richtig | 100 % (19/19) | Art der Abweichung bzw. Prüfgrund stimmt |
 | AB fälschlich durchgewunken | **0** | automatisch bestätigt, obwohl ein Mensch prüfen sollte |
-| Ø Antwortzeit | 5.9 s | je Mail, lokal inkl. Datenbank |
+| Ø Antwortzeit | 6.2 s | je Mail, lokal inkl. Datenbank |
 
 ## Konfusionsmatrix (Zeile = Gold, Spalte = LLM)
 

@@ -185,14 +185,14 @@ Aus diesen Fehlern wird bewusst nicht am Prompt nachgebessert. Wer das tut, brau
 | Werbung erkannt | 100 % (10/10) |
 | Reklamation | 100 % (4/4) |
 | Auftragsbestätigung | 90 % (18/20) |
-| AB-Entscheidung richtig | 85 % (11/13) |
-| AB fälschlich durchgewunken | **1** |
+| AB-Entscheidung richtig | 92 % (12/13), vor der Währungsregel 85 % |
+| AB fälschlich durchgewunken | **0**, vor der Währungsregel 1 |
 | Falsch ohne Prüfung geroutet | 11, davon 7 mehrdeutig und 4 echte Fehler bei internen Mails |
 | „sonstiges“ (interne Mails, Systemmeldungen) | nur 13/25 richtig |
 
 Was das zeigt:
 - **Die Lieferantenmails funktionieren, die internen nicht.** Ohne „sonstiges“ liegen die Kategorien bei 86 % (64/74). Das Sammelbecken „sonstiges“ ist die Schwachstelle: Interne Bedarfsanforderungen und Systemmeldungen werden als Angebot, Auftragsbestätigung oder Lieferverzug eingeordnet und gehen an die falsche Stelle. Acht von zwölf Fehlern fängt eine Prüfung ab und schickt sie zu einem Menschen.
-- **Der gefährlichste Fehler:** Eine AB mit Preis in EUR statt CHF wurde automatisch bestätigt. Die Währung wird nicht gegen die Bestellung geprüft.
+- **Der gefährlichste Fehler ist behoben:** Eine AB mit Preis in EUR statt CHF wurde zuerst automatisch bestätigt, weil die Währung nicht gegen die Bestellung geprüft wurde. Das war eine fehlende Geschäftsregel und kein Modellfehler, deshalb wurde sie nachgebaut: Nennt eine AB eine andere Währung als bestellt (und steht diese im Mailtext), ist es eine Abweichung. Kontrollmessung auf dem Entwicklungssatz und Prüfsatz 4: keine falschen Alarme, die Fehl-AB wird abgefangen.
 - **Gut:** Alle Bankdaten- und Adressänderungen, alle Werbemails und alle Reklamationen wurden richtig behandelt.
 
 **Zeitersparnis, vorsichtig gerechnet** (Annahme des Einkäufers: durchschnittlich 5 Minuten je Mail, nicht gemessen): In diesem Satz werden 20 % der Mails ohne jede menschliche Arbeit erledigt (10 Werbemails abgelegt, 10 ABs ohne Abweichung automatisch bestätigt). Bei 1.000 Mails im Monat sind das etwa 17 Stunden im Monat oder 200 Stunden im Jahr. Alle anderen Mails sind vorsortiert und ausgelesen, brauchen aber weiter einen Menschen. Wie viel Zeit das spart, ist nicht gemessen. Die Verteilung der Mails im echten Postfach kann von diesem Testsatz abweichen.
@@ -332,7 +332,7 @@ docs/                       # Screenshots, Vorschaubilder für GitHub und Linked
 ## Bekannte Grenzen
 
 - Auf einem extern geschriebenen Prüfsatz mit absichtlichen Fallen (10 Mails) liegt die Kategorie-Genauigkeit bei 60 %. Bekannte Fehlerbilder: Kaltakquise mit Wörtern wie „Angebot“ wird als Angebot eingeordnet, interne Bedarfsanforderungen (BANF) mit Bestellnummer als Auftragsbestätigung, Mischmails mit mehreren Themen landen in einer einzigen Kategorie, eine AB mit Teilmenge teils als Lieferverzug. Datumsformate wie `10/12/2026` und „18 December 2026“ werden verworfen. Diese Fehler sind gemessen und nicht weggetunt, Details in der Erfolgsmessung.
-- **Währung wird bei ABs nicht geprüft.** Nennt eine AB den richtigen Preis in der falschen Währung (z. B. 1,85 EUR statt 1,85 CHF), wird sie automatisch bestätigt. Im Prüfsatz 4 ist das der einzige Fall, in dem eine AB fälschlich durchging. Bisher nicht behoben.
+- Die Währungsregel prüft nur Währungscodes und Symbole, die im Mailtext stehen. Nennt eine AB beide Währungen, entscheidet das Modell, welche gemeint ist. Die Prüfung liegt dann eher auf der sicheren Seite (Abweichung statt Durchwinken).
 - Interne Mails und Systemmeldungen landen in „sonstiges“ nur zur Hälfte richtig (13 von 25 im Prüfsatz 4). Vier gingen ohne Prüfung an die falsche Stelle, etwa eine Bedarfsanforderung als Angebot. Eine eigene Kategorie dafür wurde bewusst nicht gebaut.
 - Zwischen zwei Läufen streuen die Ergebnisse um ein bis zwei Mails, auch ohne Änderung am Code. Kleine Unterschiede sind kein Beleg für eine Verbesserung.
 - Interne Mails (Bedarfsanforderungen, Freigabeanfragen) und Systemnachrichten (EDI-Fehler) haben keine eigene Kategorie und landen im Sammelpostfach. Das ist Absicht: Das Tool sortiert das Lieferanten-Postfach.
@@ -355,7 +355,7 @@ docs/                       # Screenshots, Vorschaubilder für GitHub und Linked
 - [x] Auftragsbestätigungen mit Abgleich, Liefertreue und Antwortentwurf (Phase 1 des Fachkonzepts)
 - [x] Elf Kategorien (Lieferavis, Preisänderung, Stammdatenänderung, Compliance, Werbung neu)
 - [x] Arbeitsliste nach Team mit Erledigt-Knopf, Mailprogramm-Link und RFQ-Entwurf
-- [ ] Währung der AB gegen die Bestellung prüfen
+- [x] Währung der AB gegen die Bestellung prüfen
 - [ ] Interne Mails und Systemmeldungen sauber erkennen und weiterleiten
 - [ ] Versandavis mit Prüfung auf Frachtbrief oder Tracking-Nummer, Antwort auf Projektstatus-Anfragen, Terminanfragen
 - [ ] IMAP-Trigger für ein echtes Postfach und Text aus PDF-Anhängen
