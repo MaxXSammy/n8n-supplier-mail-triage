@@ -22,8 +22,13 @@ Dazu kommt ein Risiko: Mails mit „neuer Bankverbindung“ sind eine bekannte B
 | Auftragsbestätigung | Disposition oder zuständiger Einkäufer (siehe AB-Prüfung) | Bestellnummer |
 | Reklamation | Qualitätsmanagement | Bestellnummer oder Artikel |
 | Lieferverzug | Disposition | Bestellnummer |
-| Rechnung (auch Gutschrift, Mahnung) | Kreditorenbuchhaltung | Rechnungsnummer und Betrag |
-| Sonstiges | Einkauf Sammelpostfach | – |
+| Rechnung (auch Gutschrift, Mahnung, Rechnungsklärung) | Kreditorenbuchhaltung | Rechnungsnummer und Betrag |
+| Lieferavis (Versandmeldung, Sendungsnummer) | Disposition | – |
+| Preisänderung (Preiserhöhung, Zuschlag, Abkündigung, Verpackungseinheit) | Strategischer Einkauf | – |
+| Stammdatenänderung (Bank, Adresse, USt-ID) | Einkauf Sammelpostfach, **immer mit Prüfung** | – |
+| Compliance (Zertifikate, REACH/RoHS, Code of Conduct) | Qualitätsmanagement | – |
+| Werbung (Kaltakquise, Newsletter, Messen, Portal-Einladungen) | Ablage, kein Handlungsbedarf | – |
+| Sonstiges (u. a. interne Mails und Systemmeldungen) | Einkauf Sammelpostfach | – |
 
 Jede Mail endet auf einem von zwei Wegen: **Ticket** für das zuständige Team oder **Review-Queue** für einen Menschen. Dort bestätigt oder korrigiert jemand die Kategorie in einem Formular, und das Ticket entsteht danach. Verdächtige Mails lassen sich verwerfen.
 
@@ -50,7 +55,7 @@ Schwellen und Minuten stehen in der Tabelle `einstellungen` und lassen sich ohne
 
 ![Ausführung in n8n](docs/ausfuehrung_ticket.png)
 
-**Arbeitsliste** für den Einkauf (der Screenshot zeigt noch die frühere Fassung): Überblick mit Kennzahlen, Mails zur Prüfung, offene Aufgaben nach Team mit Zusammenfassung und Warnungen. Je Aufgabe ein Knopf „Erledigt“, Antwortentwürfe und ein RFQ-Entwurf (Angebot anfordern, im Format für den Procurement-RAG-Agent) lassen sich ins Mailprogramm übernehmen. Darunter die Review-Queue
+**Arbeitsliste** für den Einkauf: Überblick mit Kennzahlen, Mails zur Prüfung, offene Aufgaben nach Team mit Zusammenfassung und Warnungen. Je Aufgabe ein Knopf „Erledigt“, Antwortentwürfe und ein RFQ-Entwurf (Angebot anfordern, im Format für den Procurement-RAG-Agent) lassen sich ins Mailprogramm übernehmen. Darunter die Review-Queue
 
 ![Arbeitsliste](docs/arbeitsliste.png)
 
@@ -70,7 +75,7 @@ Schwellen und Minuten stehen in der Tabelle `einstellungen` und lassen sich ohne
 flowchart LR
     M[Lieferanten-Mail<br/>JSON per Webhook] --> W[Webhook<br/>Header-Token]
     W --> E[Eingang prüfen<br/>Pflichtfelder, HTML, Länge]
-    E --> D{Duplikat?<br/>Message-ID}
+    E --> D{Duplikat?<br/>Message-ID oder Inhalt}
     D -- ja --> R1[Antwort: bereits verarbeitet]
     D -- nein --> L[Ollama qwen2.5:7b<br/>JSON-Schema, 3 Versuche]
     L --> V[Validierung im Code<br/>Schema, Belegprüfung, Pflichtfelder,<br/>Betrugsschutz, Prompt-Injection]
@@ -82,6 +87,7 @@ flowchart LR
     V -- Zweifel oder LLM-Fehler --> Q[(Review-Queue)]
     Q --> F[Formular<br/>Mensch entscheidet]
     F --> T
+    T --> AL[Arbeitsliste<br/>nach Team, Erledigt,<br/>Entwürfe, RFQ]
     X[Unerwarteter Fehler] --> EW[Error-Workflow<br/>fehler_log]
 ```
 
@@ -93,12 +99,12 @@ Der Haupt-Workflow folgt sechs Phasen, die im Canvas als farbige Bereiche markie
 - **Betrugsschutz als feste Regel:** Mails, die eine geänderte Bankverbindung ankündigen, gehen immer in die Review-Queue, egal wie sicher das LLM ist.
 - **Structured Output statt Freitext:** Das JSON-Schema geht als `format` an Ollama. Das Modell kann nur Ausgaben in dieser Form erzeugen. Der Workflow prüft das Schema trotzdem noch einmal.
 - **Fehler führen zu einem Menschen, nicht ins Leere:** Ist Ollama nach drei Versuchen nicht erreichbar, landet die Mail mit dem Grund `llm_fehler` in der Review-Queue. Unerwartete Fehler (z. B. Datenbank) fängt ein eigener Error-Workflow ab und protokolliert sie.
-- **Idempotent:** Die Message-ID ist eindeutig. Wird eine Mail doppelt zugestellt, erkennt der Workflow das vor dem LLM-Aufruf. Ein `UNIQUE`-Constraint sichert zusätzlich ab.
+- **Idempotent:** Die Message-ID ist eindeutig. Wird eine Mail doppelt zugestellt, erkennt der Workflow das vor dem LLM-Aufruf. Dasselbe gilt für denselben Inhalt (Absender, Betreff ohne „AW:“, Text) unter neuer Message-ID innerhalb von 30 Tagen. Ein `UNIQUE`-Constraint sichert zusätzlich ab.
 - **Routing als Daten:** Welche Kategorie zu welchem Team geht, steht in der Tabelle `team_routing`. Der Fachbereich kann sie ändern, ohne den Workflow anzufassen.
 - **Geheimnisse nicht in der Umgebung:** Die Workflows lesen Einstellungen über `$env`. Passwörter, Token und der n8n-Encryption-Key liegen deshalb als Docker-Secrets in Dateien und nicht in Umgebungsvariablen. Sonst könnte jeder Node sie auslesen und mit dem Encryption Key alle gespeicherten Zugangsdaten entschlüsseln.
 - **Vertrauen nach Lieferantenhistorie:** Eine AB ohne Abweichung geht nur automatisch durch, wenn der Lieferant zuverlässig liefert. Bei kritischen Artikeln mit wenig Lagerpuffer gilt eine höhere Schwelle als bei Slow Movern.
 - **LLM nur, wo es nötig ist:** Das LLM versteht die unstrukturierten Mails. Die Antwortentwürfe entstehen dagegen aus Vorlagen, weil nach der AB-Prüfung alle Inhalte strukturiert vorliegen. Eine erste Fassung ließ das 7B-Modell formulieren. Es hielt sich nicht zuverlässig an die Regeln: doppelte Anreden, Floskeln, Zusagen wie „wir bestätigen den Preis“ und wörtlich kopierte Anweisungen.
-- **Plausibilität statt Prompt-Tuning:** Ein Angebot bezieht sich nie auf eine unserer Bestellnummern. Stuft das LLM eine Mail mit Bestellnummer als Angebot ein, geht sie an einen Menschen. So wird ein Fehler abgefangen, ohne den Prompt auf eine Testmail zuzuschneiden.
+- **Feste Regel statt Prompt-Tuning:** Nennt ein vermeintliches Angebot oder eine vermeintliche Preisänderung unsere Bestellnummer und ausdrücklich „Auftragsbestätigung“, ist es eine AB, und die AB-Prüfung läuft. Ein Zusatz im Prompt gegen denselben Fehler hat die Genauigkeit verschlechtert und wurde zurückgenommen. Ohne diese eindeutige Bedingung geht eine Mail mit Bestellnummer als „Angebot“ weiter an einen Menschen.
 - **Lokal zuerst:** Lieferanten-Mails enthalten Preise und Konditionen. Das Modell läuft auf eigener Hardware.
 - **Repo als Quelle der Wahrheit:** Beim Start spielt ein Einmal-Container Zugangsdaten und Workflows aus dem Repo ein und veröffentlicht sie. Änderungen aus der Oberfläche holt `scripts/export_workflows.py` zurück.
 
@@ -229,7 +235,8 @@ Was das zeigt:
 
 Alle Mails sind frei erfunden. Auftraggeber ist die fiktive Hagemann Antriebstechnik GmbH aus dem Projekt [procurement-rag-agent](https://github.com/MaxXSammy/procurement-rag-agent), die Lieferanten kommen aus Deutschland, Österreich, Italien, der Schweiz, Tschechien und Polen.
 
-- 15 allgemeine Mails (3 je Kategorie) und 19 Auftragsbestätigungen, als JSON in `mails/`
+- 15 allgemeine Mails (3 je Kategorie) und 19 Auftragsbestätigungen, als JSON in `mails/` (Entwicklungssatz, 34 Mails)
+- **Vier Prüfsätze** mit vorab festgelegten Lösungen: `pruefset/` (31 neue Mails), `pruefset2/` (27 Mails für die neuen Kategorien), `pruefset3/` (10 Fallen-Mails, extern geschrieben), `pruefset4/` (99 Mails von einem fremden Modell, 25 als mehrdeutig markiert). Alle synthetisch, keine echten Postfächer
 - Bestellungen und Lieferanten mit Liefertreue und ABC/XYZ-Klasse in `db/init.sql`, wie sie im ERP stünden
 - **AB-Fälle aus der Praxis:** Rohstoffzuschlag, Aufrunden auf volle Paletten, falsche Verpackungseinheit in den Stammdaten, Termin „ohne Gewähr“, späterer Termin, Blindbestätigung nach 4 Minuten, Neulieferant nach Trial Order, Zahlendreher in der Bestellnummer, Absender von einer fremden Domain, englische AB
 - **Bewusst schwierige Fälle:** eine Reklamation, die eine Rechnung erwähnt; ein Angebot mit dem Wort „Lieferzeit“; eine Antwort mit zitiertem Verlauf; eine Zahlungserinnerung im Schweizer Zahlenformat (`CHF 8'420.50`); Preise je 100 Stück; Betriebsferien, die nach Lieferverzug klingen; ein Betrugsversuch mit neuer Bankverbindung von einer Lookalike-Domain
@@ -271,6 +278,9 @@ Beim ersten Start legt Postgres die Tabellen an, und der Container `n8n-import` 
 python scripts/mail_senden.py mails/07_lieferverzug_rheinwerk.json    # eine Mail schicken
 python scripts/mail_senden.py "mails/*.json" --neu                    # alle, mit neuer Message-ID
 python scripts/evaluate.py                                            # Auswertung gegen die Gold-Daten
+python scripts/evaluate.py --set pruefset4                            # Auswertung eines Prüfsatzes
+python scripts/demo_laden.py                                          # Beispielmails für die Arbeitsliste (mit --loeschen wieder entfernen)
+python scripts/einsparung.py --mails-pro-monat 1000 --min-manuell 5 --min-pruefung 5 --stundensatz 50 --quote 0.2   # Zeitersparnis hochrechnen
 python scripts/robustheit.py                                          # Angriffe und Grenzfälle
 python scripts/export_workflows.py                                    # Änderungen aus der UI ins Repo holen
 ```
@@ -279,7 +289,8 @@ python scripts/export_workflows.py                                    # Änderun
 |---|---|
 | http://localhost:5678 | n8n-Oberfläche (beim ersten Aufruf ein Owner-Konto anlegen) |
 | http://localhost:5678/webhook/lieferanten-mail | Eingang, `POST` mit Header `X-Webhook-Token` |
-| http://localhost:5678/webhook/arbeitsliste | Arbeitsliste: offene AB-Prüfungen und Review-Queue (Login aus `REVIEW_USER` / `REVIEW_PASSWORD`) |
+| http://localhost:5678/webhook/arbeitsliste | Arbeitsliste: offene Aufgaben nach Team, Review-Queue, Entwürfe (Login aus `REVIEW_USER` / `REVIEW_PASSWORD`) |
+| `POST` http://localhost:5678/webhook/aufgabe | Aufgabe als erledigt markieren (nur von der Arbeitsliste aus, gleiche Herkunft) |
 | http://localhost:5678/form/entwurf | Antwortentwurf an den Lieferanten erstellen |
 | http://localhost:5678/form/review | Review abschließen |
 
@@ -303,12 +314,15 @@ docs/fachkonzept.md         # Fachliche Regeln aus der Einkaufspraxis
 schema/mail_extraktion.schema.json  # JSON-Schema für die LLM-Ausgabe
 db/init.sql                 # Tabellen, Routing, Einstellungen, Lieferanten und Bestellungen
 credentials/                # Vorlage der n8n-Zugangsdaten (Platzhalter, keine Geheimnisse)
-mails/                      # 34 Beispiel-Mails
+mails/                      # 34 Beispiel-Mails (Entwicklungssatz)
+pruefset/ … pruefset4/      # Prüfsätze mit vorab festgelegten Lösungen (gold.json)
 eval/                       # Gold-Daten und Ergebnisse
 scripts/
 ├── n8n_import.sh           # Import beim Start (läuft im Container)
 ├── mail_senden.py          # Mails an den Webhook schicken
-├── evaluate.py             # Auswertung mit Regel-Basislinie
+├── evaluate.py             # Auswertung mit Regel-Basislinie, auch für Prüfsätze (--set)
+├── einsparung.py           # Zeitersparnis aus gemessenen Eingaben hochrechnen
+├── demo_laden.py           # Beispielmails für die Arbeitsliste laden oder entfernen
 ├── robustheit.py           # Angriffe und Grenzfälle mit erwartetem Ergebnis
 ├── export_workflows.py     # Export aus n8n, nur portable Felder
 └── check_schema_sync.py    # Schema im Workflow = Schema-Datei?
@@ -339,13 +353,15 @@ docs/                       # Screenshots, Vorschaubilder für GitHub und Linked
 ## Roadmap
 
 - [x] Auftragsbestätigungen mit Abgleich, Liefertreue und Antwortentwurf (Phase 1 des Fachkonzepts)
-- [ ] Phase 2: Versandavis mit Prüfung auf Frachtbrief oder Tracking-Nummer, Antwort auf Projektstatus-Anfragen, Terminanfragen
-- [ ] Phase 3: weitere Mailtypen aus dem Fachkonzept und zweistufige Klassifizierung
-- [ ] AB-Aufgaben in der Arbeitsliste abschließen
+- [x] Elf Kategorien (Lieferavis, Preisänderung, Stammdatenänderung, Compliance, Werbung neu)
+- [x] Arbeitsliste nach Team mit Erledigt-Knopf, Mailprogramm-Link und RFQ-Entwurf
+- [ ] Währung der AB gegen die Bestellung prüfen
+- [ ] Interne Mails und Systemmeldungen sauber erkennen und weiterleiten
+- [ ] Versandavis mit Prüfung auf Frachtbrief oder Tracking-Nummer, Antwort auf Projektstatus-Anfragen, Terminanfragen
 - [ ] IMAP-Trigger für ein echtes Postfach und Text aus PDF-Anhängen
 - [ ] Felder im Review-Formular korrigierbar machen
 - [ ] Benachrichtigung der Teams und bei Fehlern (Teams, Slack oder E-Mail)
-- [ ] Größerer Testdatensatz und Vergleich mehrerer lokaler Modelle
+- [ ] Messung mit echten, anonymisierten Postfach-Mails und Vergleich mehrerer lokaler Modelle
 - [ ] Belastbarere Unsicherheit, z. B. Abstimmung über mehrere Läufe
 
 ## Lizenz
