@@ -191,8 +191,8 @@
     {
       "parameters": {
         "operation": "completion",
-        "completionTitle": "Entwurf erstellt",
-        "completionMessage": "={{ `${$json.betreff}\\n\\n${$json.text}` + ($json.warnungen.length ? `\\n\\nBitte prüfen: ${$json.warnungen.join(', ')}` : '') + '\\n\\nDer Entwurf steht auch auf der Arbeitsliste.' }}",
+        "respondWith": "redirect",
+        "redirectUrl": "http://localhost:5678/webhook/arbeitsliste?entwurf=1",
         "options": {}
       },
       "id": "a1e44489-4674-4c8a-a00a-471c034744c3",
