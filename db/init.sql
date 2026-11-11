@@ -167,3 +167,11 @@ CREATE TABLE fehler_log (
     execution_url   TEXT,
     erstellt_am     TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+-- Geheimnis für die Absicherung des Erledigt-Knopfs der Arbeitsliste: Jede Aufgabe bekommt daraus ein eigenes Token (sha256 aus ID und Geheimnis).
+-- Eine fremde Webseite kennt das Token nicht und kann deshalb keine Aufgabe im Namen des Einkäufers erledigen.
+CREATE TABLE app_geheimnis (
+    id      BOOLEAN PRIMARY KEY DEFAULT true CHECK (id),
+    wert    TEXT NOT NULL DEFAULT replace(gen_random_uuid()::text || gen_random_uuid()::text, '-', '')
+);
+INSERT INTO app_geheimnis DEFAULT VALUES;

@@ -290,7 +290,7 @@ python scripts/export_workflows.py                                    # Änderun
 | http://localhost:5678 | n8n-Oberfläche (beim ersten Aufruf ein Owner-Konto anlegen) |
 | http://localhost:5678/webhook/lieferanten-mail | Eingang, `POST` mit Header `X-Webhook-Token` |
 | http://localhost:5678/webhook/arbeitsliste | Arbeitsliste: offene Aufgaben nach Team, Review-Queue, Entwürfe (Login aus `REVIEW_USER` / `REVIEW_PASSWORD`) |
-| `POST` http://localhost:5678/webhook/aufgabe | Aufgabe als erledigt markieren (nur von der Arbeitsliste aus, gleiche Herkunft) |
+| `POST` http://localhost:5678/webhook/aufgabe | Aufgabe als erledigt markieren (Login und aufgabenspezifisches Token, das nur die Arbeitsliste kennt) |
 | http://localhost:5678/form/entwurf | Antwortentwurf an den Lieferanten erstellen |
 | http://localhost:5678/form/review | Review abschließen |
 
@@ -344,6 +344,7 @@ docs/                       # Screenshots, Vorschaubilder für GitHub und Linked
 - Wird eine AB über die Review-Queue zugeordnet (z. B. nach einem Zahlendreher), läuft der Abgleich mit der Bestellung nicht automatisch nach.
 - Das Tool sendet selbst keine Mails. Antwort- und RFQ-Entwürfe öffnen sich im Mailprogramm, der Einkäufer prüft und sendet sie selbst.
 - Die Review-Queue wird weiter über ein n8n-Formular abgeschlossen, nicht direkt in der Arbeitsliste.
+- Die Arbeitsliste ist für den Browser am Rechner gestaltet, nicht für das Handy. Der Erledigt-Knopf ist über ein Token je Aufgabe abgesichert (Tabelle `app_geheimnis`). n8n liefert die Seite in einer Sandbox aus, deshalb lässt sich die Herkunft des Aufrufs nicht prüfen.
 - Die Liefertreue ist ein fester Wert je Lieferant. Im echten Einsatz käme sie aus dem ERP und würde laufend aktualisiert.
 - Im Review lässt sich nur die Kategorie korrigieren, nicht einzelne Felder. Eine verworfene Bestellnummer muss der Bearbeiter in der Notiz nachtragen.
 - Mails kommen als JSON per Webhook. Ein echtes Postfach (IMAP-Trigger), Anhänge (PDF-Rechnungen) und Benachrichtigungen der Teams sind nicht angebunden. Im Error-Workflow steht für die Benachrichtigung nur ein Platzhalter.
