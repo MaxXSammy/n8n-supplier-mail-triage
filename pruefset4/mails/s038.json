@@ -1,0 +1,8 @@
+{
+  "message_id": "<s038@pruefset4.example>",
+  "from": "Lieferant 1 <vertrieb@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Angebot auf Ihre Anfrage RFQ 4410",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Wir bieten 5000 Stk Madenschraube MS-6 zu je 0,085 EUR an.\n\nLieferant 1"
+}

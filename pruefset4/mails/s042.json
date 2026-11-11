@@ -1,0 +1,8 @@
+{
+  "message_id": "<s042@pruefset4.example>",
+  "from": "Kreditorenbuchhaltung <kreditorenbuchhaltung@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Preisabweichung Re-Nr. 8812 / PO 4500018402",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Hallo Einkauf,\nRechnung zu PO 4500018402 weicht ab: Berechnet wurden 3,95 EUR/Stk statt 3,80 EUR/Stk.\nBitte um Prüfung.\n\nKreditorenbuchhaltung"
+}

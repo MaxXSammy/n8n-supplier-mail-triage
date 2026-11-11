@@ -1,0 +1,8 @@
+{
+  "message_id": "<s008@pruefset4.example>",
+  "from": "Lieferant 3 <vertrieb@feldmann-praezisionsteile.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Korrektur Wunschtermin PO 4500018408",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Hallo Herr Schneider,\nzu Bestellung 4500018408 (Hülse HS-12): Der Wunschtermin 30.11.2026 ist ein Sonntag.\nWir liefern Montag den 01.12.2026.\n\nFreundliche Grüße, Lieferant 3"
+}

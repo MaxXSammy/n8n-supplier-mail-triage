@@ -1,0 +1,8 @@
+{
+  "message_id": "<s067@pruefset4.example>",
+  "from": "Procurement System <procurement.system@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Automatic Reminder: Unconfirmed PO 4500018404",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Please submit your confirmation for PO 4500018404.\n\nProcurement System"
+}

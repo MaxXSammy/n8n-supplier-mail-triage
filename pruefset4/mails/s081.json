@@ -1,0 +1,8 @@
+{
+  "message_id": "<s081@pruefset4.example>",
+  "from": "Lieferant 1 <vertrieb@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "AW: PO 4500018401 / 4500018411 / 4500018418",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Hallo,\nhier das Update zu allen Bestellungen bei Lieferant 1:\n- 4500018401: Liefertermin 20.11. ist ok.\n- 4500018411: LB-20 kommt erst 25.11. (Verzug!).\n- 4500018418: MS-6 Preis steigt ab sofort auf 0,10 EUR (Preiserhöhung!).\n\nGrüße, Lieferant 1"
+}

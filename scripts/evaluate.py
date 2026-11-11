@@ -115,6 +115,7 @@ def main() -> None:
             "gruende": antwort.get("gruende", []),
             "warnungen": antwort.get("warnungen", []),
             "muss_review": erwartung["muss_review"],
+            "mehrdeutig": erwartung.get("mehrdeutig", False),
             "felder": {f: [w, daten.get(f)] for f, w in erwartung["felder"].items()},
             "ab": ({"erwartet": erwartung["ab"]["ergebnis"], "erwartete_gruende": sorted(erwartung["ab"]["gruende"]),
                     "ist": ab_ist(antwort)[0], "ist_gruende": ab_ist(antwort)[1]} if "ab" in erwartung else None),
@@ -128,6 +129,8 @@ def main() -> None:
     n = len(ergebnisse)
     llm_richtig = sum(e["llm"] == e["gold"] for e in ergebnisse)
     regel_richtig = sum(e["regel"] == e["gold"] for e in ergebnisse)
+    eindeutig = [e for e in ergebnisse if not e["mehrdeutig"]]
+    eindeutig_richtig = sum(e["llm"] == e["gold"] for e in eindeutig)
     tickets = [e for e in ergebnisse if e["status"] == "ticket"]
     reviews = [e for e in ergebnisse if e["status"] == "review"]
     falsch_automatisch = [e for e in tickets if e["llm"] != e["gold"]]
@@ -151,6 +154,8 @@ def main() -> None:
         "| Kennzahl | Wert | Bedeutung |",
         "|---|---|---|",
         f"| Klassifizierungsgenauigkeit LLM | **{prozent(llm_richtig, n)}** ({llm_richtig}/{n}) | Kategorie des LLM stimmt mit Gold überein |",
+        *([f"| davon ohne mehrdeutige Mails | {prozent(eindeutig_richtig, len(eindeutig))} ({eindeutig_richtig}/{len(eindeutig)}) | Mails mit eindeutiger Lösung, mehrdeutige sind im Gold markiert |"]
+          if len(eindeutig) != n else []),
         f"| Regel-Basislinie (Schlüsselwörter) | {prozent(regel_richtig, n)} ({regel_richtig}/{n}) | Vergleich ohne KI |",
         f"| Automatisierungsquote | {prozent(len(tickets), n)} ({len(tickets)}/{n}) | Ticket ohne menschliche Prüfung angelegt |",
         f"| Falsch automatisch geroutet | **{len(falsch_automatisch)}** | Ticket mit falscher Kategorie, der teuerste Fehler |",

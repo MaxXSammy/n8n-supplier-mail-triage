@@ -1,0 +1,8 @@
+{
+  "message_id": "<s085@pruefset4.example>",
+  "from": "Lieferant 7 <vertrieb@kovotech.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Status PO 4500018407 und Anfrage FL-80",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "FL-80 kommt pünktlich am 11.12.2026.\nAnbei das Angebot für weitere 5.000 Stk.\n\nLieferant 7"
+}

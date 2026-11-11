@@ -1,0 +1,8 @@
+{
+  "message_id": "<s083@pruefset4.example>",
+  "from": "Lieferant 6 <vertrieb@swissturning.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Update zu PO 4500018412 und 4500018417",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Hallo,\nGS-4 (4500018412) ist verpackt (3000 Stk, 0,92 CHF).\nZu AS-3 (4500018417): Bitte überweisen Sie auf unsere neue Bankverbindung.\n\nLieferant 6"
+}

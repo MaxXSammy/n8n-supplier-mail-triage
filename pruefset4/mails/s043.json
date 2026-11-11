@@ -1,0 +1,8 @@
+{
+  "message_id": "<s043@pruefset4.example>",
+  "from": "Lieferant 6 <vertrieb@swissturning.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "1. Mahnung Re-Nr. 7712 / PO 4500018405",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\nfuer die Rechnung 7712 ueber 925,00 CHF konnten wir noch keinen Zahlungseingang feststellen.\n\nLieferant 6 Buchhaltung"
+}

@@ -1,0 +1,8 @@
+{
+  "message_id": "<s079@pruefset4.example>",
+  "from": "SaaS Vendor <saas.vendor@saas-vendor.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Erhöhen Sie Ihre Lieferkettensicherheit",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Softwarelösung für LkSG Screenings ab sofort testen.\n\nSaaS Vendor"
+}

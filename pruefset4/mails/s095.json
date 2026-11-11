@@ -1,0 +1,8 @@
+{
+  "message_id": "<s095@pruefset4.example>",
+  "from": "Lieferant 7 <vertrieb@kovotech.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Fwd: AW: 4500018407 FL-80",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "---------- Forwarded message ---------\nVon: Lieferant 7\nBetreff: Bestätigung 4500018407\nTermin 11.12.2026 steht."
+}

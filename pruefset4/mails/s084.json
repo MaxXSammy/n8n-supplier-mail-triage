@@ -1,0 +1,8 @@
+{
+  "message_id": "<s084@pruefset4.example>",
+  "from": "Lieferant 3 <vertrieb@feldmann-praezisionsteile.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "AB + Rechnung zu PO 4500018408",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Wir bestätigen PO 4500018408 und senden direkt die Vorausrechnung über 860,00 EUR mit.\n\nLieferant 3"
+}

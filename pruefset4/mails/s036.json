@@ -1,0 +1,8 @@
+{
+  "message_id": "<s036@pruefset4.example>",
+  "from": "Lieferant 6 <vertrieb@swissturning.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Preisänderung CHF Artikel GS-4 und PB-6",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Guten Tag,\naufgrund von Währungsschwankungen passen wir die CHF-Preise für GS-4 auf 0,95 CHF an.\n\nLieferant 6 Sales"
+}

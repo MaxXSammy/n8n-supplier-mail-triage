@@ -1,0 +1,8 @@
+{
+  "message_id": "<s063@pruefset4.example>",
+  "from": "SAP Workflow Bot <sap.workflow.bot@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "SAP Alert: Offene Bestellbestätigung > 48h",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Bestellung 4500018415 hat noch keine AB im System.\n\nSAP Workflow Bot"
+}

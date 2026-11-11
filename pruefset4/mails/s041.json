@@ -1,0 +1,8 @@
+{
+  "message_id": "<s041@pruefset4.example>",
+  "from": "Lieferant 1 <vertrieb@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Rechnung 2026-9041 zu PO 4500018401",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\nanbei die Rechnung 2026-9041 über 6.240,00 EUR zu Bestellung 4500018401.\n\nBuchhaltung Lieferant 1"
+}

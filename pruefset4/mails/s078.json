@@ -1,0 +1,8 @@
+{
+  "message_id": "<s078@pruefset4.example>",
+  "from": "Cert Services <cert.services@cert-services.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Neuer ISO-Zertifizierer an Ihrer Seite",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Wir übernehmen Ihre Audits günstig.\n\nCert Services"
+}

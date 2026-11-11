@@ -1,0 +1,651 @@
+{
+  "s001": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Teillieferung mit spätem Rest: Mensch muss prüfen, Gründe mehrdeutig"
+  },
+  "s002": {
+    "kategorie": "lieferavis",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s003": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018403",
+      "liefertermin": "2026-12-20"
+    }
+  },
+  "s004": {
+    "kategorie": "reklamation",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018404"
+    }
+  },
+  "s005": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {},
+    "ab": {
+      "ergebnis": "abweichung",
+      "gruende": [
+        "waehrung"
+      ]
+    },
+    "hinweis": "Preis in EUR statt CHF: ein Mensch würde das sehen. Das Tool prüft die Währung nicht, bekannte Lücke."
+  },
+  "s006": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018406",
+      "liefertermin": "2026-12-15"
+    }
+  },
+  "s007": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018407",
+      "einzelpreis": 5.1,
+      "menge": 1800,
+      "liefertermin": "2026-12-11"
+    },
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  },
+  "s008": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Ein Tag später: Terminänderung oder AB"
+  },
+  "s009": {
+    "kategorie": "lieferavis",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s010": {
+    "kategorie": "reklamation",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018410"
+    }
+  },
+  "s011": {
+    "kategorie": "lieferavis",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Versandmeldung oder AB"
+  },
+  "s012": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018412",
+      "einzelpreis": 0.92,
+      "menge": 3000,
+      "liefertermin": "2026-11-21"
+    },
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  },
+  "s013": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018413",
+      "liefertermin": "2026-12-20"
+    }
+  },
+  "s014": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018414",
+      "einzelpreis": 1.14,
+      "menge": 1500,
+      "liefertermin": "2026-12-02"
+    },
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  },
+  "s015": {
+    "kategorie": "lieferavis",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s016": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {},
+    "ab": {
+      "ergebnis": "manuell_pruefen",
+      "gruende": [
+        "liefertreue_unter_schwelle"
+      ]
+    }
+  },
+  "s017": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Teillieferung: AB oder Lieferavis"
+  },
+  "s018": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {},
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  },
+  "s019": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018525",
+      "liefertermin": "2026-12-10"
+    }
+  },
+  "s020": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {},
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  },
+  "s021": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s022": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s023": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s024": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s025": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s026": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s027": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s028": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s029": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s030": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s031": {
+    "kategorie": "angebot",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s032": {
+    "kategorie": "preisaenderung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s033": {
+    "kategorie": "preisaenderung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s034": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Erstkontakt: Werbung, Compliance oder Angebot"
+  },
+  "s035": {
+    "kategorie": "angebot",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s036": {
+    "kategorie": "preisaenderung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s037": {
+    "kategorie": "preisaenderung",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Katalogupdate mit VPE-Änderung: Preisänderung oder sonstiges"
+  },
+  "s038": {
+    "kategorie": "angebot",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s039": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Lieferstopp: Lieferverzug oder sonstiges"
+  },
+  "s040": {
+    "kategorie": "compliance",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Anforderung einer Selbstauskunft"
+  },
+  "s041": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {
+      "rechnungsnummer": "2026-9041",
+      "betrag": 6240.0,
+      "waehrung": "EUR"
+    }
+  },
+  "s042": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s043": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {
+      "rechnungsnummer": "7712",
+      "betrag": 925.0,
+      "waehrung": "CHF"
+    }
+  },
+  "s044": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {
+      "rechnungsnummer": "40019",
+      "betrag": 149.0,
+      "waehrung": "EUR"
+    }
+  },
+  "s045": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Zahlungsavis: Rechnung oder sonstiges"
+  },
+  "s046": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s047": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s048": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s049": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s050": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s051": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s052": {
+    "kategorie": "compliance",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s053": {
+    "kategorie": "stammdatenaenderung",
+    "muss_review": true,
+    "felder": {}
+  },
+  "s054": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s055": {
+    "kategorie": "compliance",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s056": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Qualitätssicherungsvereinbarung: Vertrag oder Compliance"
+  },
+  "s057": {
+    "kategorie": "stammdatenaenderung",
+    "muss_review": true,
+    "felder": {}
+  },
+  "s058": {
+    "kategorie": "compliance",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s060": {
+    "kategorie": "compliance",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s061": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s062": {
+    "kategorie": "werbung",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Portal-Einladung: Werbung oder Systemnachricht"
+  },
+  "s063": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s064": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s065": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Portal-Benachrichtigung"
+  },
+  "s066": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s067": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s068": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s069": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s070": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s071": {
+    "kategorie": "werbung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s072": {
+    "kategorie": "werbung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s073": {
+    "kategorie": "werbung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s074": {
+    "kategorie": "werbung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s075": {
+    "kategorie": "werbung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s076": {
+    "kategorie": "werbung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s077": {
+    "kategorie": "werbung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s078": {
+    "kategorie": "werbung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s079": {
+    "kategorie": "werbung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s080": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Grußmail: Werbung oder sonstiges"
+  },
+  "s081": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Mischmail: Verzug, Preiserhöhung, Bestätigung"
+  },
+  "s082": {
+    "kategorie": "reklamation",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Mischmail: Reklamation und Preiserhöhung"
+  },
+  "s083": {
+    "kategorie": "stammdatenaenderung",
+    "muss_review": true,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Bankdaten-Hinweis versteckt in Statusmail: muss an einen Menschen"
+  },
+  "s084": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Mischmail: AB und Rechnung"
+  },
+  "s085": {
+    "kategorie": "angebot",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Mischmail: Status und Angebot"
+  },
+  "s086": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Mischmail: Verzug und Zertifikat"
+  },
+  "s087": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s088": {
+    "kategorie": "reklamation",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Mischmail: Reklamation und Preisanpassung"
+  },
+  "s089": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Mischmail: Verzug und Rechnung"
+  },
+  "s090": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Sammelmail: eine AB, ein Verzug"
+  },
+  "s091": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {},
+    "ab": {
+      "ergebnis": "abweichung",
+      "gruende": [
+        "termin_fehlt"
+      ]
+    }
+  },
+  "s092": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {},
+    "ab": {
+      "ergebnis": "abweichung",
+      "gruende": [
+        "termin_fehlt"
+      ]
+    }
+  },
+  "s093": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {},
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  },
+  "s094": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {},
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  },
+  "s095": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {},
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  },
+  "s096": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Ohne Verlauf kaum einzuordnen"
+  },
+  "s097": {
+    "kategorie": "lieferavis",
+    "muss_review": false,
+    "felder": {}
+  },
+  "s098": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "Inhalt nur im Anhang"
+  },
+  "s099": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {},
+    "mehrdeutig": true,
+    "hinweis": "sehr knapp: AB oder Terminbestätigung"
+  },
+  "s100": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {},
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "message_id": "<s004@pruefset4.example>",
+  "from": "QS Wareneingang <qs.wareneingang@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "8D-Report & Reklamation zu PO 4500018404",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Hi Einkauf,\nbei Wareneingangspruefung zu Pos. ZW-25 (Bestellung 4500018404, Lieferant 5) wurden 300 Stk beschädigt vorgefunden.\nBitte um Erstellung einer Rework-Meldung oder Ersatzlieferung bis 30.11.2026.\n\nDanke, QS Wareneingang"
+}

@@ -1,0 +1,8 @@
+{
+  "message_id": "<s017@pruefset4.example>",
+  "from": "Lieferant 6 <vertrieb@swissturning.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Teillieferung Achsstift AS-3 (4500018417)",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Bestellung 4500018417: 400 Stk kommen am 26.11.2026, die restlichen 400 Stk am 10.12.2026.\nPreis per Stk: 2,10 CHF.\n\nLieferant 6"
+}

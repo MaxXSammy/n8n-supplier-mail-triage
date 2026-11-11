@@ -1,0 +1,8 @@
+{
+  "message_id": "<s002@pruefset4.example>",
+  "from": "Lieferant 2 <vertrieb@brenner-zerspanung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Lieferanzeige PO 45000184O2 / WE-12",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Guten Tag,\ndie Ware zu PO 45000184O2 (Welle Ø12 x 85) wurde heute verladen.\nMenge: 1500 Stk.\nSpedition: DHL Freight, Tracking: 99482019482.\n\nLieferant 2 Logistics"
+}

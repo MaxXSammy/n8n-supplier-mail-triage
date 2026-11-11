@@ -1,0 +1,8 @@
+{
+  "message_id": "<s053@pruefset4.example>",
+  "from": "Lieferant 8 <vertrieb@precimet.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "ÄNDERUNG BANKVERBINDUNG Lieferant 8",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "WICHTIG:\nWir haben unsere Bankverbindung geändert. Bitte alle Zahlungen für PO 4500018409 auf IBAN DE8999000012345678 überweisen.\n\nBuchhaltung Lieferant 8"
+}

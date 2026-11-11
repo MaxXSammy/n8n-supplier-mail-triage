@@ -1,0 +1,8 @@
+{
+  "message_id": "<s005@pruefset4.example>",
+  "from": "Lieferant 6 <vertrieb@swissturning.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Bestaetigung PO 4500018405 (PB-6)",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\nwir bestaetigen den Erhalt von PO 4500018405 ueber 500 Stk Praezisionsbolzen PB-6.\nLiefertermin: 18.11.2026.\nPreis: 1,8500 EUR per Stk.\n\nMit freundlichen Gruessen,\nLieferant 6 AG (Schweiz)"
+}

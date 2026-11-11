@@ -1,0 +1,8 @@
+{
+  "message_id": "<s018@pruefset4.example>",
+  "from": "Lieferant 1 <vertrieb@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Bestaetigung Madenschraube MS-6 / PO 4500018418",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "PO 4500018418 bestaetigt. 5000 Stk MS-6 am 03.12.2026.\n\nLieferant 1"
+}

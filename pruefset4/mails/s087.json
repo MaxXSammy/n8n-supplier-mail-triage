@@ -1,0 +1,8 @@
+{
+  "message_id": "<s087@pruefset4.example>",
+  "from": "Arbeitsvorbereitung <arbeitsvorbereitung@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "BANF 9011 & Preisanfrage AW-40",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Wir brauchen 1000 Stk AW-40.\nHaben wir dazu noch offene Angebote aus PO 4500018410?\n\nArbeitsvorbereitung"
+}

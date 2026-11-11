@@ -1,0 +1,8 @@
+{
+  "message_id": "<s001@pruefset4.example>",
+  "from": "Lieferant 1 <vertrieb@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "AW: Bestellung 4500018401 / AW-40",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Vielen Dank fuer die Bestellung 4500018401 ueber Antriebswelle AW-40.\nWir bestaetigen den Auftrag mit einer Teillieferung von 100 Karton (à 10 Stk) zum 18.11.2026.\nDer Rest von 1.000 Stk folgt am 10.12.2026.\nEinzelpreis: 3,12 EUR.\n\nVertrieb Lieferant 1"
+}

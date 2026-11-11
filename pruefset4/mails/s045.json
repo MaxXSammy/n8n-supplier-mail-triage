@@ -1,0 +1,8 @@
+{
+  "message_id": "<s045@pruefset4.example>",
+  "from": "Finanzbuchhaltung <finanzbuchhaltung@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Zahlungsavis 11.11.2026",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Folgende Rechnungen wurden heute zur Zahlung angewiesen:\nRe 2026-9041 (PO 4500018401)\nRe 2026-9088 (PO 4500018411)\n\nFinanzbuchhaltung"
+}

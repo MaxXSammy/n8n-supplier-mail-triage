@@ -1,0 +1,8 @@
+{
+  "message_id": "<s012@pruefset4.example>",
+  "from": "Lieferant 6 <vertrieb@swissturning.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "AB PO 4500018412 GS-4",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\nhiermit bestaetigen wir 3000 Stk Gewindestift GS-4 zu 0.92 EUR.\nLieferung am 21.11.2026.\n\nLieferant 6"
+}

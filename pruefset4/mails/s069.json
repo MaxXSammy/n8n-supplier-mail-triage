@@ -1,0 +1,8 @@
+{
+  "message_id": "<s069@pruefset4.example>",
+  "from": "Scan Workflow <scan.workflow@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "OCR Processing Failed: Invoice 2026-001",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Invoice PDF could not be read. Manual index required.\n\nScan Workflow"
+}

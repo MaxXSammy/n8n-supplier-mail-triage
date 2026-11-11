@@ -1,0 +1,8 @@
+{
+  "message_id": "<s054@pruefset4.example>",
+  "from": "Legal Team <legal.team@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "NDA Entwurf für Neuprojekt",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Anbei die Vertraulichkeitsvereinbarung vor Übermittlung der Zeichnungen.\n\nLegal Team"
+}

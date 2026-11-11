@@ -1,0 +1,8 @@
+{
+  "message_id": "<s046@pruefset4.example>",
+  "from": "AP Team <ap.team@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Rechnung klärung PO 4500018406",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Rechnung liegt ohne Lieferschein vor. Bitte um Bestätigung des Wareneingangs KG-30.\n\nAP Team"
+}

@@ -1,0 +1,8 @@
+{
+  "message_id": "<s099@pruefset4.example>",
+  "from": "Lieferant 8 <vertrieb@precimet.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "4500018416 (2500 Stk)",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Termin 15.12.2026 gebucht.\n\nLieferant 8"
+}

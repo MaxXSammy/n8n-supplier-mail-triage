@@ -1,0 +1,8 @@
+{
+  "message_id": "<s066@pruefset4.example>",
+  "from": "IT Systems <it.systems@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "System-Wartung ERP 15.11.2026",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Das ERP System ist am Wochenende wegen Wartung nicht erreichbar.\n\nIT Systems"
+}
