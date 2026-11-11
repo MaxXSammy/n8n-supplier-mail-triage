@@ -295,6 +295,9 @@ docs/                       # Screenshots, Vorschaubilder für GitHub und Linked
 
 ## Bekannte Grenzen
 
+- Auf einem extern geschriebenen Prüfsatz mit absichtlichen Fallen (10 Mails) liegt die Kategorie-Genauigkeit bei 60 %. Bekannte Fehlerbilder: Kaltakquise mit Wörtern wie „Angebot“ wird als Angebot eingeordnet, interne Bedarfsanforderungen (BANF) mit Bestellnummer als Auftragsbestätigung, Mischmails mit mehreren Themen landen in einer einzigen Kategorie, eine AB mit Teilmenge teils als Lieferverzug. Datumsformate wie `10/12/2026` und „18 December 2026“ werden verworfen. Diese Fehler sind gemessen und nicht weggetunt, Details in der Erfolgsmessung.
+- Zwischen zwei Läufen streuen die Ergebnisse um ein bis zwei Mails, auch ohne Änderung am Code. Kleine Unterschiede sind kein Beleg für eine Verbesserung.
+- Interne Mails (Bedarfsanforderungen, Freigabeanfragen) und Systemnachrichten (EDI-Fehler) haben keine eigene Kategorie und landen im Sammelpostfach. Das ist Absicht: Das Tool sortiert das Lieferanten-Postfach.
 - Die Testdaten sind klein (34 Mails) und selbst geschrieben. Sie zeigen das Vorgehen, ersetzen aber keine Messung mit echten Postfächern.
 - Die Belegprüfung erkennt erfundene Werte, aber keine falsch zugeordneten. Bei einem Angebot mit Preisen je 100 Stück gab das LLM „298“ als Gesamtbetrag aus. Die Zahl steht im Text und rutscht durch.
 - Die Konfidenz-Schwelle ist in der jetzigen Form wirkungslos, weil das Modell fast immer 0,9 angibt. Eine belastbare Unsicherheit bräuchte z. B. mehrere Läufe mit Abstimmung oder ein zweites Modell.
