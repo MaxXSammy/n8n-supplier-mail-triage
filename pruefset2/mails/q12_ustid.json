@@ -1,0 +1,8 @@
+{
+  "message_id": "<q12_ustid@pruefset2.example>",
+  "from": "Buchhaltung Swiss Turning <buchhaltung@swissturning.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Neue USt-ID",
+  "received_at": "2026-11-11T09:30:00+01:00",
+  "body": "Guten Tag\n\nunsere Umsatzsteuer-Identifikationsnummer hat sich geändert. Bitte verwenden Sie ab sofort DE 318 442 907 auf allen Bestellungen und Gutschriften. Die alte Nummer ist ungültig.\n\nFreundliche Grüsse"
+}

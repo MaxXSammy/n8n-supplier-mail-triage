@@ -1,0 +1,171 @@
+{
+  "q01_avis_spedition": {
+    "kategorie": "lieferavis",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018413",
+      "liefertermin": "2026-11-12"
+    }
+  },
+  "q02_avis_englisch": {
+    "kategorie": "lieferavis",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018416"
+    }
+  },
+  "q03_avis_kurz": {
+    "kategorie": "lieferavis",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018411"
+    }
+  },
+  "q04_avis_tracking": {
+    "kategorie": "lieferavis",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018405",
+      "liefertermin": "2026-11-13"
+    }
+  },
+  "q05_preis_rundschreiben": {
+    "kategorie": "preisaenderung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "q06_preis_einzelartikel": {
+    "kategorie": "preisaenderung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "q07_abkuendigung": {
+    "kategorie": "preisaenderung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "q08_vpe_aenderung": {
+    "kategorie": "preisaenderung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "q09_energiezuschlag": {
+    "kategorie": "preisaenderung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "q10_bank_neu": {
+    "kategorie": "stammdatenaenderung",
+    "muss_review": true,
+    "felder": {}
+  },
+  "q11_adresse_umzug": {
+    "kategorie": "stammdatenaenderung",
+    "muss_review": true,
+    "felder": {}
+  },
+  "q12_ustid": {
+    "kategorie": "stammdatenaenderung",
+    "muss_review": true,
+    "felder": {}
+  },
+  "q13_bank_englisch": {
+    "kategorie": "stammdatenaenderung",
+    "muss_review": true,
+    "felder": {}
+  },
+  "q14_iso_zertifikat": {
+    "kategorie": "compliance",
+    "muss_review": false,
+    "felder": {}
+  },
+  "q15_reach": {
+    "kategorie": "compliance",
+    "muss_review": false,
+    "felder": {}
+  },
+  "q16_code_of_conduct": {
+    "kategorie": "compliance",
+    "muss_review": false,
+    "felder": {}
+  },
+  "q17_konfliktmineralien": {
+    "kategorie": "compliance",
+    "muss_review": false,
+    "felder": {}
+  },
+  "q18_kaltakquise": {
+    "kategorie": "werbung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "q19_webinar": {
+    "kategorie": "werbung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "q20_portal_einladung": {
+    "kategorie": "werbung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "q21_sonderangebot_newsletter": {
+    "kategorie": "werbung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "q22_messeeinladung": {
+    "kategorie": "werbung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "q23_kontrolle_ab_preis": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018409",
+      "einzelpreis": 0.51,
+      "menge": 1040,
+      "liefertermin": "2026-12-02"
+    },
+    "ab": {
+      "ergebnis": "abweichung",
+      "gruende": [
+        "preis"
+      ]
+    }
+  },
+  "q24_kontrolle_angebot": {
+    "kategorie": "angebot",
+    "muss_review": false,
+    "felder": {
+      "angebotsnummer": "AN-2026-8120",
+      "betrag": 275.0,
+      "waehrung": "EUR"
+    }
+  },
+  "q25_kontrolle_reklamation_zertifikat": {
+    "kategorie": "reklamation",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018402"
+    }
+  },
+  "q26_kontrolle_rechnung_preisabweichung": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {
+      "rechnungsnummer": "RE-2026-10555",
+      "betrag": 6240.0,
+      "waehrung": "EUR"
+    }
+  },
+  "q27_kontrolle_lieferverzug": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018404",
+      "liefertermin": "2026-12-09"
+    }
+  }
+}

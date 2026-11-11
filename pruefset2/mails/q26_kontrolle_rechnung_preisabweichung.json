@@ -1,0 +1,8 @@
+{
+  "message_id": "<q26_kontrolle_rechnung_preisabweichung@pruefset2.example>",
+  "from": "Buchhaltung Alpen <buchhaltung@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Rechnung RE-2026-10555 zu Bestellung 4500018401",
+  "received_at": "2026-11-12T17:00:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\n\nanbei die Rechnung RE-2026-10555 über 6.240,00 EUR für 2.000 Stück Antriebswelle AW-40 aus Bestellung 4500018401. Zahlbar innerhalb von 30 Tagen.\n\nAlpen Drehtechnik GmbH"
+}

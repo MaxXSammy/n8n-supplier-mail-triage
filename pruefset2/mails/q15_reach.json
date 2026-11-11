@@ -1,0 +1,8 @@
+{
+  "message_id": "<q15_reach@pruefset2.example>",
+  "from": "Feldmann QM <qm@feldmann-praezisionsteile.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "REACH- und RoHS-Konformitätserklärung",
+  "received_at": "2026-11-11T13:30:00+01:00",
+  "body": "Hallo,\n\nwie angefordert schicken wir Ihnen unsere aktuelle Konformitätserklärung zu REACH und RoHS für alle gelieferten Artikel. Die Stoffe auf der SVHC-Kandidatenliste sind in keinem Artikel enthalten.\n\nAnja Feldmann"
+}

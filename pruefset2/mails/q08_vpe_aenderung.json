@@ -1,0 +1,8 @@
+{
+  "message_id": "<q08_vpe_aenderung@pruefset2.example>",
+  "from": "Feldmann Vertrieb <vertrieb@feldmann-praezisionsteile.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Änderung der Verpackungseinheit",
+  "received_at": "2026-11-10T10:40:00+01:00",
+  "body": "Hallo,\n\nab Januar 2027 liefern wir Hülsen und Buchsen nur noch in Gebinden zu 500 Stück (bisher 100). Mindestabnahme ist damit ein Gebinde. Der Stückpreis bleibt unverändert, Kleinstmengen berechnen wir mit 15 EUR Aufschlag.\n\nAnja Feldmann"
+}

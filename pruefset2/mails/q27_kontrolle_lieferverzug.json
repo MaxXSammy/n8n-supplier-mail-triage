@@ -1,0 +1,8 @@
+{
+  "message_id": "<q27_kontrolle_lieferverzug@pruefset2.example>",
+  "from": "Jens Albrecht <j.albrecht@rheinwerk-komponenten.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Verzug Bestellung 4500018404",
+  "received_at": "2026-11-12T17:30:00+01:00",
+  "body": "Sehr geehrter Herr Schneider,\n\nleider verzögert sich die Lieferung der Zahnradwellen aus Bestellung 4500018404. Der neue Liefertermin ist der 09.12.2026.\n\nJens Albrecht"
+}

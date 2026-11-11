@@ -1,0 +1,8 @@
+{
+  "message_id": "<q11_adresse_umzug@pruefset2.example>",
+  "from": "Lisa Brandt <l.brandt@nordform.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Neue Anschrift ab 01.12.2026",
+  "received_at": "2026-11-11T08:00:00+01:00",
+  "body": "Hallo Herr Schneider,\n\nunser Standort zieht um. Ab dem 01.12.2026 erreichen Sie uns unter: Nordform Kunststofftechnik GmbH, Industrieweg 14, 24537 Neumünster. Telefon und Mailadressen bleiben gleich. Bitte passen Sie die Lieferanten- und Rechnungsadresse an.\n\nLisa Brandt"
+}

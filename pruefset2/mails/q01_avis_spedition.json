@@ -1,0 +1,8 @@
+{
+  "message_id": "<q01_avis_spedition@pruefset2.example>",
+  "from": "Versand Kovotech <versand@kovotech.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Versandavis Bestellung 4500018413",
+  "received_at": "2026-11-09T07:45:00+01:00",
+  "body": "Guten Tag,\n\ndie Ware zu Ihrer Bestellung 4500018413 ist heute mit der Spedition Dachser abgeholt worden.\n\n3 Paletten, Gewicht 1.150 kg\nSendungsnummer: 4471-9920-31\nVoraussichtliche Ankunft: 12.11.2026\n\nPetr Novák"
+}

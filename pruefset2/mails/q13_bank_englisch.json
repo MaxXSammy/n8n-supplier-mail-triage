@@ -1,0 +1,8 @@
+{
+  "message_id": "<q13_bank_englisch@pruefset2.example>",
+  "from": "Finance Precimet <finance@precimet-pl.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Change of bank details",
+  "received_at": "2026-11-11T11:00:00+01:00",
+  "body": "Dear Sir or Madam,\n\nplease note that our bank account has changed. All future payments must be made to the new account: PL61 1090 1014 0000 0712 1981 2874. The old account will be closed at the end of the month.\n\nPrecimet Sp. z o.o."
+}

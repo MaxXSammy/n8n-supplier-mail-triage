@@ -1,0 +1,8 @@
+{
+  "message_id": "<q14_iso_zertifikat@pruefset2.example>",
+  "from": "QM Alpen <qm@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Neues ISO-9001-Zertifikat",
+  "received_at": "2026-11-11T12:00:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\n\nanbei erhalten Sie unser erneuertes Zertifikat nach ISO 9001:2015, gültig bis 30.09.2029. Bitte hinterlegen Sie es in Ihrer Lieferantenakte.\n\nQualitätsmanagement Alpen Drehtechnik"
+}
