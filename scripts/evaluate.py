@@ -78,6 +78,7 @@ def main() -> None:
     sys.stdout.reconfigure(encoding="utf-8")  # Windows-Konsole: ✓ und Umlaute
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--url", default=STANDARD_URL)
+    parser.add_argument("--set", default="", help="Ordner mit eigenen mails/ und gold.json, z. B. pruefset (Ergebnis: eval/ergebnisse_<set>.*)")
     parser.add_argument("--behalten", action="store_true", help="Tickets und Reviews des Laufs nicht löschen")
     args = parser.parse_args()
 
@@ -85,12 +86,15 @@ def main() -> None:
     token = env.get("WEBHOOK_TOKEN", "")
     modell = env.get("OLLAMA_MODEL", "?")
     schwelle = env.get("KONFIDENZ_SCHWELLE", "?")
-    gold = json.loads((REPO / "eval" / "gold.json").read_text(encoding="utf-8"))
+    mail_ordner = REPO / args.set / "mails" if args.set else REPO / "mails"
+    gold_datei = REPO / args.set / "gold.json" if args.set else REPO / "eval" / "gold.json"
+    ausgabe = f"ergebnisse_{args.set}" if args.set else "ergebnisse"
+    gold = json.loads(gold_datei.read_text(encoding="utf-8"))
     lauf = datetime.now().strftime("%Y%m%d-%H%M%S")
 
     ergebnisse = []
     for name, erwartung in gold.items():
-        mail = json.loads((REPO / "mails" / f"{name}.json").read_text(encoding="utf-8"))
+        mail = json.loads((mail_ordner / f"{name}.json").read_text(encoding="utf-8"))
         mail["message_id"] = mail["message_id"].replace(">", f"-eval{lauf}>")
         status, antwort, dauer = mail_senden(mail, args.url, token)
         daten = antwort.get("daten") or {}
@@ -180,12 +184,12 @@ def main() -> None:
             f"| {e['konfidenz'] if e['konfidenz'] is not None else '–'} | {e['status']} | {hinweise} | {'; '.join(falsche) or '–'} |"
         )
 
-    (REPO / "eval" / "ergebnisse.md").write_text("\n".join(zeilen) + "\n", encoding="utf-8")
-    (REPO / "eval" / "ergebnisse.json").write_text(
+    (REPO / "eval" / f"{ausgabe}.md").write_text("\n".join(zeilen) + "\n", encoding="utf-8")
+    (REPO / "eval" / f"{ausgabe}.json").write_text(
         json.dumps({"lauf": lauf, "modell": modell, "schwelle": schwelle, "ergebnisse": ergebnisse},
                    ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print("\n" + "\n".join(zeilen[4:zeilen.index("## Konfusionsmatrix (Zeile = Gold, Spalte = LLM)")]))
-    print("\n→ eval/ergebnisse.md")
+    print(f"\n→ eval/{ausgabe}.md")
     if not args.behalten:
         testdaten_loeschen()
 
