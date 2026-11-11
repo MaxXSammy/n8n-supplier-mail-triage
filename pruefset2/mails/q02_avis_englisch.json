@@ -1,0 +1,8 @@
+{
+  "message_id": "<q02_avis_englisch@pruefset2.example>",
+  "from": "Dispatch Precimet <dispatch@precimet.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Advance shipping notice PO 4500018416",
+  "received_at": "2026-11-09T09:10:00+01:00",
+  "body": "Dear customer,\n\nthis is to inform you that the goods for PO 4500018416 left our warehouse today via DHL Freight. Tracking number: 7788-2201-45. 4 pallets, 2,500 pcs in total.\n\nBest regards\nPrecimet logistics"
+}

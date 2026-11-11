@@ -1,0 +1,8 @@
+{
+  "message_id": "<p09_ab_rossi_termin_unsicher@pruefset.example>",
+  "from": "Marco Bellini <m.bellini@officina-rossi.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Conferma ordine 4500018410 - Albero AW-40",
+  "received_at": "2026-10-29T11:00:00+01:00",
+  "body": "Buongiorno,\n\nconfermiamo l'ordine 4500018410: 3.000 pezzi Albero di trasmissione AW-40 a 2,98 EUR l'uno.\n\nLa consegna è prevista indicativamente nella settimana 49, senza garanzia, perché dipende dal materiale.\n\nSaluti\nM. Bellini"
+}

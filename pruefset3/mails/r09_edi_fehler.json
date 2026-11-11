@@ -1,0 +1,8 @@
+{
+  "message_id": "<r09_edi_fehler@pruefset3.example>",
+  "from": "EDI Gateway <edi-gateway@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "[SYSTEM-ALERT] EDI ORDRSP Processing Error - PO 4500018404",
+  "received_at": "2026-11-10T09:00:00+01:00",
+  "body": "SYSTEM NOTIFICATION - DO NOT REPLY\n\nProcessing of incoming EDIFACT ORDRSP (Purchase Order Response) failed.\nSource: Supplier ID 5\nAffected Document: PO 4500018404 (Zahnradwelle ZW-25)\nError Code: ERR_QUALIFIER_MISMATCH (Segment BGM / Pos 1)\n\nAction Required: Manual review in Procurement Portal / ERP Triage Queue."
+}

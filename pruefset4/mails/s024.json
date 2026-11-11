@@ -1,0 +1,8 @@
+{
+  "message_id": "<s024@pruefset4.example>",
+  "from": "Instandhaltung <instandhaltung@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Neue BANF 88201 / Werkzeugbedarf",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Hallo Einkauf,\nbitte um Beschaffung von 10 Satz Spezial-Bohrern.\nKostenstelle 4402.\n\nInstandhaltung"
+}

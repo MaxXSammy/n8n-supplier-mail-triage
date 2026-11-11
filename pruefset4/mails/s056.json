@@ -1,0 +1,8 @@
+{
+  "message_id": "<s056@pruefset4.example>",
+  "from": "Qualitätsmanagement <qualitätsmanagement@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "QSV Vorlage zur Unterzeichnung",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Bitte zeichnen Sie die beiliegende Qualitätssicherungsvereinbarung ab.\n\nQualitätsmanagement"
+}

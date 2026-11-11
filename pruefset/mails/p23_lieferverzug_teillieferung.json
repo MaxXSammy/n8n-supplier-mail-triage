@@ -1,0 +1,8 @@
+{
+  "message_id": "<p23_lieferverzug_teillieferung@pruefset.example>",
+  "from": "Petr Novák <p.novak@kovotech.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Teillieferung 4500018413",
+  "received_at": "2026-11-05T14:00:00+01:00",
+  "body": "Guten Tag,\n\nzu Bestellung 4500018413 liefern wir heute 2.500 Stück. Die Restmenge von 1.500 Stück folgt am 09.12.2026.\n\nPetr Novák"
+}

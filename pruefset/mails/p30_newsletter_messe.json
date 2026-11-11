@@ -1,0 +1,8 @@
+{
+  "message_id": "<p30_newsletter_messe@pruefset.example>",
+  "from": "Messe Team <newsletter@fertigungsmesse.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Besuchen Sie uns auf der Fertigungsmesse 2027",
+  "received_at": "2026-11-08T09:00:00+01:00",
+  "body": "Liebe Kunden,\n\nwir stellen im März auf der Fertigungsmesse in Stuttgart aus, Halle 4, Stand 218. Freitickets erhalten Sie über den beigefügten Link.\n\nIhr Messeteam\n\nAbmelden: newsletter@fertigungsmesse.example"
+}

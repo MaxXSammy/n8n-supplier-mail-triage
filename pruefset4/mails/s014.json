@@ -1,0 +1,8 @@
+{
+  "message_id": "<s014@pruefset4.example>",
+  "from": "Lieferant 3 <vertrieb@feldmann-praezisionsteile.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Bestaetigung Buchse BU-22 (4500018414)",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Wir bestaetigen PO 4500018414.\nMenge: 1500\nPreis: 1,14 EUR\nTermin: 02.12.2026\n\nLieferant 3"
+}

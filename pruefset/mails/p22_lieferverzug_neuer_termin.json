@@ -1,0 +1,8 @@
+{
+  "message_id": "<p22_lieferverzug_neuer_termin@pruefset.example>",
+  "from": "Katharina Gruber <k.gruber@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Terminverschiebung Bestellung 4500018411",
+  "received_at": "2026-11-05T09:30:00+01:00",
+  "body": "Sehr geehrter Herr Schneider,\n\nleider können wir den bestätigten Termin für Bestellung 4500018411 nicht halten. Die Lieferung verschiebt sich vom 14.11.2026 auf den 28.11.2026, weil eine Maschine ausgefallen ist.\n\nKatharina Gruber"
+}

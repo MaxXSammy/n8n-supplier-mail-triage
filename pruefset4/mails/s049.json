@@ -1,0 +1,8 @@
+{
+  "message_id": "<s049@pruefset4.example>",
+  "from": "Lieferant 5 <vertrieb@rheinwerk-komponenten.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Skontoanpassung Rechnung 88102",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Bitte Skontobedingungen für Rechnung 88102 beachten.\n\nLieferant 5"
+}

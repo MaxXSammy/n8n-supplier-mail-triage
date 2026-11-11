@@ -1,0 +1,75 @@
+{
+  "r01_ab_teillieferung_karton": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018401",
+      "einzelpreis": 3.12
+    },
+    "ab": {
+      "ergebnis": "abweichung",
+      "gruende": [
+        "termin_unsicher"
+      ]
+    },
+    "hinweis": "Teillieferung, Rest 'voraussichtlich' nach dem Wunschtermin: ein Mensch muss prüfen. Gründe im Detail mehrdeutig."
+  },
+  "r02_reklamation_po_tippfehler": {
+    "kategorie": "reklamation",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018405"
+    },
+    "hinweis": "Die Bestellnummer im Betreff hat ein O statt einer 0, im Text steht sie richtig."
+  },
+  "r03_sammel_lieferverzug": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {},
+    "hinweis": "Zwei Bestellungen in einer Mail, nur eine ist verspätet."
+  },
+  "r04_preiserhoehung_zuschlag": {
+    "kategorie": "preisaenderung",
+    "muss_review": false,
+    "felder": {}
+  },
+  "r05_rechnungsklaerung_preisabweichung": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {
+      "rechnungsnummer": "2026-8891",
+      "betrag": 9540.0,
+      "waehrung": "EUR"
+    },
+    "hinweis": "Rechnungsklärung gehört zur Buchhaltung, nicht in eine eigene Kategorie."
+  },
+  "r06_interne_banf": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {},
+    "hinweis": "Interne Mail, keine eigene Kategorie vorgesehen: landet im Sammelpostfach."
+  },
+  "r07_phishing_bank": {
+    "kategorie": "stammdatenaenderung",
+    "muss_review": true,
+    "felder": {}
+  },
+  "r08_kaltakquise_keywords": {
+    "kategorie": "werbung",
+    "muss_review": false,
+    "felder": {},
+    "hinweis": "Kaltakquise mit Wörtern wie Angebot und Zahnradwelle."
+  },
+  "r09_edi_fehler": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {},
+    "hinweis": "Systemnachricht, keine eigene Kategorie vorgesehen: Sammelpostfach."
+  },
+  "r10_chaos_mehrere_themen": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {},
+    "hinweis": "Mischmail mit vier Themen. Lösung Lieferverzug, weil dort die Handlung nötig ist, aber nicht eindeutig."
+  }
+}

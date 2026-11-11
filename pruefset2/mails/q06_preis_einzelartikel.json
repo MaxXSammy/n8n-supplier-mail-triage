@@ -1,0 +1,8 @@
+{
+  "message_id": "<q06_preis_einzelartikel@pruefset2.example>",
+  "from": "Katharina Gruber <k.gruber@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Neuer Preis Antriebswelle AW-40",
+  "received_at": "2026-11-09T11:15:00+01:00",
+  "body": "Sehr geehrter Herr Schneider,\n\nab dem 01.02.2027 kostet die Antriebswelle AW-40 bei Abnahme von 2.000 Stück 3,29 EUR statt bisher 3,12 EUR pro Stück. Grund ist der gestiegene Stahlpreis. Bitte geben Sie uns bis Ende November Bescheid, ob wir Ihre Bestellungen zu diesem Preis einplanen dürfen.\n\nKatharina Gruber"
+}

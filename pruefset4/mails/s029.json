@@ -1,0 +1,8 @@
+{
+  "message_id": "<s029@pruefset4.example>",
+  "from": "Arbeitsvorbereitung <arbeitsvorbereitung@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Bitte Umsetzungsfreigabe BANF 5541",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Freigabe für Ersatzteilbeschaffung Spindelmotor steht aus.\n\nArbeitsvorbereitung"
+}

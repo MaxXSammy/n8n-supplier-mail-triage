@@ -1,0 +1,8 @@
+{
+  "message_id": "<s033@pruefset4.example>",
+  "from": "Lieferant 3 <vertrieb@feldmann-praezisionsteile.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Abkündigung Artikel HS-12 / EOL Notification",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\nhiermit informieren wir Sie über das End-of-Life der Hülse HS-12 zum 31.12.2026.\nNachfolgeartikel: HS-12-v2.\n\nLieferant 3"
+}

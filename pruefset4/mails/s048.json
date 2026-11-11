@@ -1,0 +1,8 @@
+{
+  "message_id": "<s048@pruefset4.example>",
+  "from": "Buchhaltung <buchhaltung@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Differenz Mengen E-Rechnung 4500018418",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Berechnet wurden 5.000 Stk, im WE gebucht wurden 4.500 Stk.\n\nBuchhaltung"
+}

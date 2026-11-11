@@ -1,0 +1,8 @@
+{
+  "message_id": "<q22_messeeinladung@pruefset2.example>",
+  "from": "Messe Stuttgart <einladung@fertigungsmesse.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Einladung zur Fertigungsmesse 2027",
+  "received_at": "2026-11-12T15:00:00+01:00",
+  "body": "Liebe Besucher,\n\nwir laden Sie herzlich zur Fertigungsmesse vom 9. bis 12. März 2027 in Stuttgart ein. Ihr persönlicher Gutscheincode für das Gratis-Ticket: FM27-4471.\n\nIhr Messeteam"
+}

@@ -1,0 +1,8 @@
+{
+  "message_id": "<p14_ab_alpen_domain_vertippt@pruefset.example>",
+  "from": "Katharina Gruber <k.gruber@alpen-drehtechnlk.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Auftragsbestätigung 4500018418",
+  "received_at": "2026-11-01T09:00:00+01:00",
+  "body": "Sehr geehrter Herr Schneider,\n\nIhre Bestellung 4500018418 bestätigen wir: 5.000 Stück Madenschraube MS-6 zu 0,09 EUR, Liefertermin 03.12.2026.\n\nMit freundlichen Grüßen\nKatharina Gruber"
+}

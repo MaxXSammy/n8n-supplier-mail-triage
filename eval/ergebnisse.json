@@ -1,5 +1,5 @@
 {
-  "lauf": "20261030-193432",
+  "lauf": "20261111-083255",
   "modell": "qwen2.5:7b",
   "schwelle": "0.75",
   "ergebnisse": [
@@ -31,7 +31,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 7.43
+      "sekunden": 6.06
     },
     {
       "mail": "02_angebot_rossi",
@@ -40,7 +40,7 @@
       "gold": "angebot",
       "llm": "angebot",
       "regel": "angebot",
-      "konfidenz": 0.9,
+      "konfidenz": 0.95,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
@@ -55,7 +55,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 7.54
+      "sekunden": 6.34
     },
     {
       "mail": "03_angebot_kovotech_lieferzeit",
@@ -83,7 +83,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.69
+      "sekunden": 5.82
     },
     {
       "mail": "04_reklamation_brenner_8d",
@@ -103,7 +103,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.24
+      "sekunden": 5.91
     },
     {
       "mail": "05_reklamation_feldmann_mit_rechnung",
@@ -114,16 +114,18 @@
       "regel": "reklamation",
       "konfidenz": 0.95,
       "gruende": [],
-      "warnungen": [],
+      "warnungen": [
+        "beleg_fehlt:bestellnummer"
+      ],
       "muss_review": false,
       "felder": {
         "bestellnummer": [
           "4500018307",
-          "4500018307"
+          null
         ]
       },
       "ab": null,
-      "sekunden": 6.68
+      "sekunden": 6.2
     },
     {
       "mail": "06_reklamation_swissturning_menge",
@@ -143,7 +145,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.47
+      "sekunden": 5.36
     },
     {
       "mail": "07_lieferverzug_rheinwerk",
@@ -152,7 +154,7 @@
       "gold": "lieferverzug",
       "llm": "lieferverzug",
       "regel": "lieferverzug",
-      "konfidenz": 1,
+      "konfidenz": 0.95,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
@@ -167,7 +169,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.8
+      "sekunden": 6.05
     },
     {
       "mail": "08_lieferverzug_precimet_teillieferung",
@@ -189,7 +191,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.54
+      "sekunden": 5.92
     },
     {
       "mail": "09_lieferverzug_alpen_kurz",
@@ -198,7 +200,7 @@
       "gold": "lieferverzug",
       "llm": "lieferverzug",
       "regel": "lieferverzug",
-      "konfidenz": 0.9,
+      "konfidenz": 0.95,
       "gruende": [],
       "warnungen": [
         "beleg_fehlt:liefertermin"
@@ -211,7 +213,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.05
+      "sekunden": 5.53
     },
     {
       "mail": "10_rechnung_brenner",
@@ -243,7 +245,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.42
+      "sekunden": 5.82
     },
     {
       "mail": "11_rechnung_swissturning_mahnung",
@@ -271,7 +273,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.22
+      "sekunden": 5.67
     },
     {
       "mail": "12_rechnung_kovotech_gutschrift",
@@ -280,7 +282,7 @@
       "gold": "rechnung",
       "llm": "rechnung",
       "regel": "rechnung",
-      "konfidenz": 0.9,
+      "konfidenz": 0.95,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
@@ -299,7 +301,7 @@
         ]
       },
       "ab": null,
-      "sekunden": 6.46
+      "sekunden": 5.53
     },
     {
       "mail": "13_sonstiges_rossi_betriebsferien",
@@ -308,45 +310,46 @@
       "gold": "sonstiges",
       "llm": "sonstiges",
       "regel": "sonstiges",
-      "konfidenz": 0.8,
+      "konfidenz": 0.9,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
       "felder": {},
       "ab": null,
-      "sekunden": 5.95
+      "sekunden": 5.25
     },
     {
       "mail": "14_sonstiges_bankdaten_betrugsversuch",
       "http": 202,
       "status": "review",
       "gold": "sonstiges",
-      "llm": "sonstiges",
-      "regel": "auftragsbestaetigung",
-      "konfidenz": 0.9,
+      "llm": "stammdatenaenderung",
+      "regel": "stammdatenaenderung",
+      "konfidenz": 1,
       "gruende": [
+        "stammdatenaenderung_pruefen",
         "bankdatenaenderung"
       ],
       "warnungen": [],
       "muss_review": true,
       "felder": {},
       "ab": null,
-      "sekunden": 6.07
+      "sekunden": 5.14
     },
     {
       "mail": "15_sonstiges_precimet_zertifikat",
       "http": 200,
       "status": "ticket",
       "gold": "sonstiges",
-      "llm": "sonstiges",
-      "regel": "reklamation",
+      "llm": "compliance",
+      "regel": "compliance",
       "konfidenz": 1,
       "gruende": [],
       "warnungen": [],
       "muss_review": false,
       "felder": {},
       "ab": null,
-      "sekunden": 6.05
+      "sekunden": 5.35
     },
     {
       "mail": "16_ab_alpen_ok",
@@ -383,7 +386,7 @@
         "ist": "automatisch_bestaetigt",
         "ist_gruende": []
       },
-      "sekunden": 7.16
+      "sekunden": 6.23
     },
     {
       "mail": "17_ab_brenner_liefertreue_ax",
@@ -424,7 +427,7 @@
           "liefertreue_unter_schwelle"
         ]
       },
-      "sekunden": 7.25
+      "sekunden": 5.97
     },
     {
       "mail": "18_ab_brenner_c_artikel_ok",
@@ -461,7 +464,7 @@
         "ist": "automatisch_bestaetigt",
         "ist_gruende": []
       },
-      "sekunden": 6.74
+      "sekunden": 5.91
     },
     {
       "mail": "19_ab_rheinwerk_blind",
@@ -504,7 +507,7 @@
           "liefertreue_unter_schwelle"
         ]
       },
-      "sekunden": 6.86
+      "sekunden": 6.06
     },
     {
       "mail": "20_ab_swissturning_blind_premium",
@@ -545,7 +548,7 @@
           "blindbestaetigung_verdacht"
         ]
       },
-      "sekunden": 6.9
+      "sekunden": 6.11
     },
     {
       "mail": "21_ab_nordform_neulieferant",
@@ -586,20 +589,20 @@
           "neuer_lieferant"
         ]
       },
-      "sekunden": 7.01
+      "sekunden": 6.09
     },
     {
       "mail": "22_ab_kovotech_preis",
-      "http": 202,
-      "status": "review",
+      "http": 200,
+      "status": "ticket",
       "gold": "auftragsbestaetigung",
-      "llm": "angebot",
+      "llm": "auftragsbestaetigung",
       "regel": "auftragsbestaetigung",
-      "konfidenz": 0.95,
-      "gruende": [
-        "kategorie_unplausibel"
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [
+        "kategorie_korrigiert:preisaenderung->auftragsbestaetigung"
       ],
-      "warnungen": [],
       "muss_review": false,
       "felder": {
         "bestellnummer": [
@@ -624,10 +627,12 @@
         "erwartete_gruende": [
           "preis"
         ],
-        "ist": "review",
-        "ist_gruende": []
+        "ist": "abweichung",
+        "ist_gruende": [
+          "preis"
+        ]
       },
-      "sekunden": 6.93
+      "sekunden": 6.29
     },
     {
       "mail": "23_ab_feldmann_palette",
@@ -668,7 +673,7 @@
           "menge"
         ]
       },
-      "sekunden": 7.39
+      "sekunden": 6.5
     },
     {
       "mail": "24_ab_precimet_stammdaten",
@@ -711,7 +716,7 @@
           "stammdaten_pruefen"
         ]
       },
-      "sekunden": 7.3
+      "sekunden": 6.46
     },
     {
       "mail": "25_ab_rossi_termin_ungewiss",
@@ -754,7 +759,7 @@
           "termin_unsicher"
         ]
       },
-      "sekunden": 7.24
+      "sekunden": 6.19
     },
     {
       "mail": "26_ab_alpen_termin_spaeter",
@@ -795,7 +800,7 @@
           "termin_spaeter"
         ]
       },
-      "sekunden": 6.78
+      "sekunden": 5.99
     },
     {
       "mail": "27_ab_swissturning_preis_und_termin",
@@ -806,7 +811,9 @@
       "regel": "auftragsbestaetigung",
       "konfidenz": 0.95,
       "gruende": [],
-      "warnungen": [],
+      "warnungen": [
+        "kategorie_korrigiert:preisaenderung->auftragsbestaetigung"
+      ],
       "muss_review": false,
       "felder": {
         "bestellnummer": [
@@ -838,7 +845,7 @@
           "termin_spaeter"
         ]
       },
-      "sekunden": 6.98
+      "sekunden": 5.87
     },
     {
       "mail": "28_ab_precimet_bestellung_unbekannt",
@@ -869,7 +876,7 @@
           "bestellung_unbekannt"
         ]
       },
-      "sekunden": 6.82
+      "sekunden": 5.95
     },
     {
       "mail": "29_ab_brenner_zahlendreher",
@@ -900,7 +907,7 @@
           "bestellung_unbekannt"
         ]
       },
-      "sekunden": 6.56
+      "sekunden": 5.79
     },
     {
       "mail": "30_ab_kovotech_englisch_ok",
@@ -937,7 +944,7 @@
         "ist": "automatisch_bestaetigt",
         "ist_gruende": []
       },
-      "sekunden": 6.93
+      "sekunden": 6.18
     },
     {
       "mail": "31_ab_feldmann_mit_zitat_ok",
@@ -974,7 +981,7 @@
         "ist": "automatisch_bestaetigt",
         "ist_gruende": []
       },
-      "sekunden": 7.05
+      "sekunden": 6.0
     },
     {
       "mail": "32_ab_rossi_standard_ok",
@@ -1011,7 +1018,7 @@
         "ist": "automatisch_bestaetigt",
         "ist_gruende": []
       },
-      "sekunden": 6.84
+      "sekunden": 6.1
     },
     {
       "mail": "33_ab_precimet_liefertreue_standard",
@@ -1052,7 +1059,7 @@
           "liefertreue_unter_schwelle"
         ]
       },
-      "sekunden": 6.65
+      "sekunden": 5.99
     },
     {
       "mail": "34_ab_alpen_fremde_domain",
@@ -1093,7 +1100,7 @@
           "absender_domain_abweichend"
         ]
       },
-      "sekunden": 7.07
+      "sekunden": 6.22
     }
   ]
 }

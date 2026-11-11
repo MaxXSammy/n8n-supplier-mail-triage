@@ -1,0 +1,8 @@
+{
+  "message_id": "<s089@pruefset4.example>",
+  "from": "Lieferant 2 <vertrieb@brenner-zerspanung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Dringend: PO 4500018402 / Rechnung / Verzug",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Die Ware verzögert sich.\nGleichzeitig senden wir die Teilrechnung für Pos 1.\n\nLieferant 2"
+}

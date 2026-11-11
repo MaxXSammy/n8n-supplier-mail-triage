@@ -1,0 +1,8 @@
+{
+  "message_id": "<r05_rechnungsklaerung_preisabweichung@pruefset3.example>",
+  "from": "Kreditorenbuchhaltung <kreditoren@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Preisabweichung Re-Nr. 2026-8891 / PO 4500018410",
+  "received_at": "2026-11-09T14:00:00+01:00",
+  "body": "Hallo Einkauf-Team,\n\nzur Bestellung 4500018410 (3000 Stk AW-40) liegt uns die Rechnung von Lieferant 4 über 9.540,00 EUR vor (Stückpreis 3,18 EUR).\nIm ERP-System ist die Bestellung jedoch mit 2,98 EUR / Stk gebucht (Gesamtwert 8.940,00 EUR).\n\nDifferenz: +600,00 EUR.\nBitte um Prüfung und Freigabe oder Erstellung einer Preismeldung.\n\nDanke & Grüße,\nKreditorenbuchhaltung"
+}

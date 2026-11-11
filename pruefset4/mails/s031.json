@@ -1,0 +1,8 @@
+{
+  "message_id": "<s031@pruefset4.example>",
+  "from": "Lieferant 4 <vertrieb@officina-rossi.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Angebot RFQ-2026-088 / Antriebswelle AW-40",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\nanbei unser Angebot zu Ihrer Anfrage RFQ-2026-088:\n2000 Stk AW-40 zu je 3,05 EUR.\nLieferzeit: 3 Wochen.\n\nVertrieb Lieferant 4"
+}

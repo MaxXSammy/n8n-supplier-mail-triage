@@ -1,0 +1,8 @@
+{
+  "message_id": "<q10_bank_neu@pruefset2.example>",
+  "from": "Buchhaltung Kovotech <buchhaltung@kovotech-finance.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Aktualisierung unserer Zahlungsdaten",
+  "received_at": "2026-11-10T15:00:00+01:00",
+  "body": "Sehr geehrter Herr Schneider,\n\nunser Konto bei der bisherigen Bank wird aufgelöst. Bitte nutzen Sie ab sofort für alle Zahlungen:\n\nIBAN CZ65 0800 0000 1920 0014 5399\n\nBitte bestätigen Sie die Änderung kurz per Antwort.\n\nKovotech s.r.o."
+}

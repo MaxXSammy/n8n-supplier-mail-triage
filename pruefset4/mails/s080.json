@@ -1,0 +1,8 @@
+{
+  "message_id": "<s080@pruefset4.example>",
+  "from": "Industrial Tools Service <industrial.tools.service@industrial-tools.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Frohe Feiertage und Neujahrsgrüße",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Wir danken für die Zusammenarbeit im Jahr 2026.\n\nIndustrial Tools Service"
+}

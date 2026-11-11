@@ -1,0 +1,8 @@
+{
+  "message_id": "<s070@pruefset4.example>",
+  "from": "Master Data Engine <master.data.engine@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Master Data Sync Error / Supplier 3",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Duplikat bei Steuernummer festgestellt. Sync abgebrochen.\n\nMaster Data Engine"
+}

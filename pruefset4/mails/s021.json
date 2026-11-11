@@ -1,0 +1,8 @@
+{
+  "message_id": "<s021@pruefset4.example>",
+  "from": "Markus Produktion <markus.produktion@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "BANF-2026-9901 / Dringend: Frästeile Montage",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Hallo Einkauf,\nwir benötigen dringend 500 Stk Lagerbolzen LB-20 für Linie 2.\nBitte als BANF anlegen und bei Lieferant 1 anfragen.\n\nGrüße, Markus (Produktion)"
+}

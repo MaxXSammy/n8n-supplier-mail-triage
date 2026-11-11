@@ -1,0 +1,8 @@
+{
+  "message_id": "<s061@pruefset4.example>",
+  "from": "EDI-Converter System <edi-converter.system@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "[EDI-ERROR] Inbound ORDERS 4500018413 failed",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "EDI Processing Error. Segment CTM invalid.\nDocument: 4500018413.\n\nEDI-Converter System"
+}

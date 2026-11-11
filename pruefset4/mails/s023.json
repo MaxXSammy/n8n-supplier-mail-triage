@@ -1,0 +1,8 @@
+{
+  "message_id": "<s023@pruefset4.example>",
+  "from": "Workflow System <workflow.system@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Freigabeanforderung PO 4500018410",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Bitte um Freigabe der Bestellung 4500018410 über 8.940,00 EUR im ERP.\nLimit überschritten.\n\nWorkflow System"
+}

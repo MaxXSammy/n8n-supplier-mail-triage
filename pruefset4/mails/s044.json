@@ -1,0 +1,8 @@
+{
+  "message_id": "<s044@pruefset4.example>",
+  "from": "Lieferant 4 <vertrieb@officina-rossi.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Gutschrift 40019 zu Reklamation PO 4500018410",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Anbei erhalten Sie die Gutschrift über 149,00 EUR für die fehlerhaften Teile aus PO 4500018410.\n\nLieferant 4 Finance"
+}

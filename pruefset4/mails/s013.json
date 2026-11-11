@@ -1,0 +1,8 @@
+{
+  "message_id": "<s013@pruefset4.example>",
+  "from": "Lieferant 7 <vertrieb@kovotech.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Lieferverzug 4500018413 / SP-10",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Hallo,\nBestellung 4500018413 (Spannstift SP-10, 4000 Stk) kann erst am 20.12.2026 geliefert werden.\n\nGrüße, Lieferant 7"
+}

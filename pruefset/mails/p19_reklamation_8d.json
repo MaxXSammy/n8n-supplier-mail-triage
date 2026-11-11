@@ -1,0 +1,8 @@
+{
+  "message_id": "<p19_reklamation_8d@pruefset.example>",
+  "from": "Stefan Huber <s.huber@brenner-zerspanung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "8D-Bericht zu Ihrer Reklamation Bestellung 4500018402",
+  "received_at": "2026-11-02T11:00:00+01:00",
+  "body": "Sehr geehrter Herr Schneider,\n\nanbei unser 8D-Bericht zu Ihrer Reklamation der Welle WE-12 aus Bestellung 4500018402. Die Ursache war Werkzeugverschleiß an Spindel 3. Wir haben die Standzeit verkürzt und die Ware ausgetauscht.\n\nStefan Huber"
+}

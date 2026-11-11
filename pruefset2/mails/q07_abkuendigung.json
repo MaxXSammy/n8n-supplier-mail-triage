@@ -1,0 +1,8 @@
+{
+  "message_id": "<q07_abkuendigung@pruefset2.example>",
+  "from": "Produktmanagement Brenner <pm@brenner-zerspanung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Abkündigung Welle WE-12",
+  "received_at": "2026-11-10T09:00:00+01:00",
+  "body": "Guten Tag,\n\nwir kündigen die Welle WE-12 zum 30.06.2027 ab. Letzter Bestelltermin ist der 31.03.2027. Als Nachfolger empfehlen wir die WE-12-N mit identischen Maßen und leicht geändertem Werkstoff. Bei Interesse senden wir ein Angebot.\n\nStefan Huber"
+}

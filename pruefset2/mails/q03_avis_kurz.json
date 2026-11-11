@@ -1,0 +1,8 @@
+{
+  "message_id": "<q03_avis_kurz@pruefset2.example>",
+  "from": "Alpen Versand <versand@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Ware unterwegs",
+  "received_at": "2026-11-10T08:00:00+01:00",
+  "body": "Hallo Herr Schneider,\n\ndie 1.200 Lagerbolzen (Bestellung 4500018411) sind heute raus und kommen morgen bei Ihnen an. Lieferschein liegt der Sendung bei.\n\nGruß aus Innsbruck"
+}

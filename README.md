@@ -50,7 +50,7 @@ Schwellen und Minuten stehen in der Tabelle `einstellungen` und lassen sich ohne
 
 ![Ausführung in n8n](docs/ausfuehrung_ticket.png)
 
-**Arbeitsliste** für den Einkauf: offene AB-Prüfungen mit Abweichungen und Antwortentwurf, darunter die Review-Queue
+**Arbeitsliste** für den Einkauf (der Screenshot zeigt noch die frühere Fassung): Überblick mit Kennzahlen, Mails zur Prüfung, offene Aufgaben nach Team mit Zusammenfassung und Warnungen. Je Aufgabe ein Knopf „Erledigt“, Antwortentwürfe und ein RFQ-Entwurf (Angebot anfordern, im Format für den Procurement-RAG-Agent) lassen sich ins Mailprogramm übernehmen. Darunter die Review-Queue
 
 ![Arbeitsliste](docs/arbeitsliste.png)
 
@@ -108,22 +108,93 @@ Der Haupt-Workflow folgt sechs Phasen, die im Canvas als farbige Bereiche markie
 
 | Kennzahl | Ergebnis | Bedeutung |
 |---|---|---|
-| Klassifizierungsgenauigkeit LLM | **97 %** (33/34) ² | Kategorie des LLM stimmt |
+| Klassifizierungsgenauigkeit LLM | **100 %** (34/34) ² | Kategorie des LLM stimmt |
 | Regel-Basislinie | 91 % (31/34) | Schlüsselwörter, ohne KI ¹ |
 | Falsch automatisch geroutet | **0** | Ticket mit falscher Kategorie, der teuerste Fehler |
-| Automatisierungsquote | 88 % (30/34) | ohne menschliche Prüfung |
+| Automatisierungsquote | 91 % (31/34) | ohne menschliche Prüfung |
 | Pflicht-Reviews erkannt | 3/3 | Betrugsversuch, unbekannte Bestellnummern |
 | Extraktionsgenauigkeit | 100 % (95/95) | Nummern, Preise, Mengen, Beträge, Termine |
-| AB-Entscheidung richtig | **95 %** (18/19) | automatisch bestätigt, manuell prüfen, Abweichung oder Review |
+| AB-Entscheidung richtig | **100 %** (19/19) | automatisch bestätigt, manuell prüfen, Abweichung oder Review |
 | AB fälschlich durchgewunken | **0** | automatisch bestätigt, obwohl ein Mensch prüfen sollte |
 | Ø Antwortzeit | 7 s | je Mail, lokal mit RTX 3060 Ti (8 GB) |
 
 ¹ Die Schlüsselwörter wurden in Kenntnis der Testmails gewählt. Der Wert ist deshalb optimistisch. Die Regeln können außerdem keine Daten extrahieren.
 
-² Der Prompt wurde während der Entwicklung an diesen Mails überarbeitet. Die Werte sind deshalb optimistisch und kein Beleg für fremde Daten.
+² Der Prompt und die Korrekturregel für Mail 22 (siehe unten) wurden an diesen Mails entwickelt. Die Werte sind deshalb optimistisch und kein Beleg für fremde Daten. Vor dem Einsatz sollten echte, nie gesehene Mails des Teams gegengeprüft werden.
+
+**Test mit neuen Mails (Prüfsatz)**
+
+Die 34 Mails oben dienten der Entwicklung. Zusätzlich liegen 31 neue Mails in `pruefset/` (andere Lieferanten, Sprachen, Formulierungen, Fallstricke). Die Lösungen wurden vor dem ersten Lauf festgelegt und committet, Prompt und Regeln blieben danach unverändert, gemessen wurde einmal: `python scripts/evaluate.py --set pruefset`, Ergebnis in [eval/ergebnisse_pruefset.md](eval/ergebnisse_pruefset.md).
+
+| Kennzahl | Entwicklungssatz (34) | Neuer Prüfsatz (31) |
+|---|---|---|
+| Kategorie richtig | 100 % | **94 %** (29/31) |
+| Falsch automatisch geroutet | 0 | **1** |
+| AB-Entscheidung richtig | 100 % | **93 %** (13/14) |
+| AB fälschlich durchgewunken | 0 | 0 |
+| Pflicht-Reviews erkannt | 3/3 | 3/3 |
+| Extraktionsgenauigkeit | 100 % | 96 % (81/84) |
+
+Die Fehler, ungeschönt:
+- **Datumsformate:** `10/12/2026` und „18 December 2026“ erkennt die Belegprüfung nicht. Der Termin wird verworfen, deshalb wird eine fehlerfreie AB als Abweichung („Termin fehlt“) vorgelegt und ein englischer Lieferverzug ohne Termin angelegt. Betroffen sind 2 von 31 Mails, beides Fehlalarme zur sicheren Seite.
+- **Gutschrift:** Das Modell gab einen Betrag aus, der so nicht im Text steht (`beleg_fehlt:betrag`). Die Belegprüfung hat ihn verworfen, die Mail geht an einen Menschen. Auch das ist die sichere Seite.
+- **Preisanpassungs-Rundschreiben** („neue Preise ab 01.01.2027“) ordnete das Modell als „sonstiges“ statt „angebot“ ein, und zwar als Ticket ohne Prüfung. Das ist der einzige Fehler mit Folgen: Die Mail landet beim falschen Team. Ob sie zu „angebot“ gehört, ist allerdings Auslegungssache.
+- **Prompt-Injection im Nebensatz:** Das Modell folgte der Anweisung und stufte die Mail als Rechnung ein. Die Regel gegen Injection hat sie trotzdem zu einem Menschen geschickt.
+
+Der Unterschied von 100 % zu 94 % ist die ehrliche Zahl für unbekannte Mails. Die Fehler sind bekannt und bewusst nicht nachträglich weggetunt.
+
+**Erweiterung auf 11 Kategorien (Lieferavis, Preisänderung, Stammdatenänderung, Compliance, Werbung)**
+
+Dafür gibt es einen zweiten Prüfsatz `pruefset2/` mit 27 Mails (22 für die neuen Kategorien, 5 Kontrollmails aus den alten). Die Lösungen standen vor der Änderung fest. Gemessen wurde je Satz einmal, ohne Nachbessern ([eval/ergebnisse_pruefset2.md](eval/ergebnisse_pruefset2.md)).
+
+| Satz | Kategorie richtig | AB-Entscheidung | falsch automatisch geroutet |
+|---|---|---|---|
+| Prüfsatz 2, neue Kategorien und Kontrollmails (27) | **100 %** (27/27) | 1/1 | 0 |
+| Prüfsatz 1, neue Mails, alte Kategorien (31): vorher 94 % | 87 % (27/31) | 86 % (12/14) | 3 |
+| Entwicklungsmails (34): vorher 100 % | 94 % (32/34) | 100 % (19/19) | 1 |
+| **Prüfsatz 3, extern geschrieben, nie gesehen (10)** | **60 %** (6/10) | 1/1 | 3 |
+
+So sind diese Zahlen zu lesen:
+- **Erste Messung der neuen Kategorien:** 21 von 22 Mails richtig, aber fünf Rückschritte bei alten Kategorien. Drei davon waren ABs mit Preiserhöhung, die als „Preisänderung“ eingeordnet wurden und damit die AB-Prüfung umgingen. Dafür gibt es jetzt eine feste Regel: Nennt eine „Preisänderung“ oder ein „Angebot“ unsere Bestellnummer und ausdrücklich „Auftragsbestätigung“, wird sie zur AB. Danach wurden alle Sätze noch einmal gemessen, **die Sätze 1, 2 und die Entwicklungsmails sind damit keine unabhängigen Tests mehr**.
+- **Streuung zwischen Läufen:** Ohne Änderung am Code kippten zwischen zwei Läufen zwei Mails (ein Versandavis und ein Lieferverzug) von falsch auf richtig. Bei 27 Mails sind ein bis zwei Mails Rauschen. Einzelne Prozentpunkte sind deshalb keine Verbesserung.
+- **Alte Lösungen, neue Kategorien:** In Satz 1 und bei den Entwicklungsmails gelten Bankdaten-Betrug, Zertifikat, Messe-Newsletter und Preisanpassungs-Rundschreiben noch als „falsch“, weil die Lösungen die neuen Kategorien nicht kannten. Das Modell ordnet sie jetzt besser ein. Die Lösungen wurden nicht angepasst.
+- **Wirklich offen aus Satz 1:** Eine AB mit Teilmenge wird als „Lieferverzug“ eingeordnet.
+- **Betrug:** Alle Bank- und Stammdatenänderungen gehen weiter an einen Menschen (Pflicht-Reviews in allen Sätzen erkannt).
+
+**Prüfsatz 3, die ehrliche Zahl:** Zehn von anderer Hand geschriebene Mails mit absichtlichen Fallen ([eval/ergebnisse_pruefset3.md](eval/ergebnisse_pruefset3.md)). 60 % ist wenig, aber die Mails sind bewusst gemein und der Satz ist klein. Die vier Fehler:
+- **Kaltakquise mit Schlüsselwörtern** („Ihr Angebot für Zahnradwellen“) wurde als Angebot eingeordnet und ging an den Strategischen Einkauf. Das ist der klarste Fehler.
+- **Interne Bedarfsanforderung (BANF)** mit Bestellnummer wurde als Auftragsbestätigung eingeordnet und ging an die Disposition.
+- **Sammel-Lieferverzug** zu zwei Bestellungen wurde als AB erkannt, die fehlende eindeutige Bestellnummer schickte sie zu einem Menschen. Das System hat den Fehler also abgefangen.
+- **Mischmail** mit vier Themen: Eine eindeutige Lösung gibt es nicht, das Modell wählte „Preisänderung“.
+
+Aus diesen Fehlern wird bewusst nicht am Prompt nachgebessert. Wer das tut, braucht danach wieder frische Mails.
+
+**Prüfsatz 4: 99 Mails von einem fremden Modell** (`pruefset4/`, Ergebnis in [eval/ergebnisse_pruefset4.md](eval/ergebnisse_pruefset4.md)). Quer durch alle Kategorien, dazu interne Mails (Bedarfsanforderungen, Freigaben, Systemmeldungen), Mischmails und knappe Antworten. Die Lösungen wurden vorher festgelegt, 25 Mails sind als mehrdeutig markiert. Prompt und Regeln waren bei diesem Lauf unverändert, gemessen wurde einmal. Die Mails sind synthetisch und keine echten Postfächer.
+
+| Kennzahl | Ergebnis |
+|---|---|
+| Kategorie richtig | **78 %** (77/99), ohne mehrdeutige Mails 81 % (60/74) |
+| Regel-Basislinie ohne KI | 59 % |
+| Betrug und Stammdatenänderung erkannt | 100 % (Pflicht-Reviews 3/3, Stammdaten 3/3) |
+| Werbung erkannt | 100 % (10/10) |
+| Reklamation | 100 % (4/4) |
+| Auftragsbestätigung | 90 % (18/20) |
+| AB-Entscheidung richtig | 85 % (11/13) |
+| AB fälschlich durchgewunken | **1** |
+| Falsch ohne Prüfung geroutet | 11, davon 7 mehrdeutig und 4 echte Fehler bei internen Mails |
+| „sonstiges“ (interne Mails, Systemmeldungen) | nur 13/25 richtig |
+
+Was das zeigt:
+- **Die Lieferantenmails funktionieren, die internen nicht.** Ohne „sonstiges“ liegen die Kategorien bei 86 % (64/74). Das Sammelbecken „sonstiges“ ist die Schwachstelle: Interne Bedarfsanforderungen und Systemmeldungen werden als Angebot, Auftragsbestätigung oder Lieferverzug eingeordnet und gehen an die falsche Stelle. Acht von zwölf Fehlern fängt eine Prüfung ab und schickt sie zu einem Menschen.
+- **Der gefährlichste Fehler:** Eine AB mit Preis in EUR statt CHF wurde automatisch bestätigt. Die Währung wird nicht gegen die Bestellung geprüft.
+- **Gut:** Alle Bankdaten- und Adressänderungen, alle Werbemails und alle Reklamationen wurden richtig behandelt.
+
+**Zeitersparnis, vorsichtig gerechnet** (Annahme des Einkäufers: durchschnittlich 5 Minuten je Mail, nicht gemessen): In diesem Satz werden 20 % der Mails ohne jede menschliche Arbeit erledigt (10 Werbemails abgelegt, 10 ABs ohne Abweichung automatisch bestätigt). Bei 1.000 Mails im Monat sind das etwa 17 Stunden im Monat oder 200 Stunden im Jahr. Alle anderen Mails sind vorsortiert und ausgelesen, brauchen aber weiter einen Menschen. Wie viel Zeit das spart, ist nicht gemessen. Die Verteilung der Mails im echten Postfach kann von diesem Testsatz abweichen.
 
 **Was die Messung gezeigt hat**
 
+- **Prompt-Tuning gegen den einen Fehler hat es schlimmer gemacht.** Ein Zusatz im Prompt („Ein Angebot bezieht sich nie auf unsere Bestellungen“) ließ die Genauigkeit von 97 auf 94 % fallen: Mail 22 blieb falsch, eine zweite AB kippte dazu. Der Zusatz ist zurückgenommen. Stattdessen korrigiert eine feste Regel im Code eindeutige Fälle: Ein „Angebot“ mit unserer Bestellnummer und dem ausdrücklichen Wort „Auftragsbestätigung“ oder „wir bestätigen Ihre Bestellung“ wird zur AB (Warnung `kategorie_korrigiert`), danach läuft die normale AB-Prüfung. Ergebnis: 100 % (34/34), AB-Entscheidung 19/19.
+- **Dieselbe Mail unter neuer Message-ID ergab ein zweites Ticket.** Die Duplikat-Prüfung kannte nur die Message-ID. Jetzt zählt zusätzlich der Inhalt: Absender, Betreff ohne „AW:/WG:“ und Text ergeben einen Hash, gleicher Hash innerhalb von 30 Tagen heißt Duplikat. Weitergeleitete oder erneut zugestellte Mails erzeugen kein zweites Ticket, eine Mail mit anderem Betreff oder Text weiterhin schon.
 - **Eine AB mit Preiserhöhung hielt das LLM für ein Angebot.** Damit lief der Abgleich mit der Bestellung gar nicht. Die Plausibilitätsregel (Angebot mit Bestellnummer) schickt sie jetzt an einen Menschen. Ihr erster Entwurf löste auch bei einem echten Angebot aus, weil das LLM die Anfragenummer als Bestellnummer eintrug. Jetzt zählen nur Nummern im Format unserer Bestellungen.
 - **Die Grafikkarte entscheidet über die Antwortzeit.** Mit einem Kontextfenster von 8.192 Tokens passte das Modell nicht mehr neben Browser und Docker in 8 GB Grafikspeicher. Die Antwortzeit stieg von 7 auf 60 Sekunden. Mit 4.096 Tokens und einer Längengrenze für die Ausgabe läuft es wieder schnell.
 - **Die Konfidenz des LLM ist kein brauchbares Signal.** Sie lag bei allen Mails zwischen 0,8 und 0,95, auch bei der einzigen falschen Klassifizierung. Die Konfidenz-Schwelle hat nie gegriffen. Abgesichert haben die deterministischen Prüfungen.
@@ -246,13 +317,19 @@ docs/                       # Screenshots, Vorschaubilder für GitHub und Linked
 
 ## Bekannte Grenzen
 
+- Auf einem extern geschriebenen Prüfsatz mit absichtlichen Fallen (10 Mails) liegt die Kategorie-Genauigkeit bei 60 %. Bekannte Fehlerbilder: Kaltakquise mit Wörtern wie „Angebot“ wird als Angebot eingeordnet, interne Bedarfsanforderungen (BANF) mit Bestellnummer als Auftragsbestätigung, Mischmails mit mehreren Themen landen in einer einzigen Kategorie, eine AB mit Teilmenge teils als Lieferverzug. Datumsformate wie `10/12/2026` und „18 December 2026“ werden verworfen. Diese Fehler sind gemessen und nicht weggetunt, Details in der Erfolgsmessung.
+- **Währung wird bei ABs nicht geprüft.** Nennt eine AB den richtigen Preis in der falschen Währung (z. B. 1,85 EUR statt 1,85 CHF), wird sie automatisch bestätigt. Im Prüfsatz 4 ist das der einzige Fall, in dem eine AB fälschlich durchging. Bisher nicht behoben.
+- Interne Mails und Systemmeldungen landen in „sonstiges“ nur zur Hälfte richtig (13 von 25 im Prüfsatz 4). Vier gingen ohne Prüfung an die falsche Stelle, etwa eine Bedarfsanforderung als Angebot. Eine eigene Kategorie dafür wurde bewusst nicht gebaut.
+- Zwischen zwei Läufen streuen die Ergebnisse um ein bis zwei Mails, auch ohne Änderung am Code. Kleine Unterschiede sind kein Beleg für eine Verbesserung.
+- Interne Mails (Bedarfsanforderungen, Freigabeanfragen) und Systemnachrichten (EDI-Fehler) haben keine eigene Kategorie und landen im Sammelpostfach. Das ist Absicht: Das Tool sortiert das Lieferanten-Postfach.
 - Die Testdaten sind klein (34 Mails) und selbst geschrieben. Sie zeigen das Vorgehen, ersetzen aber keine Messung mit echten Postfächern.
 - Die Belegprüfung erkennt erfundene Werte, aber keine falsch zugeordneten. Bei einem Angebot mit Preisen je 100 Stück gab das LLM „298“ als Gesamtbetrag aus. Die Zahl steht im Text und rutscht durch.
 - Die Konfidenz-Schwelle ist in der jetzigen Form wirkungslos, weil das Modell fast immer 0,9 angibt. Eine belastbare Unsicherheit bräuchte z. B. mehrere Läufe mit Abstimmung oder ein zweites Modell.
 - Die Erkennung geänderter Bankdaten und von Prompt-Injection beruht auf regulären Ausdrücken. Wer die Muster kennt, kann sie umgehen, etwa mit Umschreibungen oder einer anderen Sprache. Sie sind eine zusätzliche Sicherung, kein vollständiger Schutz. Rechnungen mit IBAN und „ab sofort“ im Text können dagegen unnötig im Review landen. In einem echten Einsatz gehört deshalb dazu, dass ein Ticket keine Zahlung auslöst: Bezahlt wird erst nach Abgleich von Bestellung, Wareneingang und Rechnung im ERP.
 - Bestellungen und Lieferanten stehen in einer eigenen Tabelle statt im ERP. Jede Bestellung hat genau eine Position. Mehrere Positionen, Mengenstaffeln und Teilbestätigungen sind nicht abgebildet.
 - Wird eine AB über die Review-Queue zugeordnet (z. B. nach einem Zahlendreher), läuft der Abgleich mit der Bestellung nicht automatisch nach.
-- Offene AB-Aufgaben lassen sich noch nicht als erledigt markieren. Sie bleiben auf der Arbeitsliste, bis der Status in der Datenbank geändert wird.
+- Das Tool sendet selbst keine Mails. Antwort- und RFQ-Entwürfe öffnen sich im Mailprogramm, der Einkäufer prüft und sendet sie selbst.
+- Die Review-Queue wird weiter über ein n8n-Formular abgeschlossen, nicht direkt in der Arbeitsliste.
 - Die Liefertreue ist ein fester Wert je Lieferant. Im echten Einsatz käme sie aus dem ERP und würde laufend aktualisiert.
 - Im Review lässt sich nur die Kategorie korrigieren, nicht einzelne Felder. Eine verworfene Bestellnummer muss der Bearbeiter in der Notiz nachtragen.
 - Mails kommen als JSON per Webhook. Ein echtes Postfach (IMAP-Trigger), Anhänge (PDF-Rechnungen) und Benachrichtigungen der Teams sind nicht angebunden. Im Error-Workflow steht für die Benachrichtigung nur ein Platzhalter.

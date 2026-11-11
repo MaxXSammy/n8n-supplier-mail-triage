@@ -1,0 +1,345 @@
+{
+  "p01_ab_swiss_ok": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018405",
+      "einzelpreis": 1.85,
+      "menge": 500,
+      "liefertermin": "2026-11-18"
+    },
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  },
+  "p02_ab_brenner_ok": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018525",
+      "einzelpreis": 1.2,
+      "menge": 600,
+      "liefertermin": "2026-12-03"
+    },
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  },
+  "p03_ab_alpen_termin_spaeter": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018401",
+      "einzelpreis": 3.12,
+      "menge": 2000,
+      "liefertermin": "2026-11-27"
+    },
+    "ab": {
+      "ergebnis": "abweichung",
+      "gruende": [
+        "termin_spaeter"
+      ]
+    }
+  },
+  "p04_ab_alpen_teilmenge": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018411",
+      "einzelpreis": 2.45,
+      "menge": 1000,
+      "liefertermin": "2026-11-14"
+    },
+    "ab": {
+      "ergebnis": "abweichung",
+      "gruende": [
+        "menge"
+      ]
+    }
+  },
+  "p05_ab_rheinwerk_liefertreue": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018404",
+      "einzelpreis": 6.4,
+      "menge": 2400,
+      "liefertermin": "2026-11-25"
+    },
+    "ab": {
+      "ergebnis": "manuell_pruefen",
+      "gruende": [
+        "liefertreue_unter_schwelle"
+      ]
+    }
+  },
+  "p06_ab_kovotech_englisch": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018413",
+      "einzelpreis": 0.31,
+      "menge": 4000,
+      "liefertermin": "2026-12-09"
+    },
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  },
+  "p07_ab_feldmann_preis_termin": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018408",
+      "einzelpreis": 0.89,
+      "menge": 1000,
+      "liefertermin": "2026-12-04"
+    },
+    "ab": {
+      "ergebnis": "abweichung",
+      "gruende": [
+        "preis",
+        "termin_spaeter"
+      ]
+    }
+  },
+  "p08_ab_rossi_datum_mit_schraegstrich": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018415",
+      "einzelpreis": 0.27,
+      "menge": 2000,
+      "liefertermin": "2026-12-10"
+    },
+    "ab": {
+      "ergebnis": "automatisch_bestaetigt",
+      "gruende": []
+    }
+  },
+  "p09_ab_rossi_termin_unsicher": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018410",
+      "einzelpreis": 2.98,
+      "menge": 3000,
+      "liefertermin": null
+    },
+    "ab": {
+      "ergebnis": "abweichung",
+      "gruende": [
+        "termin_unsicher"
+      ]
+    }
+  },
+  "p10_ab_swiss_blind": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018412",
+      "einzelpreis": 0.92,
+      "menge": 3000,
+      "liefertermin": "2026-11-21"
+    },
+    "ab": {
+      "ergebnis": "manuell_pruefen",
+      "gruende": [
+        "blindbestaetigung_verdacht"
+      ]
+    }
+  },
+  "p11_ab_precimet_liefertreue_knapp": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018416",
+      "einzelpreis": 0.19,
+      "menge": 2500,
+      "liefertermin": "2026-12-15"
+    },
+    "ab": {
+      "ergebnis": "manuell_pruefen",
+      "gruende": [
+        "liefertreue_unter_schwelle"
+      ]
+    }
+  },
+  "p12_ab_nordform_neu": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018406",
+      "einzelpreis": 2.95,
+      "menge": 800,
+      "liefertermin": "2026-12-01"
+    },
+    "ab": {
+      "ergebnis": "manuell_pruefen",
+      "gruende": [
+        "neuer_lieferant"
+      ]
+    }
+  },
+  "p13_ab_bestellung_unbekannt": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": true,
+    "felder": {
+      "bestellnummer": "4500018420",
+      "einzelpreis": 0.64,
+      "menge": 1500,
+      "liefertermin": "2026-12-10"
+    },
+    "ab": {
+      "ergebnis": "review",
+      "gruende": [
+        "bestellung_unbekannt"
+      ]
+    }
+  },
+  "p14_ab_alpen_domain_vertippt": {
+    "kategorie": "auftragsbestaetigung",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018418",
+      "einzelpreis": 0.09,
+      "menge": 5000,
+      "liefertermin": "2026-12-03"
+    },
+    "ab": {
+      "ergebnis": "manuell_pruefen",
+      "gruende": [
+        "absender_domain_abweichend"
+      ]
+    }
+  },
+  "p15_angebot_kuhnert": {
+    "kategorie": "angebot",
+    "muss_review": false,
+    "felder": {
+      "angebotsnummer": "AN-2026-7731",
+      "betrag": 15300.0,
+      "waehrung": "EUR"
+    }
+  },
+  "p16_angebot_englisch": {
+    "kategorie": "angebot",
+    "muss_review": false,
+    "felder": {
+      "angebotsnummer": "Q-55102",
+      "betrag": 9870.0,
+      "waehrung": "EUR"
+    }
+  },
+  "p17_angebot_ohne_nummer": {
+    "kategorie": "angebot",
+    "muss_review": false,
+    "felder": {
+      "angebotsnummer": null,
+      "betrag": null
+    }
+  },
+  "p18_angebot_preisanpassung": {
+    "kategorie": "angebot",
+    "muss_review": false,
+    "felder": {
+      "angebotsnummer": null,
+      "betrag": null
+    }
+  },
+  "p19_reklamation_8d": {
+    "kategorie": "reklamation",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018402"
+    }
+  },
+  "p20_reklamation_ersatz": {
+    "kategorie": "reklamation",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018411"
+    }
+  },
+  "p21_reklamation_italienisch": {
+    "kategorie": "reklamation",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018410"
+    }
+  },
+  "p22_lieferverzug_neuer_termin": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018411",
+      "liefertermin": "2026-11-28"
+    }
+  },
+  "p23_lieferverzug_teillieferung": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018413",
+      "liefertermin": "2026-12-09"
+    }
+  },
+  "p24_lieferverzug_englisch": {
+    "kategorie": "lieferverzug",
+    "muss_review": false,
+    "felder": {
+      "bestellnummer": "4500018416",
+      "liefertermin": "2026-12-18"
+    }
+  },
+  "p25_rechnung_chf": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {
+      "rechnungsnummer": "20261077",
+      "betrag": 3915.6,
+      "waehrung": "CHF"
+    }
+  },
+  "p26_zahlungserinnerung": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {
+      "rechnungsnummer": "RE-2026-09981",
+      "betrag": 1280.4,
+      "waehrung": "EUR"
+    }
+  },
+  "p27_gutschrift": {
+    "kategorie": "rechnung",
+    "muss_review": false,
+    "felder": {
+      "rechnungsnummer": "GS-2026-0412",
+      "betrag": 312.5,
+      "waehrung": "EUR"
+    }
+  },
+  "p28_betriebsferien": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "p29_bankdaten_betrug": {
+    "kategorie": "sonstiges",
+    "muss_review": true,
+    "felder": {}
+  },
+  "p30_newsletter_messe": {
+    "kategorie": "sonstiges",
+    "muss_review": false,
+    "felder": {}
+  },
+  "p31_injektion": {
+    "kategorie": "sonstiges",
+    "muss_review": true,
+    "felder": {}
+  }
+}

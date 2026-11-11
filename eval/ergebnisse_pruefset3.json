@@ -1,0 +1,206 @@
+{
+  "lauf": "20261111-083624",
+  "modell": "qwen2.5:7b",
+  "schwelle": "0.75",
+  "ergebnisse": [
+    {
+      "mail": "r01_ab_teillieferung_karton",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018401",
+          "4500018401"
+        ],
+        "einzelpreis": [
+          3.12,
+          3.12
+        ]
+      },
+      "ab": {
+        "erwartet": "abweichung",
+        "erwartete_gruende": [
+          "termin_unsicher"
+        ],
+        "ist": "abweichung",
+        "ist_gruende": [
+          "menge",
+          "termin_spaeter"
+        ]
+      },
+      "sekunden": 7.05
+    },
+    {
+      "mail": "r02_reklamation_po_tippfehler",
+      "http": 200,
+      "status": "ticket",
+      "gold": "reklamation",
+      "llm": "reklamation",
+      "regel": "rechnung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018405",
+          "4500018405"
+        ]
+      },
+      "ab": null,
+      "sekunden": 6.33
+    },
+    {
+      "mail": "r03_sammel_lieferverzug",
+      "http": 202,
+      "status": "review",
+      "gold": "lieferverzug",
+      "llm": "auftragsbestaetigung",
+      "regel": "lieferverzug",
+      "konfidenz": 0.95,
+      "gruende": [
+        "pflichtfeld_fehlt:bestellnummer"
+      ],
+      "warnungen": [
+        "liefertermin_format",
+        "beleg_fehlt:bestellnummer"
+      ],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 7.22
+    },
+    {
+      "mail": "r04_preiserhoehung_zuschlag",
+      "http": 200,
+      "status": "ticket",
+      "gold": "preisaenderung",
+      "llm": "preisaenderung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.33
+    },
+    {
+      "mail": "r05_rechnungsklaerung_preisabweichung",
+      "http": 200,
+      "status": "ticket",
+      "gold": "rechnung",
+      "llm": "rechnung",
+      "regel": "angebot",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "rechnungsnummer": [
+          "2026-8891",
+          "2026-8891"
+        ],
+        "betrag": [
+          9540.0,
+          9540
+        ],
+        "waehrung": [
+          "EUR",
+          "EUR"
+        ]
+      },
+      "ab": null,
+      "sekunden": 6.68
+    },
+    {
+      "mail": "r06_interne_banf",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "auftragsbestaetigung",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [
+        "beleg_fehlt:liefertermin"
+      ],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.4
+    },
+    {
+      "mail": "r07_phishing_bank",
+      "http": 202,
+      "status": "review",
+      "gold": "stammdatenaenderung",
+      "llm": "stammdatenaenderung",
+      "regel": "stammdatenaenderung",
+      "konfidenz": 1,
+      "gruende": [
+        "stammdatenaenderung_pruefen",
+        "bankdatenaenderung"
+      ],
+      "warnungen": [
+        "beleg_fehlt:bestellnummer"
+      ],
+      "muss_review": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.17
+    },
+    {
+      "mail": "r08_kaltakquise_keywords",
+      "http": 200,
+      "status": "ticket",
+      "gold": "werbung",
+      "llm": "angebot",
+      "regel": "angebot",
+      "konfidenz": 0.8,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.55
+    },
+    {
+      "mail": "r09_edi_fehler",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "sonstiges",
+      "regel": "sonstiges",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.04
+    },
+    {
+      "mail": "r10_chaos_mehrere_themen",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferverzug",
+      "llm": "preisaenderung",
+      "regel": "compliance",
+      "konfidenz": 0.8,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 7.22
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "message_id": "<s093@pruefset4.example>",
+  "from": "Lieferant 2 <vertrieb@brenner-zerspanung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Best. 4500018403 / DS08",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "5000 stueck werden geliefert am 4.12.26.\n\nLieferant 2"
+}

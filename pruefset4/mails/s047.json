@@ -1,0 +1,8 @@
+{
+  "message_id": "<s047@pruefset4.example>",
+  "from": "Lieferant 3 <vertrieb@feldmann-praezisionsteile.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Stornorechnung 90122 / PO 4500018414",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Anbei die Stornierung der fehlerhaften Rechnung 90122.\n\nLieferant 3 Accounting"
+}

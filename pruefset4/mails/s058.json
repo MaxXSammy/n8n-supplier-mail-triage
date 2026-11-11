@@ -1,0 +1,8 @@
+{
+  "message_id": "<s058@pruefset4.example>",
+  "from": "Compliance <compliance@absender-unbekannt.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "REACH / RoHS Konformitätserklärung 2026",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Anbei die aktuellen RoHS Erklärungen für Artikel DS-08 und RI-14.\n\nCompliance"
+}

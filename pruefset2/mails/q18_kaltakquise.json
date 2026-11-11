@@ -1,0 +1,8 @@
+{
+  "message_id": "<q18_kaltakquise@pruefset2.example>",
+  "from": "Sven Berger <s.berger@stahlfix-handel.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Ihr Einkauf: bis zu 30 % sparen",
+  "received_at": "2026-11-12T11:00:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\n\nwir sind Stahlfix, ein neuer Anbieter für Präzisionswellen, und würden Sie gerne als Kunden gewinnen. Mit unserem Erstkundenrabatt sparen Sie bis zu 30 %. Dürfen wir Ihnen einen Termin für ein kurzes Gespräch vorschlagen?\n\nSven Berger, Stahlfix Handel"
+}

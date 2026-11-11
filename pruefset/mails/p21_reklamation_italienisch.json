@@ -1,0 +1,8 @@
+{
+  "message_id": "<p21_reklamation_italienisch@pruefset.example>",
+  "from": "Marco Bellini <m.bellini@officina-rossi.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Reclamo ordine 4500018410 - risposta",
+  "received_at": "2026-11-04T10:15:00+01:00",
+  "body": "Buongiorno,\n\nin merito al Vostro reclamo per l'ordine 4500018410: abbiamo verificato le misure dell'albero AW-40, sono fuori tolleranza di 0,05 mm. Sostituiremo tutto il lotto a nostre spese.\n\nCordiali saluti\nMarco Bellini"
+}

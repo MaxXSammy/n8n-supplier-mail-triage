@@ -4,3 +4,6 @@ __pycache__/
 .venv/
 eval/laeufe/
 INTERVIEW_SPICKZETTEL.md
+
+# Datenbank-Sicherungen enthalten Testdaten
+backups/

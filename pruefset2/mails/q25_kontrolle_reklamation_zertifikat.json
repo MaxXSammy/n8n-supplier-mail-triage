@@ -1,0 +1,8 @@
+{
+  "message_id": "<q25_kontrolle_reklamation_zertifikat@pruefset2.example>",
+  "from": "Stefan Huber <s.huber@brenner-zerspanung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Reklamation Bestellung 4500018402 – Werkstoffzeugnis fehlt",
+  "received_at": "2026-11-12T16:30:00+01:00",
+  "body": "Guten Tag Herr Schneider,\n\nzu Ihrer Reklamation der Wellen aus Bestellung 4500018402: Wir haben die Härteprüfung wiederholt, die Ware ist in Ordnung. Das Werkstoffzeugnis 3.1 reichen wir nach, es war versehentlich nicht beigelegt.\n\nStefan Huber"
+}

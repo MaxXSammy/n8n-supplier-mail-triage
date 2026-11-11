@@ -1,0 +1,8 @@
+{
+  "message_id": "<p10_ab_swiss_blind@pruefset.example>",
+  "from": "Reto Meier <r.meier@swissturning.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "AB 4500018412",
+  "received_at": "2026-10-28T13:07:00+01:00",
+  "body": "Guten Tag\n\nBestellung 4500018412 bestätigt: 3.000 Stück Gewindestift GS-4 à 0,92 CHF, Lieferung 21.11.2026.\n\nGruss\nR. Meier"
+}

@@ -1,0 +1,8 @@
+{
+  "message_id": "<p28_betriebsferien@pruefset.example>",
+  "from": "Jens Albrecht <j.albrecht@rheinwerk-komponenten.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Betriebsferien zum Jahreswechsel",
+  "received_at": "2026-11-07T13:00:00+01:00",
+  "body": "Sehr geehrte Geschäftspartner,\n\nunser Werk ist vom 24.12.2026 bis 03.01.2027 geschlossen. Bestellungen, die bis 15.12. eingehen, liefern wir noch vor der Pause.\n\nJens Albrecht"
+}

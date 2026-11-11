@@ -1,0 +1,8 @@
+{
+  "message_id": "<s073@pruefset4.example>",
+  "from": "Metal Processing <metal.processing@metal-processing.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Kapazitäten frei für Dreh- und Frästeile!",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Sehr geehrte Einkaufsleitung,\nwir haben kurzfristig Kapazitäten frei für Artikel wie AW-40 oder WE-12.\n\nMetal Processing Sp z o.o."
+}

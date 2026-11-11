@@ -1,0 +1,8 @@
+{
+  "message_id": "<q09_energiezuschlag@pruefset2.example>",
+  "from": "Rheinwerk Vertrieb <vertrieb@rheinwerk-komponenten.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Energiezuschlag ab Dezember",
+  "received_at": "2026-11-10T13:00:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\n\nab 01.12.2026 erheben wir auf alle Lieferungen einen Energiezuschlag von 2,5 % auf den Warenwert. Er entfällt, sobald der Strompreis wieder unter 12 Cent pro kWh liegt.\n\nJens Albrecht"
+}

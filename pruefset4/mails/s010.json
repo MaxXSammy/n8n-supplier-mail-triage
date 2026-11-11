@@ -1,0 +1,8 @@
+{
+  "message_id": "<s010@pruefset4.example>",
+  "from": "QS Fertigung <qs.fertigung@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Reklamation 4500018410 AW-40",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Guten Tag,\nvon der Lieferung 4500018410 (Antriebswelle AW-40) wurden 50 Stk mit Grat geliefert.\nBitte Nacharbeitsfreigabe erteilen.\n\nQS Fertigung"
+}

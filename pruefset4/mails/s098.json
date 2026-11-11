@@ -1,0 +1,8 @@
+{
+  "message_id": "<s098@pruefset4.example>",
+  "from": "Lieferant 7 <vertrieb@kovotech.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Bestaetigung_4500018413.pdf",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Im Anhang befindet sich die AB zu PO 4500018413.\n\nLieferant 7 Auto-Mail"
+}

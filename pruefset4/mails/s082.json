@@ -1,0 +1,8 @@
+{
+  "message_id": "<s082@pruefset4.example>",
+  "from": "Lieferant 9 <vertrieb@nordform.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Re: 4500018406 / Reklamation & Preiserhöhung",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\nzu Bestellung 4500018406: Wir lehnen die Reklamation ab.\nZusätzlich erhöhen wir den Preis von KG-30 auf 3,20 EUR.\n\nLieferant 9"
+}

@@ -1,0 +1,8 @@
+{
+  "message_id": "<p06_ab_kovotech_englisch@pruefset.example>",
+  "from": "Petr Novák <p.novak@kovotech.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Order confirmation PO 4500018413",
+  "received_at": "2026-10-31T09:00:00+01:00",
+  "body": "Dear Mr Schneider,\n\nwe confirm your purchase order 4500018413:\n\nItem: SP-10 dowel pin\nQuantity: 4,000 pcs\nUnit price: 0.31 EUR\nDelivery date: 09.12.2026\n\nBest regards\nPetr Novák\nKovotech s.r.o."
+}

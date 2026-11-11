@@ -1,0 +1,8 @@
+{
+  "message_id": "<s006@pruefset4.example>",
+  "from": "Lieferant 9 <vertrieb@nordform.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Verspätung 4500018406 / KG-30",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Guten Tag,\nKundennummer: L-9002\nBestellung: 4500018406\nDie Kunststoffgehäuse KG-30 (800 Stk) koennen erst am 15.12.2026 geliefert werden.\n\nVertrieb Lieferant 9"
+}

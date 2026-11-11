@@ -1,0 +1,8 @@
+{
+  "message_id": "<p17_angebot_ohne_nummer@pruefset.example>",
+  "from": "Jörg Kuhnert <j.kuhnert@kuhnert-stahl.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Bolzen B-14",
+  "received_at": "2026-11-03T16:45:00+01:00",
+  "body": "Hallo,\n\nzu Ihrer Anfrage: Wir können Ihnen 2.000 Stück Bolzen B-14 zum Stückpreis von 1,15 EUR anbieten, gültig bis 30.11.2026.\n\nGruß\nJ. Kuhnert"
+}

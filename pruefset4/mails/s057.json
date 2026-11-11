@@ -1,0 +1,8 @@
+{
+  "message_id": "<s057@pruefset4.example>",
+  "from": "Lieferant 7 <vertrieb@kovotech.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Adressänderung Werk Süd",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Unsere Rechnungsadresse hat sich zum 01.11. geändert.\n\nLieferant 7 Admin"
+}

@@ -1,0 +1,8 @@
+{
+  "message_id": "<q24_kontrolle_angebot@pruefset2.example>",
+  "from": "Jörg Kuhnert <j.kuhnert@kuhnert-stahl.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Angebot AN-2026-8120 zu Ihrer Anfrage AS-2027-020",
+  "received_at": "2026-11-12T16:00:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\n\nzu Ihrer Anfrage AS-2027-020 bieten wir 5.000 Stück Distanzscheibe DS-10 zu 0,055 EUR pro Stück an. Gesamtpreis 275,00 EUR, Lieferzeit 3 Wochen.\n\nJörg Kuhnert"
+}

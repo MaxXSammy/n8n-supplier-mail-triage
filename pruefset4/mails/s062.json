@@ -1,0 +1,8 @@
+{
+  "message_id": "<s062@pruefset4.example>",
+  "from": "SupplyOn Admin <supplyon.admin@supplyon-einladung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Einladung zum Lieferantenportal SupplyOn",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Sie wurden von Ihrem Kunden eingeladen dem Portal beizutreten.\n\nSupplyOn Admin"
+}

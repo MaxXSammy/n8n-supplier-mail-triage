@@ -1,0 +1,8 @@
+{
+  "message_id": "<s092@pruefset4.example>",
+  "from": "Lieferant 2 <vertrieb@brenner-zerspanung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "PO: 4500018402---WE-12",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Auftragsbestaetigung erhalten und eingeplant. 1500 Stk.\n\nLieferant 2 Sales"
+}

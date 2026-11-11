@@ -1,0 +1,8 @@
+{
+  "message_id": "<s027@pruefset4.example>",
+  "from": "Logistik <logistik@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Dringende Anforderung Verpackungsmaterial",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Hi,\nuns gehen die Kartons aus. Bitte 500 Stk Standard-Karton Typ B bestellen.\n\nLogistik"
+}

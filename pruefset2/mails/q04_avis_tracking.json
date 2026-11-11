@@ -1,0 +1,8 @@
+{
+  "message_id": "<q04_avis_tracking@pruefset2.example>",
+  "from": "Swiss Turning Versand <versand@swissturning.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Sendungsverfolgung zu 4500018405",
+  "received_at": "2026-11-10T14:20:00+01:00",
+  "body": "Guten Tag\n\nIhre Lieferung zur Bestellung 4500018405 (500 Stück PB-6) wurde heute an den Paketdienst übergeben. Sendungsnummer 99120033412, Zustellung voraussichtlich am 13.11.2026. Zollpapiere liegen bei.\n\nFreundliche Grüsse\nSwiss Turning AG"
+}

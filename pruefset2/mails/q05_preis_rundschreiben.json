@@ -1,0 +1,8 @@
+{
+  "message_id": "<q05_preis_rundschreiben@pruefset2.example>",
+  "from": "Vertrieb Kuhnert <vertrieb@kuhnert-stahl.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Preisanpassung zum 01.01.2027",
+  "received_at": "2026-11-09T10:00:00+01:00",
+  "body": "Sehr geehrte Geschäftspartner,\n\nwegen gestiegener Energie- und Rohstoffkosten müssen wir unsere Preise zum 01.01.2027 um durchschnittlich 4,2 % anheben. Die neue Preisliste finden Sie im Anhang. Für Bestellungen bis 15.12.2026 gelten noch die alten Preise.\n\nIhr Vertriebsteam"
+}

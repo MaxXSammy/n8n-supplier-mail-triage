@@ -1,0 +1,8 @@
+{
+  "message_id": "<q20_portal_einladung@pruefset2.example>",
+  "from": "SupplyOn Portal <noreply@portal-einladung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Einladung zur Teilnahme am Lieferantenportal",
+  "received_at": "2026-11-12T13:00:00+01:00",
+  "body": "Guten Tag,\n\nSie wurden eingeladen, sich im Lieferantenportal von Beispiel Konzern zu registrieren. Klicken Sie auf den Link, um Ihr Konto zu aktivieren. Der Link ist 7 Tage gültig.\n\nDiese Nachricht wurde automatisch erstellt."
+}

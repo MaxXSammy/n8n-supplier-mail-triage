@@ -1,0 +1,8 @@
+{
+  "message_id": "<s088@pruefset4.example>",
+  "from": "Lieferant 3 <vertrieb@feldmann-praezisionsteile.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "AW: Reklamation PO 4500018414 & Preisanpassung",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Wir ersetzen die defekten Buchsen BU-22.\nNeue Preise ab 2027 im Anhang.\n\nLieferant 3"
+}

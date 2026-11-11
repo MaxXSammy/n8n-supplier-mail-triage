@@ -1,0 +1,8 @@
+{
+  "message_id": "<p04_ab_alpen_teilmenge@pruefset.example>",
+  "from": "Katharina Gruber <k.gruber@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "AB 4500018411 Lagerbolzen",
+  "received_at": "2026-10-29T09:00:00+01:00",
+  "body": "Guten Tag,\n\nzu Ihrer Bestellung 4500018411: Wegen knappem Rohmaterial können wir zunächst nur 1.000 Stück Lagerbolzen LB-20 bestätigen (bestellt waren 1.200). Preis unverändert 2,45 EUR, Liefertermin 14.11.2026. Über den Rest sprechen wir, sobald das Material da ist.\n\nViele Grüße\nK. Gruber"
+}

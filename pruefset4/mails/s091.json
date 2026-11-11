@@ -1,0 +1,8 @@
+{
+  "message_id": "<s091@pruefset4.example>",
+  "from": "Lieferant 1 <vertrieb@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "4500018401 Bestatigung",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Bestetigt 2000 Stk AW-40. Termine ok.\n\nLieferant1"
+}

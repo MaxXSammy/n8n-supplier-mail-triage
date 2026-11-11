@@ -1,0 +1,8 @@
+{
+  "message_id": "<s052@pruefset4.example>",
+  "from": "Lieferant 1 <vertrieb@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "LkSG Auskunft & Sicherheitsdatenblätter 2026",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\nim Rahmen des Lieferkettensorgfaltspflichtengesetzes bitten wir um Ausfüllen des Fragebogens im Anhang.\n\nCompliance Officer Lieferant 1"
+}

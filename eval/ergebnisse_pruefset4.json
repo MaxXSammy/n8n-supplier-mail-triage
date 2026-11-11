@@ -1,0 +1,1879 @@
+{
+  "lauf": "20261111-084816",
+  "modell": "qwen2.5:7b",
+  "schwelle": "0.75",
+  "ergebnisse": [
+    {
+      "mail": "s001",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "lieferverzug",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [
+        "beleg_fehlt:menge"
+      ],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 9.97
+    },
+    {
+      "mail": "s002",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferavis",
+      "llm": "lieferavis",
+      "regel": "lieferavis",
+      "konfidenz": 1,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.16
+    },
+    {
+      "mail": "s003",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferverzug",
+      "llm": "lieferverzug",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018403",
+          "4500018403"
+        ],
+        "liefertermin": [
+          "2026-12-20",
+          "2026-12-20"
+        ]
+      },
+      "ab": null,
+      "sekunden": 6.17
+    },
+    {
+      "mail": "s004",
+      "http": 200,
+      "status": "ticket",
+      "gold": "reklamation",
+      "llm": "reklamation",
+      "regel": "reklamation",
+      "konfidenz": 1,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018404",
+          "4500018404"
+        ]
+      },
+      "ab": null,
+      "sekunden": 5.86
+    },
+    {
+      "mail": "s005",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "lieferverzug",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": {
+        "erwartet": "abweichung",
+        "erwartete_gruende": [
+          "waehrung"
+        ],
+        "ist": "automatisch_bestaetigt",
+        "ist_gruende": []
+      },
+      "sekunden": 6.4
+    },
+    {
+      "mail": "s006",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferverzug",
+      "llm": "lieferverzug",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018406",
+          "4500018406"
+        ],
+        "liefertermin": [
+          "2026-12-15",
+          "2026-12-15"
+        ]
+      },
+      "ab": null,
+      "sekunden": 6.23
+    },
+    {
+      "mail": "s007",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018407",
+          "4500018407"
+        ],
+        "einzelpreis": [
+          5.1,
+          5.1
+        ],
+        "menge": [
+          1800,
+          1800
+        ],
+        "liefertermin": [
+          "2026-12-11",
+          "2026-12-11"
+        ]
+      },
+      "ab": {
+        "erwartet": "automatisch_bestaetigt",
+        "erwartete_gruende": [],
+        "ist": "automatisch_bestaetigt",
+        "ist_gruende": []
+      },
+      "sekunden": 6.24
+    },
+    {
+      "mail": "s008",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferverzug",
+      "llm": "auftragsbestaetigung",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.01
+    },
+    {
+      "mail": "s009",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferavis",
+      "llm": "lieferavis",
+      "regel": "sonstiges",
+      "konfidenz": 1,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.17
+    },
+    {
+      "mail": "s010",
+      "http": 200,
+      "status": "ticket",
+      "gold": "reklamation",
+      "llm": "reklamation",
+      "regel": "reklamation",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018410",
+          "4500018410"
+        ]
+      },
+      "ab": null,
+      "sekunden": 5.74
+    },
+    {
+      "mail": "s011",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferavis",
+      "llm": "auftragsbestaetigung",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.26
+    },
+    {
+      "mail": "s012",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018412",
+          "4500018412"
+        ],
+        "einzelpreis": [
+          0.92,
+          0.92
+        ],
+        "menge": [
+          3000,
+          3000
+        ],
+        "liefertermin": [
+          "2026-11-21",
+          "2026-11-21"
+        ]
+      },
+      "ab": {
+        "erwartet": "automatisch_bestaetigt",
+        "erwartete_gruende": [],
+        "ist": "automatisch_bestaetigt",
+        "ist_gruende": []
+      },
+      "sekunden": 6.32
+    },
+    {
+      "mail": "s013",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferverzug",
+      "llm": "lieferverzug",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018413",
+          "4500018413"
+        ],
+        "liefertermin": [
+          "2026-12-20",
+          "2026-12-20"
+        ]
+      },
+      "ab": null,
+      "sekunden": 6.15
+    },
+    {
+      "mail": "s014",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "angebot",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018414",
+          "4500018414"
+        ],
+        "einzelpreis": [
+          1.14,
+          1.14
+        ],
+        "menge": [
+          1500,
+          1500
+        ],
+        "liefertermin": [
+          "2026-12-02",
+          "2026-12-02"
+        ]
+      },
+      "ab": {
+        "erwartet": "automatisch_bestaetigt",
+        "erwartete_gruende": [],
+        "ist": "automatisch_bestaetigt",
+        "ist_gruende": []
+      },
+      "sekunden": 6.33
+    },
+    {
+      "mail": "s015",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferavis",
+      "llm": "lieferavis",
+      "regel": "sonstiges",
+      "konfidenz": 1,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.31
+    },
+    {
+      "mail": "s016",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "angebot",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": {
+        "erwartet": "manuell_pruefen",
+        "erwartete_gruende": [
+          "liefertreue_unter_schwelle"
+        ],
+        "ist": "manuell_pruefen",
+        "ist_gruende": [
+          "liefertreue_unter_schwelle"
+        ]
+      },
+      "sekunden": 6.41
+    },
+    {
+      "mail": "s017",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "lieferverzug",
+      "regel": "lieferverzug",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.58
+    },
+    {
+      "mail": "s018",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": {
+        "erwartet": "automatisch_bestaetigt",
+        "erwartete_gruende": [],
+        "ist": "automatisch_bestaetigt",
+        "ist_gruende": []
+      },
+      "sekunden": 6.13
+    },
+    {
+      "mail": "s019",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferverzug",
+      "llm": "lieferverzug",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018525",
+          "4500018525"
+        ],
+        "liefertermin": [
+          "2026-12-10",
+          "2026-12-10"
+        ]
+      },
+      "ab": null,
+      "sekunden": 5.89
+    },
+    {
+      "mail": "s020",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": {
+        "erwartet": "automatisch_bestaetigt",
+        "erwartete_gruende": [],
+        "ist": "automatisch_bestaetigt",
+        "ist_gruende": []
+      },
+      "sekunden": 5.98
+    },
+    {
+      "mail": "s021",
+      "http": 202,
+      "status": "review",
+      "gold": "sonstiges",
+      "llm": "auftragsbestaetigung",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [
+        "pflichtfeld_fehlt:bestellnummer"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.49
+    },
+    {
+      "mail": "s022",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "sonstiges",
+      "regel": "sonstiges",
+      "konfidenz": 0.8,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.58
+    },
+    {
+      "mail": "s023",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "sonstiges",
+      "regel": "sonstiges",
+      "konfidenz": 0.8,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.91
+    },
+    {
+      "mail": "s024",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "angebot",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [
+        "beleg_fehlt:bestellnummer",
+        "beleg_fehlt:rechnungsnummer",
+        "beleg_fehlt:angebotsnummer"
+      ],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.86
+    },
+    {
+      "mail": "s025",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "sonstiges",
+      "regel": "sonstiges",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.98
+    },
+    {
+      "mail": "s026",
+      "http": 202,
+      "status": "review",
+      "gold": "sonstiges",
+      "llm": "stammdatenaenderung",
+      "regel": "sonstiges",
+      "konfidenz": 1,
+      "gruende": [
+        "stammdatenaenderung_pruefen"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.67
+    },
+    {
+      "mail": "s027",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "angebot",
+      "regel": "sonstiges",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.2
+    },
+    {
+      "mail": "s028",
+      "http": 202,
+      "status": "review",
+      "gold": "sonstiges",
+      "llm": "angebot",
+      "regel": "sonstiges",
+      "konfidenz": 0.9,
+      "gruende": [
+        "kategorie_unplausibel"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.78
+    },
+    {
+      "mail": "s029",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "sonstiges",
+      "regel": "sonstiges",
+      "konfidenz": 0.8,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.62
+    },
+    {
+      "mail": "s030",
+      "http": 202,
+      "status": "review",
+      "gold": "sonstiges",
+      "llm": "stammdatenaenderung",
+      "regel": "sonstiges",
+      "konfidenz": 0.9,
+      "gruende": [
+        "stammdatenaenderung_pruefen"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.36
+    },
+    {
+      "mail": "s031",
+      "http": 200,
+      "status": "ticket",
+      "gold": "angebot",
+      "llm": "angebot",
+      "regel": "angebot",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.0
+    },
+    {
+      "mail": "s032",
+      "http": 200,
+      "status": "ticket",
+      "gold": "preisaenderung",
+      "llm": "preisaenderung",
+      "regel": "compliance",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.07
+    },
+    {
+      "mail": "s033",
+      "http": 202,
+      "status": "review",
+      "gold": "preisaenderung",
+      "llm": "stammdatenaenderung",
+      "regel": "preisaenderung",
+      "konfidenz": 0.95,
+      "gruende": [
+        "stammdatenaenderung_pruefen"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.72
+    },
+    {
+      "mail": "s034",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "sonstiges",
+      "regel": "sonstiges",
+      "konfidenz": 0.8,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.24
+    },
+    {
+      "mail": "s035",
+      "http": 200,
+      "status": "ticket",
+      "gold": "angebot",
+      "llm": "angebot",
+      "regel": "angebot",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.77
+    },
+    {
+      "mail": "s036",
+      "http": 200,
+      "status": "ticket",
+      "gold": "preisaenderung",
+      "llm": "preisaenderung",
+      "regel": "angebot",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.55
+    },
+    {
+      "mail": "s037",
+      "http": 202,
+      "status": "review",
+      "gold": "preisaenderung",
+      "llm": "sonstiges",
+      "regel": "preisaenderung",
+      "konfidenz": 0.6,
+      "gruende": [
+        "konfidenz_niedrig"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.47
+    },
+    {
+      "mail": "s038",
+      "http": 200,
+      "status": "ticket",
+      "gold": "angebot",
+      "llm": "angebot",
+      "regel": "angebot",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.01
+    },
+    {
+      "mail": "s039",
+      "http": 202,
+      "status": "review",
+      "gold": "lieferverzug",
+      "llm": "lieferverzug",
+      "regel": "reklamation",
+      "konfidenz": 0.8,
+      "gruende": [
+        "pflichtfeld_fehlt:bestellnummer"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.75
+    },
+    {
+      "mail": "s040",
+      "http": 200,
+      "status": "ticket",
+      "gold": "compliance",
+      "llm": "sonstiges",
+      "regel": "sonstiges",
+      "konfidenz": 0.8,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.34
+    },
+    {
+      "mail": "s041",
+      "http": 200,
+      "status": "ticket",
+      "gold": "rechnung",
+      "llm": "rechnung",
+      "regel": "rechnung",
+      "konfidenz": 1,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {
+        "rechnungsnummer": [
+          "2026-9041",
+          "2026-9041"
+        ],
+        "betrag": [
+          6240.0,
+          6240
+        ],
+        "waehrung": [
+          "EUR",
+          "EUR"
+        ]
+      },
+      "ab": null,
+      "sekunden": 6.2
+    },
+    {
+      "mail": "s042",
+      "http": 202,
+      "status": "review",
+      "gold": "rechnung",
+      "llm": "rechnung",
+      "regel": "angebot",
+      "konfidenz": 0.95,
+      "gruende": [
+        "pflichtfeld_fehlt:rechnungsnummer",
+        "pflichtfeld_fehlt:betrag"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.64
+    },
+    {
+      "mail": "s043",
+      "http": 200,
+      "status": "ticket",
+      "gold": "rechnung",
+      "llm": "rechnung",
+      "regel": "rechnung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {
+        "rechnungsnummer": [
+          "7712",
+          "7712"
+        ],
+        "betrag": [
+          925.0,
+          925
+        ],
+        "waehrung": [
+          "CHF",
+          "CHF"
+        ]
+      },
+      "ab": null,
+      "sekunden": 5.72
+    },
+    {
+      "mail": "s044",
+      "http": 200,
+      "status": "ticket",
+      "gold": "rechnung",
+      "llm": "rechnung",
+      "regel": "rechnung",
+      "konfidenz": 1,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {
+        "rechnungsnummer": [
+          "40019",
+          "40019"
+        ],
+        "betrag": [
+          149.0,
+          149
+        ],
+        "waehrung": [
+          "EUR",
+          "EUR"
+        ]
+      },
+      "ab": null,
+      "sekunden": 5.96
+    },
+    {
+      "mail": "s045",
+      "http": 200,
+      "status": "ticket",
+      "gold": "rechnung",
+      "llm": "lieferavis",
+      "regel": "rechnung",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [
+        "beleg_fehlt:rechnungsnummer"
+      ],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.94
+    },
+    {
+      "mail": "s046",
+      "http": 202,
+      "status": "review",
+      "gold": "rechnung",
+      "llm": "rechnung",
+      "regel": "rechnung",
+      "konfidenz": 0.95,
+      "gruende": [
+        "pflichtfeld_fehlt:rechnungsnummer",
+        "pflichtfeld_fehlt:betrag"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.84
+    },
+    {
+      "mail": "s047",
+      "http": 202,
+      "status": "review",
+      "gold": "rechnung",
+      "llm": "rechnung",
+      "regel": "rechnung",
+      "konfidenz": 1,
+      "gruende": [
+        "pflichtfeld_fehlt:betrag"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.37
+    },
+    {
+      "mail": "s048",
+      "http": 202,
+      "status": "review",
+      "gold": "rechnung",
+      "llm": "reklamation",
+      "regel": "rechnung",
+      "konfidenz": 0.95,
+      "gruende": [
+        "pflichtfeld_fehlt:bestellnummer|artikel"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.58
+    },
+    {
+      "mail": "s049",
+      "http": 202,
+      "status": "review",
+      "gold": "rechnung",
+      "llm": "rechnung",
+      "regel": "rechnung",
+      "konfidenz": 0.95,
+      "gruende": [
+        "pflichtfeld_fehlt:betrag"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.37
+    },
+    {
+      "mail": "s050",
+      "http": 202,
+      "status": "review",
+      "gold": "rechnung",
+      "llm": "rechnung",
+      "regel": "rechnung",
+      "konfidenz": 0.95,
+      "gruende": [
+        "pflichtfeld_fehlt:betrag"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.63
+    },
+    {
+      "mail": "s051",
+      "http": 202,
+      "status": "review",
+      "gold": "sonstiges",
+      "llm": "stammdatenaenderung",
+      "regel": "sonstiges",
+      "konfidenz": 0.8,
+      "gruende": [
+        "stammdatenaenderung_pruefen"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.67
+    },
+    {
+      "mail": "s052",
+      "http": 200,
+      "status": "ticket",
+      "gold": "compliance",
+      "llm": "compliance",
+      "regel": "sonstiges",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.46
+    },
+    {
+      "mail": "s053",
+      "http": 202,
+      "status": "review",
+      "gold": "stammdatenaenderung",
+      "llm": "stammdatenaenderung",
+      "regel": "stammdatenaenderung",
+      "konfidenz": 1,
+      "gruende": [
+        "stammdatenaenderung_pruefen",
+        "bankdatenaenderung"
+      ],
+      "warnungen": [],
+      "muss_review": true,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.73
+    },
+    {
+      "mail": "s054",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "sonstiges",
+      "regel": "sonstiges",
+      "konfidenz": 1,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.12
+    },
+    {
+      "mail": "s055",
+      "http": 200,
+      "status": "ticket",
+      "gold": "compliance",
+      "llm": "compliance",
+      "regel": "compliance",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.61
+    },
+    {
+      "mail": "s056",
+      "http": 202,
+      "status": "review",
+      "gold": "sonstiges",
+      "llm": "sonstiges",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.6,
+      "gruende": [
+        "konfidenz_niedrig"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.68
+    },
+    {
+      "mail": "s057",
+      "http": 202,
+      "status": "review",
+      "gold": "stammdatenaenderung",
+      "llm": "stammdatenaenderung",
+      "regel": "rechnung",
+      "konfidenz": 1,
+      "gruende": [
+        "stammdatenaenderung_pruefen"
+      ],
+      "warnungen": [],
+      "muss_review": true,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.63
+    },
+    {
+      "mail": "s058",
+      "http": 200,
+      "status": "ticket",
+      "gold": "compliance",
+      "llm": "compliance",
+      "regel": "compliance",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.54
+    },
+    {
+      "mail": "s060",
+      "http": 200,
+      "status": "ticket",
+      "gold": "compliance",
+      "llm": "compliance",
+      "regel": "compliance",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.43
+    },
+    {
+      "mail": "s061",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "sonstiges",
+      "regel": "sonstiges",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.71
+    },
+    {
+      "mail": "s062",
+      "http": 200,
+      "status": "ticket",
+      "gold": "werbung",
+      "llm": "werbung",
+      "regel": "werbung",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.11
+    },
+    {
+      "mail": "s063",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "lieferverzug",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.8,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.11
+    },
+    {
+      "mail": "s064",
+      "http": 202,
+      "status": "review",
+      "gold": "sonstiges",
+      "llm": "sonstiges",
+      "regel": "sonstiges",
+      "konfidenz": 0.6,
+      "gruende": [
+        "konfidenz_niedrig"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.45
+    },
+    {
+      "mail": "s065",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "sonstiges",
+      "regel": "sonstiges",
+      "konfidenz": 0.8,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.73
+    },
+    {
+      "mail": "s066",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "sonstiges",
+      "regel": "sonstiges",
+      "konfidenz": 1,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.19
+    },
+    {
+      "mail": "s067",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "auftragsbestaetigung",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.38
+    },
+    {
+      "mail": "s068",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "sonstiges",
+      "regel": "sonstiges",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.19
+    },
+    {
+      "mail": "s069",
+      "http": 202,
+      "status": "review",
+      "gold": "sonstiges",
+      "llm": "rechnung",
+      "regel": "sonstiges",
+      "konfidenz": 0.9,
+      "gruende": [
+        "pflichtfeld_fehlt:betrag"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.77
+    },
+    {
+      "mail": "s070",
+      "http": 202,
+      "status": "review",
+      "gold": "sonstiges",
+      "llm": "stammdatenaenderung",
+      "regel": "sonstiges",
+      "konfidenz": 0.9,
+      "gruende": [
+        "stammdatenaenderung_pruefen"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.37
+    },
+    {
+      "mail": "s071",
+      "http": 200,
+      "status": "ticket",
+      "gold": "werbung",
+      "llm": "werbung",
+      "regel": "sonstiges",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.25
+    },
+    {
+      "mail": "s072",
+      "http": 200,
+      "status": "ticket",
+      "gold": "werbung",
+      "llm": "werbung",
+      "regel": "werbung",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.14
+    },
+    {
+      "mail": "s073",
+      "http": 200,
+      "status": "ticket",
+      "gold": "werbung",
+      "llm": "werbung",
+      "regel": "sonstiges",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.48
+    },
+    {
+      "mail": "s074",
+      "http": 200,
+      "status": "ticket",
+      "gold": "werbung",
+      "llm": "werbung",
+      "regel": "werbung",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.06
+    },
+    {
+      "mail": "s075",
+      "http": 200,
+      "status": "ticket",
+      "gold": "werbung",
+      "llm": "werbung",
+      "regel": "sonstiges",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.06
+    },
+    {
+      "mail": "s076",
+      "http": 200,
+      "status": "ticket",
+      "gold": "werbung",
+      "llm": "werbung",
+      "regel": "sonstiges",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.19
+    },
+    {
+      "mail": "s077",
+      "http": 200,
+      "status": "ticket",
+      "gold": "werbung",
+      "llm": "werbung",
+      "regel": "angebot",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.18
+    },
+    {
+      "mail": "s078",
+      "http": 200,
+      "status": "ticket",
+      "gold": "werbung",
+      "llm": "werbung",
+      "regel": "sonstiges",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.21
+    },
+    {
+      "mail": "s079",
+      "http": 200,
+      "status": "ticket",
+      "gold": "werbung",
+      "llm": "werbung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.17
+    },
+    {
+      "mail": "s080",
+      "http": 200,
+      "status": "ticket",
+      "gold": "sonstiges",
+      "llm": "sonstiges",
+      "regel": "sonstiges",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.31
+    },
+    {
+      "mail": "s081",
+      "http": 202,
+      "status": "review",
+      "gold": "lieferverzug",
+      "llm": "lieferverzug",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.9,
+      "gruende": [
+        "pflichtfeld_fehlt:bestellnummer"
+      ],
+      "warnungen": [
+        "liefertermin_format",
+        "beleg_fehlt:bestellnummer"
+      ],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.96
+    },
+    {
+      "mail": "s082",
+      "http": 200,
+      "status": "ticket",
+      "gold": "reklamation",
+      "llm": "reklamation",
+      "regel": "reklamation",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.77
+    },
+    {
+      "mail": "s083",
+      "http": 202,
+      "status": "review",
+      "gold": "stammdatenaenderung",
+      "llm": "stammdatenaenderung",
+      "regel": "stammdatenaenderung",
+      "konfidenz": 0.95,
+      "gruende": [
+        "stammdatenaenderung_pruefen",
+        "bankdatenaenderung"
+      ],
+      "warnungen": [
+        "beleg_fehlt:bestellnummer"
+      ],
+      "muss_review": true,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.01
+    },
+    {
+      "mail": "s084",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [
+        "beleg_fehlt:rechnungsnummer",
+        "beleg_fehlt:angebotsnummer"
+      ],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.14
+    },
+    {
+      "mail": "s085",
+      "http": 200,
+      "status": "ticket",
+      "gold": "angebot",
+      "llm": "auftragsbestaetigung",
+      "regel": "angebot",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.55
+    },
+    {
+      "mail": "s086",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferverzug",
+      "llm": "lieferverzug",
+      "regel": "lieferverzug",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.89
+    },
+    {
+      "mail": "s087",
+      "http": 202,
+      "status": "review",
+      "gold": "sonstiges",
+      "llm": "angebot",
+      "regel": "angebot",
+      "konfidenz": 0.9,
+      "gruende": [
+        "kategorie_unplausibel"
+      ],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.74
+    },
+    {
+      "mail": "s088",
+      "http": 200,
+      "status": "ticket",
+      "gold": "reklamation",
+      "llm": "reklamation",
+      "regel": "reklamation",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.68
+    },
+    {
+      "mail": "s089",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferverzug",
+      "llm": "lieferverzug",
+      "regel": "rechnung",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.64
+    },
+    {
+      "mail": "s090",
+      "http": 202,
+      "status": "review",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [
+        "pflichtfeld_fehlt:bestellnummer"
+      ],
+      "warnungen": [
+        "liefertermin_format",
+        "beleg_fehlt:bestellnummer"
+      ],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.65
+    },
+    {
+      "mail": "s091",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": {
+        "erwartet": "abweichung",
+        "erwartete_gruende": [
+          "termin_fehlt"
+        ],
+        "ist": "abweichung",
+        "ist_gruende": [
+          "termin_fehlt"
+        ]
+      },
+      "sekunden": 5.68
+    },
+    {
+      "mail": "s092",
+      "http": 202,
+      "status": "review",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [
+        "pflichtfeld_fehlt:bestellnummer"
+      ],
+      "warnungen": [
+        "beleg_fehlt:bestellnummer"
+      ],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": {
+        "erwartet": "abweichung",
+        "erwartete_gruende": [
+          "termin_fehlt"
+        ],
+        "ist": "review",
+        "ist_gruende": []
+      },
+      "sekunden": 5.91
+    },
+    {
+      "mail": "s093",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": {
+        "erwartet": "automatisch_bestaetigt",
+        "erwartete_gruende": [],
+        "ist": "automatisch_bestaetigt",
+        "ist_gruende": []
+      },
+      "sekunden": 6.14
+    },
+    {
+      "mail": "s094",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": {
+        "erwartet": "automatisch_bestaetigt",
+        "erwartete_gruende": [],
+        "ist": "automatisch_bestaetigt",
+        "ist_gruende": []
+      },
+      "sekunden": 6.24
+    },
+    {
+      "mail": "s095",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": {
+        "erwartet": "automatisch_bestaetigt",
+        "erwartete_gruende": [],
+        "ist": "automatisch_bestaetigt",
+        "ist_gruende": []
+      },
+      "sekunden": 6.01
+    },
+    {
+      "mail": "s096",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "sonstiges",
+      "regel": "sonstiges",
+      "konfidenz": 0.8,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.72
+    },
+    {
+      "mail": "s097",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferavis",
+      "llm": "lieferavis",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.45
+    },
+    {
+      "mail": "s098",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.59
+    },
+    {
+      "mail": "s099",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "sonstiges",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.01
+    },
+    {
+      "mail": "s100",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "mehrdeutig": false,
+      "felder": {},
+      "ab": {
+        "erwartet": "automatisch_bestaetigt",
+        "erwartete_gruende": [],
+        "ist": "automatisch_bestaetigt",
+        "ist_gruende": []
+      },
+      "sekunden": 6.11
+    }
+  ]
+}

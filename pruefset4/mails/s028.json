@@ -1,0 +1,8 @@
+{
+  "message_id": "<s028@pruefset4.example>",
+  "from": "Montage <montage@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "BANF 90122 / Gehäuse KG-30 Zusatzbedarf",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Hallo Einkauf,\nwir brauchen weitere 400 Stk KG-30 über den bestehenden Auftrag 4500018406 hinaus.\n\nMontage"
+}

@@ -1,0 +1,8 @@
+{
+  "message_id": "<s094@pruefset4.example>",
+  "from": "Lieferant 6 <vertrieb@swissturning.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "PO#4500018405_PB-6_CONFIRM",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Order 4500018405 confirmed. Delivery date 2026-11-18. Price 1.85 CHF.\n\nSupplier 6"
+}

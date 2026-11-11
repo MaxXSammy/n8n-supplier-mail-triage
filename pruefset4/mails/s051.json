@@ -1,0 +1,8 @@
+{
+  "message_id": "<s051@pruefset4.example>",
+  "from": "Lieferant 2 <vertrieb@brenner-zerspanung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Rahmenvertrag 2027-2029 Entwurf",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Guten Tag Herr Schneider,\nanbei überarbeiten wir den Entwurf des Rahmenvertrags für Wellen und Bolzen.\nBitte um Durchsicht der Anlagen.\n\nRechtsabteilung Lieferant 2"
+}

@@ -1,0 +1,8 @@
+{
+  "message_id": "<r10_chaos_mehrere_themen@pruefset3.example>",
+  "from": "Sales Team Feldmann <sales@feldmann-praezisionsteile.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Status zu PO 4500018414 & 4500018408 / Neues ISO-Zertifikat",
+  "received_at": "2026-11-10T10:00:00+01:00",
+  "body": "Hallo Herr Schneider,\n\nkurzes Update zu unseren aktuellen Vorgängen:\n\n1. PO 4500018408 (Hülse HS-12): Ist bestätigt und geht pünktlich am 30.11.2026 raus.\n2. PO 4500018414 (Buchse BU-22): Hier haben wir Rohstoffprobleme. Wunschtermin 02.12. halten wir nicht, neuer Termin: 18.12.2026. Ausserdem steigt der Staffelpreis ab 2027 um 3%.\n3. Im Anhang finden Sie unser aktualisiertes ISO 9001:2025 Zertifikat für Ihre Stammdaten.\n\nSchöne Grüße,\nLieferant 3 Sales Team"
+}

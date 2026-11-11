@@ -1,0 +1,8 @@
+{
+  "message_id": "<p16_angebot_englisch@pruefset.example>",
+  "from": "Tomáš Dvořák <t.dvorak@metalltec-cz.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Quotation Q-55102 - flanges",
+  "received_at": "2026-11-03T13:10:00+01:00",
+  "body": "Dear Sir or Madam,\n\nthank you for your enquiry. Please find our quotation Q-55102 for 1,500 flanges FL-60.\n\nTotal: 9,870.00 EUR, delivery within 5 weeks, valid until 15 December 2026.\n\nKind regards\nTomáš Dvořák\nMetalltec s.r.o."
+}

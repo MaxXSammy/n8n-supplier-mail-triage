@@ -1,0 +1,8 @@
+{
+  "message_id": "<s011@pruefset4.example>",
+  "from": "Lieferant 1 <vertrieb@alpen-drehtechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Re: Bestellung 4500018411 (LB-20)",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Auftrag 4500018411 geht am 14.11.2026 komplett in den Versand.\n1200 Stk Lagerbolzen LB-20 zu 2,45 EUR.\n\nLieferant 1"
+}

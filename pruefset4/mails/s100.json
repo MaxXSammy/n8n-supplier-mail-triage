@@ -1,0 +1,8 @@
+{
+  "message_id": "<s100@pruefset4.example>",
+  "from": "Lieferant 2 <vertrieb@brenner-zerspanung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "NK-16 / 4500018525 AB",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Wir bestaetigen Nutenkeil NK-16 600 Stk am 03.12.2026.\n\nLieferant 2"
+}

@@ -1,0 +1,519 @@
+{
+  "lauf": "20261111-082711",
+  "modell": "qwen2.5:7b",
+  "schwelle": "0.75",
+  "ergebnisse": [
+    {
+      "mail": "q01_avis_spedition",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferavis",
+      "llm": "lieferavis",
+      "regel": "lieferavis",
+      "konfidenz": 1,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018413",
+          "4500018413"
+        ],
+        "liefertermin": [
+          "2026-11-12",
+          null
+        ]
+      },
+      "ab": null,
+      "sekunden": 10.12
+    },
+    {
+      "mail": "q02_avis_englisch",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferavis",
+      "llm": "lieferavis",
+      "regel": "lieferavis",
+      "konfidenz": 1,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018416",
+          "4500018416"
+        ]
+      },
+      "ab": null,
+      "sekunden": 6.22
+    },
+    {
+      "mail": "q03_avis_kurz",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferavis",
+      "llm": "lieferavis",
+      "regel": "sonstiges",
+      "konfidenz": 1,
+      "gruende": [],
+      "warnungen": [
+        "beleg_fehlt:liefertermin"
+      ],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018411",
+          "4500018411"
+        ]
+      },
+      "ab": null,
+      "sekunden": 6.05
+    },
+    {
+      "mail": "q04_avis_tracking",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferavis",
+      "llm": "lieferavis",
+      "regel": "lieferavis",
+      "konfidenz": 1,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018405",
+          "4500018405"
+        ],
+        "liefertermin": [
+          "2026-11-13",
+          "2026-11-13"
+        ]
+      },
+      "ab": null,
+      "sekunden": 6.3
+    },
+    {
+      "mail": "q05_preis_rundschreiben",
+      "http": 200,
+      "status": "ticket",
+      "gold": "preisaenderung",
+      "llm": "preisaenderung",
+      "regel": "preisaenderung",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.56
+    },
+    {
+      "mail": "q06_preis_einzelartikel",
+      "http": 200,
+      "status": "ticket",
+      "gold": "preisaenderung",
+      "llm": "preisaenderung",
+      "regel": "angebot",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.95
+    },
+    {
+      "mail": "q07_abkuendigung",
+      "http": 200,
+      "status": "ticket",
+      "gold": "preisaenderung",
+      "llm": "preisaenderung",
+      "regel": "preisaenderung",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.73
+    },
+    {
+      "mail": "q08_vpe_aenderung",
+      "http": 200,
+      "status": "ticket",
+      "gold": "preisaenderung",
+      "llm": "preisaenderung",
+      "regel": "preisaenderung",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.27
+    },
+    {
+      "mail": "q09_energiezuschlag",
+      "http": 200,
+      "status": "ticket",
+      "gold": "preisaenderung",
+      "llm": "preisaenderung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.19
+    },
+    {
+      "mail": "q10_bank_neu",
+      "http": 202,
+      "status": "review",
+      "gold": "stammdatenaenderung",
+      "llm": "stammdatenaenderung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 1,
+      "gruende": [
+        "stammdatenaenderung_pruefen",
+        "bankdatenaenderung"
+      ],
+      "warnungen": [],
+      "muss_review": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.64
+    },
+    {
+      "mail": "q11_adresse_umzug",
+      "http": 202,
+      "status": "review",
+      "gold": "stammdatenaenderung",
+      "llm": "stammdatenaenderung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 1,
+      "gruende": [
+        "stammdatenaenderung_pruefen"
+      ],
+      "warnungen": [],
+      "muss_review": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.94
+    },
+    {
+      "mail": "q12_ustid",
+      "http": 202,
+      "status": "review",
+      "gold": "stammdatenaenderung",
+      "llm": "stammdatenaenderung",
+      "regel": "stammdatenaenderung",
+      "konfidenz": 1,
+      "gruende": [
+        "stammdatenaenderung_pruefen"
+      ],
+      "warnungen": [],
+      "muss_review": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 6.05
+    },
+    {
+      "mail": "q13_bank_englisch",
+      "http": 202,
+      "status": "review",
+      "gold": "stammdatenaenderung",
+      "llm": "stammdatenaenderung",
+      "regel": "stammdatenaenderung",
+      "konfidenz": 1,
+      "gruende": [
+        "stammdatenaenderung_pruefen"
+      ],
+      "warnungen": [],
+      "muss_review": true,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.74
+    },
+    {
+      "mail": "q14_iso_zertifikat",
+      "http": 200,
+      "status": "ticket",
+      "gold": "compliance",
+      "llm": "compliance",
+      "regel": "compliance",
+      "konfidenz": 1,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.54
+    },
+    {
+      "mail": "q15_reach",
+      "http": 200,
+      "status": "ticket",
+      "gold": "compliance",
+      "llm": "compliance",
+      "regel": "compliance",
+      "konfidenz": 1,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.44
+    },
+    {
+      "mail": "q16_code_of_conduct",
+      "http": 200,
+      "status": "ticket",
+      "gold": "compliance",
+      "llm": "compliance",
+      "regel": "compliance",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.0
+    },
+    {
+      "mail": "q17_konfliktmineralien",
+      "http": 200,
+      "status": "ticket",
+      "gold": "compliance",
+      "llm": "compliance",
+      "regel": "compliance",
+      "konfidenz": 1,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.19
+    },
+    {
+      "mail": "q18_kaltakquise",
+      "http": 200,
+      "status": "ticket",
+      "gold": "werbung",
+      "llm": "werbung",
+      "regel": "werbung",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 4.99
+    },
+    {
+      "mail": "q19_webinar",
+      "http": 200,
+      "status": "ticket",
+      "gold": "werbung",
+      "llm": "werbung",
+      "regel": "werbung",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 4.96
+    },
+    {
+      "mail": "q20_portal_einladung",
+      "http": 200,
+      "status": "ticket",
+      "gold": "werbung",
+      "llm": "werbung",
+      "regel": "werbung",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.2
+    },
+    {
+      "mail": "q21_sonderangebot_newsletter",
+      "http": 200,
+      "status": "ticket",
+      "gold": "werbung",
+      "llm": "werbung",
+      "regel": "angebot",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 5.3
+    },
+    {
+      "mail": "q22_messeeinladung",
+      "http": 200,
+      "status": "ticket",
+      "gold": "werbung",
+      "llm": "werbung",
+      "regel": "werbung",
+      "konfidenz": 0.9,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {},
+      "ab": null,
+      "sekunden": 4.96
+    },
+    {
+      "mail": "q23_kontrolle_ab_preis",
+      "http": 200,
+      "status": "ticket",
+      "gold": "auftragsbestaetigung",
+      "llm": "auftragsbestaetigung",
+      "regel": "auftragsbestaetigung",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [
+        "kategorie_korrigiert:preisaenderung->auftragsbestaetigung"
+      ],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018409",
+          "4500018409"
+        ],
+        "einzelpreis": [
+          0.51,
+          0.51
+        ],
+        "menge": [
+          1040,
+          1040
+        ],
+        "liefertermin": [
+          "2026-12-02",
+          "2026-12-02"
+        ]
+      },
+      "ab": {
+        "erwartet": "abweichung",
+        "erwartete_gruende": [
+          "preis"
+        ],
+        "ist": "abweichung",
+        "ist_gruende": [
+          "preis"
+        ]
+      },
+      "sekunden": 5.98
+    },
+    {
+      "mail": "q24_kontrolle_angebot",
+      "http": 200,
+      "status": "ticket",
+      "gold": "angebot",
+      "llm": "angebot",
+      "regel": "angebot",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "angebotsnummer": [
+          "AN-2026-8120",
+          "AN-2026-8120"
+        ],
+        "betrag": [
+          275.0,
+          275
+        ],
+        "waehrung": [
+          "EUR",
+          "EUR"
+        ]
+      },
+      "ab": null,
+      "sekunden": 6.11
+    },
+    {
+      "mail": "q25_kontrolle_reklamation_zertifikat",
+      "http": 200,
+      "status": "ticket",
+      "gold": "reklamation",
+      "llm": "reklamation",
+      "regel": "reklamation",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018402",
+          "4500018402"
+        ]
+      },
+      "ab": null,
+      "sekunden": 5.32
+    },
+    {
+      "mail": "q26_kontrolle_rechnung_preisabweichung",
+      "http": 200,
+      "status": "ticket",
+      "gold": "rechnung",
+      "llm": "rechnung",
+      "regel": "rechnung",
+      "konfidenz": 1,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "rechnungsnummer": [
+          "RE-2026-10555",
+          "RE-2026-10555"
+        ],
+        "betrag": [
+          6240.0,
+          6240
+        ],
+        "waehrung": [
+          "EUR",
+          "EUR"
+        ]
+      },
+      "ab": null,
+      "sekunden": 6.01
+    },
+    {
+      "mail": "q27_kontrolle_lieferverzug",
+      "http": 200,
+      "status": "ticket",
+      "gold": "lieferverzug",
+      "llm": "lieferverzug",
+      "regel": "lieferverzug",
+      "konfidenz": 0.95,
+      "gruende": [],
+      "warnungen": [],
+      "muss_review": false,
+      "felder": {
+        "bestellnummer": [
+          "4500018404",
+          "4500018404"
+        ],
+        "liefertermin": [
+          "2026-12-09",
+          "2026-12-09"
+        ]
+      },
+      "ab": null,
+      "sekunden": 6.01
+    }
+  ]
+}

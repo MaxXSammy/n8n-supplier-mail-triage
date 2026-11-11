@@ -1,0 +1,8 @@
+{
+  "message_id": "<s075@pruefset4.example>",
+  "from": "Consulting Group <consulting.group@consulting-group.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Kostenlose Analyse Ihrer Beschaffungsprozesse",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Sehr geehrter Herr Schneider,\nwir unterstützen Unternehmen bei der Prozessoptimierung im Einkauf.\n\nConsulting Group"
+}

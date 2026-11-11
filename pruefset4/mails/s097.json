@@ -1,0 +1,8 @@
+{
+  "message_id": "<s097@pruefset4.example>",
+  "from": "Lieferant 4 <vertrieb@officina-rossi.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "AW-40 / 4500018410",
+  "received_at": "2026-11-02T10:00:00+01:00",
+  "body": "Ware ist auf LKW. ASN folgt.\n\nLieferant 4"
+}
