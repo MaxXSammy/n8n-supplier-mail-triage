@@ -55,7 +55,7 @@ Schwellen und Minuten stehen in der Tabelle `einstellungen` und lassen sich ohne
 
 ![Ausführung in n8n](docs/ausfuehrung_ticket.png)
 
-**Arbeitsliste** für den Einkauf: Überblick mit Kennzahlen, Mails zur Prüfung, offene Aufgaben nach Team mit Zusammenfassung und Warnungen. Je Aufgabe ein Knopf „Erledigt“, Antwortentwürfe und ein RFQ-Entwurf (Angebot anfordern, im Format für den Procurement-RAG-Agent) lassen sich ins Mailprogramm übernehmen. Darunter die Review-Queue
+**Arbeitsliste** für den Einkauf: Seitenleiste mit Filtern nach Team, Suche (Taste `/`), Kennzahlen, Mails zur Prüfung und offene Aufgaben als kompakte Zeilen mit Zusammenfassung und Warnungen, Details klappen auf Klick auf. Nach „Erledigt“ bleibt der Filter erhalten. Je Aufgabe ein Knopf „Erledigt“, Antwortentwürfe und ein RFQ-Entwurf (Angebot anfordern, im Format für den Procurement-RAG-Agent) lassen sich ins Mailprogramm übernehmen. Darunter die Review-Queue
 
 ![Arbeitsliste](docs/arbeitsliste.png)
 
