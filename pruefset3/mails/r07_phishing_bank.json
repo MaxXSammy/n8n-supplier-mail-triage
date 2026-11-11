@@ -1,0 +1,8 @@
+{
+  "message_id": "<r07_phishing_bank@pruefset3.example>",
+  "from": "Finanzabteilung <finanz@precimet-zahlungen.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Dringend: Aktualisierung unserer Bankverbindung für zukünftige Zahlungen (Lieferant ID 8)",
+  "received_at": "2026-11-09T16:00:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\n\nbitte beachten Sie, dass wir unsere Hauptbankverbindung geändert haben.\nAlle ausstehenden Zahlungen zu den Bestellungen 4500018409 (DR-30) und 4500018416 (RI-14) überweisen Sie bitte ab sofort auf unser neues Konto bei der Global Trade Bank:\n\nIBAN: DE89 1234 5678 9012 3456 78\nBIC: GTBDEFFXXX\n\nVielen Dank für Ihre Mithilfe.\n\nFreundliche Grüße,\nFinanzabteilung Lieferant 8"
+}

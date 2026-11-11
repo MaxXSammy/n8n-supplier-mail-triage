@@ -1,0 +1,8 @@
+{
+  "message_id": "<r04_preiserhoehung_zuschlag@pruefset3.example>",
+  "from": "Vertrieb Kovotech <vertrieb@kovotech.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Wichtige Information: Preisanpassung Rohstoffzuschlag Stahl ab Dec 2026",
+  "received_at": "2026-11-09T13:00:00+01:00",
+  "body": "Sehr geehrte Damen und Herren,\n\naufgrund stark gestiegener Legierungszuschläge müssen wir die Preise für Flansch FL-80 und Spannstift SP-10 mit Wirkung zum 01.12.2026 um 8,5 % anpassen.\n\nBetroffene laufende Anfragen / Vereinbarungen:\n- FL-80: Neuer Preis 5,53 EUR (bisher 5,10 EUR)\n- SP-10: Neuer Preis 0,34 EUR (bisher 0,31 EUR)\n\nBitte bestätigen Sie den Eingang dieser Anpassung.\n\nMit freundlichen Grüßen,\nLieferant 7 GmbH"
+}

@@ -1,0 +1,8 @@
+{
+  "message_id": "<r03_sammel_lieferverzug@pruefset3.example>",
+  "from": "Vertrieb Brenner <vertrieb@brenner-zerspanung.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Lieferverzögerung für Bestellungen 4500018402 und 4500018403",
+  "received_at": "2026-11-09T12:00:00+01:00",
+  "body": "Guten Tag Herr Schneider,\n\naufgrund von Engpässen beim Vormaterial verzögert sich der Versand für folgende Positionen:\n\n1) PO 4500018402 (WE-12, 1500 Stk): Neuer Liefertermin ist der 10.12.2026 (statt 27.11.2026).\n2) PO 4500018403 (DS-08, 5000 Stk): Unverändert, Auslieferung pünktlich zum 04.12.2026.\n\nWir bitten die Verzögerung zu entschuldigen.\n\nViele Grüße,\nLieferant 2 Vertrieb"
+}

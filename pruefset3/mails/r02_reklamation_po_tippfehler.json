@@ -1,0 +1,8 @@
+{
+  "message_id": "<r02_reklamation_po_tippfehler@pruefset3.example>",
+  "from": "Eingangsprüfung QS <qs@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Prüfbericht & Abweichung zu PO 45000184O5 (Präzisionsbolzen PB-6)",
+  "received_at": "2026-11-09T11:00:00+01:00",
+  "body": "Hallo Einkauf,\n\nbei der Eingangsprüfung zu Bestellung 4500018405 (Pos. PB-6, 500 Stk) wurden 45 Teile wegen Maßabweichung gesperrt.\nBitte um Rücknahme oder Gutschrift über 83,25 CHF (45 Stk x 1,8500 CHF).\n\nAnbei der 8D-Report.\n\nGrüße,\nEingangsprüfung / QS"
+}

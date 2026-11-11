@@ -1,0 +1,8 @@
+{
+  "message_id": "<r06_interne_banf@pruefset3.example>",
+  "from": "Thomas Arbeitsvorbereitung <t.keller@hagemann-antriebstechnik.example>",
+  "to": "einkauf@hagemann-antriebstechnik.example",
+  "subject": "Dringend: Nachbestellung Lagerbolzen LB-20 / BANF-2026-1109",
+  "received_at": "2026-11-09T15:00:00+01:00",
+  "body": "Hi Max,\n\nwir brauchen für die Montage Halle 3 dringend Nachschub von Lagerbolzen LB-20.\nBitte ca. 2.000 Stk bestellen. Wunschtermin wäre nächste Woche Freitag.\nHaben wir da noch die 2,45 EUR aus der letzten Bestellung (4500018411) von Lieferant 1 eingeloggt?\n\nDanke dir!\nGruß Thomas (Arbeitsvorbereitung)"
+}
