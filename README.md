@@ -4,6 +4,11 @@
 
 Ein self-hosted n8n-Workflow, der eingehende Lieferanten-Mails verarbeitet. Ein lokales LLM erkennt den Zweck der Mail und extrahiert die wichtigen Daten als JSON. Danach wird alles im Code geprüft, die Mail an das zuständige Team geroutet und ein Ticket angelegt. Auftragsbestätigungen werden zusätzlich mit der Bestellung abgeglichen und je nach Liefertreue des Lieferanten automatisch bestätigt oder dem Einkäufer vorgelegt, mit fertigem Antwortentwurf. Unsichere oder verdächtige Fälle gehen an einen Menschen. Alles läuft lokal mit Docker und Ollama, ohne Cloud-KI.
 
+> **Auf einen Blick, ehrlich gemessen** (99 nie gesehene Mails, Prüfsatz 4, Prompt und Regeln unverändert):
+> **78 %** Kategorie richtig (Regel-Basislinie ohne KI: 59 %) · **0** Auftragsbestätigungen fälschlich durchgewunken · **100 %** der Bankdaten- und Stammdatenänderungen bei einem Menschen · Schwachstelle: interne Mails, nur 13 von 25 richtig.
+> Die 100 % weiter unten gelten für den Entwicklungssatz, an dem der Prompt gebaut wurde, und sind kein unabhängiger Test.
+> **Stand:** Prototyp, alle Mails synthetisch, noch kein Einsatz in einem echten Postfach.
+
 ![Haupt-Workflow in n8n](docs/workflow_triage.png)
 
 ## Das Problem
@@ -110,7 +115,9 @@ Der Haupt-Workflow folgt sechs Phasen, die im Canvas als farbige Bereiche markie
 
 ## Erfolgsmessung
 
-34 Beispiel-Mails mit bekannter Lösung (`eval/gold.json`) laufen durch den echten Workflow, davon 19 Auftragsbestätigungen. Ausführliche Ergebnisse mit Konfusionsmatrix: [eval/ergebnisse.md](eval/ergebnisse.md)
+Gemessen wurde in fünf Sätzen, vom Entwicklungssatz bis zu 99 nie gesehenen Mails. Die belastbarste Zahl ist Prüfsatz 4 (78 %, siehe unten).
+
+**Entwicklungssatz (nicht unabhängig, Prompt und Regeln wurden an diesen Mails gebaut):** 34 Beispiel-Mails mit bekannter Lösung (`eval/gold.json`) laufen durch den echten Workflow, davon 19 Auftragsbestätigungen. Ausführliche Ergebnisse mit Konfusionsmatrix: [eval/ergebnisse.md](eval/ergebnisse.md)
 
 | Kennzahl | Ergebnis | Bedeutung |
 |---|---|---|
@@ -337,7 +344,7 @@ docs/projekt/               # Projektdokumentation (Steckbrief, Anforderungen, T
 - Interne Mails und Systemmeldungen landen in „sonstiges“ nur zur Hälfte richtig (13 von 25 im Prüfsatz 4). Vier gingen ohne Prüfung an die falsche Stelle, etwa eine Bedarfsanforderung als Angebot. Eine eigene Kategorie dafür wurde bewusst nicht gebaut.
 - Zwischen zwei Läufen streuen die Ergebnisse um ein bis zwei Mails, auch ohne Änderung am Code. Kleine Unterschiede sind kein Beleg für eine Verbesserung.
 - Interne Mails (Bedarfsanforderungen, Freigabeanfragen) und Systemnachrichten (EDI-Fehler) haben keine eigene Kategorie und landen im Sammelpostfach. Das ist Absicht: Das Tool sortiert das Lieferanten-Postfach.
-- Die Testdaten sind klein (34 Mails) und selbst geschrieben. Sie zeigen das Vorgehen, ersetzen aber keine Messung mit echten Postfächern.
+- Alle 201 Testmails sind synthetisch (34 Entwicklung, 167 in vier Prüfsätzen). Die Lösungen der Prüfsätze stammen vom Entwickler bzw. aus der Vorgabe an das fremde Modell, das die Mails geschrieben hat. Ein gemeinsamer Blickwinkel von Mail und Lösung ist deshalb möglich. Die Zahlen zeigen das Vorgehen, ersetzen aber keine Messung mit echten, von Fachleuten bewerteten Postfach-Mails (siehe Pilotplan).
 - Die Belegprüfung erkennt erfundene Werte, aber keine falsch zugeordneten. Bei einem Angebot mit Preisen je 100 Stück gab das LLM „298“ als Gesamtbetrag aus. Die Zahl steht im Text und rutscht durch.
 - Die Konfidenz-Schwelle ist in der jetzigen Form wirkungslos, weil das Modell fast immer 0,9 angibt. Eine belastbare Unsicherheit bräuchte z. B. mehrere Läufe mit Abstimmung oder ein zweites Modell.
 - Die Erkennung geänderter Bankdaten und von Prompt-Injection beruht auf regulären Ausdrücken. Wer die Muster kennt, kann sie umgehen, etwa mit Umschreibungen oder einer anderen Sprache. Sie sind eine zusätzliche Sicherung, kein vollständiger Schutz. Rechnungen mit IBAN und „ab sofort“ im Text können dagegen unnötig im Review landen. In einem echten Einsatz gehört deshalb dazu, dass ein Ticket keine Zahlung auslöst: Bezahlt wird erst nach Abgleich von Bestellung, Wareneingang und Rechnung im ERP.
