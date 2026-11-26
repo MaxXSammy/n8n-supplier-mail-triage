@@ -10,7 +10,7 @@ Die Tests sollen zeigen, wie gut das Tool Mails einordnet und prüft, und ehrlic
 
 | Stufe | Was | Womit |
 |---|---|---|
-| Regeln der Code-Nodes | 58 Tests für Eingangsprüfung, Belegprüfung, Betrugsschutz, Prompt-Injection und AB-Abgleich, ohne LLM, in der CI | `node --test tests/*.test.mjs` |
+| Regeln der Code-Nodes | 65 Tests für Eingangsprüfung, Belegprüfung, Betrugsschutz, Prompt-Injection und AB-Abgleich, ohne LLM, in der CI | `node --test tests/*.test.mjs` |
 | Robustheit und Sicherheit | zwölf Angriffe und Grenzfälle mit erwartetem Ergebnis (kaputte Eingaben, SQL-Injection, HTML im Betreff, Prompt-Injection, Bankdaten ohne Schlüsselwörter, dieselbe Mail fünfmal) | `scripts/robustheit.py` |
 | Klassifikation und Auslesen | Kategorie, Nummern, Beträge, Termine gegen die Lösung | `scripts/evaluate.py` (auch `--set pruefset4`) |
 | AB-Prüfung | Entscheidung (automatisch bestätigt, manuell prüfen, Abweichung, Prüfliste) und Gründe | `scripts/evaluate.py` |
@@ -39,7 +39,7 @@ Die Entwicklungsmails und die Prüfsätze 1 und 2 wurden mit Unterstützung von 
 | Prüfsatz 3 | 10 | 60 % (6) | Fallen: Kaltakquise als Angebot, interne Anforderung als AB, Sammelmail, Mischmail |
 | Prüfsatz 4 | 99 | 78 % (77) | ohne mehrdeutige Mails 81 %, nur Lieferanten-Mails 86 % |
 
-**Prüfsatz 4 im Detail:** Reklamation 4 von 4, Werbung 10 von 10, Stammdatenänderung 3 von 3, Auftragsbestätigung 18 von 20, Lieferverzug 8 von 9, Compliance 4 von 5, Lieferavis 4 von 5, Rechnung 8 von 10, Angebot 3 von 4, Preisänderung 2 von 4, Sonstiges 13 von 25. Betrugs- und Stammdatenfälle: alle beim Menschen (14 von 14 über alle Sätze). AB-Entscheidung 12 von 13, keine AB fälschlich ohne Prüfung. Ohne die KI, nur mit Schlüsselwörtern: 59 %.
+**Prüfsatz 4 im Detail:** Reklamation 4 von 4, Werbung 10 von 10, Stammdatenänderung 3 von 3, Auftragsbestätigung 18 von 20, Lieferverzug 8 von 9, Compliance 4 von 5, Lieferavis 4 von 5, Rechnung 8 von 10, Angebot 3 von 4, Preisänderung 2 von 4, Sonstiges 13 von 25. Betrugs- und Stammdatenfälle: alle beim Menschen (14 von 14 über alle Sätze). AB-Entscheidung im Lauf vom 11.11.2026 richtig gerechnet 11 von 13 mit 1 AB fälschlich ohne Prüfung (die Lösung zu `s012` war falsch). Nach der zweiten Währungsprüfung vom 26.11.2026: 12 von 13, keine fälschlich ohne Prüfung. Ohne die KI, nur mit Schlüsselwörtern: 59 %.
 
 Die Rohdaten stehen in `eval/ergebnisse*.json`, die Auswertung in `eval/ergebnisse*.md`.
 

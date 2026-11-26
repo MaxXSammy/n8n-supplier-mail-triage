@@ -96,9 +96,12 @@
       "liefertermin": "2026-11-21"
     },
     "ab": {
-      "ergebnis": "automatisch_bestaetigt",
-      "gruende": []
-    }
+      "ergebnis": "abweichung",
+      "gruende": [
+        "waehrung"
+      ]
+    },
+    "hinweis": "Am 26.11.2026 berichtigt: bestellt in CHF, bestätigt in EUR. Vorher stand hier automatisch_bestaetigt."
   },
   "s013": {
     "kategorie": "lieferverzug",

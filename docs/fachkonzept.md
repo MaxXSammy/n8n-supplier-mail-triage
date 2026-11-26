@@ -4,11 +4,12 @@ Fachliche Vorgaben aus der Praxis im Einkauf (Maximilian Schneider). Grundlage f
 
 ## Auftragsbestätigungen (AB)
 
-Jede AB wird mit der Bestellung abgeglichen: Preis, Menge, Liefertermin.
+Jede AB wird mit der Bestellung abgeglichen: Preis, Währung, Menge, Liefertermin.
 
 | Abweichung | Beispiel | Wer handelt |
 |---|---|---|
 | Preis | Rohstoffzuschlag +4 % | Einkauf: akzeptieren oder verhandeln |
+| Währung | bestellt in CHF, bestätigt in EUR | Einkauf: berichtigte AB anfordern |
 | Liefertermin ungewiss | „voraussichtlich KW 50, ohne Gewähr“ | Disposition: nachfassen |
 | Menge auf volle Paletten angepasst | 1.000 → 1.152 Stück | Einkauf: Mehrmenge akzeptieren? |
 | Menge wegen falscher Stammdaten angepasst | Verpackungseinheit im System 40 statt 50 | Stammdatenpflege korrigieren |

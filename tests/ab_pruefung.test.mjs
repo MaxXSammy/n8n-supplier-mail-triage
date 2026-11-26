@@ -59,6 +59,27 @@ test('eine Währung, die nicht im Mailtext steht, löst nichts aus', () => {
   assert.deepEqual(arten(pruefe({ daten: { waehrung: 'USD' } })), []);
 });
 
+for (const [text, bestellt] of [
+  ['3000 Stk zu 0.92 EUR', 'CHF'],
+  ['Preis 3,12 €', 'CHF'],
+  ['Preis Fr. 3.12', 'EUR'],
+]) {
+  test(`Währung aus dem Mailtext, auch wenn das Modell keine liefert: "${text}" bei Bestellung in ${bestellt}`, () => {
+    assert.deepEqual(arten(pruefe({ text, bestellung: { waehrung: bestellt } })), ['waehrung']);
+  });
+}
+
+for (const text of ['Preis 3,12 CHF, Fracht 40 EUR', 'Fr. Weber bestätigt den Auftrag.', 'Wir bestätigen wie bestellt.']) {
+  test(`kein Währungsalarm: "${text}"`, () => {
+    assert.deepEqual(arten(pruefe({ text, bestellung: { waehrung: 'CHF' } })), []);
+  });
+}
+
+test('eine Währungsabweichung wird nur einmal gemeldet', () => {
+  const r = pruefe({ daten: { waehrung: 'EUR' }, bestellung: { waehrung: 'CHF' }, text: 'Preis 3,12 EUR' });
+  assert.deepEqual(arten(r), ['waehrung']);
+});
+
 test('Mengenänderung wegen Verpackungseinheit meldet auch die Stammdaten', () => {
   const r = pruefe({ daten: { menge: 1100 }, text: 'Anpassung an unsere Verpackungseinheit.' });
   assert.deepEqual(arten(r), ['menge', 'stammdaten_pruefen']);

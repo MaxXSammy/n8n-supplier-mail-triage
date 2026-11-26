@@ -19,6 +19,7 @@
 | **Neue Kategorien kosteten alte Treffer** | Erst die Messung auf allen Sätzen zeigte, dass ABs mit Preiserhöhung als „Preisänderung" eingeordnet wurden | Korrekturregel, danach alle Sätze neu gemessen |
 | **Auswertung schrieb in die echte Datenbank** | Dieselben Test-Tickets erschienen mehrfach auf der Arbeitsliste | Auswertung räumt nach dem Lauf auf, Duplikate auch über den Inhalt erkannt |
 | **Währung wurde nicht geprüft** | Im Test ging eine AB mit EUR statt CHF durch | Währung wird gegen die Bestellung geprüft |
+| **Währungsprüfung hing am Modell** | Das Modell ließ die Währung leer, und die Lösung im Prüfsatz war falsch. Aufgefallen erst im Modellvergleich | Code liest die Währung zusätzlich selbst, Lösungen zweimal prüfen |
 | **Erledigt-Knopf wäre im Browser nie gegangen** | Herkunftsprüfung getestet nur mit curl, im Browser ist die Herkunft wegen der Sandbox `null` | Token je Aufgabe statt Herkunftsprüfung |
 | **Formulare verlangten Ticket-ID und Name von Hand** | Rückmeldung bei der Bedienung | Felder werden vorbefüllt, danach zurück zur Liste |
 | **Weiterleitung mit relativer Adresse** | n8n setzte „https://" davor | volle Adresse |

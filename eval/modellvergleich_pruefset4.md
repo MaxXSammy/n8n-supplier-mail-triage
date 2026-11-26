@@ -13,7 +13,7 @@ Gleicher Prompt, gleiches JSON-Schema, gleiche Prüfregeln. Alle Mails sind synt
 | falsch automatisch geroutet | 11 | 2 |
 | Pflicht-Reviews erkannt | 100 % (3/3) | 100 % (3/3) |
 | Felder richtig ausgelesen | 100 % (31/31) | 100 % (31/31) |
-| AB-Entscheidung richtig | 92 % (12/13) | 85 % (11/13) |
+| AB-Entscheidung richtig | 92 % (12/13) | 92 % (12/13) |
 | AB fälschlich durchgewunken | 0 | 0 |
 | Antwortzeit Median | 3.3 s | 4.9 s |
 | Tokens je Mail (ein / aus) | 1086 / 231 | 3592 / 1031 |
