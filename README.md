@@ -238,6 +238,22 @@ Was das zeigt:
 - **Geheimnisse standen in der Umgebung.** In der ersten Fassung konnte jeder Node per `$env` den Encryption Key und alle Passwörter lesen. Sie liegen jetzt als Docker-Secrets in Dateien. Außerdem ist Postgres nicht mehr per Port erreichbar.
 - **Frischer Klon nach dieser README:** läuft ohne Handgriff in der Oberfläche und liefert Mail für Mail dieselben Ergebnisse wie die Entwicklungsumgebung.
 
+## Tests
+
+58 automatisierte Tests prüfen die Regeln der Code-Nodes: Eingangsprüfung, Belegprüfung, Betrugsschutz, Prompt-Injection und AB-Abgleich. Der Code wird dafür direkt aus `workflows/01_mail_triage.json` gelesen, getestet wird also genau das, was in n8n läuft. Kein LLM, keine Datenbank, keine Pakete nötig.
+
+```bash
+node --test tests/*.test.mjs
+```
+
+Ohne lokales Node.js geht es mit dem n8n-Image (PowerShell):
+
+```powershell
+docker run --rm --entrypoint sh -v "${PWD}:/repo:ro" -w /repo docker.n8n.io/n8nio/n8n:2.45.7 -c "node --test tests/*.test.mjs"
+```
+
+Die Tests laufen in der CI. Sie messen nicht, wie gut das Modell klassifiziert, das zeigt die Erfolgsmessung.
+
 ## Testdaten
 
 Alle Mails sind frei erfunden. Auftraggeber ist die fiktive Hagemann Antriebstechnik GmbH aus dem Projekt [procurement-rag-agent](https://github.com/MaxXSammy/procurement-rag-agent), die Lieferanten kommen aus Deutschland, Österreich, Italien, der Schweiz, Tschechien und Polen.
@@ -324,6 +340,7 @@ credentials/                # Vorlage der n8n-Zugangsdaten (Platzhalter, keine G
 mails/                      # 34 Beispiel-Mails (Entwicklungssatz)
 pruefset/ … pruefset4/      # Prüfsätze mit vorab festgelegten Lösungen (gold.json)
 eval/                       # Gold-Daten und Ergebnisse
+tests/                      # Tests der Prüflogik (node --test)
 scripts/
 ├── n8n_import.sh           # Import beim Start (läuft im Container)
 ├── mail_senden.py          # Mails an den Webhook schicken

@@ -10,6 +10,7 @@ Die Tests sollen zeigen, wie gut das Tool Mails einordnet und prüft, und ehrlic
 
 | Stufe | Was | Womit |
 |---|---|---|
+| Regeln der Code-Nodes | 58 Tests für Eingangsprüfung, Belegprüfung, Betrugsschutz, Prompt-Injection und AB-Abgleich, ohne LLM, in der CI | `node --test tests/*.test.mjs` |
 | Robustheit und Sicherheit | zwölf Angriffe und Grenzfälle mit erwartetem Ergebnis (kaputte Eingaben, SQL-Injection, HTML im Betreff, Prompt-Injection, Bankdaten ohne Schlüsselwörter, dieselbe Mail fünfmal) | `scripts/robustheit.py` |
 | Klassifikation und Auslesen | Kategorie, Nummern, Beträge, Termine gegen die Lösung | `scripts/evaluate.py` (auch `--set pruefset4`) |
 | AB-Prüfung | Entscheidung (automatisch bestätigt, manuell prüfen, Abweichung, Prüfliste) und Gründe | `scripts/evaluate.py` |
