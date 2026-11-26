@@ -256,19 +256,38 @@ Die Tests laufen in der CI. Sie messen nicht, wie gut das Modell klassifiziert, 
 
 ## Modellvergleich
 
-`scripts/modellvergleich.py` schickt dieselben Mails an das lokale Modell und an Cloud-Modelle. Prompt, JSON-Schema, Validierung und AB-Prüfung kommen aus den Code-Nodes des Workflows. Gemessen ist bisher nur das lokale Modell, es erreicht in dieser Prüfstrecke dieselben Werte wie über n8n ([eval/modellvergleich_pruefset4.md](eval/modellvergleich_pruefset4.md)).
+`scripts/modellvergleich.py` schickt dieselben Mails an das lokale Modell und an ein Cloud-Modell. Prompt, JSON-Schema, Validierung und AB-Prüfung kommen aus den Code-Nodes des Workflows. Das lokale Modell erreicht in dieser Prüfstrecke dieselben Werte wie über n8n.
 
 ```bash
 python scripts/modellvergleich.py qwen       # lokal mit Ollama
 python scripts/modellvergleich.py haiku      # Claude Code CLI mit eigenem Abo, Pfad ggf. in CLAUDE_BIN
-python scripts/modellvergleich.py mistral    # MISTRAL_API_KEY in .env oder als Umgebungsvariable
 ```
 
-Beim Lesen der Cloud-Werte zu beachten:
+Ergebnis auf Prüfsatz 4 mit 99 Mails, gemessen am 26.11.2026, je ein Lauf ([vollständige Tabelle](eval/modellvergleich_pruefset4.md)):
 
-- Haiku läuft über die Claude-Code-CLI, nicht direkt über die API. Antwortzeit und Token enthalten deren Aufschlag, und die Temperatur lässt sich nicht auf 0 setzen.
-- Das Gratis-Kontingent von Mistral darf Anfragen je nach Einstellung zum Training nutzen. Deshalb nur mit synthetischen Mails verwenden.
-- Der Prompt wurde für das lokale Modell geschrieben und für den Vergleich nicht angepasst.
+| Kennzahl | qwen2.5:7b (lokal) | claude-haiku-5-5 (Cloud) |
+|---|---|---|
+| Kategorie richtig | 78 % (77/99) | 96 % (95/99) |
+| Kategorie „sonstiges“ richtig | 13 von 25 | 25 von 25 |
+| Ticket ohne Mensch | 75 % (74/99) | 57 % (56/99) |
+| falsch automatisch geroutet | 11 | 2 |
+| Felder richtig ausgelesen | 31/31 | 31/31 |
+| AB-Entscheidung laut Gold | 12/13 | 11/13 |
+| Antwortzeit Median | 3,3 s | 4,9 s |
+| Listenpreis je 1.000 Mails (laut CLI) | keine API-Kosten | 0,71 USD |
+
+**Einordnung**
+
+- Haiku ordnet deutlich besser ein, vor allem interne Mails. Dafür schickt die unveränderte Konfidenz-Schwelle von 0,75 viel mehr Mails zum Menschen: 36-mal lautet ein Grund „Konfidenz niedrig“. Die Schwelle wurde nicht nachgestellt.
+- Lokal bleiben die Mails im Haus. Für das Cloud-Modell verlassen sie es, im echten Einsatz bräuchte das eine Datenschutzprüfung.
+
+**Fehler im Prüfsatz, durch den Vergleich gefunden:** Bei `s012` wurde in CHF bestellt, die Auftragsbestätigung nennt EUR. Nach dem Fachkonzept ist das eine Abweichung, in `gold.json` steht aber „automatisch bestätigt“. qwen liest die Währung nicht aus und winkt die AB durch. Haiku erkennt die Abweichung und wird dafür als Fehler gezählt. Die bisher veröffentlichte Angabe „0 Auftragsbestätigungen fälschlich durchgewunken“ stimmt deshalb für qwen nicht, es ist eine. Die Gold-Daten und die Tabellen sind hier noch unverändert.
+
+**Grenzen des Vergleichs**
+
+- Haiku läuft über die Claude-Code-CLI, nicht direkt über die API. Antwortzeit und Token enthalten deren Aufschlag (im Schnitt rund 1.000 Ausgabe-Token je Mail gegenüber 231), die Temperatur lässt sich nicht auf 0 setzen, und das Modell kennt offenbar das heutige Datum.
+- Der Prompt wurde für das lokale Modell geschrieben und nicht angepasst.
+- Die Mails sind synthetisch und stammen von einem KI-Modell. Beides begrenzt, was sich auf echte Postfächer übertragen lässt.
 
 ## Testdaten
 

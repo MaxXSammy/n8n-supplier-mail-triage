@@ -1,0 +1,893 @@
+{
+ "s001": {
+  "inhalt": "{\"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.9, \"begruendung\": \"Der Lieferant bestätigt unsere Bestellung 4500018401 ausdrücklich, ändert aber die Liefermodalität in eine Teillieferung mit Restlieferung zu einem späteren Termin; das ist laut Regeln eine Auftragsbestätigung und kein Lieferverzug.\", \"lieferant\": \"Alpen-Drehtechnik (Vertrieb Lieferant 1)\", \"bestellnummer\": \"4500018401\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Antriebswelle AW-40\", \"einzelpreis\": 3.12, \"menge\": 2000, \"betrag\": null, \"waehrung\": \"EUR\", \"liefertermin\": \"2026-11-18\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": \"Teillieferung: 100 Karton à 10 Stk zum 18.11.2026, Rest 1.000 Stk am 10.12.2026\", \"dringlichkeit\": \"hoch\", \"zusammenfassung\": \"Alpen-Drehtechnik bestätigt Bestellung 4500018401 (AW-40) zu 3,12 EUR/Stk. in zwei Teillieferungen: 1.000 Stk am 18.11.2026 und 1.000 Stk am 10.12.2026; der erste Termin liegt bereits vor dem heutigen Datum und sollte geprüft werden.\"}",
+  "sekunden": 8.666512900032103,
+  "sekunden_api": 7.303,
+  "tokens_ein": 3581,
+  "tokens_aus": 1867,
+  "kosten_usd": 0.0016495,
+  "modell": "claude-haiku-5-5"
+ },
+ "s002": {
+  "inhalt": "{\"abweichungsgrund\": null, \"angebotsnummer\": null, \"artikel\": \"Welle Ø12 x 85\", \"begruendung\": \"Der Lieferant meldet den Versand der Ware zu unserer Bestellung mit Spedition und Sendungsnummer; das entspricht einer Versandbenachrichtigung ohne Verzug.\", \"bestellnummer\": \"45000184O2\", \"betrag\": null, \"dringlichkeit\": \"niedrig\", \"einzelpreis\": null, \"kategorie\": \"lieferavis\", \"konfidenz\": 0.95, \"lieferant\": \"Lieferant 2\", \"liefertermin\": null, \"liefertermin_unsicher\": false, \"menge\": 1500, \"rechnungsnummer\": null, \"waehrung\": null, \"zusammenfassung\": \"Lieferant 2 meldet den heutigen Versand von 1500 Stk. Welle Ø12 x 85 zu PO 45000184O2 per DHL Freight (Tracking 99482019482); kein Liefertermin angegeben.\"}",
+  "sekunden": 4.98972109996248,
+  "sekunden_api": 3.823,
+  "tokens_ein": 3531,
+  "tokens_aus": 1027,
+  "kosten_usd": 0.00070574,
+  "modell": "claude-haiku-5-5"
+ },
+ "s003": {
+  "inhalt": "{\"kategorie\": \"lieferverzug\", \"konfidenz\": 0.95, \"lieferant\": \"Brenner Zerspanung (Lieferant 2)\", \"bestellnummer\": \"4500018403\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Distanzscheiben 8 mm (DS-08)\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": \"2026-12-20\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": \"Werkzeugbruch\", \"dringlichkeit\": \"hoch\", \"begruendung\": \"Der Lieferant meldet eine Verspätung einer bereits bestätigten Bestellung (neuer Termin 2026-12-20 statt 2026-12-04) wegen Werkzeugbruchs; das ist Lieferverzug.\", \"zusammenfassung\": \"Brenner Zerspanung verschiebt die Lieferung der Distanzscheiben 8 mm (Bestellung 4500018403) wegen Werkzeugbruch vom 2026-12-04 auf den 2026-12-20; Terminplanung und ggf. Alternativen prüfen.\"}",
+  "sekunden": 3.7822789000347257,
+  "sekunden_api": 2.56,
+  "tokens_ein": 3561,
+  "tokens_aus": 705,
+  "kosten_usd": 0.00055074,
+  "modell": "claude-haiku-5-5"
+ },
+ "s004": {
+  "inhalt": "{\"begruendung\": \"Die Mail meldet beschädigte Ware bei der Wareneingangsprüfung und fordert eine Rework-Meldung oder Ersatzlieferung. Das entspricht der Kategorie reklamation. Die Mail stammt intern von QS Wareneingang, nicht direkt von einem Lieferanten.\", \"kategorie\": \"reklamation\", \"konfidenz\": 0.9, \"lieferant\": \"Lieferant 5\", \"bestellnummer\": \"4500018404\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"ZW-25\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"hoch\", \"zusammenfassung\": \"QS meldet 300 beschädigte Stück bei Pos. ZW-25 der Bestellung 4500018404 (Lieferant 5) und bittet um Rework oder Ersatzlieferung bis 30.11.2026.\"}",
+  "sekunden": 6.0975137000204995,
+  "sekunden_api": 5.042,
+  "tokens_ein": 3572,
+  "tokens_aus": 1217,
+  "kosten_usd": 0.00080894,
+  "modell": "claude-haiku-5-5"
+ },
+ "s005": {
+  "inhalt": "{\"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.95, \"lieferant\": \"Lieferant 6 AG (Schweiz)\", \"bestellnummer\": \"4500018405\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Praezisionsbolzen PB-6\", \"einzelpreis\": 1.85, \"menge\": 500, \"betrag\": null, \"waehrung\": \"EUR\", \"liefertermin\": \"2026-11-18\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"begruendung\": \"Der Lieferant bestätigt den Erhalt der Bestellung 4500018405 mit Menge, Preis und Liefertermin, ohne Abweichungen gegenüber der Bestellung.\", \"zusammenfassung\": \"Lieferant 6 bestätigt PO 4500018405 über 500 Stk Praezisionsbolzen PB-6 zu 1,85 EUR je Stück mit Liefertermin 18.11.2026; dieser Termin liegt vor dem heutigen Datum (26.11.2026), bitte Liefer- bzw. Wareneingangsstatus prüfen.\"}",
+  "sekunden": 4.870996000012383,
+  "sekunden_api": 3.777,
+  "tokens_ein": 3563,
+  "tokens_aus": 994,
+  "kosten_usd": 0.0006956400000000001,
+  "modell": "claude-haiku-5-5"
+ },
+ "s006": {
+  "inhalt": "{\"kategorie\": \"lieferverzug\", \"konfidenz\": 0.95, \"lieferant\": \"Lieferant 9 (nordform.example)\", \"bestellnummer\": \"4500018406\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Kunststoffgehäuse KG-30\", \"einzelpreis\": null, \"menge\": 800, \"betrag\": null, \"waehrung\": null, \"liefertermin\": \"2026-12-15\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"begruendung\": \"Der Lieferant meldet, dass die bestellten 800 Stück KG-30 erst am 15.12.2026 statt wohl zum ursprünglich geplanten Termin geliefert werden können; das ist eine Verspätung einer bestehenden Bestellung.\", \"zusammenfassung\": \"Lieferant 9 meldet für Bestellung 4500018406 eine Verspätung: 800 Stück Kunststoffgehäuse KG-30 kommen erst am 15.12.2026; bitte Auswirkungen auf die Produktion prüfen.\"}",
+  "sekunden": 5.6806967000011355,
+  "sekunden_api": 4.446,
+  "tokens_ein": 3517,
+  "tokens_aus": 1086,
+  "kosten_usd": 0.00073244,
+  "modell": "claude-haiku-5-5"
+ },
+ "s007": {
+  "inhalt": "{\"begruendung\": \"Der Lieferant bestätigt unsere Bestellung 4500018407 mit Menge, Einzelpreis und Liefertermin. Das entspricht einer Auftragsbestätigung.\", \"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.95, \"lieferant\": \"Lieferant 7 GmbH\", \"bestellnummer\": \"4500018407\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Flansch FL-80\", \"einzelpreis\": 5.1, \"menge\": 1800, \"betrag\": null, \"waehrung\": \"EUR\", \"liefertermin\": \"2026-12-11\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Lieferant 7 bestätigt Bestellung 4500018407 über 1800 Stk Flansch FL-80 zu je 5,10 EUR mit Liefertermin 11.12.2026.\"}",
+  "sekunden": 4.61821810004767,
+  "sekunden_api": 3.547,
+  "tokens_ein": 3486,
+  "tokens_aus": 972,
+  "kosten_usd": 0.00066924,
+  "modell": "claude-haiku-5-5"
+ },
+ "s008": {
+  "inhalt": "{\"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.85, \"lieferant\": \"Feldmann Präzisionsteile\", \"bestellnummer\": \"4500018408\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Hülse HS-12\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": \"2026-12-01\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": \"Ursprünglicher Wunschtermin 30.11.2026 ist ein Sonntag; Lieferung erfolgt am Montag, 01.12.2026.\", \"dringlichkeit\": \"mittel\", \"begruendung\": \"Lieferant bestätigt Bestellung 4500018408 und korrigiert den Liefertermin auf 01.12.2026; das ist eine Auftragsbestätigung mit geändertem Termin, kein Verzug.\", \"zusammenfassung\": \"Feldmann Präzisionsteile korrigiert den Wunschtermin für Bestellung 4500018408 (Hülse HS-12) vom Sonntag 30.11.2026 auf Montag 01.12.2026.\"}",
+  "sekunden": 6.0886406999779865,
+  "sekunden_api": 4.954,
+  "tokens_ein": 3536,
+  "tokens_aus": 1308,
+  "kosten_usd": 0.00084724,
+  "modell": "claude-haiku-5-5"
+ },
+ "s009": {
+  "inhalt": "{\"begruendung\": \"Die Mail meldet eine Versandsendung mit Lieferscheinnummer, Menge und voraussichtlichem Ankunftstermin zu unserer Bestellung. Das entspricht einem Lieferavis, ohne Verzugshinweis.\", \"kategorie\": \"lieferavis\", \"konfidenz\": 0.95, \"lieferant\": \"Lieferant 8\", \"bestellnummer\": \"4500018409\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Distanzring DR-30\", \"einzelpreis\": null, \"menge\": 1040, \"betrag\": null, \"waehrung\": null, \"liefertermin\": \"2026-12-02\", \"liefertermin_unsicher\": true, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Lieferant 8 meldet den Versand von 1.040 Stk Distanzring DR-30 zu PO 4500018409 (Lieferschein 99201), voraussichtliche Ankunft 02.12.2026.\"}",
+  "sekunden": 4.953807699959725,
+  "sekunden_api": 3.838,
+  "tokens_ein": 3510,
+  "tokens_aus": 1021,
+  "kosten_usd": 0.00069854,
+  "modell": "claude-haiku-5-5"
+ },
+ "s010": {
+  "inhalt": "{\"begruendung\": \"Die Mail meldet Qualitätsmängel (50 Stk mit Grat) an einer gelieferten Bestellung und bittet um eine Nacharbeitsfreigabe, das passt zur Kategorie reklamation.\", \"kategorie\": \"reklamation\", \"konfidenz\": 0.9, \"lieferant\": null, \"bestellnummer\": \"4500018410\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Antriebswelle AW-40\", \"einzelpreis\": null, \"menge\": 50, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"QS Fertigung meldet 50 Stk Antriebswelle AW-40 aus Bestellung 4500018410 mit Grat und bittet um Nacharbeitsfreigabe.\"}",
+  "sekunden": 4.658338200068101,
+  "sekunden_api": 3.522,
+  "tokens_ein": 3516,
+  "tokens_aus": 901,
+  "kosten_usd": 0.00063974,
+  "modell": "claude-haiku-5-5"
+ },
+ "s011": {
+  "inhalt": "{\"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.85, \"lieferant\": \"Lieferant 1 (alpen-drehtechnik.example)\", \"bestellnummer\": \"4500018411\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Lagerbolzen LB-20\", \"einzelpreis\": 2.45, \"menge\": 1200, \"betrag\": null, \"waehrung\": \"EUR\", \"liefertermin\": \"2026-11-14\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"begruendung\": \"Der Lieferant bestätigt die Bestellung 4500018411 mit Menge, Stückpreis und Versandtermin, ohne Abweichung zur Bestellung; es handelt sich somit um eine Auftragsbestätigung.\", \"zusammenfassung\": \"Lieferant 1 bestätigt Bestellung 4500018411: 1200 Stk Lagerbolzen LB-20 zu 2,45 EUR, komplette Lieferung geht laut Mail am 14.11.2026 in den Versand; der Termin liegt bereits vor dem heutigen Datum (26.11.2026), bitte Liefer- bzw. Versandstatus prüfen.\"}",
+  "sekunden": 9.315630599972792,
+  "sekunden_api": 8.367,
+  "tokens_ein": 8644,
+  "tokens_aus": 2300,
+  "kosten_usd": 0.00169907,
+  "modell": "claude-haiku-5-5"
+ },
+ "s012": {
+  "inhalt": "{\"abweichungsgrund\": null, \"angebotsnummer\": null, \"artikel\": \"Gewindestift GS-4\", \"begruendung\": \"Der Lieferant bestätigt unsere Bestellung PO 4500018412 mit Menge, Einzelpreis und Liefertermin; die Mail ist daher eine Auftragsbestätigung.\", \"bestellnummer\": \"4500018412\", \"betrag\": null, \"dringlichkeit\": \"mittel\", \"einzelpreis\": 0.92, \"konfidenz\": 0.95, \"kategorie\": \"auftragsbestaetigung\", \"lieferant\": \"Lieferant 6\", \"liefertermin\": \"2026-11-21\", \"liefertermin_unsicher\": false, \"menge\": 3000, \"rechnungsnummer\": null, \"waehrung\": \"EUR\", \"zusammenfassung\": \"Lieferant 6 bestätigt Bestellung 4500018412 über 3000 Stk Gewindestift GS-4 zu 0,92 EUR, Liefertermin 21.11.2026; dieser Termin liegt bereits vor dem heutigen Datum (26.11.2026), bitte Liefertermin prüfen.\"}",
+  "sekunden": 5.339936000062153,
+  "sekunden_api": 4.228,
+  "tokens_ein": 3504,
+  "tokens_aus": 1065,
+  "kosten_usd": 0.00071934,
+  "modell": "claude-haiku-5-5"
+ },
+ "s013": {
+  "inhalt": "{\"kategorie\": \"lieferverzug\", \"konfidenz\": 0.95, \"lieferant\": \"Lieferant 7\", \"bestellnummer\": \"4500018413\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Spannstift SP-10\", \"einzelpreis\": null, \"menge\": 4000, \"betrag\": null, \"waehrung\": null, \"liefertermin\": \"2026-12-20\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"hoch\", \"begruendung\": \"Der Lieferant meldet für die bereits bestätigte Bestellung 4500018413 eine verspätete Lieferung auf 20.12.2026, also Lieferverzug und nicht Auftragsbestätigung.\", \"zusammenfassung\": \"Lieferant 7 kann Bestellung 4500018413 (4000 Stk Spannstift SP-10) erst am 20.12.2026 liefern; bitte Auswirkungen auf Produktionsplanung prüfen.\"}",
+  "sekunden": 3.4707294000545517,
+  "sekunden_api": 2.413,
+  "tokens_ein": 3496,
+  "tokens_aus": 646,
+  "kosten_usd": 0.00050824,
+  "modell": "claude-haiku-5-5"
+ },
+ "s014": {
+  "inhalt": "{\"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.95, \"lieferant\": \"Lieferant 3\", \"bestellnummer\": \"4500018414\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Buchse BU-22\", \"einzelpreis\": 1.14, \"menge\": 1500, \"betrag\": null, \"waehrung\": \"EUR\", \"liefertermin\": \"2026-12-02\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"begruendung\": \"Der Lieferant bestätigt die Bestellung 4500018414 mit Menge, Preis und Liefertermin ohne Abweichungen zur Bestellung.\", \"zusammenfassung\": \"Lieferant 3 bestätigt Bestellung 4500018414 über 1500 Stück Buchse BU-22 zu 1,14 EUR je Stück mit Liefertermin 02.12.2026; kein Gesamtbetrag genannt.\"}",
+  "sekunden": 7.487382700084709,
+  "sekunden_api": 6.417,
+  "tokens_ein": 8209,
+  "tokens_aus": 1816,
+  "kosten_usd": 0.0013719700000000001,
+  "modell": "claude-haiku-5-5"
+ },
+ "s015": {
+  "inhalt": "{\"begruendung\": \"Die Mail ist eine Versandbenachrichtigung (ASN): Die Ware ist unterwegs zur Bestellung 4500018415 und nennt einen Ankunftstermin, ohne Verzug.\", \"kategorie\": \"lieferavis\", \"konfidenz\": 0.95, \"lieferant\": \"Lieferant 4\", \"bestellnummer\": \"4500018415\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Scheibe SR-05\", \"einzelpreis\": null, \"menge\": 2000, \"betrag\": null, \"waehrung\": null, \"liefertermin\": \"2026-12-10\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Lieferant 4 meldet den Versand von 2000 Stück Scheibe SR-05 zur Bestellung 4500018415 mit Ankunft am 10.12.2026.\"}",
+  "sekunden": 4.667851199978031,
+  "sekunden_api": 3.544,
+  "tokens_ein": 3480,
+  "tokens_aus": 957,
+  "kosten_usd": 0.0006605399999999999,
+  "modell": "claude-haiku-5-5"
+ },
+ "s016": {
+  "inhalt": "{\"begruendung\": \"Der Lieferant bestätigt unsere Bestellung 4500018416 mit Menge, Stückpreis und Liefertermin, ohne Abweichung.\", \"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.95, \"lieferant\": \"Lieferant 8 (vertrieb@precimet.example)\", \"bestellnummer\": \"4500018416\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"RI-14\", \"einzelpreis\": 0.19, \"menge\": 2500, \"betrag\": null, \"waehrung\": \"EUR\", \"liefertermin\": \"2026-12-15\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Lieferant 8 bestätigt Bestellung 4500018416: 2500 Stück RI-14 zu 0,19 EUR je Stück, Liefertermin 15.12.2026.\"}",
+  "sekunden": 5.454580000019632,
+  "sekunden_api": 4.249,
+  "tokens_ein": 3495,
+  "tokens_aus": 1153,
+  "kosten_usd": 0.00076154,
+  "modell": "claude-haiku-5-5"
+ },
+ "s017": {
+  "inhalt": "{\"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.85, \"lieferant\": \"Lieferant 6\", \"bestellnummer\": \"4500018417\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Achsstift AS-3\", \"einzelpreis\": 2.1, \"menge\": 800, \"betrag\": null, \"waehrung\": \"CHF\", \"liefertermin\": \"2026-12-10\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": \"Teillieferung: 400 Stk am 26.11.2026, restliche 400 Stk am 10.12.2026\", \"dringlichkeit\": \"mittel\", \"begruendung\": \"Der Lieferant bestätigt Bestellung 4500018417 mit Preis und Terminen und teilt die Lieferung in zwei Teilmengen auf; das ist eine Auftragsbestätigung mit geändertem Liefertermin, kein Verzug.\", \"zusammenfassung\": \"Lieferant 6 bestätigt Bestellung 4500018417 (800 Stk Achsstift AS-3 zu 2,10 CHF/Stk) als Teillieferung: 400 Stk am 26.11.2026 und 400 Stk am 10.12.2026.\"}",
+  "sekunden": 6.99294650007505,
+  "sekunden_api": 6.016,
+  "tokens_ein": 3507,
+  "tokens_aus": 1559,
+  "kosten_usd": 0.00096694,
+  "modell": "claude-haiku-5-5"
+ },
+ "s018": {
+  "inhalt": "{\"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.95, \"begruendung\": \"Der Lieferant bestätigt unsere Bestellung PO 4500018418 mit einem festen Liefertermin, ohne Änderungen oder Vorbehalte.\", \"lieferant\": \"Alpen Drehtechnik (Lieferant 1)\", \"bestellnummer\": \"4500018418\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Madenschraube MS-6\", \"einzelpreis\": null, \"menge\": 5000, \"betrag\": null, \"waehrung\": null, \"liefertermin\": \"2026-12-03\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Alpen Drehtechnik bestätigt Bestellung 4500018418 über 5000 Stück Madenschraube MS-6 mit Liefertermin 03.12.2026; Preis wird in der Mail nicht genannt.\"}",
+  "sekunden": 4.032400000025518,
+  "sekunden_api": 2.889,
+  "tokens_ein": 3485,
+  "tokens_aus": 778,
+  "kosten_usd": 0.00057204,
+  "modell": "claude-haiku-5-5"
+ },
+ "s019": {
+  "inhalt": "{\"begruendung\": \"Die Bestellung 4500018525 ist laut Mail bereits bestätigt und wird nun um eine Woche auf den 10.12.2026 verschoben. Das ist ein Lieferverzug, kein Liefertermin-Vorbehalt.\", \"kategorie\": \"lieferverzug\", \"konfidenz\": 0.93, \"lieferant\": \"Brenner Zerspanung (Lieferant 2)\", \"bestellnummer\": \"4500018525\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Nutenkeil NK-16\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": \"2026-12-10\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": \"Verzögerung um 1 Woche; Grund wird in der Mail nicht genannt.\", \"dringlichkeit\": \"hoch\", \"zusammenfassung\": \"Brenner Zerspanung meldet für Bestellung 4500018525 (Nutenkeil NK-16) eine Verzögerung um eine Woche auf den neuen Liefertermin 10.12.2026; Termin und Bedarf sind zu prüfen.\"}",
+  "sekunden": 5.111432300065644,
+  "sekunden_api": 3.838,
+  "tokens_ein": 3488,
+  "tokens_aus": 1024,
+  "kosten_usd": 0.00069564,
+  "modell": "claude-haiku-5-5"
+ },
+ "s020": {
+  "inhalt": "{\"begruendung\": \"Der Lieferant bestätigt unsere Bestellung 4500018401 (2000 Stk AW-40) mit einem Liefertermin, das ist eine Auftragsbestätigung.\", \"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.95, \"lieferant\": \"Lieferant 1 (alpen-drehtechnik.example)\", \"bestellnummer\": \"4500018401\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"AW-40\", \"einzelpreis\": null, \"menge\": 2000, \"betrag\": null, \"waehrung\": null, \"liefertermin\": \"2026-11-20\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Lieferant 1 bestätigt Bestellung 4500018401 über 2000 Stk AW-40 zum 20.11.2026 ohne Abweichungen; der bestätigte Termin liegt vor dem heutigen Datum (26.11.2026), daher bitte prüfen, ob die Lieferung eingetroffen ist.\"}",
+  "sekunden": 5.171079100109637,
+  "sekunden_api": 3.966,
+  "tokens_ein": 3476,
+  "tokens_aus": 1056,
+  "kosten_usd": 0.0007092400000000001,
+  "modell": "claude-haiku-5-5"
+ },
+ "s021": {
+  "inhalt": "{\"begruendung\": \"Die Mail stammt intern aus der Produktion und ist kein Lieferantenschreiben; sie fordert eine Bedarfsanforderung (BANF-2026-9901) und eine Anfrage an Lieferant 1 an. Keine der Lieferantenkategorien passt, daher sonstiges.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.5, \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Lagerbolzen LB-20\", \"einzelpreis\": null, \"menge\": 500, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"hoch\", \"zusammenfassung\": \"Produktion (Markus) benötigt dringend 500 Stk Lagerbolzen LB-20 für Linie 2; Bitte um Anlage der BANF-2026-9901 und Anfrage bei Lieferant 1 durch den Einkauf.\"}",
+  "sekunden": 5.411345800035633,
+  "sekunden_api": 4.21,
+  "tokens_ein": 3532,
+  "tokens_aus": 1048,
+  "kosten_usd": 0.00071644,
+  "modell": "claude-haiku-5-5"
+ },
+ "s022": {
+  "inhalt": "{\"kategorie\": \"sonstiges\", \"konfidenz\": 0.8, \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Zahnradwelle ZW-25\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"begruendung\": \"Die Mail stammt intern aus der Konstruktion und kommt nicht von einem Lieferanten. Sie übermittelt ein geändertes Datenblatt (Zeichnungsindex B) für die ZW-25, passt daher in keine Lieferantenkategorie und wird als sonstiges eingeordnet.\", \"zusammenfassung\": \"Konstruktion (Jens) hat ein geändertes Datenblatt für die Zahnradwelle ZW-25 (Zeichnungsindex B) geschickt und bittet, dies bei der nächsten Bestellung zu berücksichtigen.\"}",
+  "sekunden": 4.562535299919546,
+  "sekunden_api": 3.454,
+  "tokens_ein": 3518,
+  "tokens_aus": 895,
+  "kosten_usd": 0.00063714,
+  "modell": "claude-haiku-5-5"
+ },
+ "s023": {
+  "inhalt": "{\"begruendung\": \"Interne Freigabeanforderung des Workflow-Systems für eine Bestellung, die das Limit überschreitet. Keine der Lieferantenkategorien passt, daher sonstiges.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.5, \"lieferant\": null, \"bestellnummer\": \"4500018410\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": 8940, \"waehrung\": \"EUR\", \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"hoch\", \"zusammenfassung\": \"Das Workflow-System bittet um Freigabe der Bestellung 4500018410 über 8.940,00 EUR, da das Bestelllimit überschritten ist.\"}",
+  "sekunden": 4.24883850000333,
+  "sekunden_api": 3.048,
+  "tokens_ein": 3484,
+  "tokens_aus": 809,
+  "kosten_usd": 0.00058734,
+  "modell": "claude-haiku-5-5"
+ },
+ "s024": {
+  "inhalt": "{\"kategorie\": \"sonstiges\", \"konfidenz\": 0.7, \"begruendung\": \"Die Mail ist eine interne Bedarfsanforderung der Instandhaltung (BANF 88201) und stammt von keinem Lieferanten; keine der Lieferantenkategorien passt.\", \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Spezial-Bohrer (Einheit: Satz)\", \"einzelpreis\": null, \"menge\": 10, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Instandhaltung bittet um Beschaffung von 10 Satz Spezial-Bohrern per BANF 88201, Kostenstelle 4402; Einkauf sollte Bedarf prüfen und Bestellung anlegen.\"}",
+  "sekunden": 5.6540388999274,
+  "sekunden_api": 4.393,
+  "tokens_ein": 3497,
+  "tokens_aus": 1156,
+  "kosten_usd": 0.00076344,
+  "modell": "claude-haiku-5-5"
+ },
+ "s025": {
+  "inhalt": "{\"begruendung\": \"Interne Systemmail der ERP-Automation ohne Lieferantenbezug; keine der Lieferanten-Kategorien passt, daher sonstiges. Es geht um eine Freigabeanforderung für eine Investition (BANF-ID 4091) im Portal.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.6, \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Die ERP-Automation meldet, dass die Investition für den Prüfstand (BANF-ID 4091) zur Freigabe im Portal bereitliegt.\"}",
+  "sekunden": 4.568917199969292,
+  "sekunden_api": 3.284,
+  "tokens_ein": 3488,
+  "tokens_aus": 804,
+  "kosten_usd": 0.00058564,
+  "modell": "claude-haiku-5-5"
+ },
+ "s026": {
+  "inhalt": "{\"begruendung\": \"Die Mail stammt von unserer eigenen Entwicklungsabteilung und meldet eine Toleranzänderung an Distanzscheibe DS-08 mit Anhang. Sie passt zu keiner Lieferantenkategorie und fällt deshalb unter sonstiges.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.7, \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Distanzscheibe DS-08\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Interne Mail der AV Entwicklung: Die Toleranz für Distanzscheibe DS-08 wurde angepasst, das neue Spezifikationsdokument liegt im Anhang und sollte vom zuständigen Team geprüft werden.\"}",
+  "sekunden": 4.222244099946693,
+  "sekunden_api": 3.006,
+  "tokens_ein": 3491,
+  "tokens_aus": 789,
+  "kosten_usd": 0.00057874,
+  "modell": "claude-haiku-5-5"
+ },
+ "s027": {
+  "inhalt": "{\"begruendung\": \"Die Mail stammt von unserer internen Logistik und ist keine Lieferantenmail. Sie fordert eine Bestellung von 500 Stück Verpackungsmaterial an, was in keine der Lieferantenkategorien passt.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.8, \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Standard-Karton Typ B\", \"einzelpreis\": null, \"menge\": 500, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"hoch\", \"zusammenfassung\": \"Interne Logistik meldet dringenden Engpass bei Kartons und bittet um Bestellung von 500 Stück Standard-Karton Typ B; Bestellung ist neu anzulegen, da kein Lieferant und keine Bestellnummer genannt sind.\"}",
+  "sekunden": 4.356818199972622,
+  "sekunden_api": 3.227,
+  "tokens_ein": 3478,
+  "tokens_aus": 839,
+  "kosten_usd": 0.00060114,
+  "modell": "claude-haiku-5-5"
+ },
+ "s028": {
+  "inhalt": "{\"begruendung\": \"Interne Nachricht der Montage, kein Lieferant: Sie fordert 400 Stück KG-30 als Zusatzbedarf zum bestehenden Auftrag 4500018406 an. Keine der Lieferantenkategorien passt, daher sonstiges.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.5, \"lieferant\": null, \"bestellnummer\": \"4500018406\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Gehäuse KG-30\", \"einzelpreis\": null, \"menge\": 400, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Die Montage benötigt zusätzlich 400 Stück Gehäuse KG-30 über den bestehenden Auftrag 4500018406 hinaus (Bezug: BANF 90122); Einkauf muss Nachbestellung prüfen und beim Lieferanten anfragen.\"}",
+  "sekunden": 5.137362600071356,
+  "sekunden_api": 4.017,
+  "tokens_ein": 3494,
+  "tokens_aus": 1060,
+  "kosten_usd": 0.00071484,
+  "modell": "claude-haiku-5-5"
+ },
+ "s029": {
+  "inhalt": "{\"begruendung\": \"Die Mail stammt von unserer eigenen Arbeitsvorbereitung und ist kein Lieferantenschreiben. Sie bittet intern um die Umsetzungsfreigabe der BANF 5541 für eine Ersatzteilbeschaffung, passt also in keine Lieferantenkategorie und fällt unter sonstiges.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.85, \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Ersatzteil Spindelmotor\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Die Arbeitsvorbereitung bittet um die ausstehende Umsetzungsfreigabe für die Bedarfsanforderung BANF 5541 zur Ersatzteilbeschaffung eines Spindelmotors.\"}",
+  "sekunden": 4.98850360000506,
+  "sekunden_api": 3.828,
+  "tokens_ein": 3493,
+  "tokens_aus": 974,
+  "kosten_usd": 0.00067164,
+  "modell": "claude-haiku-5-5"
+ },
+ "s030": {
+  "inhalt": "{\"begruendung\": \"Interne Mail aus unserer eigenen Engineering-Abteilung ohne Lieferantenbezug; sie kündigt nur eine neue Zeichnungsversion für künftige Anfragen an und passt zu keiner der Lieferantenkategorien, daher sonstiges.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.6, \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Flansch FL-80\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Engineering informiert intern über die neue Zeichnungsversion FL-80_v3.pdf des Flansch FL-80, die für künftige Anfragen zu verwenden ist; die Zeichnung selbst liegt nicht im Mailtext vor.\"}",
+  "sekunden": 4.441606899956241,
+  "sekunden_api": 3.303,
+  "tokens_ein": 3470,
+  "tokens_aus": 846,
+  "kosten_usd": 0.00060304,
+  "modell": "claude-haiku-5-5"
+ },
+ "s031": {
+  "inhalt": "{\"kategorie\": \"angebot\", \"konfidenz\": 0.95, \"begruendung\": \"Der Lieferant übermittelt ein Angebot zu unserer Anfrage RFQ-2026-088 mit Stückpreis und Menge.\", \"zusammenfassung\": \"Lieferant 4 (officina-rossi.example) bietet zu unserer Anfrage RFQ-2026-088 2000 Stück Antriebswelle AW-40 zu je 3,05 EUR mit 3 Wochen Lieferzeit an.\", \"lieferant\": \"Lieferant 4 (officina-rossi.example)\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Antriebswelle AW-40\", \"einzelpreis\": 3.05, \"menge\": 2000, \"betrag\": null, \"waehrung\": \"EUR\", \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\"}",
+  "sekunden": 5.602312300004996,
+  "sekunden_api": 4.463,
+  "tokens_ein": 3539,
+  "tokens_aus": 1168,
+  "kosten_usd": 0.00077784,
+  "modell": "claude-haiku-5-5"
+ },
+ "s032": {
+  "inhalt": "{\"kategorie\": \"preisaenderung\", \"konfidenz\": 0.92, \"begruendung\": \"Der Lieferant kündigt von sich aus eine Preiserhöhung von 5 % für Stahlkomponenten an, ohne dass eine Anfrage unsererseits vorliegt und ohne Bezug zu einer bestätigten Bestellung.\", \"lieferant\": \"Lieferant 7\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Stahlkomponenten (z. B. FL-80, SP-10)\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": \"Rohstoffzuschlag: Preise für Stahlkomponenten steigen um 5 %\", \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Lieferant 7 erhöht die Preise für Stahlkomponenten (z. B. FL-80, SP-10) um 5 % aufgrund des Rohstoffzuschlags, gültig ab 01.12.2026; Einkauf sollte Preise prüfen und ggf. Nachverhandlung oder Alternativen klären.\"}",
+  "sekunden": 5.612129800021648,
+  "sekunden_api": 4.493,
+  "tokens_ein": 3515,
+  "tokens_aus": 1135,
+  "kosten_usd": 0.00075654,
+  "modell": "claude-haiku-5-5"
+ },
+ "s033": {
+  "inhalt": "{\"kategorie\": \"preisaenderung\", \"konfidenz\": 0.9, \"begruendung\": \"Der Lieferant kündigt von sich aus den Artikel HS-12 zum 31.12.2026 ab (End-of-Life) und nennt einen Nachfolgeartikel; es liegt keine Bestellbezug oder Anfrage von uns vor.\", \"lieferant\": \"Lieferant 3\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"HS-12 (Hülse), Nachfolger: HS-12-v2\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": \"Abkündigung (End-of-Life) des Artikels HS-12 zum 31.12.2026\", \"dringlichkeit\": \"hoch\", \"zusammenfassung\": \"Lieferant 3 kündigt die Hülse HS-12 zum 31.12.2026 ab; Nachfolger ist HS-12-v2. Der Einkauf sollte Bedarf prüfen, eine letzte Bestellung klären und die Umstellung auf HS-12-v2 einplanen.\"}",
+  "sekunden": 5.13524510001298,
+  "sekunden_api": 4.06,
+  "tokens_ein": 3523,
+  "tokens_aus": 1050,
+  "kosten_usd": 0.00071564,
+  "modell": "claude-haiku-5-5"
+ },
+ "s034": {
+  "inhalt": "{\"kategorie\": \"sonstiges\", \"konfidenz\": 0.55, \"lieferant\": \"Precision Parts Ltd\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"begruendung\": \"Erstkontakt eines neuen Herstellers von Präzisionsdrehteilen ohne Bezug zu einer Anfrage oder Bestellung; die beigefügte Lieferantenselbstauskunft (LSA) ist eine Qualifizierungsunterlage und passt daher auch zu compliance, das Hauptanliegen ist aber die Kontaktaufnahme.\", \"zusammenfassung\": \"Precision Parts Ltd stellt sich als Hersteller hochpräziser Wellen und Bolzen vor und schickt Unternehmensprofil sowie ausgefüllte Lieferantenselbstauskunft; Anhänge sind in der Mail nicht enthalten bzw. nicht prüfbar, Prüfung durch Qualitätssicherung/Einkauf erforderlich, falls Interesse besteht.\"}",
+  "sekunden": 6.106304800021462,
+  "sekunden_api": 4.954,
+  "tokens_ein": 3544,
+  "tokens_aus": 1255,
+  "kosten_usd": 0.00082234,
+  "modell": "claude-haiku-5-5"
+ },
+ "s035": {
+  "inhalt": "{\"abweichungsgrund\": null, \"angebotsnummer\": \"99012\", \"artikel\": \"Nutenkeil NK-16\", \"begruendung\": \"Der Lieferant unterbreitet ein konkretes Angebot mit Menge und Stückpreis zu unserer Anfrage nach dem Nutenkeil NK-16.\", \"bestellnummer\": null, \"betrag\": null, \"dringlichkeit\": \"niedrig\", \"einzelpreis\": 1.15, \"kategorie\": \"angebot\", \"konfidenz\": 0.95, \"lieferant\": \"Lieferant 2\", \"liefertermin\": null, \"liefertermin_unsicher\": false, \"menge\": 1000, \"rechnungsnummer\": null, \"waehrung\": \"EUR\", \"zusammenfassung\": \"Lieferant 2 (Brenner Zerspanung) bietet Angebot 99012 über 1.000 Stück Nutenkeil NK-16 zu 1,15 EUR je Stück, lieferbar ab Lager (rechnerischer Gesamtwert 1.150,00 EUR, nicht in der Mail genannt).\"}",
+  "sekunden": 5.729617200093344,
+  "sekunden_api": 4.67,
+  "tokens_ein": 3508,
+  "tokens_aus": 1154,
+  "kosten_usd": 0.00076464,
+  "modell": "claude-haiku-5-5"
+ },
+ "s036": {
+  "inhalt": "{\"kategorie\": \"preisaenderung\", \"konfidenz\": 0.9, \"lieferant\": \"Lieferant 6\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"GS-4\", \"einzelpreis\": 0.95, \"menge\": null, \"betrag\": null, \"waehrung\": \"CHF\", \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": \"Währungsschwankungen\", \"dringlichkeit\": \"mittel\", \"begruendung\": \"Der Lieferant ändert von sich aus die CHF-Preise, ohne dass eine Anfrage von uns vorliegt, und nennt als Grund Währungsschwankungen.\", \"zusammenfassung\": \"Lieferant 6 passt die CHF-Preise für Artikel GS-4 auf 0,95 CHF an (Begründung: Währungsschwankungen); der Betreff nennt zusätzlich PB-6, der Text dazu fehlt jedoch, ein Gültigkeitsdatum fehlt ebenfalls.\"}",
+  "sekunden": 5.025438399985433,
+  "sekunden_api": 3.964,
+  "tokens_ein": 3496,
+  "tokens_aus": 1001,
+  "kosten_usd": 0.00068574,
+  "modell": "claude-haiku-5-5"
+ },
+ "s037": {
+  "inhalt": "{\"begruendung\": \"Der Lieferant verschickt ungefragt seinen Katalog 2027 und kündigt geänderte Verpackungseinheiten an, also eine einseitige Konditionsänderung. Der Katalog ist keine Antwort auf eine Anfrage von uns, daher kein Angebot. Werbung passt nur eingeschränkt, da die Verpackungsänderung einen sachlichen Inhalt hat.\", \"kategorie\": \"preisaenderung\", \"konfidenz\": 0.6, \"lieferant\": \"Lieferant 8 (precimet, vertrieb@precimet.example)\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Lieferant 8 (precimet) übermittelt den Gesamtkatalog 2027 mit geänderten Verpackungseinheiten; die betroffenen Artikel und neuen Einheiten sind im Katalog zu prüfen, bevor Bestellungen angepasst werden.\"}",
+  "sekunden": 5.454596299910918,
+  "sekunden_api": 4.327,
+  "tokens_ein": 3470,
+  "tokens_aus": 1100,
+  "kosten_usd": 0.00073004,
+  "modell": "claude-haiku-5-5"
+ },
+ "s038": {
+  "inhalt": "{\"kategorie\": \"angebot\", \"konfidenz\": 0.95, \"lieferant\": \"Lieferant 1 (alpen-drehtechnik.example)\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Madenschraube MS-6\", \"einzelpreis\": 0.085, \"menge\": 5000, \"betrag\": null, \"waehrung\": \"EUR\", \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"begruendung\": \"Der Lieferant antwortet ausdrücklich auf unsere Anfrage RFQ 4410 mit einem Preisangebot.\", \"zusammenfassung\": \"Lieferant 1 bietet auf RFQ 4410 5000 Stück Madenschrauben MS-6 zu je 0,085 EUR an; Angebotsnummer und Gesamtbetrag fehlen in der Mail.\"}",
+  "sekunden": 3.337642899947241,
+  "sekunden_api": 2.265,
+  "tokens_ein": 3481,
+  "tokens_aus": 629,
+  "kosten_usd": 0.00049674,
+  "modell": "claude-haiku-5-5"
+ },
+ "s039": {
+  "inhalt": "{\"begruendung\": \"Der Lieferant meldet eine temporäre Sperre des Artikels DR-30 wegen Qualitätsprüfungen, also eine Unterbrechung der Lieferung. Eine konkrete Bestellung wird nicht genannt, daher ist die Zuordnung zu lieferverzug mit mittlerer Konfidenz.\", \"kategorie\": \"lieferverzug\", \"konfidenz\": 0.6, \"lieferant\": \"Lieferant 8\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"DR-30\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": \"Temporäre Sperre des Artikels wegen Qualitätsprüfungen\", \"dringlichkeit\": \"hoch\", \"zusammenfassung\": \"Lieferant 8 sperrt den Artikel DR-30 vorübergehend wegen Qualitätsprüfungen; es wird kein Wiederlieferungstermin genannt und die betroffene Bestellung ist nicht angegeben.\"}",
+  "sekunden": 6.329897599993274,
+  "sekunden_api": 5.387,
+  "tokens_ein": 3479,
+  "tokens_aus": 1350,
+  "kosten_usd": 0.00085684,
+  "modell": "claude-haiku-5-5"
+ },
+ "s040": {
+  "inhalt": "{\"begruendung\": \"Die Mail ist eine Anfrage des eigenen Sourcing Teams zur Übersendung einer Lieferantenauskunft (LSA) für 2027. Sie passt zu keiner spezifischen Lieferantenkategorie und fällt daher unter sonstiges.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.7, \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Das interne Sourcing Team bittet um Übersendung der Lieferantenauskunft (LSA) für das Jahr 2027.\"}",
+  "sekunden": 4.515150799998082,
+  "sekunden_api": 3.335,
+  "tokens_ein": 3469,
+  "tokens_aus": 868,
+  "kosten_usd": 0.00061384,
+  "modell": "claude-haiku-5-5"
+ },
+ "s041": {
+  "inhalt": "{\"kategorie\": \"rechnung\", \"konfidenz\": 0.97, \"lieferant\": \"Alpen Drehtechnik (Lieferant 1)\", \"bestellnummer\": \"4500018401\", \"rechnungsnummer\": \"2026-9041\", \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": 6240, \"waehrung\": \"EUR\", \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"begruendung\": \"Die Mail übermittelt eine Rechnung mit Rechnungsnummer und Betrag zu einer Bestellung.\", \"zusammenfassung\": \"Alpen Drehtechnik hat Rechnung 2026-9041 über 6.240,00 EUR zu Bestellung 4500018401 gesendet; bitte zur Prüfung und Zahlung an die Buchhaltung weiterleiten.\"}",
+  "sekunden": 3.3595300999004394,
+  "sekunden_api": 2.202,
+  "tokens_ein": 3508,
+  "tokens_aus": 628,
+  "kosten_usd": 0.00050164,
+  "modell": "claude-haiku-5-5"
+ },
+ "s042": {
+  "inhalt": "{\"begruendung\": \"Es geht um eine Preisabweichung auf einer Rechnung (Re-Nr. 8812) gegenüber der Bestellung; das ist eine Rechnungsklärung.\", \"kategorie\": \"rechnung\", \"konfidenz\": 0.9, \"lieferant\": null, \"bestellnummer\": \"4500018402\", \"rechnungsnummer\": \"8812\", \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": \"EUR\", \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Die Kreditorenbuchhaltung meldet, dass Rechnung 8812 zu PO 4500018402 mit 3,95 EUR/Stk statt der bestellten 3,80 EUR/Stk abgerechnet wurde, und bittet um Prüfung.\"}",
+  "sekunden": 6.001834099995904,
+  "sekunden_api": 4.707,
+  "tokens_ein": 3547,
+  "tokens_aus": 1242,
+  "kosten_usd": 0.00081644,
+  "modell": "claude-haiku-5-5"
+ },
+ "s043": {
+  "inhalt": "{\"begruendung\": \"Die Mail ist die erste Mahnung des Lieferanten zu einer offenen Rechnung (Re-Nr. 7712) und fällt damit unter Rechnungen, Zahlungserinnerungen und Mahnungen.\", \"kategorie\": \"rechnung\", \"konfidenz\": 0.95, \"lieferant\": \"Lieferant 6 (swissturning, vertrieb@swissturning.example)\", \"bestellnummer\": \"4500018405\", \"rechnungsnummer\": \"7712\", \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": 925, \"waehrung\": \"CHF\", \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Lieferant 6 mahnt die offene Rechnung 7712 über 925,00 CHF (Bestellung 4500018405) an, da kein Zahlungseingang festgestellt wurde; Zahlungsstatus prüfen und Lieferant ggf. antworten.\"}",
+  "sekunden": 4.267599000013433,
+  "sekunden_api": 3.098,
+  "tokens_ein": 3516,
+  "tokens_aus": 845,
+  "kosten_usd": 0.00061174,
+  "modell": "claude-haiku-5-5"
+ },
+ "s044": {
+  "inhalt": "{\"begruendung\": \"Die Mail übermittelt eine Gutschrift (Nr. 40019) über 149,00 EUR wegen fehlerhafter Teile. Gutschriften gehören zur Kategorie rechnung, auch wenn sie aus einer Reklamation folgen.\", \"kategorie\": \"rechnung\", \"konfidenz\": 0.9, \"lieferant\": \"Lieferant 4 (officina-rossi.example)\", \"bestellnummer\": \"4500018410\", \"rechnungsnummer\": \"40019\", \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": 149, \"waehrung\": \"EUR\", \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Lieferant 4 hat Gutschrift 40019 über 149,00 EUR für fehlerhafte Teile aus Bestellung 4500018410 (Reklamation) übermittelt; Prüfung und Verbuchung durch das zuständige Team.\"}",
+  "sekunden": 4.8494200999848545,
+  "sekunden_api": 3.627,
+  "tokens_ein": 3494,
+  "tokens_aus": 973,
+  "kosten_usd": 0.0006713400000000001,
+  "modell": "claude-haiku-5-5"
+ },
+ "s045": {
+  "inhalt": "{\"begruendung\": \"Zahlungsavis der eigenen Finanzbuchhaltung über die Zahlung zweier Rechnungen; passt am besten zu rechnung. Absender ist intern (hagemann-antriebstechnik.example), daher kein Lieferant genannt.\", \"kategorie\": \"rechnung\", \"konfidenz\": 0.8, \"lieferant\": null, \"bestellnummer\": \"4500018401, 4500018411\", \"rechnungsnummer\": \"2026-9041, 2026-9088\", \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Die Finanzbuchhaltung meldet die Zahlung der Rechnungen 2026-9041 (PO 4500018401) und 2026-9088 (PO 4500018411); kein Handlungsbedarf außer Abgleich mit den Konten.\"}",
+  "sekunden": 5.834475000039674,
+  "sekunden_api": 4.744,
+  "tokens_ein": 3516,
+  "tokens_aus": 1110,
+  "kosten_usd": 0.0007442400000000001,
+  "modell": "claude-haiku-5-5"
+ },
+ "s046": {
+  "inhalt": "{\"begruendung\": \"Hauptanliegen ist die Klärung einer Rechnung zur Bestellung 4500018406, die ohne Lieferschein vorliegt. Das passt zur Kategorie rechnung. Die Mail stammt vom internen AP-Team und nicht von einem Lieferanten, deshalb ist die Konfidenz nur mittel.\", \"kategorie\": \"rechnung\", \"konfidenz\": 0.6, \"lieferant\": null, \"bestellnummer\": \"4500018406\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Das AP-Team bittet um Klärung einer Rechnung zur Bestellung 4500018406, die ohne Lieferschein vorliegt, und um Bestätigung des Wareneingangs (Lagerplatz KG-30).\"}",
+  "sekunden": 4.641132799908519,
+  "sekunden_api": 3.489,
+  "tokens_ein": 3476,
+  "tokens_aus": 927,
+  "kosten_usd": 0.00064474,
+  "modell": "claude-haiku-5-5"
+ },
+ "s047": {
+  "inhalt": "{\"begruendung\": \"Der Lieferant schickt die Stornierung der fehlerhaften Rechnung 90122, es geht also um eine Rechnungskorrektur und damit um die Kategorie Rechnung.\", \"kategorie\": \"rechnung\", \"konfidenz\": 0.9, \"lieferant\": \"Feldmann Präzisionsteile (Lieferant 3)\", \"bestellnummer\": \"4500018414\", \"rechnungsnummer\": \"90122\", \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Feldmann Präzisionsteile storniert die fehlerhafte Rechnung 90122 zur Bestellung 4500018414; die Stornierung ist als Anhang angekündigt und sollte gegen die offene Rechnung abgeglichen werden.\"}",
+  "sekunden": 4.3659774999832734,
+  "sekunden_api": 3.291,
+  "tokens_ein": 3477,
+  "tokens_aus": 847,
+  "kosten_usd": 0.00060494,
+  "modell": "claude-haiku-5-5"
+ },
+ "s048": {
+  "inhalt": "{\"begruendung\": \"Die Mail betrifft eine E-Rechnung und die Mengendifferenz zwischen Abrechnung (5.000 Stk) und Wareneingang (4.500 Stk) zur Bestellung 4500018418, also ein Rechnungsthema.\", \"kategorie\": \"rechnung\", \"konfidenz\": 0.7, \"lieferant\": null, \"bestellnummer\": \"4500018418\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Die Buchhaltung meldet zur E-Rechnung für Bestellung 4500018418 eine Mengendifferenz: berechnet wurden 5.000 Stk, im Wareneingang gebucht sind 4.500 Stk; Rechnungsprüfung bzw. Klärung mit dem Lieferanten erforderlich.\"}",
+  "sekunden": 6.153810600051656,
+  "sekunden_api": 4.919,
+  "tokens_ein": 3481,
+  "tokens_aus": 1250,
+  "kosten_usd": 0.00080724,
+  "modell": "claude-haiku-5-5"
+ },
+ "s049": {
+  "inhalt": "{\"begruendung\": \"Die Mail bezieht sich auf die Skontobedingungen einer bestehenden Rechnung (88102) und gehört damit zum Rechnungsvorgang. Eine Konditionsänderung ohne Angaben zu Betrag oder neuem Skonto ist nicht eindeutig erkennbar.\", \"kategorie\": \"rechnung\", \"konfidenz\": 0.6, \"lieferant\": \"Lieferant 5 (vertrieb@rheinwerk-komponenten.example)\", \"bestellnummer\": null, \"rechnungsnummer\": \"88102\", \"angebotsnummer\": null, \"artikel\": null, \"betrag\": null, \"waehrung\": null, \"einzelpreis\": null, \"menge\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Lieferant 5 weist auf geänderte Skontobedingungen zu Rechnung 88102 hin; Details (Skontosatz, Frist, Betrag) fehlen in der Mail und sollten beim Lieferanten nachgefragt werden.\"}",
+  "sekunden": 4.561521499999799,
+  "sekunden_api": 3.407,
+  "tokens_ein": 3463,
+  "tokens_aus": 863,
+  "kosten_usd": 0.00061014,
+  "modell": "claude-haiku-5-5"
+ },
+ "s050": {
+  "inhalt": "{\"kategorie\": \"rechnung\", \"konfidenz\": 0.85, \"begruendung\": \"Die Mail betrifft die Rechnung 44102 zu unserer Bestellung 4500018407 und meldet, dass das System eine doppelt eingegangene Rechnung gesperrt hat. Es geht also um die Rechnungsverarbeitung.\", \"lieferant\": null, \"bestellnummer\": \"4500018407\", \"rechnungsnummer\": \"44102\", \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Das System AP hat Rechnung 44102 zu Bestellung 4500018407 als Duplikat gesperrt; die Rechnung sollte geprüft und die Sperre bei Bedarf aufgelöst werden.\"}",
+  "sekunden": 4.35679730004631,
+  "sekunden_api": 3.233,
+  "tokens_ein": 3466,
+  "tokens_aus": 835,
+  "kosten_usd": 0.00059674,
+  "modell": "claude-haiku-5-5"
+ },
+ "s051": {
+  "inhalt": "{\"begruendung\": \"Der Lieferant schickt einen überarbeiteten Entwurf eines Rahmenvertrags und bittet um Durchsicht. Keine der spezifischen Kategorien passt genau, daher sonstiges.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.7, \"lieferant\": \"Brenner Zerspanung (Lieferant 2, Rechtsabteilung)\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Wellen und Bolzen\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Brenner Zerspanung hat den überarbeiteten Entwurf des Rahmenvertrags 2027–2029 für Wellen und Bolzen geschickt und bittet um Durchsicht der Anlagen; die Anlagen sind in der Mail nicht enthalten und sollten vor der Prüfung nachgefordert werden.\"}",
+  "sekunden": 4.24653370003216,
+  "sekunden_api": 3.093,
+  "tokens_ein": 3522,
+  "tokens_aus": 832,
+  "kosten_usd": 0.00060644,
+  "modell": "claude-haiku-5-5"
+ },
+ "s052": {
+  "inhalt": "{\"begruendung\": \"Der Lieferant bittet im Rahmen des Lieferkettensorgfaltspflichtengesetzes (LkSG) um Ausfüllen eines Fragebogens und Sicherheitsdatenblätter. Das fällt unter Compliance-Nachweise zu Lieferkette und Nachhaltigkeit.\", \"kategorie\": \"compliance\", \"konfidenz\": 0.9, \"lieferant\": \"Alpen Drehtechnik (Vertrieb, Compliance Officer)\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Alpen Drehtechnik bittet um Ausfüllen eines LkSG-Fragebogens (Anhang, im Mail nicht enthalten) und um Sicherheitsdatenblätter 2026; Compliance-Team sollte Fragebogen prüfen und beantworten.\"}",
+  "sekunden": 4.289022599929012,
+  "sekunden_api": 3.08,
+  "tokens_ein": 3526,
+  "tokens_aus": 809,
+  "kosten_usd": 0.00059574,
+  "modell": "claude-haiku-5-5"
+ },
+ "s053": {
+  "inhalt": "{\"kategorie\": \"stammdatenaenderung\", \"konfidenz\": 0.9, \"lieferant\": \"Lieferant 8 (vertrieb@precimet.example)\", \"bestellnummer\": \"4500018409\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"hoch\", \"begruendung\": \"Der Lieferant teilt eine geänderte Bankverbindung mit, was als Stammdatenänderung einzuordnen ist. Die Mail ist per E-Mail ohne Nachweis gekommen und verlangt dringend, Zahlungen umzuleiten. Das ist ein typisches Muster für Zahlungsbetrug (Business Email Compromise).\", \"zusammenfassung\": \"Lieferant 8 meldet per unverifizierter E-Mail eine neue IBAN (DE8999000012345678) für Zahlungen zu Bestellung 4500018409; vor einer Änderung im Stammdatensatz bitte über eine bekannte Telefonnummer oder den bisherigen Ansprechpartner rückverifizieren und die Buchhaltung informieren.\"}",
+  "sekunden": 5.553716099937446,
+  "sekunden_api": 4.406,
+  "tokens_ein": 3518,
+  "tokens_aus": 1078,
+  "kosten_usd": 0.00072864,
+  "modell": "claude-haiku-5-5"
+ },
+ "s054": {
+  "inhalt": "{\"begruendung\": \"Die Mail stammt vom eigenen Legal Team und betrifft einen NDA-Entwurf vor der Weitergabe von Zeichnungen. Keine der Kategorien passt eindeutig, daher sonstiges mit moderater Konfidenz.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.5, \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Das Legal Team hat einen NDA-Entwurf für ein Neuprojekt übermittelt, der vor der Weitergabe von Zeichnungen unterzeichnet werden soll; Prüfung und Freigabe durch das zuständige Team erforderlich.\"}",
+  "sekunden": 4.539615599904209,
+  "sekunden_api": 3.391,
+  "tokens_ein": 3473,
+  "tokens_aus": 925,
+  "kosten_usd": 0.00064314,
+  "modell": "claude-haiku-5-5"
+ },
+ "s055": {
+  "inhalt": "{\"begruendung\": \"Die Mail übermittelt ein neues ISO-9001:2025-Zertifikat für die Lieferantenakte und ist damit ein Nachweis zum Qualitätsmanagement, also compliance.\", \"kategorie\": \"compliance\", \"konfidenz\": 0.9, \"lieferant\": \"Lieferant 9 (nordform.example)\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Lieferant 9 hat ein erneuertes ISO-9001:2025-Zertifikat mit Gültigkeit bis 2029 zur Ablage in der Lieferantenakte übermittelt; es ist keine Handlung außer der Archivierung nötig.\"}",
+  "sekunden": 4.552278299932368,
+  "sekunden_api": 3.509,
+  "tokens_ein": 3481,
+  "tokens_aus": 912,
+  "kosten_usd": 0.00063824,
+  "modell": "claude-haiku-5-5"
+ },
+ "s056": {
+  "inhalt": "{\"begruendung\": \"Die Mail stammt aus unserem eigenen Qualitätsmanagement und bittet um die Unterzeichnung einer beigelegten Qualitätssicherungsvereinbarung. Keine der Lieferantenkategorien passt eindeutig, daher sonstiges.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.5, \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Interne Anfrage des Qualitätsmanagements, eine beigelegte Qualitätssicherungsvereinbarung zur Unterzeichnung abzuzeichnen; keine Frist genannt, Anhang nicht im Mailtext enthalten.\"}",
+  "sekunden": 5.154351799981669,
+  "sekunden_api": 3.877,
+  "tokens_ein": 3488,
+  "tokens_aus": 974,
+  "kosten_usd": 0.00067064,
+  "modell": "claude-haiku-5-5"
+ },
+ "s057": {
+  "inhalt": "{\"abweichungsgrund\": null, \"angebotsnummer\": null, \"artikel\": null, \"begruendung\": \"Der Lieferant meldet eine geänderte Rechnungsadresse zum 01.11., das ist eine Stammdatenänderung. Die neue Adresse selbst steht nicht in der Mail.\", \"bestellnummer\": null, \"betrag\": null, \"dringlichkeit\": \"mittel\", \"einzelpreis\": null, \"kategorie\": \"stammdatenaenderung\", \"konfidenz\": 0.95, \"lieferant\": \"Lieferant 7\", \"liefertermin\": null, \"liefertermin_unsicher\": false, \"menge\": null, \"rechnungsnummer\": null, \"waehrung\": null, \"zusammenfassung\": \"Lieferant 7 (Werk Süd) hat seine Rechnungsadresse zum 01.11. geändert; die neue Adresse ist in der Mail nicht angegeben und muss beim Lieferanten nachgefragt bzw. in den Stammdaten aktualisiert werden.\"}",
+  "sekunden": 4.70951790001709,
+  "sekunden_api": 3.547,
+  "tokens_ein": 3461,
+  "tokens_aus": 929,
+  "kosten_usd": 0.00064274,
+  "modell": "claude-haiku-5-5"
+ },
+ "s058": {
+  "inhalt": "{\"begruendung\": \"Die Mail übermittelt RoHS-Konformitätserklärungen für zwei Artikel und fällt damit unter Compliance-Nachweise zur Lieferkette.\", \"kategorie\": \"compliance\", \"konfidenz\": 0.92, \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"DS-08, RI-14\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Der Absender (Compliance, Lieferant unbekannt, Domain absender-unbekannt.example) übermittelt aktuelle RoHS-Konformitätserklärungen 2026 für die Artikel DS-08 und RI-14; die Erklärungen liegen laut Mail als Anhang vor und sind im Team zu prüfen und abzulegen.\"}",
+  "sekunden": 4.0536552999401465,
+  "sekunden_api": 2.851,
+  "tokens_ein": 3467,
+  "tokens_aus": 746,
+  "kosten_usd": 0.00055244,
+  "modell": "claude-haiku-5-5"
+ },
+ "s060": {
+  "inhalt": "{\"begruendung\": \"Die Mail fordert die Bestätigung eines Code of Conduct, was unter compliance fällt. Der Absender ist unbekannt (absender-unbekannt.example) und es gibt keine Bestellnummer, daher ist die Zuordnung unsicher und eine Phishing-Absicht nicht auszuschließen.\", \"kategorie\": \"compliance\", \"konfidenz\": 0.6, \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Das Sustainability Team fordert zur Bestätigung des Code of Conduct im Lieferantenportal auf; der Absender ist unbekannt und die Mail enthält keinen Lieferanten- oder Vertragsbezug, daher vor dem Klicken auf Links Echtheit prüfen (ggf. über bekannten Kontakt oder das offizielle Portal).\"}",
+  "sekunden": 4.816816799924709,
+  "sekunden_api": 3.638,
+  "tokens_ein": 3469,
+  "tokens_aus": 931,
+  "kosten_usd": 0.00064534,
+  "modell": "claude-haiku-5-5"
+ },
+ "s061": {
+  "inhalt": "{\"begruendung\": \"Automatische EDI-Fehlermeldung des Converters zu einer eingehenden ORDERS-Nachricht; kein Lieferantenanliegen und keine der fachlichen Kategorien passt, daher sonstiges.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.8, \"lieferant\": null, \"bestellnummer\": \"4500018413\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Der EDI-Converter konnte die eingehende ORDERS-Nachricht zu Bestellung 4500018413 wegen eines ungültigen CTM-Segments nicht verarbeiten; die Bestellung sollte vom EDI-/IT-Team geprüft und neu eingespielt werden.\"}",
+  "sekunden": 5.116229800041765,
+  "sekunden_api": 3.838,
+  "tokens_ein": 3482,
+  "tokens_aus": 956,
+  "kosten_usd": 0.00066044,
+  "modell": "claude-haiku-5-5"
+ },
+ "s062": {
+  "inhalt": "{\"begruendung\": \"Die Mail ist eine allgemeine Einladung, dem SupplyOn-Lieferantenportal beizutreten, ohne Bezug zu einer konkreten Anfrage, Bestellung oder Lieferung. Das entspricht der Kategorie werbung (Einladungen zu Portalen). Der Absender nutzt eine nicht-standardmäßige Domain, daher ist die Einordnung nicht ganz sicher.\", \"kategorie\": \"werbung\", \"konfidenz\": 0.6, \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Einladung zum SupplyOn-Lieferantenportal von einem Absender mit Domain supplyon-einladung.example ohne konkreten Bezug zu einer Bestellung; vor einer Registrierung Echtheit prüfen, da die Domain nicht der offiziellen SupplyOn-Domain entspricht und es sich um Phishing handeln könnte.\"}",
+  "sekunden": 4.599796599941328,
+  "sekunden_api": 3.403,
+  "tokens_ein": 3477,
+  "tokens_aus": 917,
+  "kosten_usd": 0.00063994,
+  "modell": "claude-haiku-5-5"
+ },
+ "s063": {
+  "inhalt": "{\"begruendung\": \"Interne SAP-Systemmeldung des Workflow-Bots, kein Lieferantenschreiben. Sie betrifft eine fehlende Auftragsbestätigung und passt in keine Lieferantenkategorie, daher sonstiges.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.85, \"lieferant\": null, \"bestellnummer\": \"4500018415\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"SAP-Alarm: Bestellung 4500018415 ist seit mehr als 48 Stunden ohne Auftragsbestätigung; der Lieferant sollte zur AB aufgefordert werden.\"}",
+  "sekunden": 4.2552462000167,
+  "sekunden_api": 3.09,
+  "tokens_ein": 3477,
+  "tokens_aus": 810,
+  "kosten_usd": 0.0005864399999999999,
+  "modell": "claude-haiku-5-5"
+ },
+ "s064": {
+  "inhalt": "{\"begruendung\": \"Die Mail ist eine automatische Fehlermeldung des n8n-Systems zum Workflow \\\"n8n-supplier-mail-triage\\\" und kein Lieferantenschreiben. Keine der Lieferantenkategorien passt, daher sonstiges.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.9, \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"hoch\", \"zusammenfassung\": \"Der n8n-Workflow \\\"n8n-supplier-mail-triage\\\" ist im Knoten \\\"DB Insert\\\" fehlgeschlagen; die IT bzw. der Workflow-Verantwortliche sollte prüfen, ob eingehende Lieferantenmails korrekt in der Datenbank gespeichert wurden und ggf. fehlende Mails nachverarbeiten.\"}",
+  "sekunden": 4.386778600048274,
+  "sekunden_api": 3.258,
+  "tokens_ein": 3470,
+  "tokens_aus": 837,
+  "kosten_usd": 0.00059854,
+  "modell": "claude-haiku-5-5"
+ },
+ "s065": {
+  "inhalt": "{\"begruendung\": \"Die Mail ist eine automatische Systembenachrichtigung von SAP Ariba über eine neue Ausschreibung im Portal. Sie enthält kein Angebot, keine Preise und keine Bestelldaten und passt zu keiner spezifischen Kategorie, daher sonstiges.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.5, \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"SAP Ariba meldet eine neue Ausschreibung im Portal; Details sind nur im Ariba-Portal einsehbar und die Mail nennt keinen Absender-Lieferanten, keine Nummern und keine Fristen.\"}",
+  "sekunden": 4.441067599924281,
+  "sekunden_api": 3.263,
+  "tokens_ein": 3473,
+  "tokens_aus": 836,
+  "kosten_usd": 0.00059864,
+  "modell": "claude-haiku-5-5"
+ },
+ "s066": {
+  "inhalt": "{\"kategorie\": \"sonstiges\", \"konfidenz\": 0.9, \"begruendung\": \"Die Mail ist eine interne IT-Mitteilung zur Wartung des ERP-Systems und passt zu keiner Lieferantenkategorie; sonstiges ist die passende Sammelkategorie.\", \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Die IT-Abteilung informiert, dass das ERP-System am Wochenende des 15.11.2026 wegen Wartung nicht erreichbar ist.\"}",
+  "sekunden": 4.336916900007054,
+  "sekunden_api": 3.171,
+  "tokens_ein": 3465,
+  "tokens_aus": 780,
+  "kosten_usd": 0.00056904,
+  "modell": "claude-haiku-5-5"
+ },
+ "s067": {
+  "inhalt": "{\"begruendung\": \"Die Mail stammt vom internen Procurement System und ist eine automatische Erinnerung, dass die Bestellung 4500018404 noch nicht bestätigt ist. Sie ist keine Lieferantenmail mit Angebot, Bestätigung, Rechnung oder Lieferinfo und passt deshalb in keine spezifische Kategorie.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.5, \"lieferant\": null, \"bestellnummer\": \"4500018404\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Automatische Erinnerung des Procurement Systems: Bestellung 4500018404 ist noch nicht bestätigt; der Lieferant bzw. die Bestellung sollte im Auge behalten und die Bestätigung nachverfolgt werden.\"}",
+  "sekunden": 4.553070699912496,
+  "sekunden_api": 3.461,
+  "tokens_ein": 3461,
+  "tokens_aus": 874,
+  "kosten_usd": 0.00061524,
+  "modell": "claude-haiku-5-5"
+ },
+ "s068": {
+  "inhalt": "{\"begruendung\": \"Die Mail ist eine automatische Systembenachrichtigung der Plattform Coupa über die erfolgreiche Aktualisierung des Lieferantenkatalogs. Sie passt zu keiner spezifischen Kategorie und fällt daher unter sonstiges.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.7, \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Coupa-Support meldet, dass der Lieferantenkatalog erfolgreich aktualisiert und freigegeben wurde; es ist keine Handlung erforderlich.\"}",
+  "sekunden": 4.122639800072648,
+  "sekunden_api": 3.02,
+  "tokens_ein": 3464,
+  "tokens_aus": 780,
+  "kosten_usd": 0.0005688399999999999,
+  "modell": "claude-haiku-5-5"
+ },
+ "s069": {
+  "inhalt": "{\"kategorie\": \"sonstiges\", \"konfidenz\": 0.55, \"begruendung\": \"Die Mail stammt vom internen Scan-Workflow und meldet einen OCR-Fehler: Die Rechnung konnte nicht gelesen werden und muss manuell erfasst werden. Es handelt sich weder um eine Lieferantenrechnung noch um einen Lieferantenvorgang, daher sonstiges. Rechnung wäre ebenfalls denkbar, weil es um eine Rechnung geht, deshalb die niedrigere Konfidenz.\", \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": \"2026-001\", \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Der Scan-Workflow konnte die PDF-Rechnung 2026-001 nicht per OCR auslesen; sie muss manuell im System indexiert werden.\"}",
+  "sekunden": 5.932737599941902,
+  "sekunden_api": 4.704,
+  "tokens_ein": 3461,
+  "tokens_aus": 1131,
+  "kosten_usd": 0.00074374,
+  "modell": "claude-haiku-5-5"
+ },
+ "s070": {
+  "inhalt": "{\"kategorie\": \"sonstiges\", \"konfidenz\": 0.5, \"begruendung\": \"Die Mail ist eine automatische Systemmeldung der Master Data Engine über einen abgebrochenen Stammdaten-Sync wegen einer doppelten Steuernummer. Der Lieferant hat keine Stammdaten geändert, daher passt keine der Lieferantenkategorien eindeutig.\", \"lieferant\": null, \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Die Master Data Engine meldet einen abgebrochenen Stammdaten-Sync für „Supplier 3“ wegen einer doppelten Steuernummer; die Stammdaten sollten geprüft und bereinigt werden, bevor der Sync erneut läuft.\"}",
+  "sekunden": 5.648369300062768,
+  "sekunden_api": 4.519,
+  "tokens_ein": 3470,
+  "tokens_aus": 1108,
+  "kosten_usd": 0.00073404,
+  "modell": "claude-haiku-5-5"
+ },
+ "s071": {
+  "inhalt": "{\"kategorie\": \"werbung\", \"konfidenz\": 0.9, \"begruendung\": \"Unverlangtes Werbeangebot eines Frachtdienstleisters ohne Bezug zu einer konkreten Anfrage oder Bestellung von uns (Kaltakquise).\", \"lieferant\": \"Freight24 (Sales Freight24)\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Unverlangte Werbung von Freight24 für günstige Frachtkonditionen in Europa; kein Handlungsbedarf, keine Angebotsnummer oder Preise genannt.\"}",
+  "sekunden": 3.6327996000181884,
+  "sekunden_api": 2.539,
+  "tokens_ein": 3485,
+  "tokens_aus": 679,
+  "kosten_usd": 0.0005225399999999999,
+  "modell": "claude-haiku-5-5"
+ },
+ "s072": {
+  "inhalt": "{\"begruendung\": \"Die Mail ist eine unverlangte Einladung zu einem Webinar eines Anbieters ohne Bezug zu einer konkreten Anfrage oder Bestellung und fällt daher unter Werbung.\", \"kategorie\": \"werbung\", \"konfidenz\": 0.95, \"lieferant\": \"Procurement Events\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Procurement Events wirbt für ein Webinar zum Thema „KI im Einkauf 2027“; keine Handlung erforderlich.\"}",
+  "sekunden": 3.555622199899517,
+  "sekunden_api": 2.474,
+  "tokens_ein": 3467,
+  "tokens_aus": 685,
+  "kosten_usd": 0.00052194,
+  "modell": "claude-haiku-5-5"
+ },
+ "s073": {
+  "inhalt": "{\"begruendung\": \"Unverlangtes Kapazitätsangebot eines Dienstleisters ohne Bezug zu einer konkreten Anfrage von uns; das ist Kaltakquise und keine Angebotsantwort.\", \"kategorie\": \"werbung\", \"konfidenz\": 0.9, \"lieferant\": \"Metal Processing Sp z o.o.\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Metal Processing bietet unverlangt freie Kapazitäten für Dreh- und Frästeile (z. B. AW-40, WE-12) an; keine Reaktion erforderlich, außer bei späterem Bedarf.\"}",
+  "sekunden": 3.8878032999346033,
+  "sekunden_api": 2.748,
+  "tokens_ein": 3502,
+  "tokens_aus": 740,
+  "kosten_usd": 0.0005564400000000001,
+  "modell": "claude-haiku-5-5"
+ },
+ "s074": {
+  "inhalt": "{\"begruendung\": \"Die Mail ist eine Einladung zur Messe EuroBLECH mit Werbecharakter (\\\"Besuchen Sie unseren Stand\\\"), ohne Bezug zu einer Anfrage oder Bestellung von uns. Das entspricht der Kategorie werbung.\", \"kategorie\": \"werbung\", \"konfidenz\": 0.9, \"lieferant\": \"Messe Orga\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Messe Orga lädt zum Besuch des Standes auf der EuroBLECH in Halle 4 ein; reine Werbung ohne Handlungsbedarf.\"}",
+  "sekunden": 4.00816730002407,
+  "sekunden_api": 2.88,
+  "tokens_ein": 3457,
+  "tokens_aus": 728,
+  "kosten_usd": 0.00054144,
+  "modell": "claude-haiku-5-5"
+ },
+ "s075": {
+  "inhalt": "{\"begruendung\": \"Unverlangte Kaltakquise einer Beratung mit einem kostenlosen Analyseangebot ohne Bezug zu einer konkreten Anfrage oder Bestellung von uns.\", \"kategorie\": \"werbung\", \"konfidenz\": 0.93, \"lieferant\": \"Consulting Group\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Die Consulting Group bietet unverlangt eine kostenlose Analyse der Beschaffungsprozesse an; kein Handlungsbedarf, Einordnung als Werbung.\"}",
+  "sekunden": 3.740288499975577,
+  "sekunden_api": 2.554,
+  "tokens_ein": 3489,
+  "tokens_aus": 684,
+  "kosten_usd": 0.0005258400000000001,
+  "modell": "claude-haiku-5-5"
+ },
+ "s076": {
+  "inhalt": "{\"kategorie\": \"werbung\", \"konfidenz\": 0.95, \"lieferant\": \"Recruiter Agency\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"begruendung\": \"Unverlangte Kaltakquise einer Personalvermittlung ohne Bezug zu einer Anfrage oder Bestellung von uns.\", \"zusammenfassung\": \"Personalvermittler Recruiter Agency bietet unaufgefordert die Vermittlung von AI-Managern und Einkäufern an; keine Handlung erforderlich.\"}",
+  "sekunden": 3.2193377999356017,
+  "sekunden_api": 2.162,
+  "tokens_ein": 3483,
+  "tokens_aus": 585,
+  "kosten_usd": 0.00047514,
+  "modell": "claude-haiku-5-5"
+ },
+ "s077": {
+  "inhalt": "{\"kategorie\": \"werbung\", \"konfidenz\": 0.95, \"lieferant\": \"Office Supply GmbH\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Papier und Toner\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"begruendung\": \"Unverlangte Werbung mit allgemeinem Sonderangebot (20 % Rabatt auf Papier und Toner) ohne Bezug zu einer konkreten Anfrage von uns.\", \"zusammenfassung\": \"Werbemail von Office Supply GmbH mit 20 % Rabatt auf Papier und Toner; keine Anfrage unsererseits, daher kein Handlungsbedarf.\"}",
+  "sekunden": 4.010455299983732,
+  "sekunden_api": 2.822,
+  "tokens_ein": 3450,
+  "tokens_aus": 738,
+  "kosten_usd": 0.00054504,
+  "modell": "claude-haiku-5-5"
+ },
+ "s078": {
+  "inhalt": "{\"abweichungsgrund\": null, \"angebotsnummer\": null, \"artikel\": null, \"begruendung\": \"Unverlangtes Werbeangebot eines Zertifizierers (\\\"Wir übernehmen Ihre Audits günstig\\\") ohne Bezug zu einer konkreten Anfrage von uns; daher Werbung und nicht Angebot.\", \"bestellnummer\": null, \"betrag\": null, \"dringlichkeit\": \"niedrig\", \"einzelpreis\": null, \"kategorie\": \"werbung\", \"konfidenz\": 0.9, \"lieferant\": \"Cert Services\", \"liefertermin\": null, \"liefertermin_unsicher\": false, \"menge\": null, \"rechnungsnummer\": null, \"waehrung\": null, \"zusammenfassung\": \"Cert Services wirbt unverlangt mit günstigen ISO-Audits; kein konkretes Angebot zu einer Anfrage von uns, keine Handlung erforderlich.\"}",
+  "sekunden": 3.6002590000862256,
+  "sekunden_api": 2.381,
+  "tokens_ein": 3454,
+  "tokens_aus": 618,
+  "kosten_usd": 0.00048583999999999997,
+  "modell": "claude-haiku-5-5"
+ },
+ "s079": {
+  "inhalt": "{\"begruendung\": \"Unverlangte Werbung für eine Softwarelösung (LkSG-Screenings) ohne Bezug zu einer konkreten Anfrage oder Bestellung von uns.\", \"kategorie\": \"werbung\", \"konfidenz\": 0.92, \"lieferant\": \"SaaS Vendor\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Unverlangte Werbemail des SaaS-Anbieters SaaS Vendor für eine Software für LkSG-Screenings; kein Handlungsbedarf, kein Bezug zu einer bestehenden Bestellung.\"}",
+  "sekunden": 4.020293599925935,
+  "sekunden_api": 2.881,
+  "tokens_ein": 3467,
+  "tokens_aus": 761,
+  "kosten_usd": 0.00055994,
+  "modell": "claude-haiku-5-5"
+ },
+ "s080": {
+  "inhalt": "{\"begruendung\": \"Die Mail ist eine reine Grußnachricht zu den Feiertagen ohne Angebot, Bestellbezug, Rechnung oder Werbeinhalt, daher passt keine spezifische Kategorie außer sonstiges.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.9, \"lieferant\": \"Industrial Tools Service\", \"bestellnummer\": null, \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Der Lieferant Industrial Tools Service sendet Feiertagsgrüße und dankt für die Zusammenarbeit; es ist keine Handlung erforderlich.\"}",
+  "sekunden": 4.182873200043105,
+  "sekunden_api": 3.09,
+  "tokens_ein": 3470,
+  "tokens_aus": 783,
+  "kosten_usd": 0.0005715399999999999,
+  "modell": "claude-haiku-5-5"
+ },
+ "s081": {
+  "inhalt": "{\"kategorie\": \"lieferverzug\", \"konfidenz\": 0.55, \"lieferant\": \"Lieferant 1 (Alpen Drehtechnik)\", \"bestellnummer\": \"4500018411\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"LB-20\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": \"2026-11-25\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"hoch\", \"begruendung\": \"Die Mail enthält drei Themen; das dringendste und handlungsrelevante ist der Lieferverzug bei LB-20 (Bestellung 4500018411), der neue Termin 25.11. liegt nach der ursprünglichen Zusage. Die Preiserhöhung bei MS-6 (4500018418) ist eine Preisaenderung, die Bestätigung zu 4500018401 ist ohne Abweichung.\", \"zusammenfassung\": \"Lieferant 1 meldet Verzug bei Bestellung 4500018411 (LB-20, neuer Liefertermin 25.11., Jahr aus dem Kontext angenommen); zusätzlich prüfen: Preiserhöhung MS-6 auf 0,10 EUR bei 4500018418 (Preisaenderung) und Terminbestätigung ohne Änderung bei 4500018401 (20.11.).\"}",
+  "sekunden": 8.107331400038674,
+  "sekunden_api": 7.163,
+  "tokens_ein": 3582,
+  "tokens_aus": 1685,
+  "kosten_usd": 0.00104494,
+  "modell": "claude-haiku-5-5"
+ },
+ "s082": {
+  "inhalt": "{\"begruendung\": \"Die neueste Nachricht ist die Antwort des Lieferanten auf eine Reklamation zur Bestellung 4500018406 (Reklamation abgelehnt). Zusätzlich enthält sie eine einseitige Preiserhöhung für KG-30, die als preisaenderung einzuordnen wäre; das ist aber nachrangig („zusätzlich“).\", \"kategorie\": \"reklamation\", \"konfidenz\": 0.55, \"lieferant\": \"Lieferant 9\", \"bestellnummer\": \"4500018406\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"KG-30\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": \"EUR\", \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Lieferant 9 lehnt die Reklamation zu Bestellung 4500018406 ab und erhöht zusätzlich den Preis für KG-30 auf 3,20 EUR; Reklamation prüfen und Preiserhöhung klären.\"}",
+  "sekunden": 6.825461400090717,
+  "sekunden_api": 5.795,
+  "tokens_ein": 3521,
+  "tokens_aus": 1401,
+  "kosten_usd": 0.0008907399999999999,
+  "modell": "claude-haiku-5-5"
+ },
+ "s083": {
+  "inhalt": "{\"begruendung\": \"Die Mail enthält zwei Punkte: eine Statusmeldung zu GS-4 (verpackt, noch nicht versandt, daher kein Lieferavis) und die Bitte, für AS-3 auf eine neue Bankverbindung zu überweisen. Die Bankdatenänderung ist das wichtigste Anliegen und fällt unter stammdatenaenderung. Da zwei Kategorien passen, ist die Konfidenz auf 0.6 begrenzt. Die neue Bankverbindung steht nicht in der Mail.\", \"kategorie\": \"stammdatenaenderung\", \"konfidenz\": 0.55, \"lieferant\": \"Lieferant 6 (swissturning, vertrieb@swissturning.example)\", \"bestellnummer\": \"4500018412\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"GS-4\", \"einzelpreis\": 0.92, \"menge\": 3000, \"betrag\": null, \"waehrung\": \"CHF\", \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"hoch\", \"zusammenfassung\": \"Lieferant 6 meldet GS-4 (PO 4500018412, 3000 Stk à 0,92 CHF) als verpackt und bittet bei AS-3 (PO 4500018417) um Überweisung auf eine neue Bankverbindung; vor einer Änderung der Stammdaten die Bankverbindung über einen bekannten Kontakt verifizieren.\"}",
+  "sekunden": 7.466152000008151,
+  "sekunden_api": 6.397,
+  "tokens_ein": 3516,
+  "tokens_aus": 1537,
+  "kosten_usd": 0.00095774,
+  "modell": "claude-haiku-5-5"
+ },
+ "s084": {
+  "inhalt": "{\"abweichungsgrund\": null, \"angebotsnummer\": null, \"artikel\": null, \"begruendung\": \"Der Lieferant bestätigt unsere Bestellung PO 4500018408; die mitgesendete Vorausrechnung über 860,00 EUR ist Nebeninhalt. Die Mail passt auch zur Kategorie rechnung, das Hauptanliegen ist aber die Auftragsbestätigung.\", \"bestellnummer\": \"4500018408\", \"betrag\": 860, \"dringlichkeit\": \"niedrig\", \"einzelpreis\": null, \"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.6, \"lieferant\": \"Lieferant 3 (vertrieb@feldmann-praezisionsteile.example)\", \"liefertermin\": null, \"liefertermin_unsicher\": false, \"menge\": null, \"rechnungsnummer\": null, \"waehrung\": \"EUR\", \"zusammenfassung\": \"Lieferant 3 bestätigt Bestellung PO 4500018408 und sendet eine Vorausrechnung über 860,00 EUR (Rechnungsnummer nicht angegeben); Liefertermin und Menge fehlen in der Mail.\"}",
+  "sekunden": 5.649105799966492,
+  "sekunden_api": 4.584,
+  "tokens_ein": 3484,
+  "tokens_aus": 1178,
+  "kosten_usd": 0.00077184,
+  "modell": "claude-haiku-5-5"
+ },
+ "s085": {
+  "inhalt": "{\"begruendung\": \"Hauptanliegen der Mail ist das Angebot über weitere 5.000 Stk. (Anhang). Die Aussage zum pünktlichen Eingang von FL-80 zur Bestellung 4500018407 ist eine Statusmeldung als Nebenpunkt. Beides passt auch zu auftragsbestaetigung bzw. lieferavis, daher geringe Konfidenz.\", \"kategorie\": \"angebot\", \"konfidenz\": 0.55, \"lieferant\": \"Lieferant 7\", \"bestellnummer\": \"4500018407\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"FL-80\", \"einzelpreis\": null, \"menge\": 5000, \"betrag\": null, \"waehrung\": null, \"liefertermin\": \"2026-12-11\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Lieferant 7 bestätigt die pünktliche Lieferung von FL-80 zu Bestellung 4500018407 am 11.12.2026 und schickt ein Angebot über 5.000 Stk. (Preise nur im Anhang, nicht im Mailtext).\"}",
+  "sekunden": 6.932567999931052,
+  "sekunden_api": 5.958,
+  "tokens_ein": 3481,
+  "tokens_aus": 1497,
+  "kosten_usd": 0.00093074,
+  "modell": "claude-haiku-5-5"
+ },
+ "s086": {
+  "inhalt": "{\"kategorie\": \"lieferverzug\", \"konfidenz\": 0.6, \"lieferant\": \"Lieferant 8 (precimet)\", \"bestellnummer\": \"4500018409\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"DR-30\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": \"2026-12-15\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"hoch\", \"begruendung\": \"Der Lieferant meldet, dass die bestehende Bestellung 4500018409 für DR-30 statt am 02.12. erst am 15.12. geliefert wird; das ist ein Verzug einer bereits bestätigten Bestellung. Das beigefügte ISO-Zertifikat ist nur eine Nebeninformation und wurde nicht als Hauptanliegen eingeordnet.\", \"zusammenfassung\": \"Precimet verschiebt die Lieferung von DR-30 (PO 4500018409) vom 02.12. auf den 15.12.; zusätzlich liegt ein ISO-Zertifikat bei, das gegebenenfalls an das Qualitätsmanagement weiterzuleiten ist.\"}",
+  "sekunden": 5.875387699925341,
+  "sekunden_api": 4.781,
+  "tokens_ein": 3481,
+  "tokens_aus": 1266,
+  "kosten_usd": 0.00081524,
+  "modell": "claude-haiku-5-5"
+ },
+ "s087": {
+  "inhalt": "{\"begruendung\": \"Interne Anfrage der Arbeitsvorbereitung zu Bedarf (BANF 9011) und einer Preisanfrage für AW-40. Kein Lieferant schreibt, daher keine der Lieferantenkategorien passt; sonstiges ist am zutreffendsten.\", \"kategorie\": \"sonstiges\", \"konfidenz\": 0.7, \"lieferant\": null, \"bestellnummer\": \"4500018410\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"AW-40\", \"einzelpreis\": null, \"menge\": 1000, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Die Arbeitsvorbereitung benötigt 1000 Stück AW-40 (BANF 9011) und fragt, ob zu PO 4500018410 noch offene Angebote existieren.\"}",
+  "sekunden": 4.499118500039913,
+  "sekunden_api": 3.363,
+  "tokens_ein": 3504,
+  "tokens_aus": 889,
+  "kosten_usd": 0.00063134,
+  "modell": "claude-haiku-5-5"
+ },
+ "s088": {
+  "inhalt": "{\"kategorie\": \"reklamation\", \"konfidenz\": 0.6, \"begruendung\": \"Hauptanliegen ist die Antwort des Lieferanten auf unsere Reklamation zur Bestellung 4500018414 (Ersatz defekter Buchsen BU-22). Die neuen Preise ab 2027 sind eine Nebenbemerkung im Anhang und gehören zusätzlich zur Kategorie preisaenderung, daher nur Konfidenz 0.6.\", \"lieferant\": \"Feldmann Präzisionsteile (Lieferant 3)\", \"bestellnummer\": \"4500018414\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Buchsen BU-22\", \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Der Lieferant bestätigt den Ersatz der defekten Buchsen BU-22 zur Reklamation der Bestellung 4500018414 und kündigt neue Preise ab 2027 im Anhang an, die noch zu prüfen sind.\"}",
+  "sekunden": 6.478192799957469,
+  "sekunden_api": 5.548,
+  "tokens_ein": 3489,
+  "tokens_aus": 1401,
+  "kosten_usd": 0.00088434,
+  "modell": "claude-haiku-5-5"
+ },
+ "s089": {
+  "inhalt": "{\"kategorie\": \"lieferverzug\", \"konfidenz\": 0.6, \"lieferant\": \"Lieferant 2 (brenner-zerspanung.example)\", \"bestellnummer\": \"4500018402\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": true, \"abweichungsgrund\": null, \"dringlichkeit\": \"hoch\", \"begruendung\": \"Der Lieferant meldet, dass sich die Ware zur bestehenden Bestellung 4500018402 verzögert; die gleichzeitig angekündigte Teilrechnung für Pos 1 ist nachrangig.\", \"zusammenfassung\": \"Lieferant 2 meldet einen Lieferverzug zu PO 4500018402 ohne neuen Termin und kündigt parallel eine Teilrechnung für Pos 1 an; Einkauf sollte Liefertermin nachfassen und die Teilrechnung prüfen.\"}",
+  "sekunden": 6.128322400036268,
+  "sekunden_api": 5.119,
+  "tokens_ein": 3486,
+  "tokens_aus": 1285,
+  "kosten_usd": 0.0008257399999999999,
+  "modell": "claude-haiku-5-5"
+ },
+ "s090": {
+  "inhalt": "{\"begruendung\": \"Der Lieferant bestätigt zwei Bestellungen (4500018410 und 4500018415). Eine Auftragsbestätigung mit späterem Termin gehört laut Regel zur Kategorie auftragsbestaetigung und nicht zu lieferverzug.\", \"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.85, \"lieferant\": \"Lieferant 4 (Officina Rossi, vertrieb@officina-rossi.example)\", \"bestellnummer\": \"4500018410, 4500018415\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Sammel-AB von Lieferant 4: 4500018410 (AW-40) bestätigt zum 2026-12-07; 4500018415 (SR-05) verzögert sich auf 2026-12-20. Der Liefertermin ist je Bestellung unterschiedlich, deshalb wurde kein einzelnes Datum eingetragen.\"}",
+  "sekunden": 7.2665089999791235,
+  "sekunden_api": 6.201,
+  "tokens_ein": 3504,
+  "tokens_aus": 1535,
+  "kosten_usd": 0.0009543399999999999,
+  "modell": "claude-haiku-5-5"
+ },
+ "s091": {
+  "inhalt": "{\"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.92, \"begruendung\": \"Der Lieferant bestätigt unsere Bestellung 4500018401 über 2000 Stück AW-40 und bestätigt die Termine.\", \"lieferant\": \"Lieferant 1 (vertrieb@alpen-drehtechnik.example)\", \"bestellnummer\": \"4500018401\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"AW-40\", \"einzelpreis\": null, \"menge\": 2000, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Lieferant 1 bestätigt Bestellung 4500018401 über 2000 Stück AW-40 ohne Änderungen; ein konkreter Liefertermin wird in der Mail nicht genannt.\"}",
+  "sekunden": 4.792173099936917,
+  "sekunden_api": 3.589,
+  "tokens_ein": 3458,
+  "tokens_aus": 977,
+  "kosten_usd": 0.00066614,
+  "modell": "claude-haiku-5-5"
+ },
+ "s092": {
+  "inhalt": "{\"begruendung\": \"Der Lieferant bestätigt unsere Bestellung 4500018402 und nennt 1500 Stück. Das entspricht einer Auftragsbestätigung.\", \"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.9, \"lieferant\": \"Lieferant 2\", \"bestellnummer\": \"4500018402\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": 1500, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"zusammenfassung\": \"Lieferant 2 bestätigt Bestellung 4500018402 über 1500 Stück und hat sie eingeplant; ein Liefertermin wird nicht genannt.\"}",
+  "sekunden": 4.4455612999154255,
+  "sekunden_api": 3.326,
+  "tokens_ein": 3469,
+  "tokens_aus": 898,
+  "kosten_usd": 0.0006288400000000001,
+  "modell": "claude-haiku-5-5"
+ },
+ "s093": {
+  "inhalt": "{\"kategorie\": \"lieferavis\", \"konfidenz\": 0.5, \"lieferant\": \"Lieferant 2 (brenner-zerspanung.example)\", \"bestellnummer\": \"4500018403\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": 5000, \"betrag\": null, \"waehrung\": null, \"liefertermin\": \"2026-12-04\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"begruendung\": \"Der Lieferant nennt einen Liefertermin für 5000 Stück zu unserer Bestellung, ohne Verzug anzuzeigen; eine ausdrückliche Auftragsbestätigung ist nicht erkennbar, daher nur mittlere Sicherheit. Die Bezeichnung „DS08“ ist unklar und wurde nicht als Artikel übernommen.\", \"zusammenfassung\": \"Lieferant 2 meldet zur Bestellung 4500018403 die Lieferung von 5000 Stück am 04.12.2026; kein Verzug angezeigt, Zuordnung der Kennung „DS08“ bitte prüfen.\"}",
+  "sekunden": 7.73000390001107,
+  "sekunden_api": 6.721,
+  "tokens_ein": 3455,
+  "tokens_aus": 1603,
+  "kosten_usd": 0.00097854,
+  "modell": "claude-haiku-5-5"
+ },
+ "s094": {
+  "inhalt": "{\"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.95, \"lieferant\": \"Lieferant 6 (swissturning.example)\", \"bestellnummer\": \"4500018405\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": 1.85, \"menge\": null, \"betrag\": null, \"waehrung\": \"CHF\", \"liefertermin\": \"2026-11-18\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"begruendung\": \"Der Lieferant bestätigt die Bestellung 4500018405 mit Liefertermin und Preis, daher ist es eine Auftragsbestätigung.\", \"zusammenfassung\": \"Lieferant 6 bestätigt Bestellung 4500018405 zu 1,85 CHF je Stück mit Liefertermin 18.11.2026; dieser Termin liegt vor dem heutigen Datum (26.11.2026), daher bitte Liefer- bzw. Wareneingangsstatus prüfen.\"}",
+  "sekunden": 5.649879100034013,
+  "sekunden_api": 4.415,
+  "tokens_ein": 3472,
+  "tokens_aus": 1126,
+  "kosten_usd": 0.00074344,
+  "modell": "claude-haiku-5-5"
+ },
+ "s095": {
+  "inhalt": "{\"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.9, \"lieferant\": \"Lieferant 7 (vertrieb@kovotech.example)\", \"bestellnummer\": \"4500018407\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": \"2026-12-11\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"begruendung\": \"Der Lieferant bestätigt unsere Bestellung 4500018407 mit festem Termin 11.12.2026, es liegt keine Abweichung und kein Verzug vor.\", \"zusammenfassung\": \"Lieferant 7 bestätigt Bestellung 4500018407 (Betreff-Kürzel FL-80) mit Liefertermin 11.12.2026; keine Abweichungen genannt.\"}",
+  "sekunden": 6.00618420005776,
+  "sekunden_api": 5.087,
+  "tokens_ein": 3483,
+  "tokens_aus": 1258,
+  "kosten_usd": 0.00081164,
+  "modell": "claude-haiku-5-5"
+ },
+ "s096": {
+  "inhalt": "{\"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.5, \"lieferant\": \"Lieferant 8\", \"bestellnummer\": \"4500018409\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": \"2026-12-02\", \"liefertermin_unsicher\": true, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"begruendung\": \"Der Lieferant bestätigt in der PO-Korrespondenz einen zuvor besprochenen Termin am 02.12. Die Mail nennt keine Menge oder Preise; ob es sich um den Liefertermin der Bestellung handelt, geht aus dem Text nicht eindeutig hervor, daher nur mittlere Konfidenz.\", \"zusammenfassung\": \"Lieferant 8 bestätigt zu Bestellung 4500018409 den besprochenen Termin am 02.12. (Jahr aus Kontext erschlossen); Menge, Artikel und Preis fehlen in der Mail und sollten gegen die Bestellung geprüft werden.\"}",
+  "sekunden": 7.405662999954075,
+  "sekunden_api": 6.412,
+  "tokens_ein": 3448,
+  "tokens_aus": 1506,
+  "kosten_usd": 0.00092864,
+  "modell": "claude-haiku-5-5"
+ },
+ "s097": {
+  "inhalt": "{\"begruendung\": \"Die Mail meldet, dass die Ware bereits auf dem LKW ist und eine ASN (Advance Shipping Notice) folgt. Das ist eine Versandbenachrichtigung ohne Verzug.\", \"kategorie\": \"lieferavis\", \"konfidenz\": 0.9, \"lieferant\": \"Lieferant 4 (officina-rossi.example)\", \"bestellnummer\": \"4500018410\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Lieferant 4 meldet zur Bestellung 4500018410, dass die Ware auf dem LKW ist; die Versandbenachrichtigung (ASN) folgt noch.\"}",
+  "sekunden": 4.9009173000231385,
+  "sekunden_api": 3.673,
+  "tokens_ein": 3446,
+  "tokens_aus": 983,
+  "kosten_usd": 0.00066674,
+  "modell": "claude-haiku-5-5"
+ },
+ "s098": {
+  "inhalt": "{\"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.8, \"lieferant\": \"Lieferant 7 (vertrieb@kovotech.example)\", \"bestellnummer\": \"4500018413\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": null, \"betrag\": null, \"waehrung\": null, \"liefertermin\": null, \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"niedrig\", \"begruendung\": \"Der Lieferant übermittelt die Auftragsbestätigung zur Bestellung 4500018413 als Anhang; der Mailtext enthält keine weiteren Angaben.\", \"zusammenfassung\": \"Lieferant 7 hat die Auftragsbestätigung zu unserer Bestellung 4500018413 per PDF-Anhang übermittelt; Menge, Preis und Liefertermin müssen aus dem Anhang geprüft werden, da die Mail selbst keine Details nennt.\"}",
+  "sekunden": 4.792474000016227,
+  "sekunden_api": 3.576,
+  "tokens_ein": 3464,
+  "tokens_aus": 908,
+  "kosten_usd": 0.00063284,
+  "modell": "claude-haiku-5-5"
+ },
+ "s099": {
+  "inhalt": "{\"begruendung\": \"Der Lieferant bestätigt mit \\\"Termin 15.12.2026 gebucht\\\" einen Liefertermin zu unserer Bestellung 4500018416 über 2500 Stk. Das entspricht einer Auftragsbestätigung. Die Mail ist sehr knapp, daher nur mittlere Konfidenz.\", \"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.7, \"lieferant\": \"Lieferant 8 (precimet, vertrieb@precimet.example)\", \"bestellnummer\": \"4500018416\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": null, \"einzelpreis\": null, \"menge\": 2500, \"betrag\": null, \"waehrung\": null, \"liefertermin\": \"2026-12-15\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"zusammenfassung\": \"Lieferant 8 (precimet) bestätigt für Bestellung 4500018416 (2500 Stk) den Liefertermin 15.12.2026.\"}",
+  "sekunden": 5.077822100021876,
+  "sekunden_api": 3.95,
+  "tokens_ein": 3446,
+  "tokens_aus": 1019,
+  "kosten_usd": 0.00068474,
+  "modell": "claude-haiku-5-5"
+ },
+ "s100": {
+  "inhalt": "{\"kategorie\": \"auftragsbestaetigung\", \"konfidenz\": 0.95, \"lieferant\": \"Brenner Zerspanung (Lieferant 2)\", \"bestellnummer\": \"4500018525\", \"rechnungsnummer\": null, \"angebotsnummer\": null, \"artikel\": \"Nutenkeil NK-16\", \"einzelpreis\": null, \"menge\": 600, \"betrag\": null, \"waehrung\": null, \"liefertermin\": \"2026-12-03\", \"liefertermin_unsicher\": false, \"abweichungsgrund\": null, \"dringlichkeit\": \"mittel\", \"begruendung\": \"Der Lieferant bestätigt die Bestellung 4500018525 mit Menge und Liefertermin ausdrücklich als Auftragsbestätigung.\", \"zusammenfassung\": \"Brenner Zerspanung bestätigt Bestellung 4500018525 über 600 Stück Nutenkeil NK-16 zum Liefertermin 03.12.2026; Preis wird in der Mail nicht genannt.\"}",
+  "sekunden": 5.207737699965946,
+  "sekunden_api": 4.042,
+  "tokens_ein": 3471,
+  "tokens_aus": 1079,
+  "kosten_usd": 0.0007197400000000001,
+  "modell": "claude-haiku-5-5"
+ }
+}

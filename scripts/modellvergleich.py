@@ -2,7 +2,6 @@
 
     python scripts/modellvergleich.py qwen
     python scripts/modellvergleich.py haiku      # Claude Code CLI, angemeldet mit eigenem Abo
-    python scripts/modellvergleich.py mistral    # MISTRAL_API_KEY als Umgebungsvariable oder in .env
     python scripts/modellvergleich.py bericht    # nur den Bericht aus den vorhandenen Antworten bauen
 
 Prompt, JSON-Schema, Validierung und AB-Prüfung kommen aus den Code-Nodes des Workflows (pipeline.mjs).
@@ -26,7 +25,7 @@ from evaluate import ab_ist, feld_gleich, prozent, regel_klassifizieren
 REPO = Path(__file__).resolve().parent.parent
 ABLAGE = REPO / "eval" / "modellvergleich"
 N8N_IMAGE = "docker.n8n.io/n8nio/n8n:2.45.7"
-MODELLE = {"qwen": "qwen2.5:7b", "haiku": "haiku", "mistral": "mistral-small-latest"}
+MODELLE = {"qwen": "qwen2.5:7b", "haiku": "haiku"}
 
 
 class Abbruch(Exception):
@@ -89,39 +88,6 @@ def frage_qwen(anfrage: dict) -> dict:
             "tokens_ein": r.get("prompt_eval_count"), "tokens_aus": r.get("eval_count"), "modell": r.get("model")}
 
 
-def mistral_schluessel() -> str:
-    if os.environ.get("MISTRAL_API_KEY"):
-        return os.environ["MISTRAL_API_KEY"]
-    env = REPO / ".env"
-    if env.exists():
-        for zeile in env.read_text(encoding="utf-8-sig").splitlines():
-            if zeile.startswith("MISTRAL_API_KEY="):
-                return zeile.split("=", 1)[1].strip()
-    raise Abbruch("MISTRAL_API_KEY fehlt (Umgebungsvariable oder Zeile in .env)")
-
-
-def frage_mistral(anfrage: dict) -> dict:
-    daten = {"model": MODELLE["mistral"], "temperature": 0, "max_tokens": anfrage["options"]["num_predict"],
-             "messages": anfrage["messages"],
-             "response_format": {"type": "json_schema", "json_schema": {
-                 "name": "mail_extraktion", "schema": anfrage["format"], "strict": True}}}
-    kopf = {"Authorization": f"Bearer {mistral_schluessel()}"}
-    for versuch in range(5):
-        start = time.perf_counter()
-        try:
-            r = http_json("https://api.mistral.ai/v1/chat/completions", daten, kopf)
-            break
-        except urllib.error.HTTPError as fehler:
-            if fehler.code not in (429, 500, 502, 503) or versuch == 4:
-                raise Abbruch(f"Mistral HTTP {fehler.code}: {fehler.read().decode(errors='replace')[:500]}") from fehler
-        except (urllib.error.URLError, TimeoutError) as fehler:
-            if versuch == 4:
-                raise Abbruch(f"Mistral nicht erreichbar: {fehler}") from fehler
-        time.sleep(5 * 2 ** versuch)  # Gratis-Kontingent: bei 429 warten
-    return {"inhalt": r["choices"][0]["message"]["content"], "sekunden": time.perf_counter() - start,
-            "tokens_ein": r["usage"]["prompt_tokens"], "tokens_aus": r["usage"]["completion_tokens"], "modell": r["model"]}
-
-
 def claude_programm() -> str:
     pfad = os.environ.get("CLAUDE_BIN") or shutil.which("claude")
     if not pfad:
@@ -171,7 +137,7 @@ def messen(wer: str, satz: str, limit: int | None) -> None:
         print(f"{wer}: alle Antworten vorhanden ({datei.name})")
         return
     anfragen = pipeline("bauen", {"mails": {n: mails[n] for n in offen}})
-    frage = {"qwen": frage_qwen, "haiku": frage_haiku, "mistral": frage_mistral}[wer]
+    frage = {"qwen": frage_qwen, "haiku": frage_haiku}[wer]
     if wer == "qwen":
         frage(anfragen[offen[0]])  # Modell laden, damit die erste Zeitmessung nicht verfälscht ist
     ABLAGE.mkdir(parents=True, exist_ok=True)
