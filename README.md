@@ -254,6 +254,22 @@ docker run --rm --entrypoint sh -v "${PWD}:/repo:ro" -w /repo docker.n8n.io/n8ni
 
 Die Tests laufen in der CI. Sie messen nicht, wie gut das Modell klassifiziert, das zeigt die Erfolgsmessung.
 
+## Modellvergleich
+
+`scripts/modellvergleich.py` schickt dieselben Mails an das lokale Modell und an Cloud-Modelle. Prompt, JSON-Schema, Validierung und AB-Prüfung kommen aus den Code-Nodes des Workflows. Gemessen ist bisher nur das lokale Modell, es erreicht in dieser Prüfstrecke dieselben Werte wie über n8n ([eval/modellvergleich_pruefset4.md](eval/modellvergleich_pruefset4.md)).
+
+```bash
+python scripts/modellvergleich.py qwen       # lokal mit Ollama
+python scripts/modellvergleich.py haiku      # Claude Code CLI mit eigenem Abo, Pfad ggf. in CLAUDE_BIN
+python scripts/modellvergleich.py mistral    # MISTRAL_API_KEY in .env oder als Umgebungsvariable
+```
+
+Beim Lesen der Cloud-Werte zu beachten:
+
+- Haiku läuft über die Claude-Code-CLI, nicht direkt über die API. Antwortzeit und Token enthalten deren Aufschlag, und die Temperatur lässt sich nicht auf 0 setzen.
+- Das Gratis-Kontingent von Mistral darf Anfragen je nach Einstellung zum Training nutzen. Deshalb nur mit synthetischen Mails verwenden.
+- Der Prompt wurde für das lokale Modell geschrieben und für den Vergleich nicht angepasst.
+
 ## Testdaten
 
 Alle Mails sind frei erfunden. Auftraggeber ist die fiktive Hagemann Antriebstechnik GmbH aus dem Projekt [procurement-rag-agent](https://github.com/MaxXSammy/procurement-rag-agent), die Lieferanten kommen aus Deutschland, Österreich, Italien, der Schweiz, Tschechien und Polen.
@@ -347,6 +363,8 @@ scripts/
 ├── evaluate.py             # Auswertung mit Regel-Basislinie, auch für Prüfsätze (--set)
 ├── einsparung.py           # Zeitersparnis aus gemessenen Eingaben hochrechnen
 ├── demo_laden.py           # Beispielmails für die Arbeitsliste laden oder entfernen
+├── modellvergleich.py      # Lokales Modell gegen Cloud-Modelle
+├── pipeline.mjs            # Prüfstrecke ohne n8n, nutzt die Code-Nodes
 ├── robustheit.py           # Angriffe und Grenzfälle mit erwartetem Ergebnis
 ├── export_workflows.py     # Export aus n8n, nur portable Felder
 └── check_schema_sync.py    # Schema im Workflow = Schema-Datei?

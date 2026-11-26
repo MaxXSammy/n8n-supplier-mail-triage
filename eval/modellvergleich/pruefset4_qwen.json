@@ -1,0 +1,695 @@
+{
+ "s001": {
+  "inhalt": "{\n  \"begruendung\": \"Auftragsbestätigung mit Teillieferterminen und Einzelpreis.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 1\",\n  \"bestellnummer\": \"4500018401\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Antriebswelle AW-40\",\n  \"einzelpreis\": 3.12,\n  \"menge\": 1100,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-12-10\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 1 bestätigt Bestellung 4500018401 mit Teillieferterminen am 18.11.2026 und 10.12.2026 und Einzelpreis von 3,12 EUR.\"\n}",
+  "sekunden": 4.503105400013737,
+  "tokens_ein": 1169,
+  "tokens_aus": 291,
+  "modell": "qwen2.5:7b"
+ },
+ "s002": {
+  "inhalt": "{\n  \"begruendung\": \"Versandbenachrichtigung mit Sendungsnummer und Spedition.\",\n  \"kategorie\": \"lieferavis\",\n  \"konfidenz\": 1,\n  \"lieferant\": \"Lieferant 2\",\n  \"bestellnummer\": \"45000184O2\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Welle Ø12 x 85\",\n  \"einzelpreis\": null,\n  \"menge\": 1500,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Lieferant 2 meldet, dass die Welle Ø12 x 85 zu Bestellnummer 45000184O2 unterwegs sind mit Sendungsnummer 99482019482.\"\n}",
+  "sekunden": 4.02458279998973,
+  "tokens_ein": 1125,
+  "tokens_aus": 255,
+  "modell": "qwen2.5:7b"
+ },
+ "s003": {
+  "inhalt": "{\n  \"begruendung\": \"Der Lieferant meldet einen Verzug der Distanzscheiben 8 mm mit neuem Liefertermin.\",\n  \"kategorie\": \"lieferverzug\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 2\",\n  \"bestellnummer\": \"4500018403\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Distanzscheiben 8 mm\",\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-12-20\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": \"Werkzeugbruch\",\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 2 meldet einen Verzug der Distanzscheiben 8 mm mit neuem Liefertermin am 20.12.2026 wegen Werkzeugbruch.\"\n}",
+  "sekunden": 3.731786800082773,
+  "tokens_ein": 1142,
+  "tokens_aus": 261,
+  "modell": "qwen2.5:7b"
+ },
+ "s004": {
+  "inhalt": "{\n  \"begruendung\": \"Reklamation wegen beschädigter Ware und Anforderung nach Ersatzlieferung.\",\n  \"kategorie\": \"reklamation\",\n  \"konfidenz\": 1,\n  \"lieferant\": \"5\",\n  \"bestellnummer\": \"4500018404\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"ZW-25\",\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"QS Wareneingang meldet beschädigte Ware bei Bestellung 4500018404 und fordert Ersatzlieferung bis 30.11.2026.\"\n}",
+  "sekunden": 3.5243375999853015,
+  "tokens_ein": 1151,
+  "tokens_aus": 238,
+  "modell": "qwen2.5:7b"
+ },
+ "s005": {
+  "inhalt": "{\n  \"begruendung\": \"Auftragsbestätigung mit Liefertermin und Einzelpreis.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 6 AG\",\n  \"bestellnummer\": \"4500018405\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Praezisionsbolzen PB-6\",\n  \"einzelpreis\": 1.85,\n  \"menge\": 500,\n  \"betrag\": null,\n  \"waehrung\": \"EUR\",\n  \"liefertermin\": \"2026-11-18\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Auftragsbestätigung für 500 Stück Praezisionsbolzen PB-6 mit Liefertermin 18.11.2026 und Einzelpreis von 1,85 EUR.\"\n}",
+  "sekunden": 3.8396704000188038,
+  "tokens_ein": 1143,
+  "tokens_aus": 271,
+  "modell": "qwen2.5:7b"
+ },
+ "s006": {
+  "inhalt": "{\n  \"begruendung\": \"Der Lieferant meldet einen Verzug der gelieferten Mengen.\",\n  \"kategorie\": \"lieferverzug\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 9\",\n  \"bestellnummer\": \"4500018406\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Kunststoffgehäuse KG-30\",\n  \"einzelpreis\": null,\n  \"menge\": 800,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-12-15\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 9 meldet einen Verzug für die Bestellung 4500018406, die Kunststoffgehäuse KG-30 werden erst am 15.12.2026 geliefert.\"\n}",
+  "sekunden": 3.7485080999322236,
+  "tokens_ein": 1120,
+  "tokens_aus": 269,
+  "modell": "qwen2.5:7b"
+ },
+ "s007": {
+  "inhalt": "{\n  \"begruendung\": \"Auftragsbestätigung mit konkretem Liefertermin und Stückpreis.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 7 GmbH\",\n  \"bestellnummer\": \"4500018407\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Flansch FL-80\",\n  \"einzelpreis\": 5.10,\n  \"menge\": 1800,\n  \"betrag\": null,\n  \"waehrung\": \"EUR\",\n  \"liefertermin\": \"2026-12-11\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Auftragsbestätigung für 1800 Flansch FL-80 zu 5,10 EUR Stück mit Liefertermin 11.12.2026.\"\n}",
+  "sekunden": 3.7509956000139937,
+  "tokens_ein": 1088,
+  "tokens_aus": 267,
+  "modell": "qwen2.5:7b"
+ },
+ "s008": {
+  "inhalt": "{\n  \"begruendung\": \"Der Lieferant ändert den Liefertermin.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 3\",\n  \"bestellnummer\": \"4500018408\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-12-01\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": \"voraussichtlich\",\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 3 bestätigt Bestellung 4500018408 und verschiebt den Liefertermin auf den 01.12.2026.\"\n}",
+  "sekunden": 3.499981400091201,
+  "tokens_ein": 1125,
+  "tokens_aus": 248,
+  "modell": "qwen2.5:7b"
+ },
+ "s009": {
+  "inhalt": "{\n  \"begruendung\": \"Versandbenachrichtigung mit voraussichtlichem Ankunftstermin.\",\n  \"kategorie\": \"lieferavis\",\n  \"konfidenz\": 1,\n  \"lieferant\": \"Lieferant 8\",\n  \"bestellnummer\": \"4500018409\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Distanzring DR-30\",\n  \"einzelpreis\": null,\n  \"menge\": 1040,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-12-02\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Lieferant 8 meldet, dass die Bestellung zu PO 4500018409 unterwegs ist und erwartet den Ankunftstermin am 02.12.2026.\"\n}",
+  "sekunden": 3.700078699970618,
+  "tokens_ein": 1113,
+  "tokens_aus": 263,
+  "modell": "qwen2.5:7b"
+ },
+ "s010": {
+  "inhalt": "{\n  \"begruendung\": \"Qualitätsmangel: Falsche Lieferung mit Grat.\",\n  \"kategorie\": \"reklamation\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"QS Fertigung\",\n  \"bestellnummer\": \"4500018410\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Antriebswelle AW-40\",\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": \"Grat\",\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"QS Fertigung meldet Reklamation: 50 Stück Antriebswelle AW-40 mit Grat geliefert. Nacharbeitsfreigabe erforderlich.\"\n}",
+  "sekunden": 3.3240057999501005,
+  "tokens_ein": 1107,
+  "tokens_aus": 236,
+  "modell": "qwen2.5:7b"
+ },
+ "s011": {
+  "inhalt": "{\n  \"begruendung\": \"Liefertermin für eine bestätigte Bestellung angegeben.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 1\",\n  \"bestellnummer\": \"4500018411\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Lagerbolzen LB-20\",\n  \"einzelpreis\": 2.45,\n  \"menge\": 1200,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-11-14\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Lieferant 1 bestätigt die Bestellung 4500018411 für 1200 Stück Lagerbolzen LB-20 am 14.11.2026.\"\n}",
+  "sekunden": 3.7532423000084236,
+  "tokens_ein": 1108,
+  "tokens_aus": 267,
+  "modell": "qwen2.5:7b"
+ },
+ "s012": {
+  "inhalt": "{\n  \"begruendung\": \"Auftragsbestätigung mit konkretem Liefertermin und Menge.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 6\",\n  \"bestellnummer\": \"4500018412\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Gewindestift GS-4\",\n  \"einzelpreis\": 0.92,\n  \"menge\": 3000,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-11-21\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Lieferant 6 bestätigt Bestellung für 3000 Stück Gewindestift GS-4 zu 0,92 EUR mit Liefertermin am 21.11.2026.\"\n}",
+  "sekunden": 3.806584300007671,
+  "tokens_ein": 1103,
+  "tokens_aus": 270,
+  "modell": "qwen2.5:7b"
+ },
+ "s013": {
+  "inhalt": "{\n  \"begruendung\": \"Der Lieferant meldet einen Verzug der Bestellung mit einer neuen Liefertermin.\",\n  \"kategorie\": \"lieferverzug\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 7\",\n  \"bestellnummer\": \"4500018413\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Spannstift SP-10\",\n  \"einzelpreis\": null,\n  \"menge\": 4000,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-12-20\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 7 meldet einen Verzug der Bestellung 4500018413 mit neuem Liefertermin am 20.12.2026.\"\n}",
+  "sekunden": 3.609211399918422,
+  "tokens_ein": 1104,
+  "tokens_aus": 257,
+  "modell": "qwen2.5:7b"
+ },
+ "s014": {
+  "inhalt": "{\n  \"begruendung\": \"Auftragsbestätigung mit konkretem Liefertermin und Preis.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 3\",\n  \"bestellnummer\": \"4500018414\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Buchse BU-22\",\n  \"einzelpreis\": 1.14,\n  \"menge\": 1500,\n  \"betrag\": null,\n  \"waehrung\": \"EUR\",\n  \"liefertermin\": \"2026-12-02\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Auftragsbestätigung für 1500 Buchse BU-22 mit Preis von 1,14 EUR und Liefertermin am 02.12.2026.\"\n}",
+  "sekunden": 3.7558472000528127,
+  "tokens_ein": 1108,
+  "tokens_aus": 265,
+  "modell": "qwen2.5:7b"
+ },
+ "s015": {
+  "inhalt": "{\n  \"begruendung\": \"Versandbenachrichtigung mit klarer Ankunftstermin.\",\n  \"kategorie\": \"lieferavis\",\n  \"konfidenz\": 1,\n  \"lieferant\": \"Lieferant 4\",\n  \"bestellnummer\": \"4500018415\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Scheibe SR-05\",\n  \"einzelpreis\": null,\n  \"menge\": 2000,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-12-10\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Lieferant 4 meldet, dass 2000 Stück Scheibe SR-05 unter der Bestellnummer 4500018415 am 10.12.2026 geliefert werden.\"\n}",
+  "sekunden": 3.72763490001671,
+  "tokens_ein": 1093,
+  "tokens_aus": 262,
+  "modell": "qwen2.5:7b"
+ },
+ "s016": {
+  "inhalt": "{\n  \"begruendung\": \"Auftragsbestätigung mit konkretem Liefertermin und Einzelpreis.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 8\",\n  \"bestellnummer\": \"4500018416\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"RI-14\",\n  \"einzelpreis\": 0.19,\n  \"menge\": 2500,\n  \"betrag\": null,\n  \"waehrung\": \"EUR\",\n  \"liefertermin\": \"2026-12-15\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Auftragsbestätigung für 2500 Stück RI-14 mit einem Einzelpreis von 0,19 EUR, Liefertermin ist für den 15.12.2026 geplant.\"\n}",
+  "sekunden": 3.8285073000006378,
+  "tokens_ein": 1104,
+  "tokens_aus": 270,
+  "modell": "qwen2.5:7b"
+ },
+ "s017": {
+  "inhalt": "{\n  \"begruendung\": \"Liefertermin geändert, nur teilweise Lieferung.\",\n  \"kategorie\": \"lieferverzug\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": \"Lieferant 6\",\n  \"bestellnummer\": \"4500018417\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Achsstift AS-3\",\n  \"einzelpreis\": 2.10,\n  \"menge\": 400,\n  \"betrag\": null,\n  \"waehrung\": \"CHF\",\n  \"liefertermin\": \"2026-11-26\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 6 meldet, dass nur 400 Stück von 800 Stück der Bestellung 4500018417 am 26.11.2026 geliefert werden, die restlichen 400 Stück am 10.12.2026.\"\n}",
+  "sekunden": 4.023261599941179,
+  "tokens_ein": 1123,
+  "tokens_aus": 287,
+  "modell": "qwen2.5:7b"
+ },
+ "s018": {
+  "inhalt": "{\n  \"begruendung\": \"Auftragsbestätigung mit konkretem Liefertermin und Menge.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 1\",\n  \"bestellnummer\": \"4500018418\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Madenschraube MS-6\",\n  \"einzelpreis\": null,\n  \"menge\": 5000,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-12-03\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Auftragsbestätigung für 5000 Stück Madenschraube MS-6 am 03.12.2026.\"\n}",
+  "sekunden": 3.6380217999685556,
+  "tokens_ein": 1098,
+  "tokens_aus": 252,
+  "modell": "qwen2.5:7b"
+ },
+ "s019": {
+  "inhalt": "{\n  \"begruendung\": \"Der Lieferant meldet einen Verzug der Bestellung um 1 Woche.\",\n  \"kategorie\": \"lieferverzug\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 2\",\n  \"bestellnummer\": \"4500018525\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-12-10\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 2 meldet einen Verzug der Bestellung 4500018525 um 1 Woche bis zum 10.12.2026.\"\n}",
+  "sekunden": 3.4244415999855846,
+  "tokens_ein": 1095,
+  "tokens_aus": 244,
+  "modell": "qwen2.5:7b"
+ },
+ "s020": {
+  "inhalt": "{\n  \"begruendung\": \"Bestellung bestätigt mit konkretem Liefertermin.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 1\",\n  \"bestellnummer\": \"4500018401\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"AW-40\",\n  \"einzelpreis\": null,\n  \"menge\": 2000,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-11-20\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Bestellung für 2000 Stk. AW-40 bestätigt mit Liefertermin am 20.11.2026.\"\n}",
+  "sekunden": 3.635750100016594,
+  "tokens_ein": 1093,
+  "tokens_aus": 245,
+  "modell": "qwen2.5:7b"
+ },
+ "s021": {
+  "inhalt": "{\n  \"begruendung\": \"Dringende Bestellung von Produktion für Lagerbolzen LB-20.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": null,\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Lagerbolzen LB-20\",\n  \"einzelpreis\": null,\n  \"menge\": 500,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Produktion bestellt dringend 500 Stück Lagerbolzen LB-20 für Linie 2.\"\n}",
+  "sekunden": 3.0861032999819145,
+  "tokens_ein": 1112,
+  "tokens_aus": 214,
+  "modell": "qwen2.5:7b"
+ },
+ "s022": {
+  "inhalt": "{\n  \"begruendung\": \"Update des Datenblatts für einen bestehenden Artikel.\",\n  \"kategorie\": \"sonstiges\",\n  \"konfidenz\": 0.8,\n  \"lieferant\": \"Konstruktion Jens\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Zahnradwelle ZW-25\",\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Konstruktion Jens hat das Lastenheft für die Zahnradwelle ZW-25 aktualisiert. Bitte bei der nächsten Bestellung beachten.\"\n}",
+  "sekunden": 3.195845999987796,
+  "tokens_ein": 1091,
+  "tokens_aus": 218,
+  "modell": "qwen2.5:7b"
+ },
+ "s023": {
+  "inhalt": "{\n  \"begruendung\": \"Die E-Mail bezieht sich auf eine Freigabeanforderung für eine Bestellung, die den Limit überschreitet.\",\n  \"kategorie\": \"sonstiges\",\n  \"konfidenz\": 0.8,\n  \"lieferant\": null,\n  \"bestellnummer\": \"4500018410\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": 8940.00,\n  \"waehrung\": \"EUR\",\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Es handelt sich um eine Freigabeanforderung für Bestellung 4500018410, die den Limit überschreitet.\"\n}",
+  "sekunden": 3.4517946999985725,
+  "tokens_ein": 1086,
+  "tokens_aus": 240,
+  "modell": "qwen2.5:7b"
+ },
+ "s024": {
+  "inhalt": "{\n  \"begruendung\": \"Werkzeugbedarf für Instandhaltung\",\n  \"kategorie\": \"angebot\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"nicht angegeben\",\n  \"bestellnummer\": \"nicht angegeben\",\n  \"rechnungsnummer\": \"nicht angegeben\",\n  \"angebotsnummer\": \"nicht angegeben\",\n  \"artikel\": \"Satz Spezial-Bohrer BANF 88201\",\n  \"einzelpreis\": null,\n  \"menge\": 10,\n  \"betrag\": null,\n  \"waehrung\": \"EUR\",\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Instandhaltung plant Beschaffung von 10 Satz Spezial-Bohrern für Kostenstelle 4402.\"\n}",
+  "sekunden": 3.3221479000058025,
+  "tokens_ein": 1084,
+  "tokens_aus": 234,
+  "modell": "qwen2.5:7b"
+ },
+ "s025": {
+  "inhalt": "{\n  \"begruendung\": \"Die E-Mail bezieht sich auf die Freigabe eines Eintrags im ERP-Portal und enthält keine spezifischen Geschäftsanliegen wie Angebote, Reklamationen oder Lieferterminänderungen.\",\n  \"kategorie\": \"sonstiges\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": null,\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Die E-Mail informiert über die Bereitschaft eines Eintrags im ERP-Portal zur Freigabe und bezieht sich nicht auf spezifische Geschäftsprozesse.\"\n}",
+  "sekunden": 3.4432499000104144,
+  "tokens_ein": 1074,
+  "tokens_aus": 244,
+  "modell": "qwen2.5:7b"
+ },
+ "s026": {
+  "inhalt": "{\n  \"begruendung\": \"Spezifikation Änderung des Distanzscheibens DS-08 mit neuer Toleranz.\",\n  \"kategorie\": \"stammdatenaenderung\",\n  \"konfidenz\": 1,\n  \"lieferant\": \"AV Entwicklung\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Distanzscheibe DS-08\",\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"AV Entwicklung hat die Spezifikation des Distanzscheibens DS-08 angepasst. Neues Dokument im Anhang.\"\n}",
+  "sekunden": 3.1532594999298453,
+  "tokens_ein": 1070,
+  "tokens_aus": 223,
+  "modell": "qwen2.5:7b"
+ },
+ "s027": {
+  "inhalt": "{\n  \"begruendung\": \"Bestellung für Verpackungsmaterial\",\n  \"kategorie\": \"angebot\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": \"Logistik\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Standard-Karton Typ B\",\n  \"einzelpreis\": null,\n  \"menge\": 500,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Logistik bestellt 500 Standard-Karton Typ B für die Verpackung.\"\n}",
+  "sekunden": 2.7929147999966517,
+  "tokens_ein": 1063,
+  "tokens_aus": 194,
+  "modell": "qwen2.5:7b"
+ },
+ "s028": {
+  "inhalt": "{\n  \"begruendung\": \"Der Lieferant meldet einen zusätzlichen Bestellbedarf über eine bestehende Bestellung hinaus.\",\n  \"kategorie\": \"angebot\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": \"Montage\",\n  \"bestellnummer\": \"4500018406\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Gehäuse KG-30\",\n  \"einzelpreis\": null,\n  \"menge\": 400,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Montage meldet einen zusätzlichen Bestellbedarf von 400 Stück Gehäuse KG-30 über bestehende Bestellung hinaus.\"\n}",
+  "sekunden": 3.3431397000094876,
+  "tokens_ein": 1091,
+  "tokens_aus": 238,
+  "modell": "qwen2.5:7b"
+ },
+ "s029": {
+  "inhalt": "{\n  \"begruendung\": \"Die E-Mail bezieht sich auf eine Freigabe für Ersatzteilbeschaffung und enthält keinen Hauptanlass aus den genannten Kategorien.\",\n  \"kategorie\": \"sonstiges\",\n  \"konfidenz\": 0.8,\n  \"lieferant\": null,\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Die E-Mail bezieht sich auf eine Freigabe für Ersatzteilbeschaffung und enthält keine kritischen Informationen.\"\n}",
+  "sekunden": 3.215359600028023,
+  "tokens_ein": 1074,
+  "tokens_aus": 224,
+  "modell": "qwen2.5:7b"
+ },
+ "s030": {
+  "inhalt": "{\n  \"begruendung\": \"Zeichnungsänderung für zukünftige Anfragen.\",\n  \"kategorie\": \"stammdatenaenderung\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": null,\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Engineering hat eine neue Zeichnung FL-80_v3.pdf für zukünftige Anfragen bereitgestellt.\"\n}",
+  "sekunden": 2.9361493999604136,
+  "tokens_ein": 1063,
+  "tokens_aus": 205,
+  "modell": "qwen2.5:7b"
+ },
+ "s031": {
+  "inhalt": "{\n  \"begruendung\": \"Es handelt sich um ein Angebot zu einer konkreten Anfrage.\",\n  \"kategorie\": \"angebot\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 4\",\n  \"bestellnummer\": \"RFQ-2026-088\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"AW-40\",\n  \"einzelpreis\": 3.05,\n  \"menge\": 2000,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Lieferant 4 hat ein Angebot für 2000 Stück Antriebswelle AW-40 zu je 3,05 EUR abgegeben, Lieferzeit 3 Wochen.\"\n}",
+  "sekunden": 3.493337700027041,
+  "tokens_ein": 1114,
+  "tokens_aus": 244,
+  "modell": "qwen2.5:7b"
+ },
+ "s032": {
+  "inhalt": "{\n  \"begruendung\": \"Preiserhöhung um 5% für Stahlkomponenten ab 01.12.2026\",\n  \"kategorie\": \"preisaenderung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 7\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Stahlkomponenten (z. B. FL-80, SP-10)\",\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": \"Rohstoffzuschlag\",\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 7 erhöht die Preise für Stahlkomponenten um 5% ab 01.12.2026.\"\n}",
+  "sekunden": 3.5310549000278115,
+  "tokens_ein": 1104,
+  "tokens_aus": 250,
+  "modell": "qwen2.5:7b"
+ },
+ "s033": {
+  "inhalt": "{\n  \"begruendung\": \"Lieferant informiert über das Ende des Lebenszyklus und Nachfolgeartikel.\",\n  \"kategorie\": \"stammdatenaenderung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 3\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"HS-12\",\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 3 informiert über das Ende des Lebenszyklus des Artikels HS-12 und gibt den Nachfolgeartikel HS-12-v2 bekannt.\"\n}",
+  "sekunden": 3.2319616000168025,
+  "tokens_ein": 1104,
+  "tokens_aus": 228,
+  "modell": "qwen2.5:7b"
+ },
+ "s034": {
+  "inhalt": "{\n  \"begruendung\": \"Vertriebsanfrage mit Unternehmensprofil und LSA.\",\n  \"kategorie\": \"sonstiges\",\n  \"konfidenz\": 0.8,\n  \"lieferant\": \"Precision Parts\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Neuer Lieferant hat sich kontaktiert und Unternehmensprofil sowie LSA zur Verfügung gestellt.\"\n}",
+  "sekunden": 2.820227100048214,
+  "tokens_ein": 1092,
+  "tokens_aus": 195,
+  "modell": "qwen2.5:7b"
+ },
+ "s035": {
+  "inhalt": "{\n  \"begruendung\": \"Häufiges Angebot mit konkreter Menge und Preis.\",\n  \"kategorie\": \"angebot\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 2\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": \"99012\",\n  \"artikel\": \"Nutenkeil NK-16\",\n  \"einzelpreis\": 1.15,\n  \"menge\": 1000,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Lieferant 2 bietet 1.000 Stück Nutenkeil NK-16 zu je 1,15 EUR an.\"\n}",
+  "sekunden": 3.3195301999803632,
+  "tokens_ein": 1090,
+  "tokens_aus": 230,
+  "modell": "qwen2.5:7b"
+ },
+ "s036": {
+  "inhalt": "{\n  \"begruendung\": \"Der Lieferant ändert von sich aus die Preise ohne Anfrage.\",\n  \"kategorie\": \"preisaenderung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 6\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"GS-4\",\n  \"einzelpreis\": 0.95,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": \"CHF\",\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 6 hat die CHF-Preise für Artikel GS-4 auf 0,95 CHF angepasst.\"\n}",
+  "sekunden": 3.1050190000096336,
+  "tokens_ein": 1082,
+  "tokens_aus": 218,
+  "modell": "qwen2.5:7b"
+ },
+ "s037": {
+  "inhalt": "{\n  \"begruendung\": \"Lieferant sendet neues Produktkatalog, ohne spezifisches Anliegen zur aktuellen Bestellung.\",\n  \"kategorie\": \"sonstiges\",\n  \"konfidenz\": 0.6,\n  \"lieferant\": \"Lieferant 8\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Lieferant 8 sendet neues Produktkatalog ohne spezifisches Anliegen zur aktuellen Bestellung.\"\n}",
+  "sekunden": 3.0052164999069646,
+  "tokens_ein": 1065,
+  "tokens_aus": 211,
+  "modell": "qwen2.5:7b"
+ },
+ "s038": {
+  "inhalt": "{\n  \"begruendung\": \"Häufiges Angebot für eine Bestellung, hier 5000 Stück Madenschraube MS-6 zu 0,085 EUR.\",\n  \"kategorie\": \"angebot\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 1\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": \"RFQ 4410\",\n  \"artikel\": \"Maden­schaube MS-6\",\n  \"einzelpreis\": 0.085,\n  \"menge\": 5000,\n  \"betrag\": null,\n  \"waehrung\": \"EUR\",\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Lieferant 1 bietet 5000 Stück Madenschraube MS-6 zu je 0,085 EUR an.\"\n}",
+  "sekunden": 3.611648000078276,
+  "tokens_ein": 1073,
+  "tokens_aus": 252,
+  "modell": "qwen2.5:7b"
+ },
+ "s039": {
+  "inhalt": "{\n  \"begruendung\": \"Der Lieferant meldet einen vorübergehenden Lieferstopp für Artikel DR-30 wegen Qualitätsprüfungen.\",\n  \"kategorie\": \"lieferverzug\",\n  \"konfidenz\": 0.8,\n  \"lieferant\": \"Lieferant 8\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"DR-30\",\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": true,\n  \"abweichungsgrund\": \"vorübergehender Lieferstopp wegen Qualitätsprüfungen\",\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 8 meldet einen vorübergehenden Lieferstopp für Artikel DR-30 wegen Qualitätsprüfungen.\"\n}",
+  "sekunden": 3.3236363000469282,
+  "tokens_ein": 1064,
+  "tokens_aus": 237,
+  "modell": "qwen2.5:7b"
+ },
+ "s040": {
+  "inhalt": "{\n  \"begruendung\": \"Anfrage zur Lieferantenauskunft, speziell nach LSA für 2027.\",\n  \"kategorie\": \"sonstiges\",\n  \"konfidenz\": 0.8,\n  \"lieferant\": null,\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Der Sourcing Team fordert die Lieferantenauskunft für das Jahr 2027.\"\n}",
+  "sekunden": 3.0794468000531197,
+  "tokens_ein": 1058,
+  "tokens_aus": 202,
+  "modell": "qwen2.5:7b"
+ },
+ "s041": {
+  "inhalt": "{\n  \"begruendung\": \"Die Mail enthält eine Rechnung zu einer Bestellung.\",\n  \"kategorie\": \"rechnung\",\n  \"konfidenz\": 1,\n  \"lieferant\": \"Lieferant 1\",\n  \"bestellnummer\": \"4500018401\",\n  \"rechnungsnummer\": \"2026-9041\",\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": 6240.00,\n  \"waehrung\": \"EUR\",\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Lieferant 1 hat die Rechnung 2026-9041 über 6.240,00 EUR für die Bestellung 4500018401 bereitgestellt.\"\n}",
+  "sekunden": 3.74948489991948,
+  "tokens_ein": 1116,
+  "tokens_aus": 253,
+  "modell": "qwen2.5:7b"
+ },
+ "s042": {
+  "inhalt": "{\n  \"begruendung\": \"Rechnung mit höherem Einzelpreis als bestellter Preis\",\n  \"kategorie\": \"rechnung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": null,\n  \"bestellnummer\": \"4500018402\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": 3.95,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": \"EUR\",\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Rechnung zu Bestellung 4500018402 enthält höheren Einzelpreis als bestellt.\"\n}",
+  "sekunden": 3.1367407999932766,
+  "tokens_ein": 1123,
+  "tokens_aus": 219,
+  "modell": "qwen2.5:7b"
+ },
+ "s043": {
+  "inhalt": "{\n  \"begruendung\": \"Es handelt sich um eine Mahnung für eine bestehende Rechnung.\",\n  \"kategorie\": \"rechnung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 6\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": \"7712\",\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": 925.00,\n  \"waehrung\": \"CHF\",\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Es wird eine Mahnung für die Rechnung 7712 in Höhe von 925,00 CHF verabschiedet.\"\n}",
+  "sekunden": 3.2095397000666708,
+  "tokens_ein": 1106,
+  "tokens_aus": 224,
+  "modell": "qwen2.5:7b"
+ },
+ "s044": {
+  "inhalt": "{\n  \"begruendung\": \"Die Mail handelt offensichtlich um eine Gutschrift.\",\n  \"kategorie\": \"rechnung\",\n  \"konfidenz\": 1,\n  \"lieferant\": \"Lieferant 4\",\n  \"bestellnummer\": \"4500018410\",\n  \"rechnungsnummer\": \"40019\",\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": 149, \"waehrung\": \"EUR\",\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Empfangene Gutschrift von Lieferant 4 im Betrag von 149 EUR für Reklamation zu Bestellung 4500018410.\"\n}",
+  "sekunden": 3.4086994999088347,
+  "tokens_ein": 1098,
+  "tokens_aus": 235,
+  "modell": "qwen2.5:7b"
+ },
+ "s045": {
+  "inhalt": "{\n  \"begruendung\": \"Es handelt sich um eine Versandbenachrichtigung der Rechnungen.\",\n  \"kategorie\": \"lieferavis\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": null,\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": \"Re 2026-9041, Re 2026-9088\",\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Die Rechnungen Re 2026-9041 und Re 2026-9088 wurden zur Zahlung angewiesen.\"\n}",
+  "sekunden": 3.4173458999721333,
+  "tokens_ein": 1117,
+  "tokens_aus": 236,
+  "modell": "qwen2.5:7b"
+ },
+ "s046": {
+  "inhalt": "{\n  \"begruendung\": \"Die E-Mail bezieht sich auf eine Rechnung und fordert Bestätigung des Wareneingangs.\",\n  \"kategorie\": \"rechnung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"AP Team\",\n  \"bestellnummer\": \"4500018406\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"AP Team fordert Bestätigung des Wareneingangs für Rechnung ohne Lieferschein zur Bestellnummer 4500018406.\"\n}",
+  "sekunden": 3.2804174999473616,
+  "tokens_ein": 1073,
+  "tokens_aus": 231,
+  "modell": "qwen2.5:7b"
+ },
+ "s047": {
+  "inhalt": "{\n  \"begruendung\": \"Stornierung einer fehlerhaften Rechnung\",\n  \"kategorie\": \"rechnung\",\n  \"konfidenz\": 1,\n  \"lieferant\": \"Lieferant 3\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": \"90122\",\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Stornierung der Rechnung 90122 wurde durch den Lieferanten 3 bestätigt.\"\n}",
+  "sekunden": 2.913358800113201,
+  "tokens_ein": 1082,
+  "tokens_aus": 203,
+  "modell": "qwen2.5:7b"
+ },
+ "s048": {
+  "inhalt": "{\n  \"begruendung\": \"Differenz in der Mengenangabe zwischen Rechnung und Buchung.\",\n  \"kategorie\": \"reklamation\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": null,\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": \"4500018418\",\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Es besteht eine Differenz in der Mengenangabe zwischen der Rechnung 4500018418 und der Buchung.\"\n}",
+  "sekunden": 3.0892378999851644,
+  "tokens_ein": 1082,
+  "tokens_aus": 217,
+  "modell": "qwen2.5:7b"
+ },
+ "s049": {
+  "inhalt": "{\n  \"begruendung\": \"Rechnung mit angepassten Skontobedingungen.\",\n  \"kategorie\": \"rechnung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 5\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": \"88102\",\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Rechnung 88102 mit angepassten Skontobedingungen ist eingetroffen.\"\n}",
+  "sekunden": 2.923099899897352,
+  "tokens_ein": 1068,
+  "tokens_aus": 204,
+  "modell": "qwen2.5:7b"
+ },
+ "s050": {
+  "inhalt": "{\n  \"begruendung\": \"Duplikat einer Rechnung wird gesperrt.\",\n  \"kategorie\": \"rechnung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": null,\n  \"bestellnummer\": \"4500018407\",\n  \"rechnungsnummer\": \"44102\",\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Duplikat der Rechnung 44102 zu Bestellung 4500018407 wurde gesperrt.\"\n}",
+  "sekunden": 3.1520353999221697,
+  "tokens_ein": 1076,
+  "tokens_aus": 219,
+  "modell": "qwen2.5:7b"
+ },
+ "s051": {
+  "inhalt": "{\n  \"begruendung\": \"Es handelt sich um einen Rechtsvorschriften- und Vertragsentwurf.\",\n  \"kategorie\": \"stammdatenaenderung\",\n  \"konfidenz\": 0.8,\n  \"lieferant\": \"Lieferant 2\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Rechtsabteilung von Lieferant 2 sendet einen überarbeiteten Rahmenvertrag für Wellen und Bolzen an den Einkauf.\"\n}",
+  "sekunden": 3.1783238999778405,
+  "tokens_ein": 1092,
+  "tokens_aus": 222,
+  "modell": "qwen2.5:7b"
+ },
+ "s052": {
+  "inhalt": "{\n  \"begruendung\": \"Nachfragen nach Sicherheitsdatenblättern gemäß LkSG.\",\n  \"kategorie\": \"compliance\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": \"Lieferant 1\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 1 verlangt Ausfüllung eines Fragebogens zur Erstellung von Sicherheitsdatenblättern gemäß LkSG.\"\n}",
+  "sekunden": 3.0080747000174597,
+  "tokens_ein": 1098,
+  "tokens_aus": 210,
+  "modell": "qwen2.5:7b"
+ },
+ "s053": {
+  "inhalt": "{\n  \"begruendung\": \"Änderung der Bankverbindung\",\n  \"kategorie\": \"stammdatenaenderung\",\n  \"konfidenz\": 1,\n  \"lieferant\": \"Lieferant 8\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 8 hat die Bankverbindung für PO 45000018409 geändert. Bitte Zahlungen auf die neue IBAN DE8999000012345678 überweisen.\"\n}",
+  "sekunden": 3.2678589000133798,
+  "tokens_ein": 1101,
+  "tokens_aus": 228,
+  "modell": "qwen2.5:7b"
+ },
+ "s054": {
+  "inhalt": "{\n  \"begruendung\": \"Die E-Mail bezieht sich auf eine Vertraulichkeitsvereinbarung (NDA) und die Übermittlung von Zeichnungen, was kein Geschäftsverkehr mit Lieferanten betrifft.\",\n  \"kategorie\": \"sonstiges\",\n  \"konfidenz\": 1,\n  \"lieferant\": null,\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Die E-Mail bezieht sich auf eine Vertraulichkeitsvereinbarung (NDA) und die Übermittlung von Zeichnungen, was kein Geschäftsverkehr mit Lieferanten betrifft.\"\n}",
+  "sekunden": 3.568330500042066,
+  "tokens_ein": 1062,
+  "tokens_aus": 251,
+  "modell": "qwen2.5:7b"
+ },
+ "s055": {
+  "inhalt": "{\n  \"begruendung\": \"Zertifikat für Nachhaltigkeit und Qualität\",\n  \"kategorie\": \"compliance\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": \"Lieferant 9\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Lieferant 9 hat ein neues ISO 9001:2025 Zertifikat erworben, gültig bis 2029, das für unsere Lieferantenakte relevant ist.\"\n}",
+  "sekunden": 3.1295720000052825,
+  "tokens_ein": 1077,
+  "tokens_aus": 220,
+  "modell": "qwen2.5:7b"
+ },
+ "s056": {
+  "inhalt": "{\n  \"begruendung\": \"Die E-Mail bezieht sich auf eine Qualitätssicherungsvereinbarung, die abgetippt werden soll, nicht auf ein Lieferantennachrichten.\",\n  \"kategorie\": \"sonstiges\",\n  \"konfidenz\": 0.6,\n  \"lieferant\": null,\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Die E-Mail bezieht sich auf eine Qualitätssicherungsvereinbarung, die abgetippt werden soll.\"\n}",
+  "sekunden": 3.149641700088978,
+  "tokens_ein": 1063,
+  "tokens_aus": 221,
+  "modell": "qwen2.5:7b"
+ },
+ "s057": {
+  "inhalt": "{\n  \"begruendung\": \"Änderung der Rechnungsadresse\",\n  \"kategorie\": \"stammdatenaenderung\",\n  \"konfidenz\": 1,\n  \"lieferant\": \"Lieferant 7\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Lieferant 7 hat die Rechnungsadresse geändert, die ab dem 01.11. gültig ist.\"\n}",
+  "sekunden": 3.003251599962823,
+  "tokens_ein": 1057,
+  "tokens_aus": 206,
+  "modell": "qwen2.5:7b"
+ },
+ "s058": {
+  "inhalt": "{\n  \"begruendung\": \"Es handelt sich um eine Nachweise zu Lieferkette und Nachhaltigkeit.\",\n  \"kategorie\": \"compliance\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Unbekannt\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"DS-08, RI-14\",\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Es wurden aktuelle RoHS-Konformitätserklärungen für die Artikel DS-08 und RI-14 bereitgestellt.\"\n}",
+  "sekunden": 3.113200700026937,
+  "tokens_ein": 1060,
+  "tokens_aus": 217,
+  "modell": "qwen2.5:7b"
+ },
+ "s060": {
+  "inhalt": "{\n  \"begruendung\": \"Abfrage der Verhaltensrichtlinie im Lieferantenportal\",\n  \"kategorie\": \"compliance\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": \"Sustainability Team sustainability.team@absender-unbekannt.example\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Der Sustainability-Team wird um Bestätigung der Verhaltensrichtlinie im Lieferantenportal gebeten.\"\n}",
+  "sekunden": 2.9723006000276655,
+  "tokens_ein": 1049,
+  "tokens_aus": 208,
+  "modell": "qwen2.5:7b"
+ },
+ "s061": {
+  "inhalt": "{\n  \"begruendung\": \"EDI-Processing-Fehler mit ungültigem Segment CTM.\",\n  \"kategorie\": \"sonstiges\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": null,\n  \"bestellnummer\": \"4500018413\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Es gab einen EDI-Processing-Fehler mit ungültigem Segment CTM für Bestellung 4500018413. Dies muss unverzüglich bearbeitet werden.\"\n}",
+  "sekunden": 3.218676900025457,
+  "tokens_ein": 1080,
+  "tokens_aus": 225,
+  "modell": "qwen2.5:7b"
+ },
+ "s062": {
+  "inhalt": "{\n  \"begruendung\": \"Einladung zum Lieferantenportal SupplyOn\",\n  \"kategorie\": \"werbung\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": null,\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Unverlangte Einladung zum Lieferantenportal SupplyOn.\"\n}",
+  "sekunden": 2.6689320999430493,
+  "tokens_ein": 1054,
+  "tokens_aus": 184,
+  "modell": "qwen2.5:7b"
+ },
+ "s063": {
+  "inhalt": "{\n  \"begruendung\": \"SAP meldet, dass keine Auftragsbestätigung für die Bestellung 4500018415 eingegangen ist, obwohl 48 Stunden vergangen sind.\",\n  \"kategorie\": \"lieferverzug\",\n  \"konfidenz\": 0.8,\n  \"lieferant\": null,\n  \"bestellnummer\": \"4500018415\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"SAP meldet, dass keine Auftragsbestätigung für Bestellung 4500018415 eingegangen ist, obwohl 48 Stunden vergangen sind.\"\n}",
+  "sekunden": 3.5730235999217257,
+  "tokens_ein": 1068,
+  "tokens_aus": 255,
+  "modell": "qwen2.5:7b"
+ },
+ "s064": {
+  "inhalt": "{\n  \"begruendung\": \"Fehler beim Ausführen des Workflows 'n8n-supplier-mail-triage' bei dem Node 'DB Insert'.\",\n  \"kategorie\": \"sonstiges\",\n  \"konfidenz\": 0.6,\n  \"lieferant\": null,\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Es gab einen Fehler beim Speichern der E-Mail-Kategorisierung im Workflow 'n8n-supplier-mail-triage'.\"\n}",
+  "sekunden": 3.071417700033635,
+  "tokens_ein": 1060,
+  "tokens_aus": 210,
+  "modell": "qwen2.5:7b"
+ },
+ "s065": {
+  "inhalt": "{\n  \"begruendung\": \"Es handelt sich um eine Mitteilung über eine neue Anfrage im Ariba-Portal, nicht um einen konkreten Antrag oder Bestellung.\",\n  \"kategorie\": \"sonstiges\",\n  \"konfidenz\": 0.8,\n  \"lieferant\": \"SAP Ariba\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Es wurde eine neue Anfrage im Ariba-Portal veröffentlicht. Das Team sollte sich darum kümmern, um mögliche Angebote zu prüfen.\"\n}",
+  "sekunden": 3.4981931999791414,
+  "tokens_ein": 1051,
+  "tokens_aus": 228,
+  "modell": "qwen2.5:7b"
+ },
+ "s066": {
+  "inhalt": "{\n  \"begruendung\": \"System-Wartung wird durchgeführt, ERP System ist am Wochenende nicht erreichbar.\",\n  \"kategorie\": \"sonstiges\",\n  \"konfidenz\": 1,\n  \"lieferant\": null,\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Das ERP System wird am Wochenende wegen Wartung nicht erreichbar sein.\"\n}",
+  "sekunden": 2.985500300070271,
+  "tokens_ein": 1062,
+  "tokens_aus": 192,
+  "modell": "qwen2.5:7b"
+ },
+ "s067": {
+  "inhalt": "{\n  \"begruendung\": \"Bestellung ohne Bestätigung\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": null,\n  \"bestellnummer\": \"4500018404\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Die Bestellung 4500018404 muss bestätigt werden, da sie noch nicht bestätigt wurde.\"\n}",
+  "sekunden": 3.3297947000246495,
+  "tokens_ein": 1066,
+  "tokens_aus": 207,
+  "modell": "qwen2.5:7b"
+ },
+ "s068": {
+  "inhalt": "{\n  \"begruendung\": \"Die E-Mail bezieht sich auf ein Katalog-Update und keine Lieferantenangelegenheiten.\",\n  \"kategorie\": \"sonstiges\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": null,\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Coupa hat den Lieferantenkatalog erfolgreich aktualisiert.\"\n}",
+  "sekunden": 2.9267267999239266,
+  "tokens_ein": 1049,
+  "tokens_aus": 192,
+  "modell": "qwen2.5:7b"
+ },
+ "s069": {
+  "inhalt": "{\n  \"begruendung\": \"Die OCR-Verarbeitung der Rechnung 2026-001 ist fehlgeschlagen und muss manuell eingestuft werden.\",\n  \"kategorie\": \"rechnung\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": null,\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": \"2026-001\",\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Die Rechnung 2026-001 konnte nicht durch OCR verarbeitet werden und muss manuell eingestuft werden.\"\n}",
+  "sekunden": 3.3971959000919014,
+  "tokens_ein": 1054,
+  "tokens_aus": 229,
+  "modell": "qwen2.5:7b"
+ },
+ "s070": {
+  "inhalt": "{\n  \"begruendung\": \"Steuernummer-Duplikat festgestellt, Sync abgebrochen.\",\n  \"kategorie\": \"stammdatenaenderung\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": \"Master Data Engine\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Steuernummer-Duplikat bei Master Data Engine festgestellt, Sync abgebrochen.\"\n}",
+  "sekunden": 2.9900457999901846,
+  "tokens_ein": 1058,
+  "tokens_aus": 203,
+  "modell": "qwen2.5:7b"
+ },
+ "s071": {
+  "inhalt": "{\n  \"begruendung\": \"Unverlangte Werbung für günstige Frachtkosten.\",\n  \"kategorie\": \"werbung\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": \"Sales Freight24\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Unverlangte Werbung für günstige Frachtkosten von Sales Freight24.\"\n}",
+  "sekunden": 2.8747253000037745,
+  "tokens_ein": 1070,
+  "tokens_aus": 196,
+  "modell": "qwen2.5:7b"
+ },
+ "s072": {
+  "inhalt": "{\n  \"begruendung\": \"Unverlangte Einladung zu einem Webinar\",\n  \"kategorie\": \"werbung\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": null,\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Einladung zu einem Webinar über KI im Einkauf wurde erhalten, ist unverlangt.\"\n}",
+  "sekunden": 2.746700100018643,
+  "tokens_ein": 1059,
+  "tokens_aus": 191,
+  "modell": "qwen2.5:7b"
+ },
+ "s073": {
+  "inhalt": "{\n  \"begruendung\": \"Unverlangte Werbung für Kapazitätsfreigaben.\",\n  \"kategorie\": \"werbung\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": \"Metal Processing\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"AW-40, WE-12\",\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Unverlangte Werbung für Kapazitätsfreigaben von Metal Processing für Artikel AW-40 und WE-12.\"\n}",
+  "sekunden": 3.0171802000841126,
+  "tokens_ein": 1077,
+  "tokens_aus": 210,
+  "modell": "qwen2.5:7b"
+ },
+ "s074": {
+  "inhalt": "{\n  \"begruendung\": \"Einladung zu einer Messe, keine Geschäftsangelegenheit.\",\n  \"kategorie\": \"werbung\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": null,\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Unverlangte Einladung zur EuroBLECH Messe.\"\n}",
+  "sekunden": 2.649006100022234,
+  "tokens_ein": 1053,
+  "tokens_aus": 183,
+  "modell": "qwen2.5:7b"
+ },
+ "s075": {
+  "inhalt": "{\n  \"begruendung\": \"Unverlangte Werbung\",\n  \"kategorie\": \"werbung\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": \"Consulting Group\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Unverlangte Werbung von Consulting Group zur Prozessoptimierung im Einkauf.\"\n}",
+  "sekunden": 2.652075399993919,
+  "tokens_ein": 1058,
+  "tokens_aus": 185,
+  "modell": "qwen2.5:7b"
+ },
+ "s076": {
+  "inhalt": "{\n  \"begruendung\": \"Unverlangte Werbung für Fachkräfte im Einkauf\",\n  \"kategorie\": \"werbung\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": null,\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Unverlangte Werbung von Recruiter Agency für AI Manager und Einkäufer.\"\n}",
+  "sekunden": 2.747500100056641,
+  "tokens_ein": 1062,
+  "tokens_aus": 188,
+  "modell": "qwen2.5:7b"
+ },
+ "s077": {
+  "inhalt": "{\n  \"begruendung\": \"Unverlangte Werbung für Sonderangebote.\",\n  \"kategorie\": \"werbung\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": \"Office Supply GmbH\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Unverlangte Werbung für Sonderangebote von Office Supply GmbH wurde erhalten.\"\n}",
+  "sekunden": 2.782134299981408,
+  "tokens_ein": 1048,
+  "tokens_aus": 190,
+  "modell": "qwen2.5:7b"
+ },
+ "s078": {
+  "inhalt": "{\n  \"begruendung\": \"Unverlangte Werbung für neue Dienstleistungen.\",\n  \"kategorie\": \"werbung\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": \"Cert Services\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Unverlangte Werbung von Cert Services für neue Zertifizierungsangebote.\"\n}",
+  "sekunden": 2.837806199910119,
+  "tokens_ein": 1044,
+  "tokens_aus": 194,
+  "modell": "qwen2.5:7b"
+ },
+ "s079": {
+  "inhalt": "{\n  \"begruendung\": \"Unverlangte Werbung für Softwarelösung.\",\n  \"kategorie\": \"werbung\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": \"SaaS Vendor\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Unverlangte Werbung für Softwarelösung zur Lieferkettensicherheit von SaaS Vendor.\"\n}",
+  "sekunden": 2.7639922000234947,
+  "tokens_ein": 1053,
+  "tokens_aus": 190,
+  "modell": "qwen2.5:7b"
+ },
+ "s080": {
+  "inhalt": "{\n  \"begruendung\": \"Weihnachts- und Neujahrsgrüße, keine Geschäftsangelegenheit.\",\n  \"kategorie\": \"sonstiges\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": \"Industrial Tools Service\",\n  \"bestellnummer\": null,\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Industrial Tools Service sendet Weihnachts- und Neujahrsgrüße, keine Geschäftsangelegenheit.\"\n}",
+  "sekunden": 2.9167422000318766,
+  "tokens_ein": 1054,
+  "tokens_aus": 204,
+  "modell": "qwen2.5:7b"
+ },
+ "s081": {
+  "inhalt": "{\n  \"begruendung\": \"Lieferterminänderungen und Preiserhöhung für mehrere Bestellungen.\",\n  \"kategorie\": \"lieferverzug\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": \"Lieferant 1\",\n  \"bestellnummer\": \"4500018401, 4500018411, 4500018418\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2023-11-20, 2023-11-25\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": \"Verzug, Preiserhöhung\",\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 1 meldet Verzugsbedingungen für Bestellungen 4500018411 und 4500018418 sowie eine Preiserhöhung für Bestellung 4500018418.\"\n}",
+  "sekunden": 4.348325699917041,
+  "tokens_ein": 1185,
+  "tokens_aus": 308,
+  "modell": "qwen2.5:7b"
+ },
+ "s082": {
+  "inhalt": "{\n  \"begruendung\": \"Reklamation abgelehnt und Preis erhöht.\",\n  \"kategorie\": \"reklamation\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 9\",\n  \"bestellnummer\": \"4500018406\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": 3.20,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": \"EUR\",\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": \"Preiserhöhung\",\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 9 lehnt die Reklamation ab und erhöht den Preis für Artikel KG-30 auf 3,20 EUR.\"\n}",
+  "sekunden": 3.318846400012262,
+  "tokens_ein": 1110,
+  "tokens_aus": 230,
+  "modell": "qwen2.5:7b"
+ },
+ "s083": {
+  "inhalt": "{\n  \"begruendung\": \"Stammdatenaenderung mit neuen Bankverbindung.\",\n  \"kategorie\": \"stammdatenaenderung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 6\",\n  \"bestellnummer\": \"4500018412,4500018417\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": \"CHF\",\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 6 hat eine neue Bankverbindung für die Bestellungen 4500018412 und 4500018417 angegeben.\"\n}",
+  "sekunden": 3.5338460000930354,
+  "tokens_ein": 1123,
+  "tokens_aus": 244,
+  "modell": "qwen2.5:7b"
+ },
+ "s084": {
+  "inhalt": "{\n  \"begruendung\": \"Auftragsbestätigung mit Rechnung\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 3\",\n  \"bestellnummer\": \"4500018408\",\n  \"rechnungsnummer\": \"nicht angegeben\",\n  \"angebotsnummer\": \"nicht anwendbar\",\n  \"artikel\": \"nicht angegeben\",\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": 860.00,\n  \"waehrung\": \"EUR\",\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Lieferant 3 bestätigt die Bestellung 4500018408 und sendet eine Vorausrechnung von 860,00 EUR.\"\n}",
+  "sekunden": 3.649524800013751,
+  "tokens_ein": 1091,
+  "tokens_aus": 252,
+  "modell": "qwen2.5:7b"
+ },
+ "s085": {
+  "inhalt": "{\n  \"begruendung\": \"Der Lieferant bestätigt die Bestellung und gibt einen neuen Liefertermin sowie ein Angebot für zusätzliche Stücke.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 7\",\n  \"bestellnummer\": \"4500018407\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": 5000,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-12-11\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Lieferant 7 bestätigt die Bestellung für 4500018407 und liefert FL-80 am 11.12.2026, wobei ein Angebot für 5.000 zusätzliche Stücke angeboten wird.\"\n}",
+  "sekunden": 4.077707100077532,
+  "tokens_ein": 1086,
+  "tokens_aus": 287,
+  "modell": "qwen2.5:7b"
+ },
+ "s086": {
+  "inhalt": "{\n  \"begruendung\": \"Liefertermin verändert, ISO Zertifikat angehängt.\",\n  \"kategorie\": \"lieferverzug\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 8\",\n  \"bestellnummer\": \"4500018409\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"DR-30\",\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2023-12-15\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 8 meldet Verzögerung der Lieferung von DR-30 um 13 Tage und sendet das ISO Zertifikat.\"\n}",
+  "sekunden": 3.5036496000830084,
+  "tokens_ein": 1085,
+  "tokens_aus": 244,
+  "modell": "qwen2.5:7b"
+ },
+ "s087": {
+  "inhalt": "{\n  \"begruendung\": \"Anfrage nach offenen Angeboten für AW-40 zu Bestellung 4500018410.\",\n  \"kategorie\": \"angebot\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": null,\n  \"bestellnummer\": \"4500018410\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"AW-40\",\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Arbeitsvorbereitung fragt nach offenen Angeboten für AW-40 zu Bestellung 4500018410.\"\n}",
+  "sekunden": 3.3181433000136167,
+  "tokens_ein": 1094,
+  "tokens_aus": 230,
+  "modell": "qwen2.5:7b"
+ },
+ "s088": {
+  "inhalt": "{\n  \"begruendung\": \"Reklamation und Preisaenderung\",\n  \"kategorie\": \"reklamation\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": \"Lieferant 3\",\n  \"bestellnummer\": \"4500018414\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Buchsen BU-22\",\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": \"Ersetzung defekter Artikel\",\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 3 ersetzt defekte Buchsen BU-22 und gibt neue Preise ab 2027 bekannt.\"\n}",
+  "sekunden": 3.2270854000234976,
+  "tokens_ein": 1086,
+  "tokens_aus": 225,
+  "modell": "qwen2.5:7b"
+ },
+ "s089": {
+  "inhalt": "{\n  \"begruendung\": \"Verzug der Ware und Teilrechnungsende\",\n  \"kategorie\": \"lieferverzug\",\n  \"konfidenz\": 0.9,\n  \"lieferant\": \"Lieferant 2\",\n  \"bestellnummer\": \"4500018402\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Lieferant 2 meldet Verzug der Ware und sendet eine Teilrechnung für Bestellung 4500018402.\"\n}",
+  "sekunden": 3.184951200033538,
+  "tokens_ein": 1080,
+  "tokens_aus": 222,
+  "modell": "qwen2.5:7b"
+ },
+ "s090": {
+  "inhalt": "{\n  \"begruendung\": \"Auftragsbestätigung mit Verzögerung.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 4\",\n  \"bestellnummer\": \"4500018410, 4500018415\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-12-07, 2026-12-20\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 4 bestätigt Bestellung 4500018410 für den 7.12.2026 und verzögert 4500018415 auf den 20.12.2026.\"\n}",
+  "sekunden": 4.108339300029911,
+  "tokens_ein": 1131,
+  "tokens_aus": 288,
+  "modell": "qwen2.5:7b"
+ },
+ "s091": {
+  "inhalt": "{\n  \"begruendung\": \"Auftragsbestätigung mit korrektem Liefertermin.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 1\",\n  \"bestellnummer\": \"4500018401\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"AW-40\",\n  \"einzelpreis\": null,\n  \"menge\": 2000,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Auftragsbestätigung für 2000 Stück AW-40 mit ok Termin.\"\n}",
+  "sekunden": 3.231111100059934,
+  "tokens_ein": 1066,
+  "tokens_aus": 222,
+  "modell": "qwen2.5:7b"
+ },
+ "s092": {
+  "inhalt": "{\n  \"begruendung\": \"Auftragsbestätigung mit bestätigter Menge.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 2\",\n  \"bestellnummer\": \"4500018402---WE-12\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": 1500,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Auftragsbestätigung für Bestellung 4500018402---WE-12 mit 1500 Stück.\"\n}",
+  "sekunden": 3.444850000087172,
+  "tokens_ein": 1074,
+  "tokens_aus": 236,
+  "modell": "qwen2.5:7b"
+ },
+ "s093": {
+  "inhalt": "{\n  \"begruendung\": \"Konkreter Liefertermin für eine bestätigte Bestellung angegeben.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 2\",\n  \"bestellnummer\": \"4500018403\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": 5000,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-12-04\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Lieferant 2 bestätigt die Bestellung 4500018403 mit 5000 Stück, die am 4.12.2026 geliefert werden.\"\n}",
+  "sekunden": 3.6438979000085965,
+  "tokens_ein": 1072,
+  "tokens_aus": 255,
+  "modell": "qwen2.5:7b"
+ },
+ "s094": {
+  "inhalt": "{\n  \"begruendung\": \"Auftragsbestätigung mit konkretem Liefertermin und Preis.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 6\",\n  \"bestellnummer\": \"4500018405\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": 1.85,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": \"CHF\",\n  \"liefertermin\": \"2026-11-18\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Auftragsbestätigung für Bestellung 4500018405 mit Liefertermin am 18.11.2026 und Preis von 1.85 CHF.\"\n}",
+  "sekunden": 3.7503889000508934,
+  "tokens_ein": 1082,
+  "tokens_aus": 260,
+  "modell": "qwen2.5:7b"
+ },
+ "s095": {
+  "inhalt": "{\n  \"begruendung\": \"Auftragsbestätigung mit konkretem Liefertermin.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 7\",\n  \"bestellnummer\": \"4500018407\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-12-11\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 7 bestätigt den Auftrag 4500018407 mit dem Liefertermin am 11.12.2026.\"\n}",
+  "sekunden": 3.553196799941361,
+  "tokens_ein": 1092,
+  "tokens_aus": 244,
+  "modell": "qwen2.5:7b"
+ },
+ "s096": {
+  "inhalt": "{\n  \"begruendung\": \"Kein Hauptanliegen, nur Bestätigung eines bereits besprochenen Termins.\",\n  \"kategorie\": \"sonstiges\",\n  \"konfidenz\": 0.8,\n  \"lieferant\": \"Lieferant 8\",\n  \"bestellnummer\": \"4500018409\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"hoch\",\n  \"zusammenfassung\": \"Lieferant 8 bestätigt einen bereits besprochenen Termin für Bestellung 4500018409.\"\n}",
+  "sekunden": 3.237115899915807,
+  "tokens_ein": 1061,
+  "tokens_aus": 225,
+  "modell": "qwen2.5:7b"
+ },
+ "s097": {
+  "inhalt": "{\n  \"begruendung\": \"Versandbenachrichtigung mit Sendungsnummer.\",\n  \"kategorie\": \"lieferavis\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 4\",\n  \"bestellnummer\": \"4500018410\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Lieferant 4 meldet, dass die Ware unterwegs ist und die ASN folgt.\"\n}",
+  "sekunden": 3.028841699939221,
+  "tokens_ein": 1058,
+  "tokens_aus": 208,
+  "modell": "qwen2.5:7b"
+ },
+ "s098": {
+  "inhalt": "{\n  \"begruendung\": \"Bestellnummer 4500018413 bestätigt.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 7\",\n  \"bestellnummer\": \"4500018413\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": null,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": null,\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"niedrig\",\n  \"zusammenfassung\": \"Bestätigung der Bestellung 4500018413 erhalten.\"\n}",
+  "sekunden": 3.1110069999704137,
+  "tokens_ein": 1069,
+  "tokens_aus": 216,
+  "modell": "qwen2.5:7b"
+ },
+ "s099": {
+  "inhalt": "{\n  \"begruendung\": \"Der Lieferant bestätigt die Bestellung mit einem konkreten Liefertermin.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 8\",\n  \"bestellnummer\": \"4500018416\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": null,\n  \"einzelpreis\": null,\n  \"menge\": 2500,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-12-15\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 8 bestätigt die Bestellung für 2500 Stück mit dem Liefertermin 15.12.2026.\"\n}",
+  "sekunden": 3.489256199914962,
+  "tokens_ein": 1063,
+  "tokens_aus": 246,
+  "modell": "qwen2.5:7b"
+ },
+ "s100": {
+  "inhalt": "{\n  \"begruendung\": \"Auftragsbestätigung mit konkretem Liefertermin und Menge.\",\n  \"kategorie\": \"auftragsbestaetigung\",\n  \"konfidenz\": 0.95,\n  \"lieferant\": \"Lieferant 2\",\n  \"bestellnummer\": \"4500018525\",\n  \"rechnungsnummer\": null,\n  \"angebotsnummer\": null,\n  \"artikel\": \"Nutenkeil NK-16\",\n  \"einzelpreis\": null,\n  \"menge\": 600,\n  \"betrag\": null,\n  \"waehrung\": null,\n  \"liefertermin\": \"2026-12-03\",\n  \"liefertermin_unsicher\": false,\n  \"abweichungsgrund\": null,\n  \"dringlichkeit\": \"mittel\",\n  \"zusammenfassung\": \"Lieferant 2 bestätigt die Bestellung von 600 Nutenkeil NK-16 für den 3. Dezember 2026.\"\n}",
+  "sekunden": 3.6064730000216514,
+  "tokens_ein": 1083,
+  "tokens_aus": 252,
+  "modell": "qwen2.5:7b"
+ }
+}
