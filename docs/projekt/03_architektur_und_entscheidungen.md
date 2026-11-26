@@ -71,6 +71,7 @@ flowchart LR
 | E-10 | 11.11.2026 | Duplikate zusätzlich über Inhalts-Hash (30 Tage) | Dieselbe Mail unter neuer Message-ID erzeugte ein zweites Ticket | nur Message-ID | neue Spalte `inhalts_hash` |
 | E-11 | 11.11.2026 | Erledigt-Knopf mit Token je Aufgabe statt Herkunftsprüfung | n8n liefert die Seite in einer Sandbox aus, die Herkunft ist `null`, die Prüfung hätte jeden Klick abgelehnt | Herkunft `null` zulassen | Tabelle `app_geheimnis` |
 | E-12 | 11.11.2026 | Währung der AB wird gegen die Bestellung geprüft | Fehlende Geschäftsregel, im Test wurde eine EUR-AB statt CHF durchgewunken | nur dokumentieren | Regel nur bei Währung im Mailtext |
+| E-16 | 26.11.2026 | Währung wird zusätzlich direkt aus dem Mailtext gelesen | Das Modell ließ die Währung leer, eine EUR-AB statt CHF ging durch | Prompt ändern | Nennt die Mail auch die bestellte Währung, zählt der Wert des Modells |
 | E-13 | 11.11.2026 | Testsätze mit vorab festgelegten Lösungen, nach dem Lauf nicht nachbessern | Ohne das Overfitting (100 % auf eigenen Mails, 78 % auf fremden) | an den Testmails weiter anpassen | Sätze gelten nach Korrekturregeln nicht mehr als unabhängig |
 | E-14 | 11.11.2026 | Gemeinsamer Login vorerst beibehalten | Aufwand, kein Pilot in Sicht | persönliche Konten | **bekannte Schuld**, siehe Risiken |
 | E-15 | 11.11.2026 | Weiterleitung nach Formularen mit voller Adresse (`http://localhost:5678`) | n8n setzt bei relativer Adresse ein „https://" davor | relative Adresse | bei anderem Rechner anpassen |

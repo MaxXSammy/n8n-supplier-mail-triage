@@ -15,6 +15,13 @@ jobs:
         with:
           python-version: "3.12"
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Tests der Prüflogik
+        run: node --test tests/*.test.mjs
+
       - name: JSON-Dateien gültig
         run: for f in workflows/*.json mails/*.json eval/*.json schema/*.json credentials/*.json pruefset*/gold.json pruefset*/mails/*.json; do python -m json.tool "$f" > /dev/null || exit 1; done
 

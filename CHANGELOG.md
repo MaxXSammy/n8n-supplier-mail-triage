@@ -2,6 +2,12 @@
 
 Alle nennenswerten Änderungen am Projekt, neueste zuerst. Die Einträge sind nachträglich aus der Versionsgeschichte zusammengefasst. Das Projekt hat keine Versionsnummern, die Einträge nennen Datum und Pull Request.
 
+## 26.11.2026
+
+- **Zweite Währungsprüfung:** Nennt der Mailtext eine Währung, aber nicht die bestellte, ist es eine Abweichung, auch wenn das Modell keine Währung ausliest. Lösung zu `s012` in Prüfsatz 4 berichtigt.
+- **Tests:** 65 Tests der Prüflogik in der CI.
+- **Modellvergleich:** qwen2.5:7b gegen Claude Haiku auf Prüfsatz 4.
+
 ## 11.11.2026
 
 - **Neue Arbeitsliste als App** (PR 15, offen zum Zeitpunkt der Erstellung): Seitenleiste, große Kacheln, runde Avatare, kompakte Zeilen, Abweichungen mit Prozent und Farbe, Betrug in Rot, Hauptaktion je Zeile, Bestellnummern als Pille. Formulare werden mit Ticket-ID und Bearbeiter vorbefüllt und führen zurück zur Liste. Link zu den Messwerten.

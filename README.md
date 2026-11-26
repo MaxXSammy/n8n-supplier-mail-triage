@@ -5,7 +5,7 @@
 Ein self-hosted n8n-Workflow, der eingehende Lieferanten-Mails verarbeitet. Ein lokales LLM erkennt den Zweck der Mail und extrahiert die wichtigen Daten als JSON. Danach wird alles im Code geprüft, die Mail an das zuständige Team geroutet und ein Ticket angelegt. Auftragsbestätigungen werden zusätzlich mit der Bestellung abgeglichen und je nach Liefertreue des Lieferanten automatisch bestätigt oder dem Einkäufer vorgelegt, mit fertigem Antwortentwurf. Unsichere oder verdächtige Fälle gehen an einen Menschen. Alles läuft lokal mit Docker und Ollama, ohne Cloud-KI.
 
 > **Auf einen Blick, ehrlich gemessen** (99 nie gesehene Mails, Prüfsatz 4, Prompt und Regeln unverändert):
-> **78 %** Kategorie richtig (Regel-Basislinie ohne KI: 59 %) · **0** Auftragsbestätigungen fälschlich durchgewunken · **100 %** der Bankdaten- und Stammdatenänderungen bei einem Menschen · Schwachstelle: interne Mails, nur 13 von 25 richtig.
+> **78 %** Kategorie richtig (Regel-Basislinie ohne KI: 59 %) · **0** Auftragsbestätigungen fälschlich durchgewunken, allerdings erst mit zwei nachträglich ergänzten Währungsregeln (ohne sie 2) · **100 %** der Bankdaten- und Stammdatenänderungen bei einem Menschen · Schwachstelle: interne Mails, nur 13 von 25 richtig.
 > Die 100 % weiter unten gelten für den Entwicklungssatz, an dem der Prompt gebaut wurde, und sind kein unabhängiger Test.
 > **Stand:** Prototyp, alle Mails synthetisch, noch kein Einsatz in einem echten Postfach.
 
@@ -192,17 +192,17 @@ Aus diesen Fehlern wird bewusst nicht am Prompt nachgebessert. Wer das tut, brau
 | Werbung erkannt | 100 % (10/10) |
 | Reklamation | 100 % (4/4) |
 | Auftragsbestätigung | 90 % (18/20) |
-| AB-Entscheidung richtig | 92 % (12/13), vor der Währungsregel 85 % |
-| AB fälschlich durchgewunken | **0**, vor der Währungsregel 1 |
+| AB-Entscheidung richtig | 92 % (12/13) mit beiden Währungsregeln, 85 % (11/13) mit der ersten, 77 % (10/13) ohne |
+| AB fälschlich durchgewunken | **0** mit beiden Währungsregeln, 1 mit der ersten, 2 ohne |
 | Falsch ohne Prüfung geroutet | 11, davon 7 mehrdeutig und 4 echte Fehler bei internen Mails |
 | „sonstiges“ (interne Mails, Systemmeldungen) | nur 13/25 richtig |
 
 Was das zeigt:
 - **Die Lieferantenmails funktionieren, die internen nicht.** Ohne „sonstiges“ liegen die Kategorien bei 86 % (64/74). Das Sammelbecken „sonstiges“ ist die Schwachstelle: Interne Bedarfsanforderungen und Systemmeldungen werden als Angebot, Auftragsbestätigung oder Lieferverzug eingeordnet und gehen an die falsche Stelle. Acht von zwölf Fehlern fängt eine Prüfung ab und schickt sie zu einem Menschen.
-- **Der gefährlichste Fehler ist behoben:** Eine AB mit Preis in EUR statt CHF wurde zuerst automatisch bestätigt, weil die Währung nicht gegen die Bestellung geprüft wurde. Das war eine fehlende Geschäftsregel und kein Modellfehler, deshalb wurde sie nachgebaut: Nennt eine AB eine andere Währung als bestellt (und steht diese im Mailtext), ist es eine Abweichung. Kontrollmessung auf dem Entwicklungssatz und Prüfsatz 4: keine falschen Alarme, die Fehl-AB wird abgefangen.
+- **Der gefährlichste Fehler brauchte zwei Anläufe:** Eine AB mit Preis in EUR statt CHF wurde automatisch bestätigt, weil die Währung nicht gegen die Bestellung geprüft wurde. Die erste Regel (11.11.2026) verglich die vom Modell ausgelesene Währung. Der Modellvergleich zeigte am 26.11.2026 eine zweite solche AB (`s012`): Das Modell hatte die Währung nicht ausgelesen, und in den Gold-Daten stand fälschlich „automatisch bestätigt“. Jetzt prüft der Code zusätzlich den Mailtext selbst. Beide Regeln entstanden nach Blick auf die Ergebnisse, die AB-Werte dieses Satzes sind deshalb kein unabhängiger Test mehr.
 - **Gut:** Alle Bankdaten- und Adressänderungen, alle Werbemails und alle Reklamationen wurden richtig behandelt.
 
-**Zeitersparnis, vorsichtig gerechnet** (Annahme des Einkäufers: durchschnittlich 5 Minuten je Mail, nicht gemessen): In diesem Satz werden 20 % der Mails ohne jede menschliche Arbeit erledigt (10 Werbemails abgelegt, 10 ABs ohne Abweichung automatisch bestätigt). Bei 1.000 Mails im Monat sind das etwa 17 Stunden im Monat oder 200 Stunden im Jahr. Alle anderen Mails sind vorsortiert und ausgelesen, brauchen aber weiter einen Menschen. Wie viel Zeit das spart, ist nicht gemessen. Die Verteilung der Mails im echten Postfach kann von diesem Testsatz abweichen.
+**Zeitersparnis, vorsichtig gerechnet** (Annahme des Einkäufers: durchschnittlich 5 Minuten je Mail, nicht gemessen): In diesem Satz werden 19 % der Mails ohne jede menschliche Arbeit erledigt (10 Werbemails abgelegt, 9 ABs ohne Abweichung automatisch bestätigt). Bei 1.000 Mails im Monat sind das etwa 16 Stunden im Monat oder 190 Stunden im Jahr. Alle anderen Mails sind vorsortiert und ausgelesen, brauchen aber weiter einen Menschen. Wie viel Zeit das spart, ist nicht gemessen. Die Verteilung der Mails im echten Postfach kann von diesem Testsatz abweichen.
 
 **Was die Messung gezeigt hat**
 
@@ -237,6 +237,58 @@ Was das zeigt:
 - **Die erste Bankdaten-Regel war zu eng.** Sie suchte nach „neue Bankverbindung“. Eine IBAN mit „künftig“ ging als normale Rechnung durch. Jetzt löst auch eine IBAN im Text zusammen mit Wörtern wie „künftig“ oder „ab sofort“ ein Review aus.
 - **Geheimnisse standen in der Umgebung.** In der ersten Fassung konnte jeder Node per `$env` den Encryption Key und alle Passwörter lesen. Sie liegen jetzt als Docker-Secrets in Dateien. Außerdem ist Postgres nicht mehr per Port erreichbar.
 - **Frischer Klon nach dieser README:** läuft ohne Handgriff in der Oberfläche und liefert Mail für Mail dieselben Ergebnisse wie die Entwicklungsumgebung.
+
+## Tests
+
+65 automatisierte Tests prüfen die Regeln der Code-Nodes: Eingangsprüfung, Belegprüfung, Betrugsschutz, Prompt-Injection und AB-Abgleich. Der Code wird dafür direkt aus `workflows/01_mail_triage.json` gelesen, getestet wird also genau das, was in n8n läuft. Kein LLM, keine Datenbank, keine Pakete nötig.
+
+```bash
+node --test tests/*.test.mjs
+```
+
+Ohne lokales Node.js geht es mit dem n8n-Image (PowerShell):
+
+```powershell
+docker run --rm --entrypoint sh -v "${PWD}:/repo:ro" -w /repo docker.n8n.io/n8nio/n8n:2.45.7 -c "node --test tests/*.test.mjs"
+```
+
+Die Tests laufen in der CI. Sie messen nicht, wie gut das Modell klassifiziert, das zeigt die Erfolgsmessung.
+
+## Modellvergleich
+
+`scripts/modellvergleich.py` schickt dieselben Mails an das lokale Modell und an ein Cloud-Modell. Prompt, JSON-Schema, Validierung und AB-Prüfung kommen aus den Code-Nodes des Workflows. Das lokale Modell erreicht in dieser Prüfstrecke dieselben Werte wie über n8n.
+
+```bash
+python scripts/modellvergleich.py qwen       # lokal mit Ollama
+python scripts/modellvergleich.py haiku      # Claude Code CLI mit eigenem Abo, Pfad ggf. in CLAUDE_BIN
+```
+
+Ergebnis auf Prüfsatz 4 mit 99 Mails, gemessen am 26.11.2026, je ein Lauf ([vollständige Tabelle](eval/modellvergleich_pruefset4.md)):
+
+| Kennzahl | qwen2.5:7b (lokal) | claude-haiku-5-5 (Cloud) |
+|---|---|---|
+| Kategorie richtig | 78 % (77/99) | 96 % (95/99) |
+| Kategorie „sonstiges“ richtig | 13 von 25 | 25 von 25 |
+| Ticket ohne Mensch | 75 % (74/99) | 57 % (56/99) |
+| falsch automatisch geroutet | 11 | 2 |
+| Felder richtig ausgelesen | 31/31 | 31/31 |
+| AB-Entscheidung, Stand der Messung | 11/13 | 12/13 |
+| AB fälschlich durchgewunken, Stand der Messung | 1 | 0 |
+| Antwortzeit Median | 3,3 s | 4,9 s |
+| Listenpreis je 1.000 Mails (laut CLI) | keine API-Kosten | 0,71 USD |
+
+**Einordnung**
+
+- Haiku ordnet deutlich besser ein, vor allem interne Mails. Dafür schickt die unveränderte Konfidenz-Schwelle von 0,75 viel mehr Mails zum Menschen: 36-mal lautet ein Grund „Konfidenz niedrig“. Die Schwelle wurde nicht nachgestellt.
+- Lokal bleiben die Mails im Haus. Für das Cloud-Modell verlassen sie es, im echten Einsatz bräuchte das eine Datenschutzprüfung.
+
+**Fehler im Prüfsatz, durch den Vergleich gefunden:** Bei `s012` wurde in CHF bestellt, die Auftragsbestätigung nennt EUR. In `gold.json` stand „automatisch bestätigt“, berichtigt am 26.11.2026. qwen las die Währung nicht aus und winkte die AB durch, Haiku erkannte die Abweichung. Die Tabelle oben zeigt die Regeln zum Zeitpunkt der Messung mit berichtigtem Gold. Mit der danach ergänzten Währungsprüfung im Code kommen beide Modelle auf 12/13 und 0, so steht es in der [vollständigen Tabelle](eval/modellvergleich_pruefset4.md).
+
+**Grenzen des Vergleichs**
+
+- Haiku läuft über die Claude-Code-CLI, nicht direkt über die API. Antwortzeit und Token enthalten deren Aufschlag (im Schnitt rund 1.000 Ausgabe-Token je Mail gegenüber 231), die Temperatur lässt sich nicht auf 0 setzen, und das Modell kennt offenbar das heutige Datum.
+- Der Prompt wurde für das lokale Modell geschrieben und nicht angepasst.
+- Die Mails sind synthetisch und stammen von einem KI-Modell. Beides begrenzt, was sich auf echte Postfächer übertragen lässt.
 
 ## Testdaten
 
@@ -287,7 +339,7 @@ python scripts/mail_senden.py "mails/*.json" --neu                    # alle, mi
 python scripts/evaluate.py                                            # Auswertung gegen die Gold-Daten
 python scripts/evaluate.py --set pruefset4                            # Auswertung eines Prüfsatzes
 python scripts/demo_laden.py                                          # Beispielmails für die Arbeitsliste (mit --loeschen wieder entfernen)
-python scripts/einsparung.py --mails-pro-monat 1000 --min-manuell 5 --min-pruefung 5 --stundensatz 50 --quote 0.2   # Zeitersparnis hochrechnen
+python scripts/einsparung.py --mails-pro-monat 1000 --min-manuell 5 --min-pruefung 5 --stundensatz 50 --quote 0.19  # Zeitersparnis hochrechnen
 python scripts/robustheit.py                                          # Angriffe und Grenzfälle
 python scripts/export_workflows.py                                    # Änderungen aus der UI ins Repo holen
 ```
@@ -324,12 +376,15 @@ credentials/                # Vorlage der n8n-Zugangsdaten (Platzhalter, keine G
 mails/                      # 34 Beispiel-Mails (Entwicklungssatz)
 pruefset/ … pruefset4/      # Prüfsätze mit vorab festgelegten Lösungen (gold.json)
 eval/                       # Gold-Daten und Ergebnisse
+tests/                      # Tests der Prüflogik (node --test)
 scripts/
 ├── n8n_import.sh           # Import beim Start (läuft im Container)
 ├── mail_senden.py          # Mails an den Webhook schicken
 ├── evaluate.py             # Auswertung mit Regel-Basislinie, auch für Prüfsätze (--set)
 ├── einsparung.py           # Zeitersparnis aus gemessenen Eingaben hochrechnen
 ├── demo_laden.py           # Beispielmails für die Arbeitsliste laden oder entfernen
+├── modellvergleich.py      # Lokales Modell gegen Cloud-Modelle
+├── pipeline.mjs            # Prüfstrecke ohne n8n, nutzt die Code-Nodes
 ├── robustheit.py           # Angriffe und Grenzfälle mit erwartetem Ergebnis
 ├── export_workflows.py     # Export aus n8n, nur portable Felder
 └── check_schema_sync.py    # Schema im Workflow = Schema-Datei?
@@ -340,7 +395,7 @@ docs/projekt/               # Projektdokumentation (Steckbrief, Anforderungen, T
 ## Bekannte Grenzen
 
 - Auf einem extern geschriebenen Prüfsatz mit absichtlichen Fallen (10 Mails) liegt die Kategorie-Genauigkeit bei 60 %. Bekannte Fehlerbilder: Kaltakquise mit Wörtern wie „Angebot“ wird als Angebot eingeordnet, interne Bedarfsanforderungen (BANF) mit Bestellnummer als Auftragsbestätigung, Mischmails mit mehreren Themen landen in einer einzigen Kategorie, eine AB mit Teilmenge teils als Lieferverzug. Datumsformate wie `10/12/2026` und „18 December 2026“ werden verworfen. Diese Fehler sind gemessen und nicht weggetunt, Details in der Erfolgsmessung.
-- Die Währungsregel prüft nur Währungscodes und Symbole, die im Mailtext stehen. Nennt eine AB beide Währungen, entscheidet das Modell, welche gemeint ist. Die Prüfung liegt dann eher auf der sicheren Seite (Abweichung statt Durchwinken).
+- Die Währungsregeln erkennen nur gängige Codes und Symbole (EUR, CHF, PLN, CZK, USD, GBP) im Mailtext. Nennt eine AB neben einer fremden auch die bestellte Währung, entscheidet allein der vom Modell ausgelesene Wert.
 - Interne Mails und Systemmeldungen landen in „sonstiges“ nur zur Hälfte richtig (13 von 25 im Prüfsatz 4). Vier gingen ohne Prüfung an die falsche Stelle, etwa eine Bedarfsanforderung als Angebot. Eine eigene Kategorie dafür wurde bewusst nicht gebaut.
 - Zwischen zwei Läufen streuen die Ergebnisse um ein bis zwei Mails, auch ohne Änderung am Code. Kleine Unterschiede sind kein Beleg für eine Verbesserung.
 - Interne Mails (Bedarfsanforderungen, Freigabeanfragen) und Systemnachrichten (EDI-Fehler) haben keine eigene Kategorie und landen im Sammelpostfach. Das ist Absicht: Das Tool sortiert das Lieferanten-Postfach.

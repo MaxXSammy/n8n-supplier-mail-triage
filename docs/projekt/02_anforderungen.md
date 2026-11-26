@@ -13,7 +13,7 @@ Priorität: **M** = muss, **S** = soll, **K** = kann. Status: erfüllt, teilweis
 | F-03 | Nummern, Beträge, Termine auslesen, jeder Wert muss im Mailtext stehen (Belegprüfung) | M | erfüllt | `eval/ergebnisse*.md`, Extraktion 96 bis 100 % je Satz |
 | F-04 | Zuständigkeit über eine Tabelle festlegen, ohne Workflow-Änderung pflegbar | M | erfüllt | Tabelle `team_routing` |
 | F-05 | Doppelte Mails erkennen (gleiche Nachricht und gleicher Inhalt unter neuer ID) | M | erfüllt | Workflow 01, Test vom 11.11.2026 |
-| F-06 | AB mit Bestellung abgleichen: Preis, Menge, Termin, Währung | M | erfüllt | Prüfsatz 4: AB-Entscheidung 12 von 13 |
+| F-06 | AB mit Bestellung abgleichen: Preis, Menge, Termin, Währung | M | erfüllt | Prüfsatz 4: AB-Entscheidung 12 von 13 (nach Nachrüsten der Währungsprüfung) |
 | F-07 | AB-Regeln: Liefertreue-Schwellen (90 % und 80 %), neuer Lieferant, Blindbestätigung unter 30 Minuten, abweichende Absender-Domain | M | erfüllt | `docs/fachkonzept.md`, Tabelle `einstellungen` |
 | F-08 | Änderung von Bankdaten, Adresse oder USt-ID immer an einen Menschen | M | erfüllt | 14 von 14 in allen Prüfsätzen |
 | F-09 | Eingeschleuste Anweisungen („Ignoriere alle Anweisungen") erkennen und prüfen lassen | M | teilweise | Regelbasiert, umgehbar (Grenzen siehe Risiken) |

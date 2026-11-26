@@ -1,5 +1,7 @@
 # Auswertung der Klassifizierung
 
+> **Hinweis vom 26.11.2026:** Originalausgabe des Laufs vom 11.11.2026. Die Lösung zu `s012` war falsch (bestellt in CHF, bestätigt in EUR). Richtig gerechnet waren es in diesem Lauf 11 von 13 AB-Entscheidungen und 1 fälschlich durchgewunkene AB. Seit der Währungsprüfung im Code: 12 von 13 und 0 ([Modellvergleich](modellvergleich_pruefset4.md)).
+
 Lauf 20261111-095051 · Modell `qwen2.5:7b` · Konfidenz-Schwelle 0.75 · 99 Beispiel-Mails
 
 | Kennzahl | Wert | Bedeutung |
